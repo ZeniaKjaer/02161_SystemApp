@@ -89,5 +89,7 @@ public class LoginLogoutSteps {
 	public void developerIsLoggedOut() throws Exception {
 		assertEquals(null, systemApp.getActiveUser());
 	}
-
+		
+	//ny kommentar
+	
 }
