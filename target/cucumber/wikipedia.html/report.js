@@ -182,9 +182,11 @@ formatter.step({
   "name": "developer is logged out",
   "keyword": "And "
 });
-formatter.match({});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedOut()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 formatter.background({
   "name": "SystemApp has developers",
@@ -237,9 +239,11 @@ formatter.step({
   "name": "developer is logged in",
   "keyword": "Given "
 });
-formatter.match({});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 formatter.step({
   "name": "developer logs out",
@@ -249,14 +253,16 @@ formatter.match({
   "location": "LoginLogoutSteps.developerLogsOut()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "developer is logged out",
   "keyword": "Then "
 });
-formatter.match({});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedOut()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 });

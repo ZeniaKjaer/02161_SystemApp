@@ -10,7 +10,7 @@ public class DeveloperHelper {
 
 	public Developer getDeveloper() {
 		if(developer == null) {
-			developer = new Developer("XXXX");
+			developer = new Developer("ABCD");
 		}
 		return developer;
 	}

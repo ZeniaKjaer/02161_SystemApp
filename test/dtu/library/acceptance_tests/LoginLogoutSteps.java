@@ -24,11 +24,14 @@ public class LoginLogoutSteps {
 	
 	private SystemApp systemApp;
 	private Developer dev;
-	public ErrorMessageHolder errorMessageHolder;
+	private ErrorMessageHolder errorMessageHolder;
+	private DeveloperHelper devhelper;
 	
-	public LoginLogoutSteps(SystemApp systemApp, ErrorMessageHolder errorMessageHolder) {
+	public LoginLogoutSteps(SystemApp systemApp, ErrorMessageHolder errorMessageHolder, 
+			DeveloperHelper devhelper) {
 		this.systemApp = systemApp;	
 		this.errorMessageHolder = errorMessageHolder;
+		this.devhelper = devhelper;
 	}
 	
 	@Given("^SystemApp has developers$")
@@ -77,7 +80,10 @@ public class LoginLogoutSteps {
 	
 	@Given("^developer is logged in$")
 	public void developerIsLoggedIn() throws Exception {
-		systemApp.userLogin(null);
+		/*
+		 * TODO spørg hjælpelærerne
+		 * 	systemApp.userLogin("ABCD");
+		 */
 	}
 	
 	@When("^developer logs out$")
@@ -87,9 +93,7 @@ public class LoginLogoutSteps {
 
 	@Then("^developer is logged out$")
 	public void developerIsLoggedOut() throws Exception {
-		assertEquals(null, systemApp.getActiveUser());
+		assertEquals("", systemApp.getActiveUser());
 	}
-		
-	//ny kommentar
 	
 }
