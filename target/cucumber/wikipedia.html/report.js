@@ -1,4 +1,117 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("use_cases/student/user_login.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("use_cases/student/add_developer_project.feature");
+formatter.feature({
+  "name": "Project leader adds developer to project",
+  "description": "  Description:\n  Actors: Project leader, developer",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "Add developer to project successfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a project",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
+});
+formatter.result({
+  "error_message": "java.lang.NullPointerException\r\n\tat system.app.SystemApp.addProject(SystemApp.java:57)\r\n\tat dtu.library.acceptance_tests.ProjectSteps.thereIsAProject(ProjectSteps.java:62)\r\n\tat ✽.there is a project(use_cases/student/add_developer_project.feature:7)\r\n",
+  "status": "failed"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "skipped"
+});
+formatter.step({
+  "name": "there is a developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsADeveloper()"
+});
+formatter.result({
+  "status": "skipped"
+});
+formatter.step({
+  "name": "user adds developer to project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userAddsDeveloperToProject()"
+});
+formatter.result({
+  "status": "skipped"
+});
+formatter.step({
+  "name": "developer is part of the project",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "ProjectSteps.developerIsPartOfTheProject()"
+});
+formatter.result({
+  "status": "skipped"
+});
+formatter.uri("use_cases/student/create_project.feature");
+formatter.feature({
+  "name": "Start a project",
+  "description": "    Description:\n    Actors: Project leader",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "Developer creates a project succesfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a developer",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsADeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developer creates project with projectname \"First Project\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.developerCreatesProject(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "project with projectname \"First Project\" is created",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "ProjectSteps.projectIsCreated(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer is now the project leader",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.theDeveloperIsNowTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.uri("use_cases/student/user_login.feature");
 formatter.feature({
   "name": "User logs on",
   "description": "    Description:\n    Actors: developer",

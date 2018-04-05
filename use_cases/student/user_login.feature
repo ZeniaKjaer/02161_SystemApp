@@ -28,3 +28,6 @@ Scenario: developer logs out
   	Given developer is logged in
   	When developer logs out
   	Then developer is logged out
+  	
+##
+##Scenario: developer logs on when someone else is aldready logged in   	

@@ -8,6 +8,9 @@ public class SystemApp {
 	private List<Developer> developers = new ArrayList<Developer>();
 	private boolean loggedIn = false;
 	private String activeUser = "";
+	private List<Project> projects = new ArrayList<Project>();
+	private int year = 18 ;
+	private int nextProjectID = 1;
 
 	public void addDeveloper(Developer developer) {
 		developers.add(developer);		
@@ -47,6 +50,16 @@ public class SystemApp {
 
 	public List<Developer> getDevelopers() {
 		return developers;
+	}
+
+	public void addProject(Project project) {
+		String projectId = ""+ year + nextProjectID++; 
+		project.setProjectId(projectId);
+		projects.add(project);		
+	}
+	
+	public List<Project> getProjects() {
+		return projects;
 	}
 
 }
