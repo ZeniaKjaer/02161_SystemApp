@@ -83,7 +83,7 @@ public class ProjectSteps {
 
 	@Then("^developer is part of the project$")
 	public void developerIsPartOfTheProject() throws Exception {
-		assertThat(project.getProjectDevelopers(),hasItem(devHelper.getDeveloper()));
+		assertThat(projectHelper.getProject().getProjectDevelopers(),hasItem(devHelper.getDeveloper()));
 	}
 	
 	@Given("^user is not the project leader$")
@@ -113,13 +113,12 @@ public class ProjectSteps {
 	
 	@When("^user adds activity to project$")
 	public void userAddsActivityToProject() throws Exception {
-	    project.addActivity(activityHelper.getActivity());
+	    systemApp.addActivity(projectHelper.getProject(), activityHelper.getActivity());
 	}
 
 	@Then("^activity is part of project$")
 	public void activityIsPartOfProject() throws Exception {
-	    assertThat(project.getProjectActivities(), hasItem(activityHelper.getActivity()));
+	    assertThat(projectHelper.getProject().getProjectActivities(), hasItem(activityHelper.getActivity()));
 	}
-	
 	
 }

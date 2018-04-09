@@ -29,5 +29,7 @@ Scenario: developer logs out
   	When developer logs out
   	Then developer is logged out
   	
-##
-##Scenario: developer logs on when someone else is aldready logged in   	
+Scenario: developer logs on when someone else is aldready logged in   
+	Given developer is logged in
+	When developer enter initials "ABCD"
+	Then user gets the error message "Another user is already logged in"	

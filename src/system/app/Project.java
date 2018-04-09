@@ -10,8 +10,6 @@ public class Project {
 	private List<Developer> projectDevelopers = new ArrayList<Developer>();
 	private List<Activity> projectActivities = new ArrayList<Activity>(); 
 
-	
-
 	public Project(String developerId, String projectID, String projectName) {
 		this.projectLeader = developerId;
 	}
@@ -36,7 +34,6 @@ public class Project {
 	public String getProjectLeader() {
 		return projectLeader;
 	}
-
 
 	public void setProjectLeader(String projectLeader) {
 		this.projectLeader = projectLeader;
