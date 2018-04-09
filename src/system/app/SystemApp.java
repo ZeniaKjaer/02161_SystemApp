@@ -36,7 +36,10 @@ public class SystemApp {
 	public void userLogin(String id) throws OperationNotAllowedException  {
 		if (!isInTheSystem(id)) {
 			throw new OperationNotAllowedException("Wrong initials");
-		} else {
+		} else if (loggedIn) {
+			throw new OperationNotAllowedException("Another user is already logged in");
+		}
+		else {
 		activeUser = id;
 		loggedIn = true;
 		}
@@ -53,6 +56,18 @@ public class SystemApp {
 		}
 	}
 	
+	public void addProject(Project project) throws OperationNotAllowedException{
+		for (Project p: projects) {
+			 if (p.getProjectName().equalsIgnoreCase(project.getProjectName())) { 
+				 throw new OperationNotAllowedException("Illegal project name");
+			 }
+		}
+		String projectId = ""+ year + nextProjectID++; 
+		project.setProjectId(projectId);
+		projects.add(project); 
+		 	
+	}
+	
 	public void addActivity(Project project, Activity activity) throws OperationNotAllowedException {
 		if (!activeUser.equalsIgnoreCase( project.getProjectLeader())) {
 			throw new OperationNotAllowedException("project leader authorization needed");
@@ -62,7 +77,6 @@ public class SystemApp {
 		
 	}
 	
-
 	private boolean isProjectDev(Developer dev) {
 		for (Developer d : developers) {
 			 if (d.getId().equalsIgnoreCase(dev.getId())) 
@@ -82,18 +96,6 @@ public class SystemApp {
 
 	public List<Developer> getDevelopers() {
 		return developers;
-	}
-
-	public void addProject(Project project) throws OperationNotAllowedException{
-		for (Project p: projects) {
-			 if (p.getProjectName().equals(project.getProjectName())) { 
-				 throw new OperationNotAllowedException("Illegal project name");
-			 }
-		}
-		String projectId = ""+ year + nextProjectID++; 
-		project.setProjectId(projectId);
-		projects.add(project); 
-		 	
 	}
 	
 	public List<Project> getProjects() {

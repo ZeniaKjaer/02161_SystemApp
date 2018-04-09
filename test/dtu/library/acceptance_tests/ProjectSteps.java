@@ -25,7 +25,7 @@ import system.app.SystemApp;
 public class ProjectSteps {
 
 	private SystemApp systemApp;
-	private Project project;
+	private Project project, project2;
 	private Activity activity;
 	private ErrorMessageHolder errorMessageHolder;
 	private DeveloperHelper devHelper;
@@ -49,7 +49,11 @@ public class ProjectSteps {
 	@When("^developer creates project with projectname \"([^\"]*)\"$")
 	public void developerCreatesProject(String projectName) throws Exception {
 	    project = new Project(devHelper.getDeveloper().getId(),"",projectName);
-		systemApp.addProject(project);
+		try {
+			systemApp.addProject(project);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		} 
 	}
 
 	@Then("^project with projectname \"([^\"]*)\" is created$")
@@ -83,6 +87,11 @@ public class ProjectSteps {
 
 	@Then("^developer is part of the project$")
 	public void developerIsPartOfTheProject() throws Exception {
+		 for (Developer developer : projectHelper.getProject().getProjectDevelopers()) {
+			 if (id.equalsIgnoreCase(developer.getId())) {
+				 return true; 
+			 }
+		 }
 		assertThat(projectHelper.getProject().getProjectDevelopers(),hasItem(devHelper.getDeveloper()));
 	}
 	
@@ -91,34 +100,20 @@ public class ProjectSteps {
 		projectHelper.getProject().setProjectLeader(null);
 	}
 	
-	@When("^project with name \"([^\"]*)\" already exist$")
-		public void projectWithNameAlreadyExist(String arg1) throws Exception {
-		try {
-			systemApp.addProject(projectHelper.getProject());
-			systemApp.addProject(projectHelper.getProject());
-		} catch (OperationNotAllowedException e) {
-			errorMessageHolder.setErrorMessage(e.getMessage());
-		}
+	@Given("^project with name \"([^\"]*)\" already exist$")
+		public void projectWithNameAlreadyExist(String projectName) throws Exception {
+		Project project2 = new Project(devHelper.getDeveloper().getId(),"",projectName);
+		systemApp.addProject(project2);
+//		try {
+//			systemApp.addProject(project2);
+//		} catch (OperationNotAllowedException e) {
+//			errorMessageHolder.setErrorMessage(e.getMessage());
+//		}
 	}
 	
 	@Given("^developer is already part of the project$")
 	public void developerIsAlreadyPartOfTheProject() throws Exception {
 		projectHelper.getProject().addProjectDev(devHelper.getDeveloper());
-	}
-	
-	@Given("^there is an activity$")
-	public void thereIsAnActivity() throws Exception {
-	    activity = new Activity("Aktivitet");
-	}
-	
-	@When("^user adds activity to project$")
-	public void userAddsActivityToProject() throws Exception {
-	    systemApp.addActivity(projectHelper.getProject(), activityHelper.getActivity());
-	}
-
-	@Then("^activity is part of project$")
-	public void activityIsPartOfProject() throws Exception {
-	    assertThat(projectHelper.getProject().getProjectActivities(), hasItem(activityHelper.getActivity()));
 	}
 	
 }
