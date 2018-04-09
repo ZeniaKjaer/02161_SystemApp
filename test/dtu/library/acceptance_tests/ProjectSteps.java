@@ -18,6 +18,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import system.app.OperationNotAllowedException;
 import system.app.Project;
+import system.app.Activity;
 import system.app.Developer;
 import system.app.SystemApp;
 
@@ -25,15 +26,19 @@ public class ProjectSteps {
 
 	private SystemApp systemApp;
 	private Project project;
+	private Activity activity;
 	private ErrorMessageHolder errorMessageHolder;
 	private DeveloperHelper devHelper;
 	private ProjectHelper projectHelper;
+	private ActivityHelper activityHelper;
 	
 	public ProjectSteps(SystemApp systemApp, ErrorMessageHolder errorMessageHolder, 
-			DeveloperHelper devHelper, ProjectHelper projectHelper) {
+			DeveloperHelper devHelper, ProjectHelper projectHelper, ActivityHelper activityHelper) {
 		this.systemApp = systemApp;	
 		this.errorMessageHolder = errorMessageHolder;
 		this.devHelper = devHelper;
+		this.projectHelper = projectHelper;
+		this.activityHelper = activityHelper;
 	}
 	
 	@Given("^there is a developer$")
@@ -59,7 +64,7 @@ public class ProjectSteps {
 	
 	@Given("^there is a project$")
 	public void thereIsAProject() throws Exception {
-	    systemApp.addProject(project);
+	    systemApp.addProject(projectHelper.getProject());
 	}
 	
 	@Given("^user is the project leader$")
@@ -69,13 +74,52 @@ public class ProjectSteps {
 
 	@When("^user adds developer to project$")
 	public void userAddsDeveloperToProject() throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+		try {
+			 systemApp.addProjectDev(projectHelper.getProject(), devHelper.getDeveloper());
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		} 
 	}
 
 	@Then("^developer is part of the project$")
 	public void developerIsPartOfTheProject() throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+		assertThat(project.getProjectDevelopers(),hasItem(devHelper.getDeveloper()));
 	}
+	
+	@Given("^user is not the project leader$")
+	public void userIsNotTheProjectLeader() throws Exception {
+		projectHelper.getProject().setProjectLeader(null);
+	}
+	
+	@When("^project with name \"([^\"]*)\" already exist$")
+		public void projectWithNameAlreadyExist(String arg1) throws Exception {
+		try {
+			systemApp.addProject(projectHelper.getProject());
+			systemApp.addProject(projectHelper.getProject());
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
+	
+	@Given("^developer is already part of the project$")
+	public void developerIsAlreadyPartOfTheProject() throws Exception {
+		projectHelper.getProject().addProjectDev(devHelper.getDeveloper());
+	}
+	
+	@Given("^there is an activity$")
+	public void thereIsAnActivity() throws Exception {
+	    activity = new Activity("Aktivitet");
+	}
+	
+	@When("^user adds activity to project$")
+	public void userAddsActivityToProject() throws Exception {
+	    project.addActivity(activityHelper.getActivity());
+	}
+
+	@Then("^activity is part of project$")
+	public void activityIsPartOfProject() throws Exception {
+	    assertThat(project.getProjectActivities(), hasItem(activityHelper.getActivity()));
+	}
+	
+	
 }

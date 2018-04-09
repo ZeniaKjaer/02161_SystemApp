@@ -38,6 +38,35 @@ public class SystemApp {
 		loggedIn = true;
 		}
 	}
+	
+	public void addProjectDev(Project project, Developer developer) throws OperationNotAllowedException{
+		if (activeUser != project.getProjectLeader() ) {
+			throw new OperationNotAllowedException("project leader authorization needed");
+		} else if (isProjectDev(developer)) {
+			throw new OperationNotAllowedException("user is already part of project");
+		}
+		else {
+			project.addProjectDev(developer);
+		}
+	}
+	
+	public void addActivity(Project project, Activity activity) throws OperationNotAllowedException {
+		if (activeUser != project.getProjectLeader() ) {
+			throw new OperationNotAllowedException("project leader authorization needed");
+		} else {
+			project.addActivity(activity);
+		}
+		
+	}
+	
+
+	private boolean isProjectDev(Developer dev) {
+		for (Developer d : developers) {
+			 if (d == dev) 
+				 return true; 
+		 }
+		return false;
+	}
 
 	public void userLogout() {
 		activeUser = "";
@@ -52,10 +81,16 @@ public class SystemApp {
 		return developers;
 	}
 
-	public void addProject(Project project) {
+	public void addProject(Project project) throws OperationNotAllowedException{
+		for (Project p: projects) {
+			 if (p.getProjectName() == project.getProjectName()) { 
+				 throw new OperationNotAllowedException("Illegal project name");
+			 }
+		}
 		String projectId = ""+ year + nextProjectID++; 
 		project.setProjectId(projectId);
-		projects.add(project);		
+		projects.add(project); 
+		 	
 	}
 	
 	public List<Project> getProjects() {

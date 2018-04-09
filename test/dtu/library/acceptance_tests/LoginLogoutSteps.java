@@ -80,10 +80,9 @@ public class LoginLogoutSteps {
 	
 	@Given("^developer is logged in$")
 	public void developerIsLoggedIn() throws Exception {
-		/*
-		 * TODO spørg hjælpelærerne
-		 * 	systemApp.userLogin("ABCD");
-		 */
+		//TODO spørg hjælpelærerne
+		//systemApp.userLogin(devHelper);
+		 
 	}
 	
 	@When("^developer logs out$")

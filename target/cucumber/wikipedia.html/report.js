@@ -1,4 +1,122 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("use_cases/student/add_developer_project.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("use_cases/student/add_activity.feature");
+formatter.feature({
+  "name": "Project leader adds activity to project",
+  "description": "    Description:\n    Actors: Project leader",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "project leader adds activity to project successfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is an activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds activity to project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userAddsActivityToProject()"
+});
+formatter.result({
+  "error_message": "java.lang.NullPointerException\r\n\tat dtu.library.acceptance_tests.ProjectSteps.userAddsActivityToProject(ProjectSteps.java:116)\r\n\tat ✽.user adds activity to project(use_cases/student/add_activity.feature:10)\r\n",
+  "status": "failed"
+});
+formatter.step({
+  "name": "activity is part of project",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "ProjectSteps.activityIsPartOfProject()"
+});
+formatter.result({
+  "status": "skipped"
+});
+formatter.scenario({
+  "name": "add activity when not project leader",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is not the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsNotTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is an activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds activity to project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userAddsActivityToProject()"
+});
+formatter.result({
+  "error_message": "java.lang.NullPointerException\r\n\tat dtu.library.acceptance_tests.ProjectSteps.userAddsActivityToProject(ProjectSteps.java:116)\r\n\tat ✽.user adds activity to project(use_cases/student/add_activity.feature:17)\r\n",
+  "status": "failed"
+});
+formatter.step({
+  "name": "user gets the error message \"Project leader authorization needed\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "skipped"
+});
+formatter.uri("use_cases/student/add_developer_project.feature");
 formatter.feature({
   "name": "Project leader adds developer to project",
   "description": "  Description:\n  Actors: Project leader, developer",
@@ -17,8 +135,7 @@ formatter.match({
   "location": "ProjectSteps.thereIsAProject()"
 });
 formatter.result({
-  "error_message": "java.lang.NullPointerException\r\n\tat system.app.SystemApp.addProject(SystemApp.java:57)\r\n\tat dtu.library.acceptance_tests.ProjectSteps.thereIsAProject(ProjectSteps.java:62)\r\n\tat ✽.there is a project(use_cases/student/add_developer_project.feature:7)\r\n",
-  "status": "failed"
+  "status": "passed"
 });
 formatter.step({
   "name": "user is the project leader",
@@ -28,7 +145,7 @@ formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "there is a developer",
@@ -38,7 +155,7 @@ formatter.match({
   "location": "ProjectSteps.thereIsADeveloper()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "user adds developer to project",
@@ -48,7 +165,7 @@ formatter.match({
   "location": "ProjectSteps.userAddsDeveloperToProject()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "developer is part of the project",
@@ -58,7 +175,128 @@ formatter.match({
   "location": "ProjectSteps.developerIsPartOfTheProject()"
 });
 formatter.result({
-  "status": "skipped"
+  "error_message": "java.lang.NullPointerException\r\n\tat dtu.library.acceptance_tests.ProjectSteps.developerIsPartOfTheProject(ProjectSteps.java:86)\r\n\tat ✽.developer is part of the project(use_cases/student/add_developer_project.feature:11)\r\n",
+  "status": "failed"
+});
+formatter.scenario({
+  "name": "Add developer to project when not a project leader",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a project",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user is not the project leader",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsNotTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsADeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds developer to project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userAddsDeveloperToProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"project leader authorization needed\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Add developer to project twice",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a project",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsADeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developer is already part of the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.developerIsAlreadyPartOfTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds developer to project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userAddsDeveloperToProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"user is already part of project\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
 });
 formatter.uri("use_cases/student/create_project.feature");
 formatter.feature({
@@ -107,6 +345,51 @@ formatter.step({
 });
 formatter.match({
   "location": "ProjectSteps.theDeveloperIsNowTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Developer creates a project with illegal name",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a developer",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsADeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developer creates project with projectname \"First Project\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.developerCreatesProject(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "project with name \"First Project\" already exist",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.projectWithNameAlreadyExist(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Illegal project name\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
   "status": "passed"
