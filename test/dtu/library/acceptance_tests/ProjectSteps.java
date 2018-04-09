@@ -87,11 +87,11 @@ public class ProjectSteps {
 
 	@Then("^developer is part of the project$")
 	public void developerIsPartOfTheProject() throws Exception {
-		 for (Developer developer : projectHelper.getProject().getProjectDevelopers()) {
-			 if (id.equalsIgnoreCase(developer.getId())) {
-				 return true; 
-			 }
-		 }
+//		 for (Developer developer : projectHelper.getProject().getProjectDevelopers()) {
+//			 if (id.equalsIgnoreCase(developer.getId())) {
+//				 return true; 
+//			 }
+//		 }
 		assertThat(projectHelper.getProject().getProjectDevelopers(),hasItem(devHelper.getDeveloper()));
 	}
 	
