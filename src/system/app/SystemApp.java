@@ -48,7 +48,7 @@ public class SystemApp {
 	public void addProjectDev(Project project, Developer developer) throws OperationNotAllowedException{
 		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
 			throw new OperationNotAllowedException("project leader authorization needed");
-		} else if (isProjectDev(developer)) {
+		} else if (project.isProjectDev(developer)) {
 			throw new OperationNotAllowedException("user is already part of project");
 		}
 		else {
@@ -75,14 +75,6 @@ public class SystemApp {
 			project.addActivity(activity);
 		}
 		
-	}
-	
-	private boolean isProjectDev(Developer dev) {
-		for (Developer d : developers) {
-			 if (d.getId().equalsIgnoreCase(dev.getId())) 
-				 return true; 
-		 }
-		return false;
 	}
 
 	public void userLogout() {

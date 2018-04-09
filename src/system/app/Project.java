@@ -12,8 +12,18 @@ public class Project {
 
 	public Project(String developerId, String projectID, String projectName) {
 		this.projectLeader = developerId;
+		this.projectId = projectId;
+		this.projectName = projectName;
 	}
 
+	public boolean isProjectDev(Developer dev) {
+		for (Developer d : projectDevelopers) {
+			 if (d.getId().equalsIgnoreCase(dev.getId())) 
+				 return true; 
+		 }
+		return false;
+	}
+	
 	public void addProjectDev(Developer developer) throws OperationNotAllowedException{		
 		projectDevelopers.add(developer);
 	}

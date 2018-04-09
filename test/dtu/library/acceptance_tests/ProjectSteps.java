@@ -25,7 +25,7 @@ import system.app.SystemApp;
 public class ProjectSteps {
 
 	private SystemApp systemApp;
-	private Project project, project2;
+	private Project project;
 	private Activity activity;
 	private ErrorMessageHolder errorMessageHolder;
 	private DeveloperHelper devHelper;
