@@ -15,13 +15,12 @@ public class Project {
 		this.projectId = projectId;
 		this.projectName = projectName;
 	}
-
+	
 	public boolean isProjectDev(Developer dev) {
-		for (Developer d : projectDevelopers) { 
-			 if (d.getId().equalsIgnoreCase(dev.getId())) 
-				 return true; 
-		 }
-		return false;
+		if (projectDevelopers.contains(dev)) {
+			return true;
+		} 
+			return false;
 	}
 
 	public void addProjectDev(Developer developer) throws OperationNotAllowedException {
@@ -31,17 +30,20 @@ public class Project {
 	public void removeProjectDev(Developer developer) {
 		projectDevelopers.remove(developer);
 	}
+	
+	public boolean isProjectActivity(Activity activity) {
+		if (projectActivities.contains(activity)) {
+			return true;
+		} 
+			return false;
+	}
 
 	public void addActivity(Activity activity) {
 		projectActivities.add(activity);
 	}
 
-	public void removeActivity(Activity activity) throws OperationNotAllowedException {
-			if (projectActivities.contains(activity)) { 
-				projectActivities.remove(activity);
-			} else {
-		throw new OperationNotAllowedException("Activity is not part of the project");
-			}
+	public void removeActivity(Activity activity) {
+		projectActivities.remove(activity);
 	}
 
 	public List<Developer> getProjectDevelopers() {
@@ -70,6 +72,10 @@ public class Project {
 
 	public List<Activity> getProjectActivities() {
 		return projectActivities;
+	}
+
+	public String getProjectId() {
+		return projectId;
 	}
 
 }

@@ -48,6 +48,7 @@ public class ProjectSteps {
 
 	@Given("^there is a project developer$")
 	public void thereIsAProjectDeveloper() throws Exception {
+		//systemApp.addProjectDev(projectHelper.getProject(),devHelper.getDeveloper());
 		projectHelper.getProject().addProjectDev(devHelper.getDeveloper());
 	}
 
@@ -59,7 +60,6 @@ public class ProjectSteps {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		} 
 	}
-
 
 	@When("^developer creates project with projectname \"([^\"]*)\"$")
 	public void developerCreatesProject(String projectName) throws Exception {
@@ -80,7 +80,7 @@ public class ProjectSteps {
 	public void theDeveloperIsNowTheProjectLeader() throws Exception {
 		assertThat(project.getProjectLeader(), is(equalTo(devHelper.getDeveloper().getId())));
 	} 
-	// HEEEEEEEEEEEEEEEEEEY!!! disse to ligner hinanden, men burde vi ændre den øverste???? eller beholder vi dem som de er? -MT
+	// HEEEEEEEEEEEEEEEEEEY!!! disse to ligner hinanden, men burde vi aendre den oeverste???? eller beholder vi dem som de er? -MT
 
 	@Then("^developer is the new project leader$") // Denne er fra "Change project leader"
 	public void developerIsTheNewProjectLeader() throws Exception {
@@ -91,7 +91,6 @@ public class ProjectSteps {
 	public void userIsNotTheProjectLeaderAnymore() throws Exception {
 		assertThat(projectHelper.getProject().getProjectLeader(), not(equalTo(systemApp.getActiveUser())));
 	}
-
 
 	@Given("^there is a project$")
 	public void thereIsAProject() throws Exception {
@@ -126,11 +125,6 @@ public class ProjectSteps {
 	public void projectWithNameAlreadyExist(String projectName) throws Exception {
 		Project project2 = new Project(devHelper.getDeveloper().getId(),"",projectName);
 		systemApp.addProject(project2);
-	}
-
-	@Given("^developer is already part of the project$")
-	public void developerIsAlreadyPartOfTheProject() throws Exception {
-		projectHelper.getProject().addProjectDev(devHelper.getDeveloper());
 	}
 	
 	@When("^user removes developer from project$")

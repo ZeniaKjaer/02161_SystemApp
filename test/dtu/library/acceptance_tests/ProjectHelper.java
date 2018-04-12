@@ -10,7 +10,7 @@ public class ProjectHelper {
 
 		public Project getProject() {
 			if(project == null) {
-				project = new Project("HERE", "999918" ,"Second Project");
+				project = new Project("ZEKT", "999918" ,"Second Project");
 			}
 			return project;
 		}

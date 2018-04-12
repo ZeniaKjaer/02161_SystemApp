@@ -22,7 +22,7 @@ Scenario: Add developer who is already working on activity
   	And developer is already working on activity
   	When user adds developer to activity
   	Then user gets the error message "Developer is already working on activity"
-#
+
 #Scenario: Add developer who is not available to activity
 #  	Given user is the project leader
 #  	And the developer is not available

@@ -1,5 +1,4 @@
 # @author Zenia
-#
 #Feature: Project leader removes developer from activity
 #    Description:
 #    Actors: Project leader, developer

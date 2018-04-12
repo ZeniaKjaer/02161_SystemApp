@@ -63,15 +63,13 @@ public class SystemApp {
 		} else {
 			project.removeProjectDev(developer);
 		}
-		
 	}
-
 	
 	public void setProjectLeader(Project project, Developer developer) throws OperationNotAllowedException{
 		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		} else if (!project.isProjectDev(developer)) {
-			throw new OperationNotAllowedException("Developer is not part of the project");
+			throw new OperationNotAllowedException("Developer not found");
 		}
 		else {
 			project.setProjectLeader(developer.getId());
@@ -111,20 +109,17 @@ public class SystemApp {
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		} else {
 			project.addActivity(activity);
-		}
-		
+		}	
 	}
 	
 	public void removeActivity(Project project, Activity activity) throws OperationNotAllowedException {
 		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
-		}
-		else if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
-			throw new OperationNotAllowedException("Project leader authorization needed");
+		} else if (!project.isProjectActivity(activity)) {
+			throw new OperationNotAllowedException("Activity is not part of the project");
 		} else {
 			project.removeActivity(activity);
-		}
-		
+		}	
 	}
 
 	public void userLogout() {

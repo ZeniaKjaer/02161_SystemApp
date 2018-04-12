@@ -20,7 +20,6 @@ Scenario: Add developer to project when not a project leader
 Scenario: Add developer to project twice
 	Given there is a project
   	And user is the project leader
-  	And there is a developer
-  	And developer is already part of the project
+  	And there is a project developer
   	When user adds developer to project
   	Then user gets the error message "User is already part of project"
