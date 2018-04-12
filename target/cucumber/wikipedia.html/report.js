@@ -759,6 +759,323 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.uri("use_cases/student/remove_activty.feature");
+formatter.feature({
+  "name": "Project leader removes activity from project",
+  "description": "    Description:\n    Actors: Project leader",
+  "keyword": "Feature"
+});
+formatter.background({
+  "name": "SystemApp has developers",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "SystemApp has developers",
+  "rows": [
+    {
+      "cells": [
+        "ABCD"
+      ]
+    },
+    {
+      "cells": [
+        "MTVD"
+      ]
+    },
+    {
+      "cells": [
+        "HERE"
+      ]
+    },
+    {
+      "cells": [
+        "ZEKT"
+      ]
+    },
+    {
+      "cells": [
+        "RITG"
+      ]
+    }
+  ],
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.systemappHasDevelopers(String\u003e)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Project leader removes activity successfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is an activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "activity has been added to project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.activityHasBeenAddedToProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user removes activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userRemovesActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "activity is not part of project",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "ActivitySteps.activityIsNotPartOfProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "SystemApp has developers",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "SystemApp has developers",
+  "rows": [
+    {
+      "cells": [
+        "ABCD"
+      ]
+    },
+    {
+      "cells": [
+        "MTVD"
+      ]
+    },
+    {
+      "cells": [
+        "HERE"
+      ]
+    },
+    {
+      "cells": [
+        "ZEKT"
+      ]
+    },
+    {
+      "cells": [
+        "RITG"
+      ]
+    }
+  ],
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.systemappHasDevelopers(String\u003e)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Project leader removes activity that is not part of the project",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is an activity that is not part of the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAnActivityThatIsNotPartOfTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user removes activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userRemovesActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Activity is not part of the project\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "SystemApp has developers",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "SystemApp has developers",
+  "rows": [
+    {
+      "cells": [
+        "ABCD"
+      ]
+    },
+    {
+      "cells": [
+        "MTVD"
+      ]
+    },
+    {
+      "cells": [
+        "HERE"
+      ]
+    },
+    {
+      "cells": [
+        "ZEKT"
+      ]
+    },
+    {
+      "cells": [
+        "RITG"
+      ]
+    }
+  ],
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.systemappHasDevelopers(String\u003e)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Removes an activity when not the project leader",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a project",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is an activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "activity has been added to project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.activityHasBeenAddedToProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user is not a project leader",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.userIsNotAProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user removes activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userRemovesActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Project leader authorization needed\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.uri("use_cases/student/user_login.feature");
 formatter.feature({
   "name": "User logs on",

@@ -8,7 +8,7 @@ public class Project {
 	String projectId;
 	String projectName;
 	private List<Developer> projectDevelopers = new ArrayList<Developer>();
-	private List<Activity> projectActivities = new ArrayList<Activity>(); 
+	private List<Activity> projectActivities = new ArrayList<Activity>();
 
 	public Project(String developerId, String projectID, String projectName) {
 		this.projectLeader = developerId;
@@ -18,18 +18,26 @@ public class Project {
 
 	public boolean isProjectDev(Developer dev) {
 		for (Developer d : projectDevelopers) {
-			 if (d.getId().equalsIgnoreCase(dev.getId())) 
-				 return true; 
-		 }
+			if (d.getId().equalsIgnoreCase(dev.getId()))
+				return true;
+		}
 		return false;
 	}
-	
-	public void addProjectDev(Developer developer) throws OperationNotAllowedException{		
+
+	public void addProjectDev(Developer developer) throws OperationNotAllowedException {
 		projectDevelopers.add(developer);
 	}
-	
+
 	public void addActivity(Activity activity) {
 		projectActivities.add(activity);
+	}
+
+	public void removeActivity(Activity activity) throws OperationNotAllowedException {
+			if (projectActivities.contains(activity)) { 
+				projectActivities.remove(activity);
+			} else {
+		throw new OperationNotAllowedException("Activity is not part of the project");
+			}
 	}
 
 	public List<Developer> getProjectDevelopers() {
@@ -40,7 +48,6 @@ public class Project {
 		return projectName;
 	}
 
-
 	public String getProjectLeader() {
 		return projectLeader;
 	}
@@ -49,11 +56,9 @@ public class Project {
 		this.projectLeader = projectLeader;
 	}
 
-
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
 	}
-
 
 	public void setProjectId(String projectId) {
 		this.projectId = projectId;
@@ -62,9 +67,5 @@ public class Project {
 	public List<Activity> getProjectActivities() {
 		return projectActivities;
 	}
-
-
-
-	
 
 }

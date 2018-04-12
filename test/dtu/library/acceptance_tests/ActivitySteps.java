@@ -92,6 +92,37 @@ public class ActivitySteps {
 	public void userIsNotWorkingOnActivity() throws Exception {
 		activityHelper.getActivity().addActivityDev(new Developer("not active user"));
 	}
-
 	
+	@Given("^activity has been added to project$")
+	public void activityHasBeenAddedToProject() throws Exception {
+	    systemApp.addActivity(projectHelper.getProject(), activityHelper.getActivity());
+	}
+
+	@When("^user removes activity$")
+	public void userRemovesActivity() throws Exception {
+		try {
+	   systemApp.removeActivity(projectHelper.getProject(), activityHelper.getActivity());
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		} 
+	}
+
+	@Then("^activity is not part of project$")
+	public void activityIsNotPartOfProject() throws Exception {
+		assertFalse(projectHelper.getProject().getProjectActivities().contains(activityHelper.getActivity()));
+	}
+	
+	@Given("^there is an activity that is not part of the project$")
+	public void thereIsAnActivityThatIsNotPartOfTheProject() throws Exception {
+	    Activity a = new Activity("aDummy");
+	    
+	}
+	
+	@Given("^user is not a project leader$")
+	public void userIsNotAProjectLeader() throws Exception {
+		systemApp.userLogin("ABCD");
+	}
+
+
+
 }
