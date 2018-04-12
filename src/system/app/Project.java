@@ -46,6 +46,8 @@ public class Project {
 		projectActivities.remove(activity);
 	}
 
+	//Getters and Setters
+	
 	public List<Developer> getProjectDevelopers() {
 		return projectDevelopers;
 	}

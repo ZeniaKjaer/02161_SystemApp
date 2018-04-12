@@ -44,6 +44,18 @@ public class SystemApp {
 			loggedIn = true;
 		}
 	}
+	
+	public void addProject(Project project) throws OperationNotAllowedException{
+		for (Project p: projects) {
+			if (p.getProjectName().equalsIgnoreCase(project.getProjectName())) { 
+				throw new OperationNotAllowedException("Illegal project name");
+			}
+		}
+		String projectId = ""+ year + nextProjectID++; 
+		project.setProjectId(projectId);
+		projects.add(project); 
+
+	}
 
 	public void addProjectDev(Project project, Developer developer) throws OperationNotAllowedException{
 		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
@@ -75,6 +87,24 @@ public class SystemApp {
 			project.setProjectLeader(developer.getId());
 		}
 	}
+	
+	public void addActivity(Project project, Activity activity) throws OperationNotAllowedException {
+		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+			throw new OperationNotAllowedException("Project leader authorization needed");
+		} else {
+			project.addActivity(activity);
+		}	
+	}
+	
+	public void removeActivity(Project project, Activity activity) throws OperationNotAllowedException {
+		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+			throw new OperationNotAllowedException("Project leader authorization needed");
+		} else if (!project.isProjectActivity(activity)) {
+			throw new OperationNotAllowedException("Activity is not part of the project");
+		} else {
+			project.removeActivity(activity);
+		}	
+	}
 
 	public void addActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException{
 		if (activity.isActivityDev(developer)) {
@@ -91,34 +121,16 @@ public class SystemApp {
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		}
 	}
-
-	public void addProject(Project project) throws OperationNotAllowedException{
-		for (Project p: projects) {
-			if (p.getProjectName().equalsIgnoreCase(project.getProjectName())) { 
-				throw new OperationNotAllowedException("Illegal project name");
-			}
-		}
-		String projectId = ""+ year + nextProjectID++; 
-		project.setProjectId(projectId);
-		projects.add(project); 
-
-	}
-
-	public void addActivity(Project project, Activity activity) throws OperationNotAllowedException {
-		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
-			throw new OperationNotAllowedException("Project leader authorization needed");
-		} else {
-			project.addActivity(activity);
-		}	
-	}
 	
-	public void removeActivity(Project project, Activity activity) throws OperationNotAllowedException {
+	public void removeActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException {
 		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		} else if (!project.isProjectActivity(activity)) {
-			throw new OperationNotAllowedException("Activity is not part of the project");
+			throw new OperationNotAllowedException("Activity not found");
+		} else if (!activity.isActivityDev(developer)) { 
+			throw new OperationNotAllowedException("Developer not found");
 		} else {
-			project.removeActivity(activity);
+			activity.removeActivityDev(developer);
 		}	
 	}
 

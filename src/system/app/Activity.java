@@ -11,19 +11,6 @@ public class Activity {
 		this.acitivityName = activityName;
 	}
 	
-	public String getActivityName() {
-		return acitivityName;
-	}
-
-	public void addActivityDev(Developer developer) {
-		activityDevelopers.add(developer);
-		
-	}
-
-	public List<Developer> getActivityDevelopers() {
-		return activityDevelopers;
-	}
-
 	public boolean isActivityDev(Developer developer) {
 		for (Developer d: activityDevelopers) {
 			if (d.getId().equals(developer.getId())) {
@@ -31,6 +18,23 @@ public class Activity {
 			}
 		}
 		return false;
+	}
+
+	public void addActivityDev(Developer developer) {
+		activityDevelopers.add(developer);
+	}
+	
+	public void removeActivityDev(Developer developer) {
+		activityDevelopers.remove(developer);
+	}
+	
+	// Getters and Setters
+	public List<Developer> getActivityDevelopers() {
+		return activityDevelopers;
+	}
+	
+	public String getActivityName() {
+		return acitivityName;
 	}
 	
 }

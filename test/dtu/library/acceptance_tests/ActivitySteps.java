@@ -10,9 +10,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.hasItem;
-import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertEquals;
 
@@ -82,10 +79,9 @@ public class ActivitySteps {
 		activityHelper.getActivity().addActivityDev(devHelper.getDeveloper());
 	}
 	
-	@Given("^user is working on activity$")
-	public void userIsWorkingOnActivity() throws Exception {
+	@Given("^there is an activity developer$")
+	public void thereIsAnActivityDeveloper() throws Exception {
 		activityHelper.getActivity().addActivityDev(new Developer(systemApp.getActiveUser()));
-		
 	}
 	
 	@Given("^user is not working on activity$")
@@ -107,15 +103,19 @@ public class ActivitySteps {
 		} 
 	}
 
-	@Then("^activity is not part of project$")
-	public void activityIsNotPartOfProject() throws Exception {
+	@Then("^activity is no longer part of project$")
+	public void activityIsNoLongerPartOfProject() throws Exception {
 		assertFalse(projectHelper.getProject().getProjectActivities().contains(activityHelper.getActivity()));
 	}
 	
-	@Given("^there is an activity that is not part of the project$")
-	public void thereIsAnActivityThatIsNotPartOfTheProject() throws Exception {
-	    Activity a = new Activity("aDummy");
-	    
+	@Given("^activity is not part of the project$")
+	public void activityIsNotPartOfTheProject() throws Exception {
+		projectHelper.getProject().getProjectActivities().remove(activityHelper.getActivity());
+	}
+	
+	@Given("^there is a project with an activity$")
+	public void thereIsAProjectWithAnActivity() throws Exception {
+	    projectHelper.getProject().addActivity(activityHelper.getActivity());
 	}
 	
 	@Given("^user is not a project leader$")
@@ -123,6 +123,19 @@ public class ActivitySteps {
 		systemApp.userLogin("ABCD");
 	}
 
+	@When("^project leader removes developer from activity$")
+	public void projectLeaderRemovesDeveloperFromActivity() throws Exception {
+		try {
+			systemApp.removeActivityDev(projectHelper.getProject(),activityHelper.getActivity(),devHelper.getDeveloper());
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		} 
+	}
+
+	@Then("^developer is not working on activity$")
+	public void developerIsNotWorkingOnActivity() throws Exception {
+		assertThat(activityHelper.getActivity().getActivityDevelopers(),not(hasItem(devHelper.getDeveloper())));
+	}
 
 
 }
