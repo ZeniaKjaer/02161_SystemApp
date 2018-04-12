@@ -112,7 +112,19 @@ public class SystemApp {
 		} else {
 			project.addActivity(activity);
 		}
-
+		
+	}
+	
+	public void removeActivity(Project project, Activity activity) throws OperationNotAllowedException {
+		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+			throw new OperationNotAllowedException("Project leader authorization needed");
+		}
+		else if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+			throw new OperationNotAllowedException("Project leader authorization needed");
+		} else {
+			project.removeActivity(activity);
+		}
+		
 	}
 
 	public void userLogout() {

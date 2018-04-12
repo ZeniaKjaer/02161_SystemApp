@@ -804,6 +804,7 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+<<<<<<< HEAD
 formatter.uri("use_cases/student/remove_developer_project.feature");
 formatter.feature({
   "name": "Project leader removes developer from project",
@@ -812,10 +813,315 @@ formatter.feature({
 });
 formatter.scenario({
   "name": "Removes developer from project successfully",
+=======
+formatter.uri("use_cases/student/remove_activty.feature");
+formatter.feature({
+  "name": "Project leader removes activity from project",
+  "description": "    Description:\n    Actors: Project leader",
+  "keyword": "Feature"
+});
+formatter.background({
+  "name": "SystemApp has developers",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "SystemApp has developers",
+  "rows": [
+    {
+      "cells": [
+        "ABCD"
+      ]
+    },
+    {
+      "cells": [
+        "MTVD"
+      ]
+    },
+    {
+      "cells": [
+        "HERE"
+      ]
+    },
+    {
+      "cells": [
+        "ZEKT"
+      ]
+    },
+    {
+      "cells": [
+        "RITG"
+      ]
+    }
+  ],
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.systemappHasDevelopers(String\u003e)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Project leader removes activity successfully",
+>>>>>>> e3481ed1967668994f295db46a507d324cc62168
   "description": "",
   "keyword": "Scenario"
 });
 formatter.step({
+<<<<<<< HEAD
+  "name": "there is a project",
+  "keyword": "Given "
+});
+formatter.match({
+=======
+  "name": "user is the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project",
+  "keyword": "And "
+});
+formatter.match({
+>>>>>>> e3481ed1967668994f295db46a507d324cc62168
+  "location": "ProjectSteps.thereIsAProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+<<<<<<< HEAD
+  "name": "user is the project leader",
+  "keyword": "And "
+});
+formatter.match({
+=======
+  "name": "there is an activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "activity has been added to project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.activityHasBeenAddedToProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user removes activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userRemovesActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "activity is not part of project",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "ActivitySteps.activityIsNotPartOfProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "SystemApp has developers",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "SystemApp has developers",
+  "rows": [
+    {
+      "cells": [
+        "ABCD"
+      ]
+    },
+    {
+      "cells": [
+        "MTVD"
+      ]
+    },
+    {
+      "cells": [
+        "HERE"
+      ]
+    },
+    {
+      "cells": [
+        "ZEKT"
+      ]
+    },
+    {
+      "cells": [
+        "RITG"
+      ]
+    }
+  ],
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.systemappHasDevelopers(String\u003e)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Project leader removes activity that is not part of the project",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+>>>>>>> e3481ed1967668994f295db46a507d324cc62168
+  "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+<<<<<<< HEAD
+  "name": "there is a project developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProjectDeveloper()"
+=======
+  "name": "there is a project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
+>>>>>>> e3481ed1967668994f295db46a507d324cc62168
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+<<<<<<< HEAD
+  "name": "user removes developer from project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userRemovesDeveloperFromProject()"
+=======
+  "name": "there is an activity that is not part of the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAnActivityThatIsNotPartOfTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user removes activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userRemovesActivity()"
+>>>>>>> e3481ed1967668994f295db46a507d324cc62168
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+<<<<<<< HEAD
+  "name": "developer is no longer a part of the project",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "ProjectSteps.developerIsNoLongerAPartOfTheProject()"
+=======
+  "name": "user gets the error message \"Activity is not part of the project\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "SystemApp has developers",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "SystemApp has developers",
+  "rows": [
+    {
+      "cells": [
+        "ABCD"
+      ]
+    },
+    {
+      "cells": [
+        "MTVD"
+      ]
+    },
+    {
+      "cells": [
+        "HERE"
+      ]
+    },
+    {
+      "cells": [
+        "ZEKT"
+      ]
+    },
+    {
+      "cells": [
+        "RITG"
+      ]
+    }
+  ],
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.systemappHasDevelopers(String\u003e)"
+>>>>>>> e3481ed1967668994f295db46a507d324cc62168
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+<<<<<<< HEAD
+  "name": "Removes developer from project when not the project leader",
+=======
+  "name": "Removes an activity when not the project leader",
+>>>>>>> e3481ed1967668994f295db46a507d324cc62168
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+<<<<<<< HEAD
+  "name": "user is not the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsNotTheProjectLeader()"
+=======
   "name": "there is a project",
   "keyword": "Given "
 });
@@ -826,76 +1132,58 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "user is the project leader",
+  "name": "there is an activity",
   "keyword": "And "
 });
 formatter.match({
-  "location": "ProjectSteps.userIsTheProjectLeader()"
+  "location": "ActivitySteps.thereIsAnActivity()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
+  "name": "activity has been added to project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.activityHasBeenAddedToProject()"
+>>>>>>> e3481ed1967668994f295db46a507d324cc62168
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+<<<<<<< HEAD
   "name": "there is a project developer",
   "keyword": "And "
 });
 formatter.match({
   "location": "ProjectSteps.thereIsAProjectDeveloper()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user removes developer from project",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "ProjectSteps.userRemovesDeveloperFromProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "developer is no longer a part of the project",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "ProjectSteps.developerIsNoLongerAPartOfTheProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "Removes developer from project when not the project leader",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "user is not the project leader",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ProjectSteps.userIsNotTheProjectLeader()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is a project developer",
+=======
+  "name": "user is not a project leader",
   "keyword": "And "
 });
 formatter.match({
-  "location": "ProjectSteps.thereIsAProjectDeveloper()"
+  "location": "ActivitySteps.userIsNotAProjectLeader()"
+>>>>>>> e3481ed1967668994f295db46a507d324cc62168
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
+<<<<<<< HEAD
   "name": "user removes developer from project",
   "keyword": "When "
 });
 formatter.match({
   "location": "ProjectSteps.userRemovesDeveloperFromProject()"
+=======
+  "name": "user removes activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userRemovesActivity()"
+>>>>>>> e3481ed1967668994f295db46a507d324cc62168
 });
 formatter.result({
   "status": "passed"
