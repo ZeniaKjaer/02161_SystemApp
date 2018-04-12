@@ -114,11 +114,6 @@ public class ProjectSteps {
 
 	@Then("^developer is part of the project$")
 	public void developerIsPartOfTheProject() throws Exception {
-		//		 for (Developer developer : projectHelper.getProject().getProjectDevelopers()) {
-		//			 if (id.equalsIgnoreCase(developer.getId())) {
-		//				 return true; 
-		//			 }
-		//		 }
 		assertThat(projectHelper.getProject().getProjectDevelopers(),hasItem(devHelper.getDeveloper()));
 	}
 
@@ -131,16 +126,29 @@ public class ProjectSteps {
 	public void projectWithNameAlreadyExist(String projectName) throws Exception {
 		Project project2 = new Project(devHelper.getDeveloper().getId(),"",projectName);
 		systemApp.addProject(project2);
-		//		try {
-		//			systemApp.addProject(project2);
-		//		} catch (OperationNotAllowedException e) {
-		//			errorMessageHolder.setErrorMessage(e.getMessage());
-		//		}
 	}
 
 	@Given("^developer is already part of the project$")
 	public void developerIsAlreadyPartOfTheProject() throws Exception {
 		projectHelper.getProject().addProjectDev(devHelper.getDeveloper());
 	}
+	
+	@When("^user removes developer from project$")
+	public void userRemovesDeveloperFromProject() throws Exception {
+		try {
+			systemApp.removeProjectDev(projectHelper.getProject(),devHelper.getDeveloper());
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		} 
+	}
 
+	@Then("^developer is no longer a part of the project$")
+	public void developerIsNoLongerAPartOfTheProject() throws Exception {
+		assertThat(projectHelper.getProject().getProjectDevelopers(),not(hasItem(devHelper.getDeveloper())));
+	}
+	
+	@Given("^developer is not part of the project$")
+	public void developerIsNotPartOfTheProject() throws Exception {
+		projectHelper.getProject().getProjectDevelopers().remove(devHelper.getDeveloper());
+	}
 }

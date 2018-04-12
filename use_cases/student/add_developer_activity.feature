@@ -15,7 +15,7 @@ Scenario: Add developer when not a project leader
   	Given user is not the project leader
   	And there is a developer
   	When user adds developer to activity
-  	Then user gets the error message "project leader authorization needed"
+  	Then user gets the error message "Project leader authorization needed"
 
 Scenario: Add developer who is already working on activity
   	Given user is the project leader

@@ -17,15 +17,19 @@ public class Project {
 	}
 
 	public boolean isProjectDev(Developer dev) {
-		for (Developer d : projectDevelopers) {
+		for (Developer d : projectDevelopers) { 
 			 if (d.getId().equalsIgnoreCase(dev.getId())) 
 				 return true; 
 		 }
 		return false;
 	}
 	
-	public void addProjectDev(Developer developer) throws OperationNotAllowedException{		
+	public void addProjectDev(Developer developer) {		
 		projectDevelopers.add(developer);
+	}
+	
+	public void removeProjectDev(Developer developer) {
+		projectDevelopers.remove(developer);
 	}
 	
 	public void addActivity(Activity activity) {
@@ -40,7 +44,6 @@ public class Project {
 		return projectName;
 	}
 
-
 	public String getProjectLeader() {
 		return projectLeader;
 	}
@@ -49,11 +52,9 @@ public class Project {
 		this.projectLeader = projectLeader;
 	}
 
-
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
 	}
-
 
 	public void setProjectId(String projectId) {
 		this.projectId = projectId;
@@ -62,9 +63,6 @@ public class Project {
 	public List<Activity> getProjectActivities() {
 		return projectActivities;
 	}
-
-
-
 	
 
 }

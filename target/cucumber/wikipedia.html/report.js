@@ -181,7 +181,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "user gets the error message \"project leader authorization needed\"",
+  "name": "user gets the error message \"Project leader authorization needed\"",
   "keyword": "Then "
 });
 formatter.match({
@@ -332,7 +332,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "user gets the error message \"project leader authorization needed\"",
+  "name": "user gets the error message \"Project leader authorization needed\"",
   "keyword": "Then "
 });
 formatter.match({
@@ -493,7 +493,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "user gets the error message \"project leader authorization needed\"",
+  "name": "user gets the error message \"Project leader authorization needed\"",
   "keyword": "Then "
 });
 formatter.match({
@@ -558,7 +558,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "user gets the error message \"user is already part of project\"",
+  "name": "user gets the error message \"User is already part of project\"",
   "keyword": "Then "
 });
 formatter.match({
@@ -644,6 +644,16 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
+  "name": "there is a project developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProjectDeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
   "name": "user change project leader",
   "keyword": "When "
 });
@@ -659,6 +669,41 @@ formatter.step({
 });
 formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Changes project leader to someone who is not part of the project",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developer is not part of the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.developerIsNotPartOfTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user change project leader",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userChangeProjectLeader()"
 });
 formatter.result({
   "status": "passed"
@@ -751,6 +796,112 @@ formatter.result({
 });
 formatter.step({
   "name": "user gets the error message \"Illegal project name\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.uri("use_cases/student/remove_developer_project.feature");
+formatter.feature({
+  "name": "Project leader removes developer from project",
+  "description": "    Description:\n    Actors: Project leader, developer",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "Removes developer from project successfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a project",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProjectDeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user removes developer from project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userRemovesDeveloperFromProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developer is no longer a part of the project",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "ProjectSteps.developerIsNoLongerAPartOfTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Removes developer from project when not the project leader",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is not the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsNotTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProjectDeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user removes developer from project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userRemovesDeveloperFromProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Project leader authorization needed\"",
   "keyword": "Then "
 });
 formatter.match({

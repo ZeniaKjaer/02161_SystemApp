@@ -12,7 +12,7 @@ Scenario: Developer on activity adds co-worker to activity
 Scenario: Developer not on activity adds co-worker to activity
   	Given user is not working on activity
   	When user adds developer to activity
-  	Then user gets the error message "project leader authorization needed"
+  	Then user gets the error message "Project leader authorization needed"
 #
 #Scenario: Developer on activity adds not available co-worker to activity
 #  	Given user is working on activity

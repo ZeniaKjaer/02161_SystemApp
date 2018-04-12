@@ -15,7 +15,7 @@ Scenario: Add developer to project when not a project leader
   	And user is not the project leader
   	And there is a developer
   	When user adds developer to project
-  	Then user gets the error message "project leader authorization needed"
+  	Then user gets the error message "Project leader authorization needed"
 
 Scenario: Add developer to project twice
 	Given there is a project
@@ -23,4 +23,4 @@ Scenario: Add developer to project twice
   	And there is a developer
   	And developer is already part of the project
   	When user adds developer to project
-  	Then user gets the error message "user is already part of project"
+  	Then user gets the error message "User is already part of project"

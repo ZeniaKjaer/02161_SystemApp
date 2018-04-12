@@ -47,14 +47,25 @@ public class SystemApp {
 
 	public void addProjectDev(Project project, Developer developer) throws OperationNotAllowedException{
 		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
-			throw new OperationNotAllowedException("project leader authorization needed");
+			throw new OperationNotAllowedException("Project leader authorization needed");
 		} else if (project.isProjectDev(developer)) {
-			throw new OperationNotAllowedException("user is already part of project");
-		}
-		else {
+			throw new OperationNotAllowedException("User is already part of project");
+		} else {
 			project.addProjectDev(developer);
 		}
 	}
+	
+	public void removeProjectDev(Project project, Developer developer) throws OperationNotAllowedException {
+		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+			throw new OperationNotAllowedException("Project leader authorization needed");
+		} else if (!project.isProjectDev(developer)) {
+			throw new OperationNotAllowedException("Developer not found");
+		} else {
+			project.removeProjectDev(developer);
+		}
+		
+	}
+
 	
 	public void setProjectLeader(Project project, Developer developer) throws OperationNotAllowedException{
 		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
@@ -79,7 +90,7 @@ public class SystemApp {
 			}
 		}
 		else if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
-			throw new OperationNotAllowedException("project leader authorization needed");
+			throw new OperationNotAllowedException("Project leader authorization needed");
 		}
 	}
 
@@ -120,7 +131,5 @@ public class SystemApp {
 	public List<Project> getProjects() {
 		return projects;
 	}
-
-
 
 }
