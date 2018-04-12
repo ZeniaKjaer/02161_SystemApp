@@ -1,26 +1,27 @@
 # @author Zenia
 #
-#Feature: Project leader adds project developer to activity
-#    Description:
-#    Actors: Project leader, developer
-#
-#Scenario Add developer to activity successfully
-#  	Given user is the project leader
-#  	And there is a developer
-#  	And there is an activity
-#  	When user adds developer to activity
-#  	Then developer is working on activity
-#
-#Scenario: Add developer when not a project leader
-#  	Given user is not the project leader
-#  	When user adds developer to activity
-#  	Then user gets the error message "project leader authorization needed"
-#
-#Scenario: Add developer who is already working on activity
-#  	Given user is the project leader
-#  	And user is already working on activity
-#  	When user adds developer to activity
-#  	Then user gets the error message "Developer is already working on activity"
+Feature: Project leader adds project developer to activity
+    Description:
+    Actors: Project leader, developer
+
+Scenario: Add developer to activity successfully
+  	Given user is the project leader
+  	And there is a developer
+  	And there is an activity
+  	When user adds developer to activity
+  	Then developer is working on activity
+
+Scenario: Add developer when not a project leader
+  	Given user is not the project leader
+  	And there is a developer
+  	When user adds developer to activity
+  	Then user gets the error message "project leader authorization needed"
+
+Scenario: Add developer who is already working on activity
+  	Given user is the project leader
+  	And developer is already working on activity
+  	When user adds developer to activity
+  	Then user gets the error message "Developer is already working on activity"
 #
 #Scenario: Add developer who is not available to activity
 #  	Given user is the project leader

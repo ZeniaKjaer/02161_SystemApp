@@ -4,7 +4,7 @@ package system.app;
 import java.util.*;
 
 public class SystemApp {
-	
+
 	private List<Developer> developers = new ArrayList<Developer>();
 	private boolean loggedIn = false;
 	private String activeUser = "";
@@ -15,7 +15,7 @@ public class SystemApp {
 	public void addDeveloper(Developer developer) {
 		developers.add(developer);		
 	}
-	
+
 	/**
 	 * checks if a there's a developer with given id is on the list of developers in the company
 	 * 
@@ -25,12 +25,12 @@ public class SystemApp {
 	 * @author Zenia
 	 */  
 	public boolean isInTheSystem(String id) {
-		 for (Developer developer : developers) {
-			 if (id.equalsIgnoreCase(developer.getId())) {
-				 return true; 
-			 }
-		 }
-		 return false;
+		for (Developer developer : developers) {
+			if (id.equalsIgnoreCase(developer.getId())) {
+				return true; 
+			}
+		}
+		return false;
 	} 
 
 	public void userLogin(String id) throws OperationNotAllowedException  {
@@ -40,11 +40,11 @@ public class SystemApp {
 			throw new OperationNotAllowedException("Another user is already logged in");
 		}
 		else {
-		activeUser = id;
-		loggedIn = true;
+			activeUser = id;
+			loggedIn = true;
 		}
 	}
-	
+
 	public void addProjectDev(Project project, Developer developer) throws OperationNotAllowedException{
 		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
 			throw new OperationNotAllowedException("project leader authorization needed");
@@ -56,25 +56,52 @@ public class SystemApp {
 		}
 	}
 	
+	public void setProjectLeader(Project project, Developer developer) throws OperationNotAllowedException{
+		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+			throw new OperationNotAllowedException("Project leader authorization needed");
+		} else if (!project.isProjectDev(developer)) {
+			throw new OperationNotAllowedException("Developer is not part of the project");
+		}
+		else {
+			project.setProjectLeader(developer.getId());
+		}
+	}
+
+	public void addActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException{
+		if (activity.isActivityDev(developer)) {
+			throw new OperationNotAllowedException("Developer is already working on activity");
+		}
+		else if (activeUser.equalsIgnoreCase(project.getProjectLeader()) || activity.isActivityDev(new Developer(activeUser))) {
+			for (Activity a: project.getProjectActivities()) {
+				if (a.getActivityName().equals(activity.getActivityName())) {
+					activity.addActivityDev(developer);
+				}
+			}
+		}
+		else if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+			throw new OperationNotAllowedException("project leader authorization needed");
+		}
+	}
+
 	public void addProject(Project project) throws OperationNotAllowedException{
 		for (Project p: projects) {
-			 if (p.getProjectName().equalsIgnoreCase(project.getProjectName())) { 
-				 throw new OperationNotAllowedException("Illegal project name");
-			 }
+			if (p.getProjectName().equalsIgnoreCase(project.getProjectName())) { 
+				throw new OperationNotAllowedException("Illegal project name");
+			}
 		}
 		String projectId = ""+ year + nextProjectID++; 
 		project.setProjectId(projectId);
 		projects.add(project); 
-		 	
+
 	}
-	
+
 	public void addActivity(Project project, Activity activity) throws OperationNotAllowedException {
-		if (!activeUser.equalsIgnoreCase( project.getProjectLeader())) {
-			throw new OperationNotAllowedException("project leader authorization needed");
+		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+			throw new OperationNotAllowedException("Project leader authorization needed");
 		} else {
 			project.addActivity(activity);
 		}
-		
+
 	}
 
 	public void userLogout() {
@@ -89,9 +116,11 @@ public class SystemApp {
 	public List<Developer> getDevelopers() {
 		return developers;
 	}
-	
+
 	public List<Project> getProjects() {
 		return projects;
 	}
+
+
 
 }

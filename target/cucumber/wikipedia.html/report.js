@@ -59,6 +59,333 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.scenario({
+  "name": "add activity when not project leader",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is not the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsNotTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is an activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds activity to project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userAddsActivityToProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Project leader authorization needed\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.uri("use_cases/student/add_coworker_activity.feature");
+formatter.feature({
+  "name": "Project developer adds co-worker to activity",
+  "description": "    Description:\n    Actors: Project leader, developer",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "Developer on activity adds co-worker to activity",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is working on activity",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ActivitySteps.userIsWorkingOnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds developer to activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userAddsDeveloperToActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developer is working on activity",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "ActivitySteps.developerIsWorkingOnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Developer not on activity adds co-worker to activity",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is not working on activity",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ActivitySteps.userIsNotWorkingOnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds developer to activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userAddsDeveloperToActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"project leader authorization needed\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Developer on activity adds a co-worker who is already working on activity",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is working on activity",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ActivitySteps.userIsWorkingOnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developer is already working on activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.userIsAlreadyWorkingOnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds developer to activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userAddsDeveloperToActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Developer is already working on activity\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.uri("use_cases/student/add_developer_activity.feature");
+formatter.feature({
+  "name": "Project leader adds project developer to activity",
+  "description": "    Description:\n    Actors: Project leader, developer",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "Add developer to activity successfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsADeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is an activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds developer to activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userAddsDeveloperToActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developer is working on activity",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "ActivitySteps.developerIsWorkingOnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Add developer when not a project leader",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is not the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsNotTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsADeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds developer to activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userAddsDeveloperToActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"project leader authorization needed\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Add developer who is already working on activity",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developer is already working on activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.userIsAlreadyWorkingOnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds developer to activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userAddsDeveloperToActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Developer is already working on activity\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.uri("use_cases/student/add_developer_project.feature");
 formatter.feature({
   "name": "Project leader adds developer to project",
@@ -232,6 +559,102 @@ formatter.result({
 });
 formatter.step({
   "name": "user gets the error message \"user is already part of project\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.uri("use_cases/student/change_project_leader.feature");
+formatter.feature({
+  "name": "Project leader changes project leader",
+  "description": "    Description:\n    Actors: Project leader, developer",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "Changes project leader successfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProjectDeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user change project leader",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userChangeProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developer is the new project leader",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "ProjectSteps.developerIsTheNewProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user is not the project leader anymore",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsNotTheProjectLeaderAnymore()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Changes project leader when user is not the project leader",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is not the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsNotTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user change project leader",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userChangeProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Project leader authorization needed\"",
   "keyword": "Then "
 });
 formatter.match({

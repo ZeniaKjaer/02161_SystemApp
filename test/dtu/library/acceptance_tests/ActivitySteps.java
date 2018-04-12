@@ -52,12 +52,46 @@ public class ActivitySteps {
 	
 	@When("^user adds activity to project$")
 	public void userAddsActivityToProject() throws Exception {
+		try {
 	    systemApp.addActivity(projectHelper.getProject(), activityHelper.getActivity());
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		} 
 	}
 
 	@Then("^activity is part of project$")
 	public void activityIsPartOfProject() throws Exception {
 	    assertThat(projectHelper.getProject().getProjectActivities(), hasItem(activityHelper.getActivity()));
 	}
+	@When("^user adds developer to activity$")
+	public void userAddsDeveloperToActivity() throws Exception {
+		try {
+			systemApp.addActivityDev(projectHelper.getProject(), activityHelper.getActivity(), devHelper.getDeveloper());
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		} 
+	}
+	
+	@Then("^developer is working on activity$")
+	public void developerIsWorkingOnActivity() throws Exception {
+		assertThat(activityHelper.getActivity().getActivityDevelopers(), hasItem(devHelper.getDeveloper()));
+	}
+	
+	@Given("^developer is already working on activity$")
+	public void userIsAlreadyWorkingOnActivity() throws Exception {
+		activityHelper.getActivity().addActivityDev(devHelper.getDeveloper());
+	}
+	
+	@Given("^user is working on activity$")
+	public void userIsWorkingOnActivity() throws Exception {
+		activityHelper.getActivity().addActivityDev(new Developer(systemApp.getActiveUser()));
+		
+	}
+	
+	@Given("^user is not working on activity$")
+	public void userIsNotWorkingOnActivity() throws Exception {
+		activityHelper.getActivity().addActivityDev(new Developer("not active user"));
+	}
+
 	
 }

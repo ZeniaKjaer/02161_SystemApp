@@ -31,7 +31,7 @@ public class ProjectSteps {
 	private DeveloperHelper devHelper;
 	private ProjectHelper projectHelper;
 	private ActivityHelper activityHelper;
-	
+
 	public ProjectSteps(SystemApp systemApp, ErrorMessageHolder errorMessageHolder, 
 			DeveloperHelper devHelper, ProjectHelper projectHelper, ActivityHelper activityHelper) {
 		this.systemApp = systemApp;	
@@ -40,15 +40,30 @@ public class ProjectSteps {
 		this.projectHelper = projectHelper;
 		this.activityHelper = activityHelper;
 	}
-	
+
 	@Given("^there is a developer$")
 	public void thereIsADeveloper() throws Exception {
-	    systemApp.addDeveloper(devHelper.getDeveloper());
+		systemApp.addDeveloper(devHelper.getDeveloper());
 	}
+
+	@Given("^there is a project developer$")
+	public void thereIsAProjectDeveloper() throws Exception {
+		projectHelper.getProject().addProjectDev(devHelper.getDeveloper());
+	}
+
+	@When("^user change project leader$")
+	public void userChangeProjectLeader() throws Exception {
+		try {
+			systemApp.setProjectLeader(projectHelper.getProject(), devHelper.getDeveloper());
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		} 
+	}
+
 
 	@When("^developer creates project with projectname \"([^\"]*)\"$")
 	public void developerCreatesProject(String projectName) throws Exception {
-	    project = new Project(devHelper.getDeveloper().getId(),"",projectName);
+		project = new Project(devHelper.getDeveloper().getId(),"",projectName);
 		try {
 			systemApp.addProject(project);
 		} catch (OperationNotAllowedException e) {
@@ -58,19 +73,31 @@ public class ProjectSteps {
 
 	@Then("^project with projectname \"([^\"]*)\" is created$")
 	public void projectIsCreated(String projectName) throws Exception {
-	    assertThat(systemApp.getProjects(), hasItem(project));
+		assertThat(systemApp.getProjects(), hasItem(project));
 	}
 
-	@Then("^the developer is now the project leader$")
+	@Then("^the developer is now the project leader$") // Denne er fra "Create a project"
 	public void theDeveloperIsNowTheProjectLeader() throws Exception {
 		assertThat(project.getProjectLeader(), is(equalTo(devHelper.getDeveloper().getId())));
+	} 
+	// HEEEEEEEEEEEEEEEEEEY!!! disse to ligner hinanden, men burde vi ændre den øverste???? eller beholder vi dem som de er? -MT
+
+	@Then("^developer is the new project leader$") // Denne er fra "Change project leader"
+	public void developerIsTheNewProjectLeader() throws Exception {
+		assertThat(projectHelper.getProject().getProjectLeader(), is(equalTo(devHelper.getDeveloper().getId())));
 	}
-	
+
+	@Then("^user is not the project leader anymore$")
+	public void userIsNotTheProjectLeaderAnymore() throws Exception {
+		assertThat(projectHelper.getProject().getProjectLeader(), not(equalTo(systemApp.getActiveUser())));
+	}
+
+
 	@Given("^there is a project$")
 	public void thereIsAProject() throws Exception {
-	    systemApp.addProject(projectHelper.getProject());
+		systemApp.addProject(projectHelper.getProject());
 	}
-	
+
 	@Given("^user is the project leader$")
 	public void userIsTheProjectLeader() throws Exception {
 		projectHelper.getProject().setProjectLeader(systemApp.getActiveUser());
@@ -79,7 +106,7 @@ public class ProjectSteps {
 	@When("^user adds developer to project$")
 	public void userAddsDeveloperToProject() throws Exception {
 		try {
-			 systemApp.addProjectDev(projectHelper.getProject(), devHelper.getDeveloper());
+			systemApp.addProjectDev(projectHelper.getProject(), devHelper.getDeveloper());
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		} 
@@ -87,33 +114,33 @@ public class ProjectSteps {
 
 	@Then("^developer is part of the project$")
 	public void developerIsPartOfTheProject() throws Exception {
-//		 for (Developer developer : projectHelper.getProject().getProjectDevelopers()) {
-//			 if (id.equalsIgnoreCase(developer.getId())) {
-//				 return true; 
-//			 }
-//		 }
+		//		 for (Developer developer : projectHelper.getProject().getProjectDevelopers()) {
+		//			 if (id.equalsIgnoreCase(developer.getId())) {
+		//				 return true; 
+		//			 }
+		//		 }
 		assertThat(projectHelper.getProject().getProjectDevelopers(),hasItem(devHelper.getDeveloper()));
 	}
-	
+
 	@Given("^user is not the project leader$")
 	public void userIsNotTheProjectLeader() throws Exception {
 		projectHelper.getProject().setProjectLeader(null);
 	}
-	
+
 	@Given("^project with name \"([^\"]*)\" already exist$")
-		public void projectWithNameAlreadyExist(String projectName) throws Exception {
+	public void projectWithNameAlreadyExist(String projectName) throws Exception {
 		Project project2 = new Project(devHelper.getDeveloper().getId(),"",projectName);
 		systemApp.addProject(project2);
-//		try {
-//			systemApp.addProject(project2);
-//		} catch (OperationNotAllowedException e) {
-//			errorMessageHolder.setErrorMessage(e.getMessage());
-//		}
+		//		try {
+		//			systemApp.addProject(project2);
+		//		} catch (OperationNotAllowedException e) {
+		//			errorMessageHolder.setErrorMessage(e.getMessage());
+		//		}
 	}
-	
+
 	@Given("^developer is already part of the project$")
 	public void developerIsAlreadyPartOfTheProject() throws Exception {
 		projectHelper.getProject().addProjectDev(devHelper.getDeveloper());
 	}
-	
+
 }
