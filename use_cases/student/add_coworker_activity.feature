@@ -4,7 +4,7 @@ Feature: Project developer adds co-worker to activity
     Actors: Project leader, developer
 
 Scenario: Developer on activity adds co-worker to activity
-  	Given there is an activity developer
+  	Given user is working on activity
   	When user adds developer to activity
   	Then developer is working on activity
 

@@ -126,11 +126,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "there is an activity developer",
+  "name": "user is working on activity",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "ActivitySteps.thereIsAnActivityDeveloper()"
+  "location": "ActivitySteps.userIsWorkingOnActivity()"
 });
 formatter.result({
   "status": "passed"
@@ -199,9 +199,11 @@ formatter.step({
   "name": "user is working on activity",
   "keyword": "Given "
 });
-formatter.match({});
+formatter.match({
+  "location": "ActivitySteps.userIsWorkingOnActivity()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 formatter.step({
   "name": "developer is already working on activity",
@@ -211,7 +213,7 @@ formatter.match({
   "location": "ActivitySteps.userIsAlreadyWorkingOnActivity()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "user adds developer to activity",
@@ -221,7 +223,7 @@ formatter.match({
   "location": "ActivitySteps.userAddsDeveloperToActivity()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "user gets the error message \"Developer is already working on activity\"",
@@ -231,7 +233,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.uri("use_cases/student/add_developer_activity.feature");
 formatter.feature({

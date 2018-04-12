@@ -26,8 +26,8 @@ import system.app.SystemApp;
 public class ActivitySteps {
 
 	private SystemApp systemApp;
-	private Project project;
 	private Activity activity;
+	private Developer user;
 	private ErrorMessageHolder errorMessageHolder;
 	private DeveloperHelper devHelper;
 	private ProjectHelper projectHelper;
@@ -79,14 +79,20 @@ public class ActivitySteps {
 		activityHelper.getActivity().addActivityDev(devHelper.getDeveloper());
 	}
 	
-	@Given("^there is an activity developer$")
-	public void thereIsAnActivityDeveloper() throws Exception {
-		activityHelper.getActivity().addActivityDev(new Developer(systemApp.getActiveUser()));
+	@Given("^user is working on activity$")
+	public void userIsWorkingOnActivity() throws Exception {
+		user = new Developer(systemApp.getActiveUser());
+		activityHelper.getActivity().addActivityDev(user);
 	}
 	
+	@Given("^there is an activity developer$")
+	public void thereIsAnActivityDeveloper() throws Exception {
+		activityHelper.getActivity().addActivityDev(devHelper.getDeveloper());
+	}
+	//DEt HER
 	@Given("^user is not working on activity$")
 	public void userIsNotWorkingOnActivity() throws Exception {
-		activityHelper.getActivity().addActivityDev(new Developer("not active user"));
+		activityHelper.getActivity().removeActivityDev(user);
 	}
 	
 	@Given("^activity has been added to project$")
