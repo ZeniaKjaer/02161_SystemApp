@@ -1,7 +1,7 @@
 # @author Zenia
 #
-#Feature: Project leader sets time budget for activity
-#    Description:
+#Feature: Set time budget for activity
+#    Description: The project leader sets time budget for an activity
 #    Actors: Project leader
 #
 #Scenario: Project leader sets time budget for activity successfully

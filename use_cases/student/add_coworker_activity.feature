@@ -1,7 +1,7 @@
 # @author Helana
-Feature: Project developer adds co-worker to activity
-    Description:
-    Actors: Project leader, developer
+Feature: Add co-worker to activity
+    Description: A project developer adds a co-worker to an activity
+    Actors: Project developer
 
 Scenario: Developer on activity adds co-worker to activity
   	Given user is working on activity

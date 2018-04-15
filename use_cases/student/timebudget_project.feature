@@ -1,7 +1,7 @@
 # @author Mai-Thi
 # 
-#Feature: Project leader sets time budget for project
-#    Description:
+#Feature: Set time budget for project
+#    Description:  The project leader sets the time budget for the project
 #    Actors: Project leader
 #
 #Scenario: Project leader sets time budget for project succesfully

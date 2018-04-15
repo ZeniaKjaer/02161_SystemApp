@@ -1,6 +1,6 @@
 # @author Rikke
-Feature: Project leader adds activity to project
-    Description:
+Feature: Add activity to project
+    Description: The project leader adds activities to the project
     Actors: Project leader
 
 Scenario: project leader adds activity to project successfully

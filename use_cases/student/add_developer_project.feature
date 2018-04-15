@@ -1,7 +1,7 @@
 # @author Mai-Thi
-Feature: Project leader adds developer to project
-  Description:
-  Actors: Project leader, developer
+Feature: Add developer to project
+  Description: The project leader adds a developer to the project
+  Actors: Project leader
 
 Scenario: Add developer to project successfully
 	Given there is a project

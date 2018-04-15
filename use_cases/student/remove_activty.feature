@@ -1,6 +1,6 @@
 #@author Rikke
-Feature: Project leader removes activity from project
-    Description:
+Feature: Remove activity from project
+    Description: The project leader removes activities from the project
     Actors: Project leader
     
 Background: SystemApp has developers

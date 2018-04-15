@@ -1,7 +1,7 @@
 # @author Zenia
-Feature: Project leader removes developer from activity
-    Description:
-    Actors: Project leader, developer
+Feature: Remove developer from activity
+    Description: The project leader removes developer from an activity
+    Actors: Project leader
 
 Scenario: Remove developer on activity successfully
   	Given user is the project leader

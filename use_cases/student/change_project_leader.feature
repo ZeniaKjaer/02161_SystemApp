@@ -1,7 +1,7 @@
 # @author Helena
-Feature: Project leader changes project leader
-    Description:
-    Actors: Project leader, developer
+Feature: Change project leader
+    Description: The project leader gives his status as leader to another developer
+    Actors: Project leader
 
 Scenario: Changes project leader successfully
   	Given user is the project leader

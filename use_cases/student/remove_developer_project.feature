@@ -1,7 +1,7 @@
 # @author Mai-Thi
-Feature: Project leader removes developer from project
-    Description:
-    Actors: Project leader, developer
+Feature: Remove developer from project
+    Description: The project leader removes a developer from the project
+    Actors: Project leader
     
     Background: 
     Given there is a project

@@ -1,7 +1,7 @@
 # @author Mai-Thi
 Feature: User logs on
-    Description:
-    Actors: developer
+    Description: User logs into and out of the system
+    Actors: Developer
     
 Background: SystemApp has developers
 	Given SystemApp has developers

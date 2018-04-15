@@ -1,7 +1,7 @@
 $(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("use_cases/student/add_activity.feature");
 formatter.feature({
-  "name": "Project leader adds activity to project",
-  "description": "    Description:\n    Actors: Project leader",
+  "name": "Add activity to project",
+  "description": "    Description: The project leader adds activities to the project\n    Actors: Project leader",
   "keyword": "Feature"
 });
 formatter.scenario({
@@ -116,8 +116,8 @@ formatter.result({
 });
 formatter.uri("use_cases/student/add_coworker_activity.feature");
 formatter.feature({
-  "name": "Project developer adds co-worker to activity",
-  "description": "    Description:\n    Actors: Project leader, developer",
+  "name": "Add co-worker to activity",
+  "description": "    Description: A project developer adds a co-worker to an activity\n    Actors: Project developer",
   "keyword": "Feature"
 });
 formatter.scenario({
@@ -237,8 +237,8 @@ formatter.result({
 });
 formatter.uri("use_cases/student/add_developer_activity.feature");
 formatter.feature({
-  "name": "Project leader adds project developer to activity",
-  "description": "    Description:\n    Actors: Project leader, developer",
+  "name": "Add project developer to activity",
+  "description": "    Description:  The project leader adds project developer to a project activity\n    Actors: Project leader",
   "keyword": "Feature"
 });
 formatter.scenario({
@@ -388,8 +388,8 @@ formatter.result({
 });
 formatter.uri("use_cases/student/add_developer_project.feature");
 formatter.feature({
-  "name": "Project leader adds developer to project",
-  "description": "  Description:\n  Actors: Project leader, developer",
+  "name": "Add developer to project",
+  "description": "  Description: The project leader adds a developer to the project\n  Actors: Project leader",
   "keyword": "Feature"
 });
 formatter.scenario({
@@ -559,8 +559,8 @@ formatter.result({
 });
 formatter.uri("use_cases/student/change_project_leader.feature");
 formatter.feature({
-  "name": "Project leader changes project leader",
-  "description": "    Description:\n    Actors: Project leader, developer",
+  "name": "Change project leader",
+  "description": "    Description: The project leader gives his status as leader to another developer\n    Actors: Project leader",
   "keyword": "Feature"
 });
 formatter.scenario({
@@ -710,8 +710,8 @@ formatter.result({
 });
 formatter.uri("use_cases/student/create_project.feature");
 formatter.feature({
-  "name": "Start a project",
-  "description": "    Description:\n    Actors: Project leader",
+  "name": "Create a project",
+  "description": "    Description: User creates a project in the system\n    Actors: Developer",
   "keyword": "Feature"
 });
 formatter.scenario({
@@ -806,8 +806,8 @@ formatter.result({
 });
 formatter.uri("use_cases/student/remove_activty.feature");
 formatter.feature({
-  "name": "Project leader removes activity from project",
-  "description": "    Description:\n    Actors: Project leader",
+  "name": "Remove activity from project",
+  "description": "    Description: The project leader removes activities from the project\n    Actors: Project leader",
   "keyword": "Feature"
 });
 formatter.background({
@@ -1123,8 +1123,8 @@ formatter.result({
 });
 formatter.uri("use_cases/student/remove_developer_activity.feature");
 formatter.feature({
-  "name": "Project leader removes developer from activity",
-  "description": "    Description:\n    Actors: Project leader, developer",
+  "name": "Remove developer from activity",
+  "description": "    Description: The project leader removes developer from an activity\n    Actors: Project leader",
   "keyword": "Feature"
 });
 formatter.scenario({
@@ -1304,8 +1304,8 @@ formatter.result({
 });
 formatter.uri("use_cases/student/remove_developer_project.feature");
 formatter.feature({
-  "name": "Project leader removes developer from project",
-  "description": "    Description:\n    Actors: Project leader, developer",
+  "name": "Remove developer from project",
+  "description": "    Description: The project leader removes a developer from the project\n    Actors: Project leader",
   "keyword": "Feature"
 });
 formatter.background({
@@ -1521,7 +1521,7 @@ formatter.result({
 formatter.uri("use_cases/student/user_login.feature");
 formatter.feature({
   "name": "User logs on",
-  "description": "    Description:\n    Actors: developer",
+  "description": "    Description: User logs into and out of the system\n    Actors: Developer",
   "keyword": "Feature"
 });
 formatter.background({

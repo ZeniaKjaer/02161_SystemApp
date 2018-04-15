@@ -1,8 +1,8 @@
 # @author Zenia
 #
-Feature: Project leader adds project developer to activity
-    Description:
-    Actors: Project leader, developer
+Feature: Add project developer to activity
+    Description:  The project leader adds project developer to a project activity
+    Actors: Project leader
 
 Scenario: Add developer to activity successfully
   	Given user is the project leader

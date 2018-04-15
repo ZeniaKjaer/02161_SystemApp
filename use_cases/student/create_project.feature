@@ -1,8 +1,8 @@
 #@author Helena
 #
- Feature: Start a project
-    Description:
-    Actors: Project leader
+ Feature: Create a project
+    Description: User creates a project in the system
+    Actors: Developer
 
 Scenario: Developer creates a project succesfully
   Given there is a developer
