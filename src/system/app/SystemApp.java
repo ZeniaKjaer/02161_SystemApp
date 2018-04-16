@@ -3,14 +3,18 @@ package system.app;
 
 import java.util.*;
 
+import dtu.library.acceptance_tests.ProjectHelper;
+import system.app.DateServer;
+
 public class SystemApp {
 
 	private List<Developer> developers = new ArrayList<Developer>();
 	private boolean loggedIn = false;
 	private String activeUser = "";
 	private List<Project> projects = new ArrayList<Project>();
-	private int year = 18 ;
+	private int year;
 	private int nextProjectID = 1;
+	private DateServer dateServer;
 
 	public void addDeveloper(Developer developer) {
 		developers.add(developer);		
@@ -51,10 +55,11 @@ public class SystemApp {
 				throw new OperationNotAllowedException("Illegal project name");
 			}
 		}
+		year = 18;
+		//year = getYear();
 		String projectId = ""+ year + nextProjectID++; 
 		project.setProjectId(projectId);
 		projects.add(project); 
-
 	}
 
 	public void addProjectDev(Project project, Developer developer) throws OperationNotAllowedException{
@@ -139,6 +144,67 @@ public class SystemApp {
 		loggedIn = false;	
 	}
 
+	public void setProjectStart(Project project, int startWeek, int startYear) throws OperationNotAllowedException {
+		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+			throw new OperationNotAllowedException("Project leader authorization needed");
+		}else if(StartComesAfterDeadline(startWeek,startYear,project.getDeadlineWeek(),project.getDeadlineYear())) {
+			throw new OperationNotAllowedException("Illegal time budget");
+		}
+		project.setStart(startWeek, startYear);
+	}
+
+	public void setProjectDeadline(Project project, int deadlineWeek, int deadlineYear)throws OperationNotAllowedException {
+		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+			throw new OperationNotAllowedException("Project leader authorization needed");
+		}else if(DeadlineComesBeforeStart(project.getStartWeek(),project.getStartYear(), deadlineWeek, deadlineYear)) {
+			throw new OperationNotAllowedException("Illegal time budget");
+		}
+		project.setDeadline(deadlineWeek, deadlineYear);
+	}
+	
+	public void setActivityStart(Project project, Activity activity, int startWeek, int startYear) throws OperationNotAllowedException {
+		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+			throw new OperationNotAllowedException("Project leader authorization needed");
+		}else if(StartComesAfterDeadline(startWeek,startYear,activity.getDeadlineWeek(),activity.getDeadlineYear())) {
+			throw new OperationNotAllowedException("Illegal time budget");
+		}
+		activity.setStart(startWeek, startYear);
+	}
+
+	public void setActivityDeadline(Project project, Activity activity, int deadlineWeek, int deadlineYear) throws OperationNotAllowedException {
+		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+			throw new OperationNotAllowedException("Project leader authorization needed");
+		}else if(DeadlineComesBeforeStart(activity.getStartWeek(), activity.getStartYear(), deadlineWeek, deadlineYear)) {
+			throw new OperationNotAllowedException("Illegal time budget");
+		}
+		activity.setDeadline(deadlineWeek, deadlineYear);
+		
+	}
+	
+	private boolean StartComesAfterDeadline(int startWeek, int startYear, int deadlineWeek, int deadlineYear) {
+		if (deadlineWeek == -1 && deadlineYear == -1) {
+			return false;
+		}else if (deadlineYear < startYear) {
+			return true;
+		}
+		else if ((deadlineWeek < startWeek) && (deadlineYear <= startYear)) {
+			return true;
+		}
+		return false;
+	}
+	
+	private boolean DeadlineComesBeforeStart(int startWeek, int startYear, int deadlineWeek, int deadlineYear) {
+		if (startWeek == -1 && startYear == -1) {
+			return false;
+		}else if (deadlineYear < startYear) {
+			return true;
+		}
+		else if ((deadlineWeek < startWeek) && (deadlineYear <= startYear)) {
+			return true;
+		}
+		return false;
+	}
+	
 	public String getActiveUser() {
 		return activeUser;
 	}
@@ -149,6 +215,23 @@ public class SystemApp {
 
 	public List<Project> getProjects() {
 		return projects;
+	}
+
+	public void setDateServer(DateServer dateServer) {
+		this.dateServer = dateServer;
+	}
+	
+	/*
+	public Calendar getDate() {
+		return dateServer.getDate();
+	}
+	*/
+	
+	public int getWeek() {
+		return dateServer.getWeek();
+	}
+	public int getYear() {
+		return dateServer.getYear();
 	}
 
 }

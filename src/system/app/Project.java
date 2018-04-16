@@ -7,6 +7,7 @@ public class Project {
 	String projectLeader;
 	String projectId;
 	String projectName;
+	private int startWeek, startYear, deadlineWeek, deadlineYear;
 	private List<Developer> projectDevelopers = new ArrayList<Developer>();
 	private List<Activity> projectActivities = new ArrayList<Activity>();
 
@@ -14,6 +15,10 @@ public class Project {
 		this.projectLeader = developerId;
 		this.projectId = projectId;
 		this.projectName = projectName;
+		this.startWeek = -1;
+		this.startYear = -1;
+		this.deadlineWeek = -1;
+		this.deadlineYear = -1;
 	}
 	
 	public boolean isProjectDev(Developer dev) {
@@ -79,5 +84,32 @@ public class Project {
 	public String getProjectId() {
 		return projectId;
 	}
+
+	public void setStart(int startWeek, int startYear) {
+		this.startWeek = startWeek;
+		this.startYear = startYear;
+	}
+
+	public void setDeadline(int deadlineWeek, int deadlineYear) {
+		this.deadlineWeek = deadlineWeek;
+		this.deadlineYear = deadlineYear;
+	}
+	
+	public int getStartWeek() {
+		return startWeek;
+	}
+
+	public int getDeadlineWeek() {
+		return deadlineWeek;
+	}
+
+	public int getStartYear() {
+		return startYear;
+	}
+
+	public int getDeadlineYear() {
+		return deadlineYear;
+	}
+
 
 }
