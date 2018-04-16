@@ -1,24 +1,21 @@
 package system.app;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class Project {
 	String projectLeader;
 	String projectId;
 	String projectName;
-	private int startWeek, startYear, deadlineWeek, deadlineYear;
+	private Calendar start, deadline;
 	private List<Developer> projectDevelopers = new ArrayList<Developer>();
 	private List<Activity> projectActivities = new ArrayList<Activity>();
 
 	public Project(String developerId, String projectID, String projectName) {
 		this.projectLeader = developerId;
 		this.projectId = projectId;
-		this.projectName = projectName;
-		this.startWeek = -1;
-		this.startYear = -1;
-		this.deadlineWeek = -1;
-		this.deadlineYear = -1;
+		this.projectName = projectName;	
 	}
 	
 	public boolean isProjectDev(Developer dev) {
@@ -85,31 +82,20 @@ public class Project {
 		return projectId;
 	}
 
-	public void setStart(int startWeek, int startYear) {
-		this.startWeek = startWeek;
-		this.startYear = startYear;
+	public void setStart(Calendar start) {
+		this.start = start;
 	}
 
-	public void setDeadline(int deadlineWeek, int deadlineYear) {
-		this.deadlineWeek = deadlineWeek;
-		this.deadlineYear = deadlineYear;
+	public void setDeadline(Calendar deadline) {
+		this.deadline = deadline;
 	}
 	
-	public int getStartWeek() {
-		return startWeek;
+	public Calendar getStart() {
+		return start;
 	}
 
-	public int getDeadlineWeek() {
-		return deadlineWeek;
+	public Calendar getDeadline() {
+		return deadline;
 	}
-
-	public int getStartYear() {
-		return startYear;
-	}
-
-	public int getDeadlineYear() {
-		return deadlineYear;
-	}
-
 
 }

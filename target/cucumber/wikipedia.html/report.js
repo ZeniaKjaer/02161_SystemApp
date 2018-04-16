@@ -1518,377 +1518,46 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
-formatter.uri("use_cases/student/timebudget_activity.feature");
-formatter.feature({
-  "name": "Set time budget for activity",
-  "description": "    Description: The project leader sets time budget for an activity\n    Actors: Project leader",
-  "keyword": "Feature"
-});
-formatter.scenario({
-  "name": "Project leader sets time budget for activity successfully",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "user is the project leader",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ProjectSteps.userIsTheProjectLeader()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is a project with an activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user sets time budget for activity",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "TimeSteps.userSetsTimeBudgetForActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "time budget is set for activity",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "TimeSteps.timeBudgetIsSetForActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "User sets time budget for activity when not project leader",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "user is not the project leader",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ProjectSteps.userIsNotTheProjectLeader()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is a project with an activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user sets time budget for activity",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "TimeSteps.userSetsTimeBudgetForActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user gets the error message \"Project leader authorization needed\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "Project leader sets deadline before the start",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "user is the project leader",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ProjectSteps.userIsTheProjectLeader()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is a project with an activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user sets start after the deadline activity",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "TimeSteps.userSetsStartAfterTheDeadlineActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user gets the error message \"Illegal time budget\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "Project leader sets deadline before the start",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "user is the project leader",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ProjectSteps.userIsTheProjectLeader()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is a project with an activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user sets deadline before start activity",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "TimeSteps.userSetsDeadlineBeforeStartActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user gets the error message \"Illegal time budget\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "Project leader sets activity start before project start",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "user is the project leader",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ProjectSteps.userIsTheProjectLeader()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is a project with an activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user sets activity start before project start",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "TimeSteps.userSetsActivityStartBeforeProjectStart()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user gets the error message \"Activity cant exceed project\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "Project leader sets activity start after project deadline",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "user is the project leader",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ProjectSteps.userIsTheProjectLeader()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is a project with an activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user sets activity start after project deadline",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "TimeSteps.userSetsActivityStartAfterProjectDeadline()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user gets the error message \"Activity cant exceed project\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "Project leader sets activity deadline before project start",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "user is the project leader",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ProjectSteps.userIsTheProjectLeader()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is a project with an activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user sets activity deadline before project start",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "TimeSteps.userSetsActivityDeadlineBeforeProjectStart()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user gets the error message \"Activity cant exceed project\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "Project leader sets activity deadline after project deadline",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "user is the project leader",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ProjectSteps.userIsTheProjectLeader()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is a project with an activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user sets activity deadline after project deadline",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "TimeSteps.userSetsActivityDeadlineAfterProjectDeadline()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user gets the error message \"Activity cant exceed project\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
-});
-formatter.result({
-  "status": "passed"
-});
 formatter.uri("use_cases/student/timebudget_project.feature");
 formatter.feature({
   "name": "Set time budget for project",
   "description": "    Description: The project leader sets the time budget for the project\n    Actors: Project leader",
   "keyword": "Feature"
+});
+formatter.background({
+  "name": "",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "there is a project",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a start date",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsAStartDate()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a deadline",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsADeadline()"
+});
+formatter.result({
+  "status": "passed"
 });
 formatter.scenario({
   "name": "Project leader sets time budget for project succesfully",
@@ -1901,16 +1570,6 @@ formatter.step({
 });
 formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is a project",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ProjectSteps.thereIsAProject()"
 });
 formatter.result({
   "status": "passed"
@@ -1931,141 +1590,6 @@ formatter.step({
 });
 formatter.match({
   "location": "TimeSteps.timeBudgetIsSetForProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "User sets time budget for project when not project leader",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "user is not the project leader",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ProjectSteps.userIsNotTheProjectLeader()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is a project",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ProjectSteps.thereIsAProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user sets time budget for project",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "TimeSteps.userSetsTimeBudgetForProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user gets the error message \"Project leader authorization needed\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "Project leader sets deadline before the start",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "user is the project leader",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ProjectSteps.userIsTheProjectLeader()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is a project",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ProjectSteps.thereIsAProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user sets deadline before the start for project",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "TimeSteps.userSetsDeadlineBeforeTheStartForProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user gets the error message \"Illegal time budget\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "Project leader sets start after the deadline",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "user is the project leader",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ProjectSteps.userIsTheProjectLeader()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is a project",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ProjectSteps.thereIsAProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user sets start after the deadline for project",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "TimeSteps.userSetsStartAfterTheDeadlineForProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user gets the error message \"Illegal time budget\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
   "status": "passed"

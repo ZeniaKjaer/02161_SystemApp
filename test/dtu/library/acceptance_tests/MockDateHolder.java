@@ -26,17 +26,18 @@ public class MockDateHolder {
 		when(this.dateServer.getDate()).thenReturn(c);
 	}
 	
-//	public void setWeek(Calendar calendar) {
-//		Calendar c = new GregorianCalendar(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH));
-//		when(this.dateServer.getWeek()).thenReturn(calendar.get(c.WEEK_OF_YEAR));
-//	}
-//	
-//	public void setYear(Calendar calendar) {
-//		Calendar c = new GregorianCalendar(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH));
-//		when(this.dateServer.getDate()).thenReturn(c);
-//	}
+	public void advanceDateByWeeks(int weeks) {
+		Calendar currentDate = dateServer.getDate();
+		// Important: we need to create a new object,
+		// otherwise, the old calendar object gets changed,
+		// which suddenly changes the date for objects 
+		// using that old calendar object
+		Calendar nextDate = new GregorianCalendar();
+		nextDate.setTime(currentDate.getTime());
+		nextDate.add(Calendar.WEEK_OF_YEAR, weeks);
+		setDate(nextDate);
+	}
 	
-	/*
 	public void advanceDateByDays(int days) {
 		Calendar currentDate = dateServer.getDate();
 		// Important: we need to create a new object,
@@ -48,21 +49,6 @@ public class MockDateHolder {
 		nextDate.add(Calendar.DAY_OF_YEAR, days);
 		setDate(nextDate);
 	}
-	*/
-	
-	/*
-	public void advanceDateByDays(int days) {
-		Calendar currentDate = dateServer.getDate();
-		// Important: we need to create a new object,
-		// otherwise, the old calendar object gets changed,
-		// which suddenly changes the date for objects 
-		// using that old calendar object
-		Calendar nextDate = new GregorianCalendar();
-		nextDate.setTime(currentDate.getTime());
-		nextDate.add(Calendar.DAY_OF_YEAR, days);
-		setDate(nextDate);
-	}
-	*/
 	
 }
 

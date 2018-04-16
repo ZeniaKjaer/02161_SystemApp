@@ -15,20 +15,4 @@ public class DateServer {
 				,calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH));
 		return c;
 	}
-	
-	/**
-	 * 
-	 */
-	public int getWeek() {
-		Calendar calendar = new GregorianCalendar();
-		return calendar.get(Calendar.WEEK_OF_YEAR);
-	}
-	
-	/**
-	 * 
-	 */
-	public int getYear() {
-		Calendar calendar = new GregorianCalendar();
-		return calendar.get(Calendar.YEAR);
-	}
 }

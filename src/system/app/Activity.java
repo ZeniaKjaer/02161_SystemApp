@@ -1,19 +1,16 @@
 package system.app;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class Activity {
 	String acitivityName;
-	private int startWeek, startYear, deadlineWeek, deadlineYear;
+	private Calendar start, deadline;
 	private List<Developer> activityDevelopers = new ArrayList<Developer>();
 
 	public Activity(String activityName) {
 		this.acitivityName = activityName;
-		this.startWeek = -1;
-		this.startYear = -1;
-		this.deadlineWeek = -1;
-		this.deadlineYear = -1;
 	}
 	
 	public boolean isActivityDev(Developer developer) {
@@ -41,30 +38,20 @@ public class Activity {
 	public String getActivityName() {
 		return acitivityName;
 	}
-	public void setStart(int startWeek, int startYear) {
-		this.startWeek = startWeek;
-		this.startYear = startYear;
+	public void setStart(Calendar start) {
+		this.start = start;
 	}
 
-	public void setDeadline(int deadlineWeek, int deadlineYear) {
-		this.deadlineWeek = deadlineWeek;
-		this.deadlineYear = deadlineYear;
+	public void setDeadline(Calendar deadline) {
+		this.deadline = deadline;
 	}
 	
-	public int getStartWeek() {
-		return startWeek;
+	public Calendar getStart() {
+		return start;
 	}
 
-	public int getDeadlineWeek() {
-		return deadlineWeek;
-	}
-
-	public int getStartYear() {
-		return startYear;
-	}
-
-	public int getDeadlineYear() {
-		return deadlineYear;
+	public Calendar getDeadline() {
+		return deadline;
 	}
 
 
