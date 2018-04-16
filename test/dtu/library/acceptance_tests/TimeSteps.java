@@ -98,6 +98,9 @@ public class TimeSteps {
 		//startWeek = getWeek();
 
 		try {
+			systemApp.setProjectStart(projectHelper.getProject(), startWeek, startYear);
+			systemApp.setProjectDeadline(projectHelper.getProject(), deadlineWeek, deadlineYear);
+			
 			systemApp.setActivityStart(projectHelper.getProject(),activityHelper.getActivity(), startWeek, startYear);
 			systemApp.setActivityDeadline(projectHelper.getProject(),activityHelper.getActivity(), deadlineWeek, deadlineYear);
 		} catch (OperationNotAllowedException e) {
@@ -133,5 +136,46 @@ public class TimeSteps {
 		}
 	}
 
+	@When("^user sets activity start before project start$")
+	public void userSetsActivityStartBeforeProjectStart() throws Exception {
+		try {
+			systemApp.setProjectStart(projectHelper.getProject(), startWeek, startYear );
+			systemApp.setActivityStart(projectHelper.getProject(), activityHelper.getActivity(), startWeek, startYear-1 );
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
+	
+	@When("^user sets activity start after project deadline$")
+	public void userSetsActivityStartAfterProjectDeadline() throws Exception {
+		try {
+			systemApp.setProjectDeadline(projectHelper.getProject(), deadlineWeek, deadlineYear );
+			systemApp.setActivityStart(projectHelper.getProject(), activityHelper.getActivity(), deadlineWeek, deadlineYear+1);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
+	
+	@When("^user sets activity deadline before project start$")
+	public void userSetsActivityDeadlineBeforeProjectStart() throws Exception {
+		try {
+			systemApp.setProjectStart(projectHelper.getProject(), startWeek, startYear );
+			systemApp.setActivityDeadline(projectHelper.getProject(), activityHelper.getActivity(), startWeek, startYear-1);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
+	
+	@When("^user sets activity deadline after project deadline$")
+	public void userSetsActivityDeadlineAfterProjectDeadline() throws Exception {
+		try {
+			systemApp.setProjectDeadline(projectHelper.getProject(), deadlineWeek, deadlineYear  );
+			systemApp.setActivityDeadline(projectHelper.getProject(), activityHelper.getActivity(), deadlineWeek, deadlineYear+1);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
+
+	
 
 }

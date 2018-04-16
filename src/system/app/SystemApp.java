@@ -165,8 +165,13 @@ public class SystemApp {
 	public void setActivityStart(Project project, Activity activity, int startWeek, int startYear) throws OperationNotAllowedException {
 		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
-		}else if(StartComesAfterDeadline(startWeek,startYear,activity.getDeadlineWeek(),activity.getDeadlineYear())) {
+		}
+		else if(StartComesAfterDeadline(startWeek,startYear,activity.getDeadlineWeek(),activity.getDeadlineYear())) {
 			throw new OperationNotAllowedException("Illegal time budget");
+		} 
+		else if (DeadlineComesBeforeStart(project.getStartWeek(), project.getStartYear(), startWeek, startYear)
+				|| StartComesAfterDeadline(startWeek, startYear, project.getDeadlineWeek(), project.getDeadlineYear())) {
+			throw new OperationNotAllowedException("Activity cant exceed project");
 		}
 		activity.setStart(startWeek, startYear);
 	}
@@ -174,8 +179,16 @@ public class SystemApp {
 	public void setActivityDeadline(Project project, Activity activity, int deadlineWeek, int deadlineYear) throws OperationNotAllowedException {
 		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
-		}else if(DeadlineComesBeforeStart(activity.getStartWeek(), activity.getStartYear(), deadlineWeek, deadlineYear)) {
+		}
+		else if(DeadlineComesBeforeStart(activity.getStartWeek(), activity.getStartYear(), deadlineWeek, deadlineYear)) {
 			throw new OperationNotAllowedException("Illegal time budget");
+		}
+		else if (DeadlineComesBeforeStart(project.getStartWeek(), project.getStartYear(),deadlineWeek, deadlineYear)
+				|| 
+				
+				StartComesAfterDeadline(deadlineWeek, deadlineYear, project.getDeadlineWeek(), project.getDeadlineYear())) {
+			
+			throw new OperationNotAllowedException("Activity cant exceed project");
 		}
 		activity.setDeadline(deadlineWeek, deadlineYear);
 		
