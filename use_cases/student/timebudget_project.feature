@@ -12,17 +12,17 @@ Scenario: Project leader sets time budget for project succesfully
   	When user sets time budget for project
   	Then time budget is set for project
 
-#Scenario: User sets time budget for project when not project leader
-#  	Given user is not the project leader
-#  	When user sets time budget for project
-#  	Then user gets the error message "Project leader authorization needed"
-#
-#Scenario: Project leader sets deadline before the start
-#  	Given user is the project leader
-#  	When user sets deadline before the start for project
-#  	Then user gets the error message "Illegal time budget"
-#  	
-#Scenario: Project leader sets start after the deadline
-#  	Given user is the project leader
-#  	When user sets start after the deadline for project
-#  	Then user gets the error message "Illegal time budget"
+Scenario: User sets time budget for project when not project leader
+  	Given user is not the project leader
+  	When user sets time budget for project
+  	Then user gets the error message "Project leader authorization needed"
+
+Scenario: Project leader sets project deadline before the start
+  	Given user is the project leader
+  	When user sets deadline before the start for project
+  	Then user gets the error message "Illegal time budget"
+  	
+Scenario: Project leader sets project start after the deadline
+  	Given user is the project leader
+  	When user sets start after the deadline for project
+  	Then user gets the error message "Illegal time budget"
