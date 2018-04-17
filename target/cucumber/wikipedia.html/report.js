@@ -296,6 +296,14 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.step({
+  "name": "developer has activity marked in her calendar",
+  "keyword": "And "
+});
+formatter.match({});
+formatter.result({
+  "status": "undefined"
+});
 formatter.scenario({
   "name": "Add developer when not a project leader",
   "description": "",
