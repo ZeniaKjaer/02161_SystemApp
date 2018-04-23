@@ -16,12 +16,12 @@ public class SystemApp {
 	private List<Project> projects = new ArrayList<Project>();
 	private int nextProjectID = 1;
 	private DateServer dateServer;
-	
+
 	private static final int DEADLINE_ADVANCE_DATE = 3; 
-	
+
 
 	public void addDeveloper(Developer developer) {
-		developers.add(developer);		
+		developers.add(developer);	
 	}
 
 	/**
@@ -52,7 +52,7 @@ public class SystemApp {
 			loggedIn = true;
 		}
 	}
-	
+
 	public void addProject(Project project) throws OperationNotAllowedException{
 		for (Project p: projects) {
 			if (p.getProjectName().equalsIgnoreCase(project.getProjectName())) { 
@@ -64,7 +64,7 @@ public class SystemApp {
 		Calendar deadline = new GregorianCalendar(); 
 		deadline.add(Calendar.WEEK_OF_YEAR,  DEADLINE_ADVANCE_DATE);
 		project.setDeadline(deadline);
-		
+
 		//int year = getDate().YEAR;
 		int year = 18;
 		String projectId = ""+ year + nextProjectID++; 
@@ -83,7 +83,7 @@ public class SystemApp {
 			project.addProjectDev(developer);
 		}
 	}
-	
+
 	public void removeProjectDev(Project project, Developer developer) throws OperationNotAllowedException {
 		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
@@ -95,7 +95,7 @@ public class SystemApp {
 			project.removeProjectDev(developer);
 		}
 	}
-	
+
 	public void setProjectLeader(Project project, Developer developer) throws OperationNotAllowedException{
 		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
@@ -107,16 +107,18 @@ public class SystemApp {
 			project.setProjectLeader(developer.getId());
 		}
 	}
-	
+
 	public void addActivity(Project project, Activity activity) throws OperationNotAllowedException {
 		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		} 
 		else {
+			activity.setStart(project.getStart());
+			activity.setDeadline(project.getDeadline());
 			project.addActivity(activity);
 		}	
 	}
-	
+
 	public void removeActivity(Project project, Activity activity) throws OperationNotAllowedException {
 		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
@@ -126,25 +128,30 @@ public class SystemApp {
 		} 
 		else {
 			project.removeActivity(activity);
+
+			for (Developer dev : activity.getActivityDevelopers()) {
+				dev.removeActivityFromCalendar(activity);
+			}
 		}	
 	}
 
 	public void addActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException{
-		if (activity.isActivityDev(developer)) {
+		if (activity.isActivityDev(developer.getId())) {
 			throw new OperationNotAllowedException("Developer is already working on activity");
 		}
-		else if (activeUser.equalsIgnoreCase(project.getProjectLeader()) || activity.isActivityDev(new Developer(activeUser))) {
+		else if (activeUser.equalsIgnoreCase(project.getProjectLeader()) || activity.isActivityDev(activeUser)) {
 			for (Activity a: project.getProjectActivities()) {
 				if (a.getActivityName().equals(activity.getActivityName())) {
 					activity.addActivityDev(developer);
+					developer.addActivityToCalendar(activity);
 				}
 			}
-		}
-		else if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+		} else //(!activeUser.equalsIgnoreCase(project.getProjectLeader())) 
+		{
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		}
 	}
-	
+
 	public void removeActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException {
 		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
@@ -152,11 +159,12 @@ public class SystemApp {
 		else if (!project.isProjectActivity(activity)) {
 			throw new OperationNotAllowedException("Activity not found");
 		} 
-		else if (!activity.isActivityDev(developer)) { 
+		else if (!activity.isActivityDev(developer.getId())) { 
 			throw new OperationNotAllowedException("Developer not found");
 		} 
 		else {
 			activity.removeActivityDev(developer);
+			developer.removeActivityFromCalendar(activity);
 		}	
 	}
 
@@ -184,7 +192,7 @@ public class SystemApp {
 		}
 		project.setDeadline(deadline);
 	}
-	
+
 	public void setActivityStart(Project project, Activity activity, Calendar start) throws OperationNotAllowedException {
 		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
@@ -195,7 +203,15 @@ public class SystemApp {
 		else if (start.before(project.getStart()) || start.after(project.getDeadline()) ) {
 			throw new OperationNotAllowedException("Activity cant exceed project");
 		}
-		activity.setStart(start);
+		else {
+			for (Developer dev : activity.getActivityDevelopers()) {
+				dev.removeActivityFromCalendar(activity);
+			}
+			activity.setStart(start);
+			for (Developer dev : activity.getActivityDevelopers()) {
+				dev.addActivityToCalendar(activity); 
+			}
+		}
 	}
 
 	public void setActivityDeadline(Project project, Activity activity, Calendar deadline) throws OperationNotAllowedException {
@@ -207,35 +223,17 @@ public class SystemApp {
 		}
 		else if ( deadline.before(project.getStart()) || deadline.after(project.getDeadline()) ) {
 			throw new OperationNotAllowedException("Activity cant exceed project");
+		}else {
+			for (Developer dev : activity.getActivityDevelopers()) {
+				dev.removeActivityFromCalendar(activity);
+			}
+			activity.setDeadline(deadline);
+			for (Developer dev : activity.getActivityDevelopers()) {
+				dev.addActivityToCalendar(activity); 
+			}
 		}
-		activity.setDeadline(deadline);
-		
 	}
-	
-//	private boolean StartComesAfterDeadline(int startWeek, int startYear, int deadlineWeek, int deadlineYear) {
-//		if (deadlineWeek == -1 && deadlineYear == -1) {
-//			return false;
-//		}else if (deadlineYear < startYear) {
-//			return true;
-//		}
-//		else if ((deadlineWeek < startWeek) && (deadlineYear <= startYear)) {
-//			return true;
-//		}
-//		return false;
-//	}
-//	
-//	private boolean DeadlineComesBeforeStart(int startWeek, int startYear, int deadlineWeek, int deadlineYear) {
-//		if (startWeek == -1 && startYear == -1) {
-//			return false;
-//		}else if (deadlineYear < startYear) {
-//			return true;
-//		}
-//		else if ((deadlineWeek < startWeek) && (deadlineYear <= startYear)) {
-//			return true;
-//		}
-//		return false;
-//	}
-	
+
 	public String getActiveUser() {
 		return activeUser;
 	}

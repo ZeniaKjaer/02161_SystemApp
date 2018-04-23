@@ -4,9 +4,11 @@ Feature: Add co-worker to activity
     Actors: Project developer
 
 Scenario: Developer on activity adds co-worker to activity
-  	Given user is working on activity
+  	Given there is a project with an activity
+  	And user is working on activity
   	When user adds developer to activity
   	Then developer is working on activity
+  	And developer has activity marked in her calendar
 
 Scenario: Developer not on activity adds co-worker to activity
   	Given user is not working on activity

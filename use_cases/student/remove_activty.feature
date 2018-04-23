@@ -18,6 +18,7 @@ Scenario: Project leader removes activity successfully
   And activity has been added to project
   When user removes activity
   Then activity is no longer part of project
+  And activity is removed from calendar
 
 Scenario: Project leader removes activity that is not part of the project
   Given user is the project leader

@@ -30,25 +30,21 @@ Scenario: Project leader sets activity start after activity deadline
 
 Scenario: Project leader sets activity start before project start
   	Given user is the project leader
-  	And there is a project with an activity
   	When user sets activity start before project start
   	Then user gets the error message "Activity cant exceed project"
   	
 Scenario: Project leader sets activity start after project deadline
   	Given user is the project leader
-  	And there is a project with an activity
   	When user sets activity start after project deadline
   	Then user gets the error message "Activity cant exceed project"
  	
 Scenario: Project leader sets activity deadline before project start
   	Given user is the project leader
-  	And there is a project with an activity
   	When user sets activity deadline before project start
   	Then user gets the error message "Activity cant exceed project"
   	
 Scenario: Project leader sets activity deadline after project deadline
   	Given user is the project leader
-  	And there is a project with an activity
   	When user sets activity deadline after project deadline
   	Then user gets the error message "Activity cant exceed project"
 ###########################

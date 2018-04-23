@@ -41,6 +41,8 @@ public class Project {
 	}
 
 	public void addActivity(Activity activity) {
+		activity.setStart(start);
+		activity.setDeadline(deadline);
 		projectActivities.add(activity);
 	}
 

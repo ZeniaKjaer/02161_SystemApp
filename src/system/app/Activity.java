@@ -2,20 +2,22 @@ package system.app;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class Activity {
 	String acitivityName;
 	private Calendar start, deadline;
 	private List<Developer> activityDevelopers = new ArrayList<Developer>();
+	private ArrayList<Week> duration;
 
 	public Activity(String activityName) {
 		this.acitivityName = activityName;
 	}
-	
-	public boolean isActivityDev(Developer developer) {
+
+	public boolean isActivityDev(String developerId) {
 		for (Developer d: activityDevelopers) {
-			if (d.getId().equals(developer.getId())) {
+			if (d.getId().equals(developerId)) {
 				return true;
 			}
 		}
@@ -25,16 +27,16 @@ public class Activity {
 	public void addActivityDev(Developer developer) {
 		activityDevelopers.add(developer);
 	}
-	
+
 	public void removeActivityDev(Developer developer) {
 		activityDevelopers.remove(developer);
 	}
-	
+
 	// Getters and Setters
 	public List<Developer> getActivityDevelopers() {
 		return activityDevelopers;
 	}
-	
+
 	public String getActivityName() {
 		return acitivityName;
 	}
@@ -45,7 +47,7 @@ public class Activity {
 	public void setDeadline(Calendar deadline) {
 		this.deadline = deadline;
 	}
-	
+
 	public Calendar getStart() {
 		return start;
 	}
@@ -54,5 +56,20 @@ public class Activity {
 		return deadline;
 	}
 
+	public ArrayList<Week> getDuration() {
+		return duration;
+	}
+
+	public void setDuration(ArrayList<Week> duration) {
+		Calendar tempDate = new GregorianCalendar(start.get(Calendar.YEAR), 
+				start.get(Calendar.MONTH),
+				start.get(Calendar.DAY_OF_MONTH));
+
+		while (!tempDate.after(deadline)) {
+			duration.add(new Week(tempDate.get(Calendar.WEEK_OF_YEAR),tempDate.get(Calendar.YEAR)));
+			tempDate.add(Calendar.WEEK_OF_YEAR, 1);
+		}
+
+	}
 
 }

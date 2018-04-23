@@ -8,6 +8,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.*;
@@ -18,15 +20,15 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import system.app.OperationNotAllowedException;
-import system.app.Project;
-import system.app.Activity;
-import system.app.Developer;
-import system.app.SystemApp;
+import system.app.*;
 
 public class ActivitySteps {
 
+	private Week week;
 	private SystemApp systemApp;
 	private Activity activity;
+	private ArrayList<Week> activityDuration;
+	private DevCalendar devCalendar, prevCalendar;
 	private Developer user;
 	private ErrorMessageHolder errorMessageHolder;
 	private DeveloperHelper devHelper;
@@ -63,6 +65,7 @@ public class ActivitySteps {
 	@When("^user adds developer to activity$")
 	public void userAddsDeveloperToActivity() throws Exception {
 		try {
+			prevCalendar = devHelper.getDeveloper().getDevCalendar().copy();
 			systemApp.addActivityDev(projectHelper.getProject(), activityHelper.getActivity(), devHelper.getDeveloper());
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
@@ -121,6 +124,7 @@ public class ActivitySteps {
 	
 	@Given("^there is a project with an activity$")
 	public void thereIsAProjectWithAnActivity() throws Exception {
+		systemApp.addProject(projectHelper.getProject());
 	    projectHelper.getProject().addActivity(activityHelper.getActivity());
 	}
 	
@@ -143,5 +147,24 @@ public class ActivitySteps {
 		assertThat(activityHelper.getActivity().getActivityDevelopers(),not(hasItem(devHelper.getDeveloper())));
 	}
 
+	@Given("^developer is available$")
+	public void developerIsAvailable() throws Exception {
+	    
+	}
+	
+	@Then("^developer has activity marked in her calendar$")
+	public void developerHasActivityMarkedInHerCalendar() throws Exception {
+		devCalendar = devHelper.getDeveloper().getDevCalendar();
+		activityDuration = activityHelper.getActivity().getDuration();
+		for (Week week : activityDuration) {
+			assertEquals(prevCalendar.getActivityLevel(week)+1, devCalendar.getActivityLevel(week));
+		}
+		
+	}
+	
+	@Then("^activity is removed from calendar$")
+	public void activityIsRemovedFromCalendar() throws Exception {
+		
+	}
 
 }

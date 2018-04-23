@@ -169,8 +169,8 @@ public class TimeSteps {
 	@When("^user sets activity start after project deadline$")
 	public void userSetsActivityStartAfterProjectDeadline() throws Exception {
 		try {
-			systemApp.setProjectDeadline(projectHelper.getProject(), middle );
-			systemApp.setActivityStart(projectHelper.getProject(), activityHelper.getActivity(), deadline);
+			systemApp.setProjectDeadline(projectHelper.getProject(), start);
+			systemApp.setActivityStart(projectHelper.getProject(), activityHelper.getActivity(), middle);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}

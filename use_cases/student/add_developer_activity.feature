@@ -6,10 +6,11 @@ Feature: Add project developer to activity
 Scenario: Add developer to activity successfully
   	Given user is the project leader
   	And there is a developer
-  	And there is an activity
+  	And there is a project with an activity
+  	#And developer is available 
   	When user adds developer to activity
   	Then developer is working on activity
-#	And developer has activity marked in her calendar
+	And developer has activity marked in her calendar
 
 Scenario: Add developer when not a project leader
   	Given user is not the project leader

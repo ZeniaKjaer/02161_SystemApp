@@ -126,8 +126,18 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "user is working on activity",
+  "name": "there is a project with an activity",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user is working on activity",
+  "keyword": "And "
 });
 formatter.match({
   "location": "ActivitySteps.userIsWorkingOnActivity()"
@@ -154,6 +164,17 @@ formatter.match({
 });
 formatter.result({
   "status": "passed"
+});
+formatter.step({
+  "name": "developer has activity marked in her calendar",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.developerHasActivityMarkedInHerCalendar()"
+});
+formatter.result({
+  "error_message": "java.lang.AssertionError: expected:\u003c1\u003e but was:\u003c2\u003e\r\n\tat org.junit.Assert.fail(Assert.java:88)\r\n\tat org.junit.Assert.failNotEquals(Assert.java:834)\r\n\tat org.junit.Assert.assertEquals(Assert.java:645)\r\n\tat org.junit.Assert.assertEquals(Assert.java:631)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.developerHasActivityMarkedInHerCalendar(ActivitySteps.java:156)\r\n\tat ✽.developer has activity marked in her calendar(use_cases/student/add_coworker_activity.feature:11)\r\n",
+  "status": "failed"
 });
 formatter.scenario({
   "name": "Developer not on activity adds co-worker to activity",
@@ -267,14 +288,22 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "there is an activity",
+  "name": "there is a project with an activity",
   "keyword": "And "
 });
 formatter.match({
-  "location": "ActivitySteps.thereIsAnActivity()"
+  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
   "status": "passed"
+});
+formatter.step({
+  "name": "developer is available",
+  "keyword": "And "
+});
+formatter.match({});
+formatter.result({
+  "status": "undefined"
 });
 formatter.step({
   "name": "user adds developer to activity",
@@ -284,7 +313,7 @@ formatter.match({
   "location": "ActivitySteps.userAddsDeveloperToActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "developer is working on activity",
@@ -294,15 +323,17 @@ formatter.match({
   "location": "ActivitySteps.developerIsWorkingOnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "developer has activity marked in her calendar",
   "keyword": "And "
 });
-formatter.match({});
+formatter.match({
+  "location": "ActivitySteps.developerHasActivityMarkedInHerCalendar()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Add developer when not a project leader",
@@ -921,6 +952,16 @@ formatter.step({
 });
 formatter.match({
   "location": "ActivitySteps.activityIsNoLongerPartOfProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "activity is removed from calendar",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.activityIsRemovedFromCalendar()"
 });
 formatter.result({
   "status": "passed"
@@ -1913,16 +1954,6 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "there is a project with an activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
   "name": "user sets activity start before project start",
   "keyword": "When "
 });
@@ -1998,16 +2029,6 @@ formatter.step({
 });
 formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is a project with an activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
   "status": "passed"
@@ -2093,16 +2114,6 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "there is a project with an activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
   "name": "user sets activity deadline before project start",
   "keyword": "When "
 });
@@ -2178,16 +2189,6 @@ formatter.step({
 });
 formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is a project with an activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
   "status": "passed"
