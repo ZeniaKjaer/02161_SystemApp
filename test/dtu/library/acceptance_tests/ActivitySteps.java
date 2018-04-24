@@ -66,7 +66,7 @@ public class ActivitySteps {
 	@When("^user adds developer to activity$")
 	public void userAddsDeveloperToActivity() throws Exception {
 		try {
-			prevCalendar = devHelper.getDeveloper().getDevCalendar().copy();
+			prevCalendar = devHelper.getDeveloper().getActivityLevel().copy();
 			systemApp.addActivityDev(projectHelper.getProject(), activityHelper.getActivity(), devHelper.getDeveloper());
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
@@ -145,12 +145,24 @@ public class ActivitySteps {
 
 	@Given("^developer is available$")
 	public void developerIsAvailable() throws Exception {
-	    
+		activityDuration = activityHelper.getActivity().getDuration();
+		for (Week week : activityDuration) {
+			devHelper.getDeveloper().getActivityLevel().SetCalendar(week, 5);
+		}
 	}
+	
+	@Given("^developer is not available$")
+	public void developerIsNotAvailable() throws Exception {
+		activityDuration = activityHelper.getActivity().getDuration();
+		for (Week week : activityDuration) {
+			devHelper.getDeveloper().getActivityLevel().SetCalendar(week, 21);
+		}
+	}
+
 	
 	@Then("^developer has activity marked in her calendar$")
 	public void developerHasActivityMarkedInHerCalendar() throws Exception {
-		devCalendar = devHelper.getDeveloper().getDevCalendar();
+		devCalendar = devHelper.getDeveloper().getActivityLevel();
 		activityDuration = activityHelper.getActivity().getDuration();
 		for (Week week : activityDuration) {
 			assertEquals(prevCalendar.getActivityLevel(week)+1, devCalendar.getActivityLevel(week));
@@ -160,7 +172,7 @@ public class ActivitySteps {
 	
 	@Then("^activity is removed from calendar$")
 	public void activityIsRemovedFromCalendar() throws Exception {
-		devCalendar = devHelper.getDeveloper().getDevCalendar();
+		devCalendar = devHelper.getDeveloper().getActivityLevel();
 		activityDuration = activityHelper.getActivity().getDuration();
 		for (Week week : activityDuration) {
 			assertEquals(prevCalendar.getActivityLevel(week)-1, devCalendar.getActivityLevel(week));

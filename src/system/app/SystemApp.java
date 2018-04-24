@@ -137,10 +137,14 @@ public class SystemApp {
 	}
 
 	public void addActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException{
+		for (Week week : activity.getDuration()) {
+			if (!developer.isAvailable(week)) {
+				throw new OperationNotAllowedException("Project leader authorization needed");
+			}
+		}
 		if (activity.isActivityDev(developer.getId())) {
 			throw new OperationNotAllowedException("Developer is already working on activity");
-		}
-		else if (activeUser.equalsIgnoreCase(project.getProjectLeader()) || activity.isActivityDev(activeUser)) {
+		}else if (activeUser.equalsIgnoreCase(project.getProjectLeader()) || activity.isActivityDev(activeUser)) {
 			for (Activity a: project.getProjectActivities()) {
 				if (a.getActivityName().equals(activity.getActivityName())) {
 					activity.addActivityDev(developer);

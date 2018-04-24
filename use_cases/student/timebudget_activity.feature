@@ -12,7 +12,7 @@ Scenario: Project leader sets time budget for activity successfully
  	Given user is the project leader
   	When user sets time budget for activity
   	Then time budget is set for activity
-  	And duration is updated
+  	#And duration is updated
 
 Scenario: User sets time budget for activity when not project leader
 	Given user is not the project leader

@@ -307,6 +307,16 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
+  "name": "developer is available",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.developerIsAvailable()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
   "name": "user adds developer to activity",
   "keyword": "When "
 });
@@ -425,6 +435,72 @@ formatter.match({
 });
 formatter.result({
   "status": "passed"
+});
+formatter.scenario({
+  "name": "Add developer to activity successfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsADeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project with an activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developer is not available",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.developerIsNotAvailable()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds developer to activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userAddsDeveloperToActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Developer is not available\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "error_message": "org.junit.ComparisonFailure: expected:\u003c[Developer is not available]\u003e but was:\u003c[]\u003e\r\n\tat org.junit.Assert.assertEquals(Assert.java:115)\r\n\tat org.junit.Assert.assertEquals(Assert.java:144)\r\n\tat dtu.library.acceptance_tests.LoginLogoutSteps.userGetsTheErrorMessage(LoginLogoutSteps.java:78)\r\n\tat ✽.user gets the error message \"Developer is not available\"(use_cases/student/add_developer_activity.feature:33)\r\n",
+  "status": "failed"
 });
 formatter.uri("use_cases/student/add_developer_project.feature");
 formatter.feature({
@@ -1610,16 +1686,6 @@ formatter.step({
 });
 formatter.match({
   "location": "TimeSteps.timeBudgetIsSetForActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "duration is updated",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.durationIsUpdated()"
 });
 formatter.result({
   "status": "passed"
