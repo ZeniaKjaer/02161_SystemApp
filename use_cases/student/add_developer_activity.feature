@@ -7,7 +7,7 @@ Scenario: Add developer to activity successfully
   	Given user is the project leader
   	And there is a developer
   	And there is a project with an activity
-  	#And developer is available 
+  	And developer is available 
   	When user adds developer to activity
   	Then developer is working on activity
 	And developer has activity marked in her calendar
@@ -24,9 +24,12 @@ Scenario: Add developer who is already working on activity
   	When user adds developer to activity
   	Then user gets the error message "Developer is already working on activity"
 
-#Scenario: Add developer who is not available to activity
-#  	Given user is the project leader
-#  	And the developer is not available
-#  	When user adds developer to activity
-#  	Then user gets the error message "Developer has too many activities"
+Scenario: Add developer to activity successfully
+  	Given user is the project leader
+  	And there is a developer
+  	And there is a project with an activity
+  	And developer is not available 
+  	When user adds developer to activity
+  	Then user gets the error message "Developer is not available"
+	
 

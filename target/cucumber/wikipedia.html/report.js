@@ -59,6 +59,16 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.step({
+  "name": "activity timebudget is set to project timebudget",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.activityTimebudgetIsSetToProjectTimebudget()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "add activity when not project leader",
   "description": "",
@@ -173,8 +183,7 @@ formatter.match({
   "location": "ActivitySteps.developerHasActivityMarkedInHerCalendar()"
 });
 formatter.result({
-  "error_message": "java.lang.AssertionError: expected:\u003c1\u003e but was:\u003c2\u003e\r\n\tat org.junit.Assert.fail(Assert.java:88)\r\n\tat org.junit.Assert.failNotEquals(Assert.java:834)\r\n\tat org.junit.Assert.assertEquals(Assert.java:645)\r\n\tat org.junit.Assert.assertEquals(Assert.java:631)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.developerHasActivityMarkedInHerCalendar(ActivitySteps.java:156)\r\n\tat ✽.developer has activity marked in her calendar(use_cases/student/add_coworker_activity.feature:11)\r\n",
-  "status": "failed"
+  "status": "passed"
 });
 formatter.scenario({
   "name": "Developer not on activity adds co-worker to activity",
@@ -301,9 +310,11 @@ formatter.step({
   "name": "developer is available",
   "keyword": "And "
 });
-formatter.match({});
+formatter.match({
+  "location": "ActivitySteps.developerIsAvailable()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 formatter.step({
   "name": "user adds developer to activity",
@@ -313,7 +324,7 @@ formatter.match({
   "location": "ActivitySteps.userAddsDeveloperToActivity()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "developer is working on activity",
@@ -323,7 +334,7 @@ formatter.match({
   "location": "ActivitySteps.developerIsWorkingOnActivity()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "developer has activity marked in her calendar",
@@ -333,7 +344,7 @@ formatter.match({
   "location": "ActivitySteps.developerHasActivityMarkedInHerCalendar()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.scenario({
   "name": "Add developer when not a project leader",
@@ -424,6 +435,72 @@ formatter.match({
 });
 formatter.result({
   "status": "passed"
+});
+formatter.scenario({
+  "name": "Add developer to activity successfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsADeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project with an activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developer is not available",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.developerIsNotAvailable()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds developer to activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userAddsDeveloperToActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Developer is not available\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "error_message": "org.junit.ComparisonFailure: expected:\u003c[Developer is not available]\u003e but was:\u003c[]\u003e\r\n\tat org.junit.Assert.assertEquals(Assert.java:115)\r\n\tat org.junit.Assert.assertEquals(Assert.java:144)\r\n\tat dtu.library.acceptance_tests.LoginLogoutSteps.userGetsTheErrorMessage(LoginLogoutSteps.java:78)\r\n\tat ✽.user gets the error message \"Developer is not available\"(use_cases/student/add_developer_activity.feature:33)\r\n",
+  "status": "failed"
 });
 formatter.uri("use_cases/student/add_developer_project.feature");
 formatter.feature({
@@ -907,31 +984,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "there is a project",
+  "name": "there is a project with an activity",
   "keyword": "And "
 });
 formatter.match({
-  "location": "ProjectSteps.thereIsAProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is an activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "activity has been added to project",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.activityHasBeenAddedToProject()"
+  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
   "status": "passed"
@@ -1111,31 +1168,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "there is a project",
+  "name": "there is a project with an activity",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "ProjectSteps.thereIsAProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is an activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "activity has been added to project",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.activityHasBeenAddedToProject()"
+  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
   "status": "passed"

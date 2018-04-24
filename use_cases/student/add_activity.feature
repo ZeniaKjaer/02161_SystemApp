@@ -9,6 +9,7 @@ Scenario: project leader adds activity to project successfully
   	And there is an activity
   	When user adds activity to project
   	Then activity is part of project
+	And activity timebudget is set to project timebudget
 
 Scenario: add activity when not project leader
   	Given user is not the project leader

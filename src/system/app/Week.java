@@ -3,15 +3,22 @@ package system.app;
 import javafx.util.Pair;
 
 public class Week {
-	Pair week;
+	 Pair<Integer, Integer> week;
 
-	public Week(int week, int year) {
-		this.week = new Pair(week,year);
+	public Week(int weekOfYear, int year) {
+		week = new Pair<>(weekOfYear,year);
 	}
 
-	public Pair getWeek() {
+	public Pair<Integer, Integer> getWeek() {
 		return week;
 	}
 
+	public int getWeekOfYear() {
+		return week.getKey();
+	}
+	
+	public int getYear() {
+		return week.getValue();
+	}
 }
 
