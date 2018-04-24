@@ -73,6 +73,13 @@ public class SystemApp {
 	}
 
 	public void addProjectDev(Project project, Developer developer) throws OperationNotAllowedException{
+		// Skal være her iflg vores whitebox-test for denne metode
+		if(!projects.contains(project)) {
+			throw new OperationNotAllowedException("Project is not in the system");
+		} else if(!getDevelopers().contains(developer)) {
+			throw new OperationNotAllowedException("Developer is not in the system");
+		}
+		// whitebox-test tilføjelse slut
 		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		} 
