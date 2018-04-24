@@ -499,7 +499,11 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
+<<<<<<< HEAD
   "error_message": "org.junit.ComparisonFailure: expected:\u003c[Developer is not available]\u003e but was:\u003c[]\u003e\n\tat org.junit.Assert.assertEquals(Assert.java:115)\n\tat org.junit.Assert.assertEquals(Assert.java:144)\n\tat dtu.library.acceptance_tests.LoginLogoutSteps.userGetsTheErrorMessage(LoginLogoutSteps.java:78)\n\tat ✽.user gets the error message \"Developer is not available\"(use_cases/student/add_developer_activity.feature:33)\n",
+=======
+  "error_message": "org.junit.ComparisonFailure: expected:\u003c[Developer is not available]\u003e but was:\u003c[]\u003e\r\n\tat org.junit.Assert.assertEquals(Assert.java:115)\r\n\tat org.junit.Assert.assertEquals(Assert.java:144)\r\n\tat dtu.library.acceptance_tests.LoginLogoutSteps.userGetsTheErrorMessage(LoginLogoutSteps.java:78)\r\n\tat ✽.user gets the error message \"Developer is not available\"(use_cases/student/add_developer_activity.feature:33)\r\n",
+>>>>>>> d4e20e191f04a979f4683ae45abce951e8238ecb
   "status": "failed"
 });
 formatter.uri("use_cases/student/add_developer_project.feature");
