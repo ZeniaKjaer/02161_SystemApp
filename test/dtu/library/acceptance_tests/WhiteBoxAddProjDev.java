@@ -44,8 +44,10 @@ public class WhiteBoxAddProjDev {
 		sysApp.addProjectDev(leadProj, devl);
 	  }
 	
-	@Test(expected = OperationNotAllowedException.class)
+	@Test
 	public void testInputSetC() throws OperationNotAllowedException {
+		expectedException.expect(OperationNotAllowedException.class);
+        expectedException.expectMessage("User is already part of project");
 		sysApp.getDevelopers().add(lead);
 		sysApp.getDevelopers().add(devl);
 		sysApp.userLogin("Lead");
@@ -54,16 +56,20 @@ public class WhiteBoxAddProjDev {
 		sysApp.addProjectDev(leadProj, devl);
 	}
 	
-	@Test(expected = OperationNotAllowedException.class)
+	@Test
 	  public void testInputSetD() throws OperationNotAllowedException {
+		expectedException.expect(OperationNotAllowedException.class);
+        expectedException.expectMessage("Project is not in the system");
 		sysApp.getDevelopers().add(lead);
 		sysApp.getDevelopers().add(devl);
 		sysApp.userLogin("Lead");
 		sysApp.addProjectDev(leadProj, devl);
 	  }
 	
-	@Test(expected = OperationNotAllowedException.class)
+	@Test
 	  public void testInputSetE() throws OperationNotAllowedException {
+		expectedException.expect(OperationNotAllowedException.class);
+        expectedException.expectMessage("Project leader authorization needed");
 		sysApp.getDevelopers().add(lead);
 		sysApp.getDevelopers().add(devl);
 		sysApp.userLogin("Lead");
