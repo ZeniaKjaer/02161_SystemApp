@@ -115,6 +115,7 @@ public class SystemApp {
 		else {
 			activity.setStart(project.getStart());
 			activity.setDeadline(project.getDeadline());
+			activity.updateDuration();
 			project.addActivity(activity);
 		}	
 	}
@@ -147,7 +148,7 @@ public class SystemApp {
 				}
 			}
 		} else //(!activeUser.equalsIgnoreCase(project.getProjectLeader())) 
-		{
+			{
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		}
 	}
@@ -208,6 +209,7 @@ public class SystemApp {
 				dev.removeActivityFromCalendar(activity);
 			}
 			activity.setStart(start);
+			activity.updateDuration();
 			for (Developer dev : activity.getActivityDevelopers()) {
 				dev.addActivityToCalendar(activity); 
 			}
@@ -228,6 +230,7 @@ public class SystemApp {
 				dev.removeActivityFromCalendar(activity);
 			}
 			activity.setDeadline(deadline);
+			activity.updateDuration();
 			for (Developer dev : activity.getActivityDevelopers()) {
 				dev.addActivityToCalendar(activity); 
 			}

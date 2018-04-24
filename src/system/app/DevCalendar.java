@@ -3,36 +3,40 @@ package system.app;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
-public class DevCalendar {
-	ArrayList<int[]> calendar = new ArrayList<int[]>();
+public class DevCalendar implements Cloneable {
+	private Map<Integer, int[]> calendar;
 
 	public DevCalendar(int startYear) {
-		for (int i = 0; i < 5; i++) {
-			int[] year = new int[54];
-			year[0] = startYear + i;
-			calendar.add(year);	
-
+		calendar = new LinkedHashMap<>();
+		for (int i = 0; i < 10; i++) {
+			int[] year = new int[53];			
+			calendar.put(startYear+1, year);
 		}
 	}
 
 	public void incrementActivity(Week week) {
-		// TODO Auto-generated method stub
-		
+		calendar.get(week.getYear())[week.getWeekOfYear()]++;
 	}
 
 	public void decrementActivity(Week week) {
-		// TODO Auto-generated method stub
-		
+		calendar.get(week.getYear())[week.getWeekOfYear()]--;
 	}
 
-	public DevCalendar copy() {
-		// TODO Auto-generated method stub
-		return null;
+	public DevCalendar copy() throws CloneNotSupportedException {
+		DevCalendar copy;
+		try {
+			copy = (DevCalendar) super.clone();
+		} catch (CloneNotSupportedException e) { // this should never happen
+			System.out.println("CloneNotSupportedException thrown " + e);
+	        return null;
+		}
+		return copy;
 	}
 
 	public int getActivityLevel(Week week) {
-		// TODO Auto-generated method stub
-		return 0;
+		return calendar.get(week.getYear())[week.getWeekOfYear()];
 	}
 }

@@ -59,6 +59,16 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.step({
+  "name": "activity timebudget is set to project timebudget",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.activityTimebudgetIsSetToProjectTimebudget()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "add activity when not project leader",
   "description": "",
@@ -173,8 +183,7 @@ formatter.match({
   "location": "ActivitySteps.developerHasActivityMarkedInHerCalendar()"
 });
 formatter.result({
-  "error_message": "java.lang.AssertionError: expected:\u003c1\u003e but was:\u003c2\u003e\r\n\tat org.junit.Assert.fail(Assert.java:88)\r\n\tat org.junit.Assert.failNotEquals(Assert.java:834)\r\n\tat org.junit.Assert.assertEquals(Assert.java:645)\r\n\tat org.junit.Assert.assertEquals(Assert.java:631)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.developerHasActivityMarkedInHerCalendar(ActivitySteps.java:156)\r\n\tat ✽.developer has activity marked in her calendar(use_cases/student/add_coworker_activity.feature:11)\r\n",
-  "status": "failed"
+  "status": "passed"
 });
 formatter.scenario({
   "name": "Developer not on activity adds co-worker to activity",
@@ -298,14 +307,6 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "developer is available",
-  "keyword": "And "
-});
-formatter.match({});
-formatter.result({
-  "status": "undefined"
-});
-formatter.step({
   "name": "user adds developer to activity",
   "keyword": "When "
 });
@@ -313,7 +314,7 @@ formatter.match({
   "location": "ActivitySteps.userAddsDeveloperToActivity()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "developer is working on activity",
@@ -323,7 +324,7 @@ formatter.match({
   "location": "ActivitySteps.developerIsWorkingOnActivity()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "developer has activity marked in her calendar",
@@ -333,7 +334,7 @@ formatter.match({
   "location": "ActivitySteps.developerHasActivityMarkedInHerCalendar()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.scenario({
   "name": "Add developer when not a project leader",
@@ -907,31 +908,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "there is a project",
+  "name": "there is a project with an activity",
   "keyword": "And "
 });
 formatter.match({
-  "location": "ProjectSteps.thereIsAProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is an activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "activity has been added to project",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.activityHasBeenAddedToProject()"
+  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
   "status": "passed"
@@ -1111,31 +1092,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "there is a project",
+  "name": "there is a project with an activity",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "ProjectSteps.thereIsAProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is an activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "activity has been added to project",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.activityHasBeenAddedToProject()"
+  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
   "status": "passed"
@@ -1649,6 +1610,16 @@ formatter.step({
 });
 formatter.match({
   "location": "TimeSteps.timeBudgetIsSetForActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "duration is updated",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.durationIsUpdated()"
 });
 formatter.result({
   "status": "passed"

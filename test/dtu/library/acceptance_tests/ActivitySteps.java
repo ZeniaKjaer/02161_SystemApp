@@ -62,6 +62,7 @@ public class ActivitySteps {
 	public void activityIsPartOfProject() throws Exception {
 	    assertThat(projectHelper.getProject().getProjectActivities(), hasItem(activityHelper.getActivity()));
 	}
+	
 	@When("^user adds developer to activity$")
 	public void userAddsDeveloperToActivity() throws Exception {
 		try {
@@ -98,11 +99,6 @@ public class ActivitySteps {
 		activityHelper.getActivity().removeActivityDev(user);
 	}
 	
-	@Given("^activity has been added to project$")
-	public void activityHasBeenAddedToProject() throws Exception {
-	    systemApp.addActivity(projectHelper.getProject(), activityHelper.getActivity());
-	}
-
 	@When("^user removes activity$")
 	public void userRemovesActivity() throws Exception {
 		try {
@@ -164,7 +160,25 @@ public class ActivitySteps {
 	
 	@Then("^activity is removed from calendar$")
 	public void activityIsRemovedFromCalendar() throws Exception {
-		
+		devCalendar = devHelper.getDeveloper().getDevCalendar();
+		activityDuration = activityHelper.getActivity().getDuration();
+		for (Week week : activityDuration) {
+			assertEquals(prevCalendar.getActivityLevel(week)-1, devCalendar.getActivityLevel(week));
+		}
+	}
+	
+	/////////////////
+	//   TODO
+	////////////////
+	@Then("^duration is updated$")
+	public void durationIsUpdated() throws Exception {
+	    // TODO
+	}
+	
+	@Then("^activity timebudget is set to project timebudget$")
+	public void activityTimebudgetIsSetToProjectTimebudget() throws Exception {
+		assertEquals(projectHelper.getProject().getStart(),activityHelper.getActivity().getStart());
+		assertEquals(projectHelper.getProject().getDeadline(),activityHelper.getActivity().getDeadline());
 	}
 
 }

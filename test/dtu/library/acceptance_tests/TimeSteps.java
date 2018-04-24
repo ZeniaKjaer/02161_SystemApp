@@ -30,12 +30,7 @@ public class TimeSteps {
 	private SystemApp systemApp;
 	private Project project;
 	private Activity activity;
-	private Calendar currentDate = new GregorianCalendar();
-	//	private int startWeek = 50;
-	//	private int startYear = 2018;
-	//	private int deadlineWeek = 2;
-	//	private int deadlineYear = 2019;
-	//	
+	private Calendar currentDate = new GregorianCalendar();	
 	private Calendar start, middle, deadline;
 	private ErrorMessageHolder errorMessageHolder;
 	private DeveloperHelper devHelper;
@@ -198,5 +193,5 @@ public class TimeSteps {
 				errorMessageHolder.setErrorMessage(e.getMessage());
 			}
 		}
-
+		
 }
