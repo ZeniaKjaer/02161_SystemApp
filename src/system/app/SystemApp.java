@@ -76,7 +76,7 @@ public class SystemApp {
 		// Skal være her iflg vores whitebox-test for denne metode
 		if(!projects.contains(project)) {
 			throw new OperationNotAllowedException("Project is not in the system");
-		} else if(!getDevelopers().contains(developer)) {
+		} else if(!isInTheSystem(developer.getId())) { // Jeg har �ndret dit if-statement
 			throw new OperationNotAllowedException("Developer is not in the system");
 		}
 		// whitebox-test tilføjelse slut

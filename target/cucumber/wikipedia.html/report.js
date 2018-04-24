@@ -499,11 +499,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-<<<<<<< HEAD
-  "error_message": "org.junit.ComparisonFailure: expected:\u003c[Developer is not available]\u003e but was:\u003c[]\u003e\n\tat org.junit.Assert.assertEquals(Assert.java:115)\n\tat org.junit.Assert.assertEquals(Assert.java:144)\n\tat dtu.library.acceptance_tests.LoginLogoutSteps.userGetsTheErrorMessage(LoginLogoutSteps.java:78)\n\tat ✽.user gets the error message \"Developer is not available\"(use_cases/student/add_developer_activity.feature:33)\n",
-=======
   "error_message": "org.junit.ComparisonFailure: expected:\u003c[Developer is not available]\u003e but was:\u003c[]\u003e\r\n\tat org.junit.Assert.assertEquals(Assert.java:115)\r\n\tat org.junit.Assert.assertEquals(Assert.java:144)\r\n\tat dtu.library.acceptance_tests.LoginLogoutSteps.userGetsTheErrorMessage(LoginLogoutSteps.java:78)\r\n\tat ✽.user gets the error message \"Developer is not available\"(use_cases/student/add_developer_activity.feature:33)\r\n",
->>>>>>> d4e20e191f04a979f4683ae45abce951e8238ecb
   "status": "failed"
 });
 formatter.uri("use_cases/student/add_developer_project.feature");
@@ -511,6 +507,48 @@ formatter.feature({
   "name": "Add developer to project",
   "description": "  Description: The project leader adds a developer to the project\n  Actors: Project leader",
   "keyword": "Feature"
+});
+formatter.background({
+  "name": "SystemApp has developers",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "SystemApp has developers",
+  "rows": [
+    {
+      "cells": [
+        "ABCD"
+      ]
+    },
+    {
+      "cells": [
+        "MTVD"
+      ]
+    },
+    {
+      "cells": [
+        "HERE"
+      ]
+    },
+    {
+      "cells": [
+        "ZEKT"
+      ]
+    },
+    {
+      "cells": [
+        "RITG"
+      ]
+    }
+  ],
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.systemappHasDevelopers(String\u003e)"
+});
+formatter.result({
+  "status": "passed"
 });
 formatter.scenario({
   "name": "Add developer to project successfully",
@@ -563,6 +601,48 @@ formatter.step({
 });
 formatter.match({
   "location": "ProjectSteps.developerIsPartOfTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "SystemApp has developers",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "SystemApp has developers",
+  "rows": [
+    {
+      "cells": [
+        "ABCD"
+      ]
+    },
+    {
+      "cells": [
+        "MTVD"
+      ]
+    },
+    {
+      "cells": [
+        "HERE"
+      ]
+    },
+    {
+      "cells": [
+        "ZEKT"
+      ]
+    },
+    {
+      "cells": [
+        "RITG"
+      ]
+    }
+  ],
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.systemappHasDevelopers(String\u003e)"
 });
 formatter.result({
   "status": "passed"
@@ -622,6 +702,48 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "SystemApp has developers",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "SystemApp has developers",
+  "rows": [
+    {
+      "cells": [
+        "ABCD"
+      ]
+    },
+    {
+      "cells": [
+        "MTVD"
+      ]
+    },
+    {
+      "cells": [
+        "HERE"
+      ]
+    },
+    {
+      "cells": [
+        "ZEKT"
+      ]
+    },
+    {
+      "cells": [
+        "RITG"
+      ]
+    }
+  ],
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.systemappHasDevelopers(String\u003e)"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Add developer to project twice",
   "description": "",
@@ -675,8 +797,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "error_message": "org.junit.ComparisonFailure: expected:\u003c[User is already part of project]\u003e but was:\u003c[Developer is not in the system]\u003e\n\tat org.junit.Assert.assertEquals(Assert.java:115)\n\tat org.junit.Assert.assertEquals(Assert.java:144)\n\tat dtu.library.acceptance_tests.LoginLogoutSteps.userGetsTheErrorMessage(LoginLogoutSteps.java:78)\n\tat ✽.user gets the error message \"User is already part of project\"(use_cases/student/add_developer_project.feature:25)\n",
-  "status": "failed"
+  "status": "passed"
 });
 formatter.uri("use_cases/student/change_project_leader.feature");
 formatter.feature({
