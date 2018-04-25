@@ -98,6 +98,13 @@ public class SystemApp extends Observable{
 	}
 
 	public void addProjectDev(Project project, Developer developer) throws OperationNotAllowedException{
+		// Skal være her iflg vores whitebox-test for denne metode
+		if(!projects.contains(project)) {
+			throw new OperationNotAllowedException("Project is not in the system");
+		} else if(!isInTheSystem(developer.getId())) { // Jeg har �ndret dit if-statement
+			throw new OperationNotAllowedException("Developer is not in the system");
+		}
+		// whitebox-test tilføjelse slut
 		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		} 
@@ -143,6 +150,7 @@ public class SystemApp extends Observable{
 		else {
 			activity.setStart(project.getStart());
 			activity.setDeadline(project.getDeadline());
+			activity.updateDuration();
 			project.addActivity(activity);
 		}	
 	}
@@ -164,10 +172,14 @@ public class SystemApp extends Observable{
 	}
 
 	public void addActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException{
+		for (Week week : activity.getDuration()) {
+			if (!developer.isAvailable(week)) {
+				throw new OperationNotAllowedException("Project leader authorization needed");
+			}
+		}
 		if (activity.isActivityDev(developer.getId())) {
 			throw new OperationNotAllowedException("Developer is already working on activity");
-		}
-		else if (activeUser.equalsIgnoreCase(project.getProjectLeader()) || activity.isActivityDev(activeUser)) {
+		}else if (activeUser.equalsIgnoreCase(project.getProjectLeader()) || activity.isActivityDev(activeUser)) {
 			for (Activity a: project.getProjectActivities()) {
 				if (a.getActivityName().equals(activity.getActivityName())) {
 					activity.addActivityDev(developer);
@@ -175,7 +187,7 @@ public class SystemApp extends Observable{
 				}
 			}
 		} else //(!activeUser.equalsIgnoreCase(project.getProjectLeader())) 
-		{
+			{
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		}
 	}
@@ -236,6 +248,7 @@ public class SystemApp extends Observable{
 				dev.removeActivityFromCalendar(activity);
 			}
 			activity.setStart(start);
+			activity.updateDuration();
 			for (Developer dev : activity.getActivityDevelopers()) {
 				dev.addActivityToCalendar(activity); 
 			}
@@ -256,6 +269,7 @@ public class SystemApp extends Observable{
 				dev.removeActivityFromCalendar(activity);
 			}
 			activity.setDeadline(deadline);
+			activity.updateDuration();
 			for (Developer dev : activity.getActivityDevelopers()) {
 				dev.addActivityToCalendar(activity); 
 			}

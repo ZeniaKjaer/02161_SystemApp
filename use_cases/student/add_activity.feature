@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## @author Rikke
 #Feature: Add activity to project
 #    Description: The project leader adds activities to the project
@@ -16,3 +17,24 @@
 #  	And there is an activity
 #  	When user adds activity to project
 #  	Then user gets the error message "Project leader authorization needed"
+=======
+# @author Rikke
+Feature: Add activity to project
+    Description: The project leader adds activities to the project
+    Actors: Project leader
+
+Scenario: project leader adds activity to project successfully
+  	Given user is the project leader
+	And there is a project
+  	And there is an activity
+  	When user adds activity to project
+  	Then activity is part of project
+	And activity timebudget is set to project timebudget
+
+Scenario: add activity when not project leader
+  	Given user is not the project leader
+  	And there is a project
+  	And there is an activity
+  	When user adds activity to project
+  	Then user gets the error message "Project leader authorization needed"
+>>>>>>> 5308749b0d8464cab072dc55ed242a4078ab71ec

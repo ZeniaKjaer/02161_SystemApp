@@ -62,10 +62,11 @@ public class ActivitySteps {
 	public void activityIsPartOfProject() throws Exception {
 	    assertThat(projectHelper.getProject().getProjectActivities(), hasItem(activityHelper.getActivity()));
 	}
+	
 	@When("^user adds developer to activity$")
 	public void userAddsDeveloperToActivity() throws Exception {
 		try {
-			prevCalendar = devHelper.getDeveloper().getDevCalendar().copy();
+			prevCalendar = devHelper.getDeveloper().getActivityLevel().copy();
 			systemApp.addActivityDev(projectHelper.getProject(), activityHelper.getActivity(), devHelper.getDeveloper());
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
@@ -98,11 +99,6 @@ public class ActivitySteps {
 		activityHelper.getActivity().removeActivityDev(user);
 	}
 	
-	@Given("^activity has been added to project$")
-	public void activityHasBeenAddedToProject() throws Exception {
-	    systemApp.addActivity(projectHelper.getProject(), activityHelper.getActivity());
-	}
-
 	@When("^user removes activity$")
 	public void userRemovesActivity() throws Exception {
 		try {
@@ -149,12 +145,24 @@ public class ActivitySteps {
 
 	@Given("^developer is available$")
 	public void developerIsAvailable() throws Exception {
-	    
+		activityDuration = activityHelper.getActivity().getDuration();
+		for (Week week : activityDuration) {
+			devHelper.getDeveloper().getActivityLevel().SetCalendar(week, 5);
+		}
 	}
+	
+	@Given("^developer is not available$")
+	public void developerIsNotAvailable() throws Exception {
+		activityDuration = activityHelper.getActivity().getDuration();
+		for (Week week : activityDuration) {
+			devHelper.getDeveloper().getActivityLevel().SetCalendar(week, 21);
+		}
+	}
+
 	
 	@Then("^developer has activity marked in her calendar$")
 	public void developerHasActivityMarkedInHerCalendar() throws Exception {
-		devCalendar = devHelper.getDeveloper().getDevCalendar();
+		devCalendar = devHelper.getDeveloper().getActivityLevel();
 		activityDuration = activityHelper.getActivity().getDuration();
 		for (Week week : activityDuration) {
 			assertEquals(prevCalendar.getActivityLevel(week)+1, devCalendar.getActivityLevel(week));
@@ -164,7 +172,25 @@ public class ActivitySteps {
 	
 	@Then("^activity is removed from calendar$")
 	public void activityIsRemovedFromCalendar() throws Exception {
-		
+		devCalendar = devHelper.getDeveloper().getActivityLevel();
+		activityDuration = activityHelper.getActivity().getDuration();
+		for (Week week : activityDuration) {
+			assertEquals(prevCalendar.getActivityLevel(week)-1, devCalendar.getActivityLevel(week));
+		}
+	}
+	
+	/////////////////
+	//   TODO
+	////////////////
+	@Then("^duration is updated$")
+	public void durationIsUpdated() throws Exception {
+	    // TODO
+	}
+	
+	@Then("^activity timebudget is set to project timebudget$")
+	public void activityTimebudgetIsSetToProjectTimebudget() throws Exception {
+		assertEquals(projectHelper.getProject().getStart(),activityHelper.getActivity().getStart());
+		assertEquals(projectHelper.getProject().getDeadline(),activityHelper.getActivity().getDeadline());
 	}
 
 }

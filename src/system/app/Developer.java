@@ -19,25 +19,38 @@ public class Developer {
 		devCalendar = new DevCalendar(startDay.get(Calendar.YEAR));
 	}
 
-	public String getId() {
-		return id;
-	}
-
 	public void addActivityToCalendar(Activity activity) {
 		for (Week week : activity.getDuration()) {
 			devCalendar.incrementActivity(week);
 		}
 	}
 
-	public DevCalendar getDevCalendar() {
-		return devCalendar;
-	}
-
-
 	public void removeActivityFromCalendar(Activity activity) {
 		for (Week week : activity.getDuration()) {
 			devCalendar.decrementActivity(week);
 		}
+	}
+	
+	// developer is available that week, if she has less than 20 activities in her calendar
+	public boolean isAvailable(Week week) {	
+		if (devCalendar.getActivityLevel(week) < 20) {
+			return true;
+		}
+		return false;
+	}
+	
+	// returns number of activities that week
+	public int getActivityLevel(Week week) {
+		return devCalendar.getActivityLevel(week);
+	}
+	
+	
+	public DevCalendar getActivityLevel() {
+		return devCalendar;
+	}
+	
+	public String getId() {
+		return id;
 	}
 
 }	

@@ -13,6 +13,7 @@ public class Activity {
 
 	public Activity(String activityName) {
 		this.acitivityName = activityName;
+		this.duration = new ArrayList<>();
 	}
 
 	public boolean isActivityDev(String developerId) {
@@ -60,7 +61,8 @@ public class Activity {
 		return duration;
 	}
 
-	public void setDuration(ArrayList<Week> duration) {
+	public void updateDuration() {
+		duration.clear();
 		Calendar tempDate = new GregorianCalendar(start.get(Calendar.YEAR), 
 				start.get(Calendar.MONTH),
 				start.get(Calendar.DAY_OF_MONTH));

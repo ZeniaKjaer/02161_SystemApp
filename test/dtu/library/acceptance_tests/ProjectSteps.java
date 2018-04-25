@@ -145,4 +145,5 @@ public class ProjectSteps {
 	public void developerIsNotPartOfTheProject() throws Exception {
 		projectHelper.getProject().getProjectDevelopers().remove(devHelper.getDeveloper());
 	}
+	
 }
