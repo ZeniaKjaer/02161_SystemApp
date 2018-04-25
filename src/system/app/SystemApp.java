@@ -101,7 +101,7 @@ public class SystemApp extends Observable{
 		// Skal være her iflg vores whitebox-test for denne metode
 		if(!projects.contains(project)) {
 			throw new OperationNotAllowedException("Project is not in the system");
-		} else if(!isInTheSystem(developer.getId())) { // Jeg har �ndret dit if-statement
+		} else if(!isInTheSystem(developer.getId())) { // Jeg har �ndret dit if-statement
 			throw new OperationNotAllowedException("Developer is not in the system");
 		}
 		// whitebox-test tilføjelse slut
@@ -114,6 +114,10 @@ public class SystemApp extends Observable{
 		else {
 			project.addProjectDev(developer);
 		}
+		
+		setChanged();
+		notifyObservers(NotificationType.ADD_DEVELOPER);
+		
 	}
 
 	public void removeProjectDev(Project project, Developer developer) throws OperationNotAllowedException {
@@ -126,6 +130,8 @@ public class SystemApp extends Observable{
 		else {
 			project.removeProjectDev(developer);
 		}
+		setChanged();
+		notifyObservers(NotificationType.REMOVE_DEVELOPER);
 	}
 
 	public void setProjectLeader(Project project, Developer developer) throws OperationNotAllowedException{

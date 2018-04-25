@@ -6,4 +6,4 @@ package system.app;
  * @author Mai-Thi
  *
  */
-public enum NotificationType {ACTIVE_USER, ADD_PROJECT, CHANGE_PROJECT_LEADER}
+public enum NotificationType {ACTIVE_USER, ADD_PROJECT, CHANGE_PROJECT_LEADER, ADD_DEVELOPER, REMOVE_DEVELOPER}

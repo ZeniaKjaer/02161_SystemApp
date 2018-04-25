@@ -8,9 +8,9 @@ import java.io.PrintStream;
 import java.util.Observable;
 import java.util.Observer;
 import system.app.OperationNotAllowedException;
-import system.app.Project;
 import system.app.SystemApp;
 import system.app.SystemAppState;
+import system.app.NotificationType;
 
 public class SystemAppUI implements Observer {
 	private SystemApp systemApp;
@@ -28,7 +28,6 @@ public class SystemAppUI implements Observer {
 
 
 	public static void main(String[] args) throws Exception {
-
 		new SystemAppUI().loginLoop(System.in, System.out);
 
 	}
@@ -61,10 +60,11 @@ public class SystemAppUI implements Observer {
 		//out.println("   0) Exit");
 		out.println("   1) Create a project");
 		out.println("   2) Add developer to a project");
-		out.println("   3) Change project leader");
-		out.println("   4) Remove developer from a project");
-		out.println("   5) Set time budget for a project");
-		out.println("   6) Logout");
+		out.println("   3) Remove developer from a project");
+		out.println("   4) Change project leader");
+		out.println("   5) Set a new start date for a project");
+		out.println("   6) Set a new deadline for a project");
+		out.println("   7) Logout");
 		out.println("Select a number (1-6): ");
 
 	}
@@ -88,47 +88,56 @@ public class SystemAppUI implements Observer {
 	private void processChoice(int number,InputStream in, PrintStream out) throws IOException {
 		switch (number) {
 		case 1:
-			System.out.println("CREATE A PROJECT");
+			out.println("CREATE A PROJECT");
 			state.createProject(systemApp);
 			break;
 
 		case 2:
-			System.out.println("ADD DEVELOPER TO A PROJECT");
+			out.println("ADD DEVELOPER TO A PROJECT");
 			state.addDelevoperToProject(systemApp);
 			break;
 		case 3:
-			System.out.println("CHANGE PROJECT LEADER");
-			state.changeProjectLeader(systemApp);
+			out.println("REMOVE DEVELOPER FROM A PROJECT");
+			state.removeDeveloperFromProject(systemApp);
 			break;
 		case 4:
-			System.out.println("Remove developer from a project");
+			out.println("CHANGE PROJECT LEADER");
+			state.changeProjectLeader(systemApp);
 			break;
 		case 5:
-			System.out.print("Set time budget for a project");
+			out.print("SET A NEW START DATE FOR A PROJECT");
+			state.setNewStartDateForProject(systemApp);
 			break;
 		case 6:
+			out.print("SET A NEW DEADLINE FOR A PROJECT");
+			state.setNewDeadlineForProject(systemApp);
+			break;
+		case 7:
 			loginLoop(in, out);
-			System.out.println("User is logged out");
+			out.println("User is logged out");
 			break;
 		default:
 			break;
 		}
 	}
 
-	@Override
 	public void update(Observable o, Object aspect) {
 		SystemApp s = (SystemApp) o;
 		
-		if(system.app.NotificationType.ACTIVE_USER.equals(aspect)) {
+		if(NotificationType.ACTIVE_USER.equals(aspect)) {
 			System.out.println("Active user: " + s.getActiveUser());
 		}
-		
-		if (system.app.NotificationType.ADD_PROJECT.equals(aspect)) {
+		if (NotificationType.ADD_PROJECT.equals(aspect)) {
 			System.out.println("Project has been added to the system.");
 		}
-		
-		if (system.app.NotificationType.CHANGE_PROJECT_LEADER.equals(aspect)) {
+		if (NotificationType.CHANGE_PROJECT_LEADER.equals(aspect)) {
 			System.out.println("The project leader has been changed");
+		}
+		if (NotificationType.ADD_DEVELOPER.equals(aspect)) {
+			System.out.println("The developer has been added.");
+		}
+		if (NotificationType.REMOVE_DEVELOPER.equals(aspect)) {
+			System.out.println("The developer has been removed.");
 		}
 	}
 
