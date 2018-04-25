@@ -1,6 +1,8 @@
 package system.app;
 
 
+import java.io.IOException;
+import java.util.Observable;
 import java.time.Month;
 import java.time.temporal.WeekFields;
 import java.util.*;
@@ -8,7 +10,7 @@ import java.util.*;
 import dtu.library.acceptance_tests.ProjectHelper;
 import system.app.DateServer;
 
-public class SystemApp {
+public class SystemApp extends Observable{
 
 	private List<Developer> developers = new ArrayList<Developer>();
 	private boolean loggedIn = false;
@@ -19,6 +21,19 @@ public class SystemApp {
 
 	private static final int DEADLINE_ADVANCE_DATE = 3; 
 
+
+	/**
+	 * Constructs a SystemApp with specific developers and projects
+	 */
+
+	public SystemApp() {
+		developers.add(new Developer("ABCD"));
+		developers.add(new Developer("HERE"));
+		developers.add(new Developer("MTVD"));
+		developers.add(new Developer("RITG"));
+		developers.add(new Developer("ZEKT"));
+
+	}
 
 	public void addDeveloper(Developer developer) {
 		developers.add(developer);	
@@ -51,6 +66,9 @@ public class SystemApp {
 			activeUser = id;
 			loggedIn = true;
 		}
+
+		setChanged();
+		notifyObservers(NotificationType.ACTIVE_USER);
 	}
 
 	public void addProject(Project project) throws OperationNotAllowedException{
@@ -69,7 +87,14 @@ public class SystemApp {
 		int year = 18;
 		String projectId = ""+ year + nextProjectID++; 
 		project.setProjectId(projectId);
+		
+		project.setProjectLeader(activeUser);
+		
 		projects.add(project); 	
+		
+		setChanged();
+		notifyObservers(NotificationType.ADD_PROJECT);
+		
 	}
 
 	public void addProjectDev(Project project, Developer developer) throws OperationNotAllowedException{
@@ -106,6 +131,9 @@ public class SystemApp {
 		else {
 			project.setProjectLeader(developer.getId());
 		}
+		
+		setChanged();
+		notifyObservers(NotificationType.CHANGE_PROJECT_LEADER);
 	}
 
 	public void addActivity(Project project, Activity activity) throws OperationNotAllowedException {
@@ -170,7 +198,7 @@ public class SystemApp {
 
 	public void userLogout() {
 		activeUser = "";
-		loggedIn = false;	
+		loggedIn = false;
 	}
 
 	public void setProjectStart(Project project, Calendar start) throws OperationNotAllowedException {
@@ -255,5 +283,7 @@ public class SystemApp {
 	public Calendar getDate() {
 		return dateServer.getDate();
 	}
+
+
 
 }
