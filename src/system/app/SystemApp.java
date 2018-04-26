@@ -88,8 +88,6 @@ public class SystemApp extends Observable{
 		String projectId = ""+ year + nextProjectID++; 
 		project.setProjectId(projectId);
 		
-		project.setProjectLeader(activeUser);
-		
 		projects.add(project); 	
 		
 		setChanged();
@@ -162,9 +160,12 @@ public class SystemApp extends Observable{
 	}
 
 	public void removeActivity(Project project, Activity activity) throws OperationNotAllowedException {
-		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+		if(!projects.contains(project)) {
+			throw new OperationNotAllowedException("Project is not in the system"); 
+		}
+		else if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
-		} 
+		}
 		else if (!project.isProjectActivity(activity)) {
 			throw new OperationNotAllowedException("Activity is not part of the project");
 		} 
