@@ -72,8 +72,10 @@ public class WhiteBoxAddProjDev {
         expectedException.expectMessage("Project leader authorization needed");
 		sysApp.getDevelopers().add(lead);
 		sysApp.getDevelopers().add(devl);
-		sysApp.userLogin("Lead");
+		sysApp.userLogin("devl");
 		sysApp.addProject(notLeadProj);
+		sysApp.userLogout();
+		sysApp.userLogin("Lead");
 		sysApp.addProjectDev(notLeadProj, devl);
 	  }
 

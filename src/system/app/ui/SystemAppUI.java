@@ -75,16 +75,25 @@ public class SystemAppUI implements Observer {
 	}
 	private void showMenu(PrintStream out) {
 		//out.println("   0) Exit");
+		out.println("Project:");
 		out.println("   1) Create a project");
 		out.println("   2) Add developer to a project");
 		out.println("   3) Remove developer from a project");
 		out.println("   4) Change project leader");
 		out.println("   5) Set a new start date for a project");
 		out.println("   6) Set a new deadline for a project");
+		out.println("Activity:");
 		out.println("   7) Add activity to a project");
 		out.println("   8) Remove activity from a project");
-		out.println("   9) Logout");
-		out.println("Select a number (1-6): ");
+		out.println("   9) Add developer to an activity****");		
+		out.println("   10) Remove developer from an activity****");	
+		out.println("   11) Set a new start date for an activity*****");	
+		out.println("   12) Set a new deadline for an activity*****");	
+		out.println("Developers:");
+		out.println("   13) Get available developers****");
+		out.println("Logout:");
+		out.println("   14) Logout");
+		out.println("Select a number (1-11): ");
 
 	}
 	private void processChoice(int number,InputStream in, PrintStream out) throws IOException {
@@ -107,11 +116,11 @@ public class SystemAppUI implements Observer {
 			state.changeProjectLeader(systemApp);
 			break;
 		case 5:
-			out.print("SET A NEW START DATE FOR A PROJECT");
+			out.println("SET A NEW START DATE FOR A PROJECT");
 			state.setNewStartDateForProject(systemApp);
 			break;
 		case 6:
-			out.print("SET A NEW DEADLINE FOR A PROJECT");
+			out.println("SET A NEW DEADLINE FOR A PROJECT");
 			state.setNewDeadlineForProject(systemApp);
 			break;
 		case 7:
@@ -123,6 +132,18 @@ public class SystemAppUI implements Observer {
 			state.removeActivityFromProject(systemApp);
 			break;
 		case 9:
+			out.println("ADD DEVELOPER TO AN ACTIVITY");
+			state.addDeveloperToActivity(systemApp);
+			break;
+		case 10:
+			out.println("REMOVE DEVELOPER FROM AN ACTIVITY");
+			state.removeDeveloperFromActivity(systemApp);
+			break;
+		case 11:
+			out.println("SET A NEW START DATE FOR AN ACTIVITY");
+			state.setNewStartDateForActivity(systemApp);
+			break;
+		case 14:
 			loginLoop(in, out);
 			out.println("User is logged out");
 			break;
@@ -138,7 +159,7 @@ public class SystemAppUI implements Observer {
 			System.out.println("Active user: " + s.getActiveUser());
 		}
 		if (NotificationType.ADD_PROJECT.equals(aspect)) {
-			System.out.println("Project has been added to the system.");
+			System.out.println("The project has been added to the system.");
 		}
 		if (NotificationType.CHANGE_PROJECT_LEADER.equals(aspect)) {
 			System.out.println("The project leader has been changed");
