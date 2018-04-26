@@ -61,7 +61,7 @@ public class SystemAppState {
 		System.out.print("Enter a project name: ");
 		String projectName = rs.readLine();
 		try {
-			systemApp.addProject(new Project(null, null, projectName));
+			systemApp.addProject(new Project(null, systemApp.getActiveUser(), projectName));
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}

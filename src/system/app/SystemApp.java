@@ -107,8 +107,6 @@ public class SystemApp extends Observable{
 		String projectId = ""+ year + nextProjectID++; 
 		project.setProjectId(projectId);
 		
-		project.setProjectLeader(activeUser);
-		
 		projects.add(project); 	
 		
 		setChanged();
