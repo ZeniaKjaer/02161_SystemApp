@@ -89,11 +89,11 @@ public class SystemAppUI implements Observer {
 		out.println("   10) Remove developer from an activity****");	
 		out.println("   11) Set a new start date for an activity*****");	
 		out.println("   12) Set a new deadline for an activity*****");	
-		out.println("Developers:");
-		out.println("   13) Get available developers****");
+		out.println("Overview:");
+		out.println("   13) Get available developers !!mangler!!");
 		out.println("Logout:");
 		out.println("   14) Logout");
-		out.println("Select a number (1-11): ");
+		out.println("Select a number (1-14): ");
 
 	}
 	private void processChoice(int number,InputStream in, PrintStream out) throws IOException {
@@ -142,6 +142,10 @@ public class SystemAppUI implements Observer {
 		case 11:
 			out.println("SET A NEW START DATE FOR AN ACTIVITY");
 			state.setNewStartDateForActivity(systemApp);
+			break;
+		case 12:
+			out.println("SET A NEW DEADLINE FOR AN ACTIVITY");
+			state.setNewDeadlineForActivity(systemApp);
 			break;
 		case 14:
 			loginLoop(in, out);

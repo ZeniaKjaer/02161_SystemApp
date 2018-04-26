@@ -203,7 +203,7 @@ formatter.match({
   "location": "ActivitySteps.developerHasActivityMarkedInHerCalendar()"
 });
 formatter.result({
-  "error_message": "java.lang.AssertionError: expected:\u003c2\u003e but was:\u003c1\u003e\r\n\tat org.junit.Assert.fail(Assert.java:88)\r\n\tat org.junit.Assert.failNotEquals(Assert.java:834)\r\n\tat org.junit.Assert.assertEquals(Assert.java:645)\r\n\tat org.junit.Assert.assertEquals(Assert.java:631)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.developerHasActivityMarkedInHerCalendar(ActivitySteps.java:173)\r\n\tat ✽.developer has activity marked in her calendar(use_cases/student/add_developer_activity.feature:12)\r\n",
+  "error_message": "java.lang.AssertionError: expected:\u003c2\u003e but was:\u003c1\u003e\n\tat org.junit.Assert.fail(Assert.java:88)\n\tat org.junit.Assert.failNotEquals(Assert.java:834)\n\tat org.junit.Assert.assertEquals(Assert.java:645)\n\tat org.junit.Assert.assertEquals(Assert.java:631)\n\tat dtu.library.acceptance_tests.ActivitySteps.developerHasActivityMarkedInHerCalendar(ActivitySteps.java:173)\n\tat ✽.developer has activity marked in her calendar(use_cases/student/add_developer_activity.feature:12)\n",
   "status": "failed"
 });
 formatter.scenario({
@@ -1006,7 +1006,7 @@ formatter.match({
   "location": "ActivitySteps.activityIsRemovedFromCalendar()"
 });
 formatter.result({
-  "error_message": "java.lang.AssertionError: expected:\u003c-1\u003e but was:\u003c0\u003e\r\n\tat org.junit.Assert.fail(Assert.java:88)\r\n\tat org.junit.Assert.failNotEquals(Assert.java:834)\r\n\tat org.junit.Assert.assertEquals(Assert.java:645)\r\n\tat org.junit.Assert.assertEquals(Assert.java:631)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.activityIsRemovedFromCalendar(ActivitySteps.java:182)\r\n\tat ✽.activity is removed from calendar(use_cases/student/remove_activty.feature:19)\r\n",
+  "error_message": "java.lang.AssertionError: expected:\u003c-1\u003e but was:\u003c0\u003e\n\tat org.junit.Assert.fail(Assert.java:88)\n\tat org.junit.Assert.failNotEquals(Assert.java:834)\n\tat org.junit.Assert.assertEquals(Assert.java:645)\n\tat org.junit.Assert.assertEquals(Assert.java:631)\n\tat dtu.library.acceptance_tests.ActivitySteps.activityIsRemovedFromCalendar(ActivitySteps.java:182)\n\tat ✽.activity is removed from calendar(use_cases/student/remove_activty.feature:19)\n",
   "status": "failed"
 });
 formatter.background({
@@ -1262,7 +1262,7 @@ formatter.match({
   "location": "ActivitySteps.activityIsRemovedFromCalendar()"
 });
 formatter.result({
-  "error_message": "java.lang.AssertionError: expected:\u003c-2\u003e but was:\u003c-1\u003e\r\n\tat org.junit.Assert.fail(Assert.java:88)\r\n\tat org.junit.Assert.failNotEquals(Assert.java:834)\r\n\tat org.junit.Assert.assertEquals(Assert.java:645)\r\n\tat org.junit.Assert.assertEquals(Assert.java:631)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.activityIsRemovedFromCalendar(ActivitySteps.java:182)\r\n\tat ✽.activity is removed from calendar(use_cases/student/remove_developer_activity.feature:12)\r\n",
+  "error_message": "java.lang.AssertionError: expected:\u003c-2\u003e but was:\u003c-1\u003e\n\tat org.junit.Assert.fail(Assert.java:88)\n\tat org.junit.Assert.failNotEquals(Assert.java:834)\n\tat org.junit.Assert.assertEquals(Assert.java:645)\n\tat org.junit.Assert.assertEquals(Assert.java:631)\n\tat dtu.library.acceptance_tests.ActivitySteps.activityIsRemovedFromCalendar(ActivitySteps.java:182)\n\tat ✽.activity is removed from calendar(use_cases/student/remove_developer_activity.feature:12)\n",
   "status": "failed"
 });
 formatter.scenario({

@@ -3,6 +3,7 @@ package system.app;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -49,12 +50,11 @@ public class SystemAppState {
 		System.out.print("Enter year: ");
 		int year = Integer.valueOf(rs.readLine());
 		System.out.print("Enter month: ");
-		int month = Integer.valueOf(rs.readLine());
+		int month = Integer.valueOf(rs.readLine()) + 1; // Month is 0-based
 		System.out.print("Enter day of month: ");
 		int day = Integer.valueOf(rs.readLine());
 		
-		Calendar date = new GregorianCalendar(year, month, day);
-		return date;
+		return new GregorianCalendar(year, month, day);
 	}
 
 	public void createProject(SystemApp systemApp) throws IOException {
@@ -96,6 +96,7 @@ public class SystemAppState {
 	public void setNewStartDateForProject(SystemApp systemApp) throws IOException, NumberFormatException {
 		try {
 			systemApp.setProjectStart(enterProject(systemApp), enterDate());
+			
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
@@ -167,6 +168,18 @@ public class SystemAppState {
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
+	}
+
+	public void setNewDeadlineForActivity(SystemApp systemApp) throws IOException {
+		Project project = enterProject(systemApp);
+		Activity activity = enterActivity(project);
+		
+		try {
+			systemApp.setActivityDeadline(project, activity, enterDate());
+		} catch (OperationNotAllowedException e) {
+			System.out.println(e);
+		}
+		
 	}
 
 }
