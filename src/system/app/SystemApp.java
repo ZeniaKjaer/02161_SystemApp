@@ -1,6 +1,8 @@
 package system.app;
 
 
+import java.io.IOException;
+import java.util.Observable;
 import java.time.Month;
 import java.time.temporal.WeekFields;
 import java.util.*;
@@ -8,7 +10,7 @@ import java.util.*;
 import dtu.library.acceptance_tests.ProjectHelper;
 import system.app.DateServer;
 
-public class SystemApp {
+public class SystemApp extends Observable{
 
 	private List<Developer> developers = new ArrayList<Developer>();
 	private boolean loggedIn = false;
@@ -19,6 +21,19 @@ public class SystemApp {
 
 	private static final int DEADLINE_ADVANCE_DATE = 3; 
 
+
+	/**
+	 * Constructs a SystemApp with specific developers and projects
+	 */
+
+	public SystemApp() {
+		developers.add(new Developer("ABCD"));
+		developers.add(new Developer("HERE"));
+		developers.add(new Developer("MTVD"));
+		developers.add(new Developer("RITG"));
+		developers.add(new Developer("ZEKT"));
+
+	}
 
 	public void addDeveloper(Developer developer) {
 		developers.add(developer);	
@@ -50,6 +65,9 @@ public class SystemApp {
 			activeUser = id;
 			loggedIn = true;
 		}
+
+		setChanged();
+		notifyObservers(NotificationType.ACTIVE_USER);
 	}
 
 	public void userLogout() {
@@ -64,6 +82,15 @@ public class SystemApp {
 		return false;
 	}
 
+	public boolean isAvailableForActivity(Developer developer, Activity activity) {
+		for (Week week : activity.getDuration()) {
+			if (!developer.isAvailable(week)) {
+				return false;
+			}
+		} 
+		return true;
+	} 
+	
 	public void addProject(Project project) throws OperationNotAllowedException{
 		for (Project p: projects) {
 			if (p.getProjectName().equalsIgnoreCase(project.getProjectName())) { 
@@ -79,14 +106,21 @@ public class SystemApp {
 		int year = getDate().get(Calendar.YEAR);
 		String projectId = ""+ year + nextProjectID++; 
 		project.setProjectId(projectId);
+		
+		project.setProjectLeader(activeUser);
+		
 		projects.add(project); 	
+		
+		setChanged();
+		notifyObservers(NotificationType.ADD_PROJECT);
+		
 	}
 
 	public void addProjectDev(Project project, Developer developer) throws OperationNotAllowedException{
 		// Skal vaere her iflg vores whitebox-test for denne metode
 		if(!projects.contains(project)) {
 			throw new OperationNotAllowedException("Project is not in the system");
-		} else if(!isInTheSystem(developer.getId())) { // Jeg har ændret dit if-statement
+		} else if(!isInTheSystem(developer.getId())) { // Jeg har ï¿½ndret dit if-statement
 			throw new OperationNotAllowedException("Developer is not in the system");
 		}
 		// whitebox-test tilfoejelse slut
@@ -99,6 +133,10 @@ public class SystemApp {
 		else {
 			project.addProjectDev(developer);
 		}
+		
+		setChanged();
+		notifyObservers(NotificationType.ADD_DEVELOPER);
+		
 	}
 
 	public void removeProjectDev(Project project, Developer developer) throws OperationNotAllowedException {
@@ -111,6 +149,8 @@ public class SystemApp {
 		else {
 			project.removeProjectDev(developer);
 		}
+		setChanged();
+		notifyObservers(NotificationType.REMOVE_DEVELOPER);
 	}
 
 	public void setProjectLeader(Project project, Developer developer) throws OperationNotAllowedException{
@@ -123,6 +163,9 @@ public class SystemApp {
 		else {
 			project.setProjectLeader(developer.getId());
 		}
+		
+		setChanged();
+		notifyObservers(NotificationType.CHANGE_PROJECT_LEADER);
 	}
 
 	public void addActivity(Project project, Activity activity) throws OperationNotAllowedException {
@@ -269,15 +312,6 @@ public class SystemApp {
 
 	public Calendar getDate() {
 		return dateServer.getDate();
-	}
-
-	public boolean isAvailableForActivity(Developer developer, Activity activity) {
-		for (Week week : activity.getDuration()) {
-			if (!developer.isAvailable(week)) {
-				return false;
-			}
-		} 
-		return true;
 	}
 
 }

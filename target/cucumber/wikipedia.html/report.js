@@ -163,7 +163,8 @@ formatter.match({
   "location": "ActivitySteps.userAddsDeveloperToActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.NullPointerException\n\tat system.app.Developer.addActivityToCalendar(Developer.java:27)\n\tat system.app.SystemApp.addActivityDev(SystemApp.java:146)\n\tat dtu.library.acceptance_tests.ActivitySteps.userAddsDeveloperToActivity(ActivitySteps.java:69)\n\tat ✽.user adds developer to activity(use_cases/student/add_coworker_activity.feature:9)\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "developer is working on activity",
@@ -173,7 +174,7 @@ formatter.match({
   "location": "ActivitySteps.developerIsWorkingOnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "developer has activity marked in her calendar",
@@ -183,7 +184,11 @@ formatter.match({
   "location": "ActivitySteps.developerHasActivityMarkedInHerCalendar()"
 });
 formatter.result({
+<<<<<<< HEAD
+  "status": "skipped"
+=======
   "status": "passed"
+>>>>>>> 5308749b0d8464cab072dc55ed242a4078ab71ec
 });
 formatter.scenario({
   "name": "Developer not on activity adds co-worker to activity",
@@ -307,6 +312,8 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
+<<<<<<< HEAD
+=======
   "name": "developer is available",
   "keyword": "And "
 });
@@ -317,6 +324,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
+>>>>>>> 5308749b0d8464cab072dc55ed242a4078ab71ec
   "name": "user adds developer to activity",
   "keyword": "When "
 });
@@ -324,7 +332,12 @@ formatter.match({
   "location": "ActivitySteps.userAddsDeveloperToActivity()"
 });
 formatter.result({
+<<<<<<< HEAD
+  "error_message": "java.lang.NullPointerException\n\tat system.app.Developer.addActivityToCalendar(Developer.java:27)\n\tat system.app.SystemApp.addActivityDev(SystemApp.java:146)\n\tat dtu.library.acceptance_tests.ActivitySteps.userAddsDeveloperToActivity(ActivitySteps.java:69)\n\tat ✽.user adds developer to activity(use_cases/student/add_developer_activity.feature:11)\n",
+  "status": "failed"
+=======
   "status": "passed"
+>>>>>>> 5308749b0d8464cab072dc55ed242a4078ab71ec
 });
 formatter.step({
   "name": "developer is working on activity",
@@ -1382,7 +1395,8 @@ formatter.match({
   "location": "ActivitySteps.projectLeaderRemovesDeveloperFromActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.NullPointerException\n\tat system.app.Developer.removeActivityFromCalendar(Developer.java:38)\n\tat system.app.SystemApp.removeActivityDev(SystemApp.java:167)\n\tat dtu.library.acceptance_tests.ActivitySteps.projectLeaderRemovesDeveloperFromActivity(ActivitySteps.java:139)\n\tat ✽.project leader removes developer from activity(use_cases/student/remove_developer_activity.feature:10)\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "developer is not working on activity",
@@ -1392,7 +1406,7 @@ formatter.match({
   "location": "ActivitySteps.developerIsNotWorkingOnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Remove developer from activity when not a project leader",

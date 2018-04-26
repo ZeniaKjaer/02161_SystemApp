@@ -1,4 +1,3 @@
-# @author Zenia
 Feature: Add project developer to activity
     Description:  The project leader adds project developer to a project activity
     Actors: Project leader
@@ -31,5 +30,3 @@ Scenario: Add developer who is not available to activity
   	And developer is not available 
   	When user adds developer to activity
   	Then user gets the error message "Developer is not available"
-	
-
