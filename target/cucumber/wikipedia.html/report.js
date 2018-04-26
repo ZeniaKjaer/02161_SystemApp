@@ -450,7 +450,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Add developer to activity successfully",
+  "name": "Add developer who is not available to activity",
   "description": "",
   "keyword": "Scenario"
 });

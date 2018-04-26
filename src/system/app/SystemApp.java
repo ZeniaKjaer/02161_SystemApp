@@ -16,8 +16,8 @@ public class SystemApp extends Observable{
 	private boolean loggedIn = false;
 	private String activeUser = "";
 	private List<Project> projects = new ArrayList<Project>();
-	private int nextProjectID = 1;
-	private DateServer dateServer;
+	private int nextProjectID = 1000;
+	private DateServer dateServer = new DateServer();;
 
 	private static final int DEADLINE_ADVANCE_DATE = 3; 
 
@@ -41,7 +41,6 @@ public class SystemApp extends Observable{
 
 	/**
 	 * checks if a there's a developer with given id is on the list of developers in the company
-	 * 
 	 * @param id
 	 * @return true if developer is in the system 
 	 * @throws OperationNotAllowedException
@@ -54,7 +53,7 @@ public class SystemApp extends Observable{
 			}
 		}
 		return false;
-	} 
+	}
 
 	public void userLogin(String id) throws OperationNotAllowedException  {
 		if (!isInTheSystem(id)) {
@@ -71,6 +70,27 @@ public class SystemApp extends Observable{
 		notifyObservers(NotificationType.ACTIVE_USER);
 	}
 
+	public void userLogout() {
+		activeUser = "";
+		loggedIn = false;	
+	}
+
+	public boolean isProjectLeader(Project project) {
+		if(activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean isAvailableForActivity(Developer developer, Activity activity) {
+		for (Week week : activity.getDuration()) {
+			if (!developer.isAvailable(week)) {
+				return false;
+			}
+		} 
+		return true;
+	} 
+	
 	public void addProject(Project project) throws OperationNotAllowedException{
 		for (Project p: projects) {
 			if (p.getProjectName().equalsIgnoreCase(project.getProjectName())) { 
@@ -83,8 +103,7 @@ public class SystemApp extends Observable{
 		deadline.add(Calendar.WEEK_OF_YEAR,  DEADLINE_ADVANCE_DATE);
 		project.setDeadline(deadline);
 
-		//int year = getDate().YEAR;
-		int year = 18;
+		int year = getDate().get(Calendar.YEAR);
 		String projectId = ""+ year + nextProjectID++; 
 		project.setProjectId(projectId);
 		
@@ -98,14 +117,14 @@ public class SystemApp extends Observable{
 	}
 
 	public void addProjectDev(Project project, Developer developer) throws OperationNotAllowedException{
-		// Skal være her iflg vores whitebox-test for denne metode
+		// Skal vaere her iflg vores whitebox-test for denne metode
 		if(!projects.contains(project)) {
 			throw new OperationNotAllowedException("Project is not in the system");
 		} else if(!isInTheSystem(developer.getId())) { // Jeg har �ndret dit if-statement
 			throw new OperationNotAllowedException("Developer is not in the system");
 		}
-		// whitebox-test tilføjelse slut
-		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+		// whitebox-test tilfoejelse slut
+		if (!isProjectLeader(project)) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		} 
 		else if (project.isProjectDev(developer)) {
@@ -121,7 +140,7 @@ public class SystemApp extends Observable{
 	}
 
 	public void removeProjectDev(Project project, Developer developer) throws OperationNotAllowedException {
-		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+		if (!isProjectLeader(project)) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		} 
 		else if (!project.isProjectDev(developer)) {
@@ -135,7 +154,7 @@ public class SystemApp extends Observable{
 	}
 
 	public void setProjectLeader(Project project, Developer developer) throws OperationNotAllowedException{
-		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+		if (!isProjectLeader(project)) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		} 
 		else if (!project.isProjectDev(developer)) {
@@ -150,7 +169,7 @@ public class SystemApp extends Observable{
 	}
 
 	public void addActivity(Project project, Activity activity) throws OperationNotAllowedException {
-		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+		if (!isProjectLeader(project)) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		} 
 		else {
@@ -164,7 +183,7 @@ public class SystemApp extends Observable{
 	}
 
 	public void removeActivity(Project project, Activity activity) throws OperationNotAllowedException {
-		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+		if (!isProjectLeader(project)) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		} 
 		else if (!project.isProjectActivity(activity)) {
@@ -182,28 +201,23 @@ public class SystemApp extends Observable{
 	}
 
 	public void addActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException{
-		for (Week week : activity.getDuration()) {
-			if (!developer.isAvailable(week)) {
-				throw new OperationNotAllowedException("Project leader authorization needed");
-			}
-		}
-		if (activity.isActivityDev(developer.getId())) {
+		if (!isAvailableForActivity(developer, activity)) {
+			throw new OperationNotAllowedException("Developer is not available");
+		} 
+		else if (activity.isActivityDev(developer.getId())) {
 			throw new OperationNotAllowedException("Developer is already working on activity");
-		}else if (activeUser.equalsIgnoreCase(project.getProjectLeader()) || activity.isActivityDev(activeUser)) {
-			for (Activity a: project.getProjectActivities()) {
-				if (a.getActivityName().equals(activity.getActivityName())) {
-					activity.addActivityDev(developer);
-					developer.addActivityToCalendar(activity);
-				}
-			}
-		} else //(!activeUser.equalsIgnoreCase(project.getProjectLeader())) 
-			{
+		}
+		else if (isProjectLeader(project) || activity.isActivityDev(activeUser)) {
+			activity.addActivityDev(developer);
+			developer.addActivityToCalendar(activity);
+		} 
+		else { 
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		}
 	}
 
 	public void removeActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException {
-		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+		if (!isProjectLeader(project)) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		} 
 		else if (!project.isProjectActivity(activity)) {
@@ -218,13 +232,8 @@ public class SystemApp extends Observable{
 		}	
 	}
 
-	public void userLogout() {
-		activeUser = "";
-		loggedIn = false;
-	}
-
 	public void setProjectStart(Project project, Calendar start) throws OperationNotAllowedException {
-		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+		if (!isProjectLeader(project)) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		}
 		else if (start.after(project.getDeadline())) {
@@ -237,7 +246,7 @@ public class SystemApp extends Observable{
 	}
 
 	public void setProjectDeadline(Project project, Calendar deadline)throws OperationNotAllowedException {
-		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+		if (!isProjectLeader(project)) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		}
 		else if(deadline.before(project.getStart())) {
@@ -250,7 +259,7 @@ public class SystemApp extends Observable{
 	}
 
 	public void setActivityStart(Project project, Activity activity, Calendar start) throws OperationNotAllowedException {
-		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+		if (!isProjectLeader(project)) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		}
 		else if(start.after(activity.getDeadline())) {
@@ -272,7 +281,7 @@ public class SystemApp extends Observable{
 	}
 
 	public void setActivityDeadline(Project project, Activity activity, Calendar deadline) throws OperationNotAllowedException {
-		if (!activeUser.equalsIgnoreCase(project.getProjectLeader())) {
+		if (!isProjectLeader(project)) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		}
 		else if (deadline.before(activity.getStart())) {
@@ -292,6 +301,8 @@ public class SystemApp extends Observable{
 		}
 	}
 
+	// Getters and setters
+
 	public String getActiveUser() {
 		return activeUser;
 	}
@@ -304,16 +315,13 @@ public class SystemApp extends Observable{
 		return projects;
 	}
 
+	// Har vi brug for den?
 	public void setDateServer(DateServer dateServer) {
 		this.dateServer = dateServer;
 	}
-	///////////////////////////
-	// DENNE HER DUR IKKE /////
-	//////////////////////77777
+
 	public Calendar getDate() {
 		return dateServer.getDate();
 	}
-
-
 
 }
