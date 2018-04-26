@@ -121,7 +121,10 @@ public class ActivitySteps {
 	@Given("^there is a project with an activity$")
 	public void thereIsAProjectWithAnActivity() throws Exception {
 		systemApp.addProject(projectHelper.getProject());
+		
+		//systemApp.addActivity(projectHelper.getProject(), activityHelper.getActivity());
 	    projectHelper.getProject().addActivity(activityHelper.getActivity());
+	    
 	}
 	
 	@Given("^user is not a project leader$")
@@ -150,14 +153,14 @@ public class ActivitySteps {
 			devHelper.getDeveloper().getActivityLevel().SetCalendar(week, 0);
 		}
 	}
-	
-	@Given("^developer is not available$")
-	public void developerIsNotAvailable() throws Exception {
-		activityDuration = activityHelper.getActivity().getDuration();
-		for (Week week : activityDuration) {
-			devHelper.getDeveloper().getActivityLevel().SetCalendar(week, 550);
-		}
-	}
+	//
+	//@Given("^developer is not available$")
+	//public void developerIsNotAvailable() throws Exception {
+	//	activityDuration = activityHelper.getActivity().getDuration();
+	//	for (Week week : activityDuration) {
+	//		devHelper.getDeveloper().getActivityLevel().SetCalendar(week, 550);
+	//	}
+	//}
 
 	
 	@Then("^developer has activity marked in her calendar$")

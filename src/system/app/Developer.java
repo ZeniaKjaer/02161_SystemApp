@@ -9,7 +9,6 @@ public class Developer {
 	private String id;
 	DevCalendar devCalendar;
 
-
 	//Constructor
 	public Developer(String id) {
 		this.id = id;
@@ -43,7 +42,6 @@ public class Developer {
 	public int getActivityLevel(Week week) {
 		return devCalendar.getActivityLevel(week);
 	}
-	
 	
 	public DevCalendar getActivityLevel() {
 		return devCalendar;

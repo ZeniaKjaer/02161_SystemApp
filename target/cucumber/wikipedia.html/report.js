@@ -122,153 +122,8 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
-});
-formatter.uri("use_cases/student/add_coworker_activity.feature");
-formatter.feature({
-  "name": "Add co-worker to activity",
-  "description": "    Description: A project developer adds a co-worker to an activity\n    Actors: Project developer",
-  "keyword": "Feature"
-});
-formatter.scenario({
-  "name": "Developer on activity adds co-worker to activity",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "there is a project with an activity",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user is working on activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.userIsWorkingOnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user adds developer to activity",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "ActivitySteps.userAddsDeveloperToActivity()"
-});
-formatter.result({
-  "error_message": "java.lang.NullPointerException\n\tat system.app.Developer.addActivityToCalendar(Developer.java:27)\n\tat system.app.SystemApp.addActivityDev(SystemApp.java:146)\n\tat dtu.library.acceptance_tests.ActivitySteps.userAddsDeveloperToActivity(ActivitySteps.java:69)\n\tat ✽.user adds developer to activity(use_cases/student/add_coworker_activity.feature:9)\n",
+  "error_message": "org.junit.ComparisonFailure: expected:\u003c[Project leader authorization needed]\u003e but was:\u003c[]\u003e\r\n\tat org.junit.Assert.assertEquals(Assert.java:115)\r\n\tat org.junit.Assert.assertEquals(Assert.java:144)\r\n\tat dtu.library.acceptance_tests.LoginLogoutSteps.userGetsTheErrorMessage(LoginLogoutSteps.java:78)\r\n\tat ✽.user gets the error message \"Project leader authorization needed\"(use_cases/student/add_activity.feature:19)\r\n",
   "status": "failed"
-});
-formatter.step({
-  "name": "developer is working on activity",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "ActivitySteps.developerIsWorkingOnActivity()"
-});
-formatter.result({
-  "status": "skipped"
-});
-formatter.step({
-  "name": "developer has activity marked in her calendar",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.developerHasActivityMarkedInHerCalendar()"
-});
-formatter.result({
-<<<<<<< HEAD
-  "status": "skipped"
-=======
-  "status": "passed"
->>>>>>> 5308749b0d8464cab072dc55ed242a4078ab71ec
-});
-formatter.scenario({
-  "name": "Developer not on activity adds co-worker to activity",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "user is not working on activity",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ActivitySteps.userIsNotWorkingOnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user adds developer to activity",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "ActivitySteps.userAddsDeveloperToActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user gets the error message \"Project leader authorization needed\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "Developer on activity adds a co-worker who is already working on activity",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "user is working on activity",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ActivitySteps.userIsWorkingOnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "developer is already working on activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.userIsAlreadyWorkingOnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user adds developer to activity",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "ActivitySteps.userAddsDeveloperToActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user gets the error message \"Developer is already working on activity\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
-});
-formatter.result({
-  "status": "passed"
 });
 formatter.uri("use_cases/student/add_developer_activity.feature");
 formatter.feature({
@@ -312,8 +167,6 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-<<<<<<< HEAD
-=======
   "name": "developer is available",
   "keyword": "And "
 });
@@ -324,7 +177,6 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
->>>>>>> 5308749b0d8464cab072dc55ed242a4078ab71ec
   "name": "user adds developer to activity",
   "keyword": "When "
 });
@@ -332,12 +184,7 @@ formatter.match({
   "location": "ActivitySteps.userAddsDeveloperToActivity()"
 });
 formatter.result({
-<<<<<<< HEAD
-  "error_message": "java.lang.NullPointerException\n\tat system.app.Developer.addActivityToCalendar(Developer.java:27)\n\tat system.app.SystemApp.addActivityDev(SystemApp.java:146)\n\tat dtu.library.acceptance_tests.ActivitySteps.userAddsDeveloperToActivity(ActivitySteps.java:69)\n\tat ✽.user adds developer to activity(use_cases/student/add_developer_activity.feature:11)\n",
-  "status": "failed"
-=======
   "status": "passed"
->>>>>>> 5308749b0d8464cab072dc55ed242a4078ab71ec
 });
 formatter.step({
   "name": "developer is working on activity",
@@ -488,11 +335,9 @@ formatter.step({
   "name": "developer is not available",
   "keyword": "And "
 });
-formatter.match({
-  "location": "ActivitySteps.developerIsNotAvailable()"
-});
+formatter.match({});
 formatter.result({
-  "status": "passed"
+  "status": "undefined"
 });
 formatter.step({
   "name": "user adds developer to activity",
@@ -502,7 +347,7 @@ formatter.match({
   "location": "ActivitySteps.userAddsDeveloperToActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Developer is not available\"",
@@ -512,8 +357,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "error_message": "org.junit.ComparisonFailure: expected:\u003c[Developer is not available]\u003e but was:\u003c[]\u003e\r\n\tat org.junit.Assert.assertEquals(Assert.java:115)\r\n\tat org.junit.Assert.assertEquals(Assert.java:144)\r\n\tat dtu.library.acceptance_tests.LoginLogoutSteps.userGetsTheErrorMessage(LoginLogoutSteps.java:78)\r\n\tat ✽.user gets the error message \"Developer is not available\"(use_cases/student/add_developer_activity.feature:33)\r\n",
-  "status": "failed"
+  "status": "skipped"
 });
 formatter.uri("use_cases/student/add_developer_project.feature");
 formatter.feature({
@@ -1012,7 +856,8 @@ formatter.match({
   "location": "ProjectSteps.theDeveloperIsNowTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError: \nExpected: is \"HERE\"\n     but: was \"\"\r\n\tat org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)\r\n\tat org.junit.Assert.assertThat(Assert.java:956)\r\n\tat org.junit.Assert.assertThat(Assert.java:923)\r\n\tat dtu.library.acceptance_tests.ProjectSteps.theDeveloperIsNowTheProjectLeader(ProjectSteps.java:81)\r\n\tat ✽.the developer is now the project leader(use_cases/student/create_project.feature:11)\r\n",
+  "status": "failed"
 });
 formatter.scenario({
   "name": "Developer creates a project with illegal name",
@@ -1338,188 +1183,6 @@ formatter.result({
 });
 formatter.step({
   "name": "user gets the error message \"Project leader authorization needed\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.uri("use_cases/student/remove_developer_activity.feature");
-formatter.feature({
-  "name": "Remove developer from activity",
-  "description": "    Description: The project leader removes developer from an activity\n    Actors: Project leader",
-  "keyword": "Feature"
-});
-formatter.scenario({
-  "name": "Remove developer on activity successfully",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "user is the project leader",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ProjectSteps.userIsTheProjectLeader()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is a project with an activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is an activity developer",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAnActivityDeveloper()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "project leader removes developer from activity",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "ActivitySteps.projectLeaderRemovesDeveloperFromActivity()"
-});
-formatter.result({
-  "error_message": "java.lang.NullPointerException\n\tat system.app.Developer.removeActivityFromCalendar(Developer.java:38)\n\tat system.app.SystemApp.removeActivityDev(SystemApp.java:167)\n\tat dtu.library.acceptance_tests.ActivitySteps.projectLeaderRemovesDeveloperFromActivity(ActivitySteps.java:139)\n\tat ✽.project leader removes developer from activity(use_cases/student/remove_developer_activity.feature:10)\n",
-  "status": "failed"
-});
-formatter.step({
-  "name": "developer is not working on activity",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "ActivitySteps.developerIsNotWorkingOnActivity()"
-});
-formatter.result({
-  "status": "skipped"
-});
-formatter.scenario({
-  "name": "Remove developer from activity when not a project leader",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "user is not the project leader",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ProjectSteps.userIsNotTheProjectLeader()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is a project with an activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is an activity developer",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAnActivityDeveloper()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "project leader removes developer from activity",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "ActivitySteps.projectLeaderRemovesDeveloperFromActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user gets the error message \"Project leader authorization needed\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "Remove developer from activity when developer is not working on activity",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "user is the project leader",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ProjectSteps.userIsTheProjectLeader()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is a project with an activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is a developer",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ProjectSteps.thereIsADeveloper()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "developer is not working on activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.developerIsNotWorkingOnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "project leader removes developer from activity",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "ActivitySteps.projectLeaderRemovesDeveloperFromActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "user gets the error message \"Developer not found\"",
   "keyword": "Then "
 });
 formatter.match({
