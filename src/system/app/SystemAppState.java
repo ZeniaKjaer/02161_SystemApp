@@ -30,7 +30,19 @@ public class SystemAppState {
 				return p;
 			}
 		}
-		return new Project("","","");
+		return new Project("","",projectName);
+	}
+	
+	private Activity enterActivity(Project project) throws IOException {
+		System.out.print("Enter an activity name: ");
+		String activityName = rs.readLine();
+		
+		for (Activity a: project.getProjectActivities()) {
+			if(a.getActivityName().equalsIgnoreCase(activityName)) {
+				return a;
+			}
+		}
+		return new Activity(activityName);
 	}
 	
 	private Calendar enterDate() throws NumberFormatException, IOException {
@@ -81,25 +93,6 @@ public class SystemAppState {
 		}
 	}
 
-//	public void setTimeBudgetForProject(SystemApp systemApp) throws IOException {
-//		// SPØRGSMÅL!! 
-//		// NÅR MAN SÆTTER TIDEN, GØR MAN SÅ BÅDE START OG DEADLINE PÅ SAMME TID??
-//		// ELLER SKAL MAN HAVE DET SOM TO FORSKELLIGE MULIGHEDER I MENUEN??
-//		Calendar start = new GregorianCalendar();
-//		Calendar deadline = new GregorianCalendar();
-//		try {
-//			systemApp.setProjectStart(enterProject(systemApp), start);
-//		} catch (OperationNotAllowedException e) {
-//			System.out.println(e);
-//		}
-//		try {
-//			systemApp.setProjectDeadline(enterProject(systemApp), deadline);
-//		} catch (OperationNotAllowedException e) {
-//			System.out.println(e);
-//		}
-//		
-//	}
-
 	public void setNewStartDateForProject(SystemApp systemApp) throws IOException, NumberFormatException {
 		try {
 			systemApp.setProjectStart(enterProject(systemApp), enterDate());
@@ -112,6 +105,29 @@ public class SystemAppState {
 	public void setNewDeadlineForProject(SystemApp systemApp) throws NumberFormatException, IOException {
 		try {
 			systemApp.setProjectDeadline(enterProject(systemApp), enterDate());
+		} catch (OperationNotAllowedException e) {
+			System.out.println(e);
+		}
+		
+	}
+
+	public void addActivityToProject(SystemApp systemApp) throws IOException {
+		System.out.print("Enter an activity name: ");
+		String activityName = rs.readLine();
+		Activity activity = new Activity(activityName);
+		try {
+			systemApp.addActivity(enterProject(systemApp), activity);
+		} catch (OperationNotAllowedException e) {
+			System.out.println(e);
+		}
+		
+	}
+
+	public void removeActivityFromProject(SystemApp systemApp) throws IOException {
+		Project project = enterProject(systemApp);
+		Activity activity = enterActivity(project);
+		try {
+			systemApp.removeActivity(project, activity);
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}

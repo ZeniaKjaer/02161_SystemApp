@@ -158,7 +158,9 @@ public class SystemApp extends Observable{
 			activity.setDeadline(project.getDeadline());
 			activity.updateDuration();
 			project.addActivity(activity);
-		}	
+		}
+		setChanged();
+		notifyObservers(NotificationType.ADD_ACTIVITY);
 	}
 
 	public void removeActivity(Project project, Activity activity) throws OperationNotAllowedException {
@@ -174,7 +176,9 @@ public class SystemApp extends Observable{
 			for (Developer dev : activity.getActivityDevelopers()) {
 				dev.removeActivityFromCalendar(activity);
 			}
-		}	
+		}
+		setChanged();
+		notifyObservers(NotificationType.REMOVE_ACTIVITY);
 	}
 
 	public void addActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException{
@@ -227,6 +231,9 @@ public class SystemApp extends Observable{
 			throw new OperationNotAllowedException("Illegal time budget");
 		}
 		project.setStart(start);
+		
+		setChanged();
+		notifyObservers(NotificationType.TIME_BUDGET);
 	}
 
 	public void setProjectDeadline(Project project, Calendar deadline)throws OperationNotAllowedException {
@@ -237,6 +244,9 @@ public class SystemApp extends Observable{
 			throw new OperationNotAllowedException("Illegal time budget");
 		}
 		project.setDeadline(deadline);
+		
+		setChanged();
+		notifyObservers(NotificationType.TIME_BUDGET);
 	}
 
 	public void setActivityStart(Project project, Activity activity, Calendar start) throws OperationNotAllowedException {
