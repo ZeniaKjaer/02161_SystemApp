@@ -56,18 +56,6 @@ public class SystemAppUI implements Observer {
 		mainLoop(in,out);
 	}
 
-	private void showMenu(PrintStream out) {
-		//out.println("   0) Exit");
-		out.println("   1) Create a project");
-		out.println("   2) Add developer to a project");
-		out.println("   3) Remove developer from a project");
-		out.println("   4) Change project leader");
-		out.println("   5) Set a new start date for a project");
-		out.println("   6) Set a new deadline for a project");
-		out.println("   7) Logout");
-		out.println("Select a number (1-6): ");
-
-	}
 	public void mainLoop(InputStream in, PrintStream out) throws IOException {
 		BufferedReader rs = new BufferedReader(new InputStreamReader(in));
 		String choice = null;
@@ -84,6 +72,20 @@ public class SystemAppUI implements Observer {
 			processChoice(number,in, out);
 
 		} while (choice != null);
+	}
+	private void showMenu(PrintStream out) {
+		//out.println("   0) Exit");
+		out.println("   1) Create a project");
+		out.println("   2) Add developer to a project");
+		out.println("   3) Remove developer from a project");
+		out.println("   4) Change project leader");
+		out.println("   5) Set a new start date for a project");
+		out.println("   6) Set a new deadline for a project");
+		out.println("   7) Add activity to a project");
+		out.println("   8) Remove activity from a project");
+		out.println("   9) Logout");
+		out.println("Select a number (1-6): ");
+
 	}
 	private void processChoice(int number,InputStream in, PrintStream out) throws IOException {
 		switch (number) {
@@ -113,6 +115,14 @@ public class SystemAppUI implements Observer {
 			state.setNewDeadlineForProject(systemApp);
 			break;
 		case 7:
+			out.println("ADD ACTIVITY TO A PROJECT");
+			state.addActivityToProject(systemApp);
+			break;
+		case 8:
+			out.println("REMOVE ACTIVITY FROM A PROJECT");
+			state.removeActivityFromProject(systemApp);
+			break;
+		case 9:
 			loginLoop(in, out);
 			out.println("User is logged out");
 			break;
@@ -138,6 +148,15 @@ public class SystemAppUI implements Observer {
 		}
 		if (NotificationType.REMOVE_DEVELOPER.equals(aspect)) {
 			System.out.println("The developer has been removed.");
+		}
+		if (NotificationType.TIME_BUDGET.equals(aspect)) {
+			System.out.println("The time budget has been changed.");
+		}
+		if (NotificationType.ADD_ACTIVITY.equals(aspect)) {
+			System.out.println("The activity has been added.");
+		}
+		if (NotificationType.REMOVE_ACTIVITY.equals(aspect)) {
+			System.out.println("The activity has been removed.");
 		}
 	}
 

@@ -122,8 +122,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "error_message": "org.junit.ComparisonFailure: expected:\u003c[Project leader authorization needed]\u003e but was:\u003c[]\u003e\n\tat org.junit.Assert.assertEquals(Assert.java:115)\n\tat org.junit.Assert.assertEquals(Assert.java:144)\n\tat dtu.library.acceptance_tests.LoginLogoutSteps.userGetsTheErrorMessage(LoginLogoutSteps.java:78)\n\tat ✽.user gets the error message \"Project leader authorization needed\"(use_cases/student/add_activity.feature:19)\n",
-  "status": "failed"
+  "status": "passed"
 });
 formatter.uri("use_cases/student/add_developer_activity.feature");
 formatter.feature({
@@ -297,7 +296,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Add developer to activity successfully",
+  "name": "Add developer who is not available to activity",
   "description": "",
   "keyword": "Scenario"
 });

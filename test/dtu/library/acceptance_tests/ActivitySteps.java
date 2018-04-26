@@ -93,7 +93,7 @@ public class ActivitySteps {
 	public void thereIsAnActivityDeveloper() throws Exception {
 		activityHelper.getActivity().addActivityDev(devHelper.getDeveloper());
 	}
-	//DEt HER
+
 	@Given("^user is not working on activity$")
 	public void userIsNotWorkingOnActivity() throws Exception {
 		activityHelper.getActivity().removeActivityDev(user);
@@ -147,7 +147,7 @@ public class ActivitySteps {
 	public void developerIsAvailable() throws Exception {
 		activityDuration = activityHelper.getActivity().getDuration();
 		for (Week week : activityDuration) {
-			devHelper.getDeveloper().getActivityLevel().SetCalendar(week, 5);
+			devHelper.getDeveloper().getActivityLevel().SetCalendar(week, 0);
 		}
 	}
 	
@@ -155,7 +155,7 @@ public class ActivitySteps {
 	public void developerIsNotAvailable() throws Exception {
 		activityDuration = activityHelper.getActivity().getDuration();
 		for (Week week : activityDuration) {
-			devHelper.getDeveloper().getActivityLevel().SetCalendar(week, 21);
+			devHelper.getDeveloper().getActivityLevel().SetCalendar(week, 550);
 		}
 	}
 
