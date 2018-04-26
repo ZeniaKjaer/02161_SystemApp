@@ -43,7 +43,7 @@ public class Developer {
 		return devCalendar.getActivityLevel(week);
 	}
 	
-	public DevCalendar getActivityLevel() {
+	public DevCalendar getDevCalendar() {
 		return devCalendar;
 	}
 	

@@ -32,7 +32,6 @@ public class SystemApp extends Observable{
 		developers.add(new Developer("MTVD"));
 		developers.add(new Developer("RITG"));
 		developers.add(new Developer("ZEKT"));
-
 	}
 
 	public void addDeveloper(Developer developer) {
@@ -117,7 +116,7 @@ public class SystemApp extends Observable{
 		// Skal vaere her iflg vores whitebox-test for denne metode
 		if(!projects.contains(project)) {
 			throw new OperationNotAllowedException("Project is not in the system");
-		} else if(!isInTheSystem(developer.getId())) { // Jeg har �ndret dit if-statement
+		} else if(!isInTheSystem(developer.getId())) { // Jeg har aendret dit if-statement
 			throw new OperationNotAllowedException("Developer is not in the system");
 		}
 		// whitebox-test tilfoejelse slut
@@ -310,5 +309,4 @@ public class SystemApp extends Observable{
 	public Calendar getDate() {
 		return dateServer.getDate();
 	}
-
 }
