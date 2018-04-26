@@ -10,8 +10,8 @@ public class DevCalendar implements Cloneable {
 	public DevCalendar(int startYear) {
 		calendar = new LinkedHashMap<>();
 		for (int i = 0; i < 10; i++) {
-			int[] year = new int[53];			
-			calendar.put(startYear+1, year);
+			int[] year = new int[54];			
+			calendar.put(startYear+i, year);
 		}
 	}
 
@@ -43,7 +43,7 @@ public class DevCalendar implements Cloneable {
 		try {
 			copy = (DevCalendar) super.clone();
 		} catch (CloneNotSupportedException e) { // this should never happen
-			System.out.println("CloneNotSupportedException thrown " + e);
+			System.out.println("CloneNotSupportedException thrown" + e);
 	        return null;
 		}
 		return copy;

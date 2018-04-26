@@ -18,7 +18,7 @@ public class SystemAppState {
 				return d;
 			}
 		}
-		return new Developer("");
+		return new Developer(developerID);
 	}
 
 	private Project enterProject(SystemApp systemApp) throws IOException {
@@ -61,7 +61,7 @@ public class SystemAppState {
 		System.out.print("Enter a project name: ");
 		String projectName = rs.readLine();
 		try {
-			systemApp.addProject(new Project(null, systemApp.getActiveUser(), projectName));
+			systemApp.addProject(new Project(systemApp.getActiveUser(), null, projectName));
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
@@ -132,6 +132,41 @@ public class SystemAppState {
 			System.out.println(e);
 		}
 		
+	}
+
+	public void addDeveloperToActivity(SystemApp systemApp) throws IOException {
+		Project project = enterProject(systemApp);
+		Activity activity = enterActivity(project);
+		Developer developer = enterDeveloper(systemApp);
+		try {
+			systemApp.addActivityDev(project, activity, developer);
+		} catch (OperationNotAllowedException e) {
+			System.out.println(e);
+		}
+		
+	}
+
+	public void removeDeveloperFromActivity(SystemApp systemApp) throws IOException {
+		Project project = enterProject(systemApp);
+		Activity activity = enterActivity(project);
+		Developer developer = enterDeveloper(systemApp);
+		try {
+			systemApp.removeActivityDev(project, activity, developer);
+		} catch (OperationNotAllowedException e) {
+			System.out.println(e);
+		}
+		
+	}
+
+	public void setNewStartDateForActivity(SystemApp systemApp) throws IOException, NumberFormatException {
+		Project project = enterProject(systemApp);
+		Activity activity = enterActivity(project);
+		
+		try {
+			systemApp.setActivityStart(project, activity, enterDate());
+		} catch (OperationNotAllowedException e) {
+			System.out.println(e);
+		}
 	}
 
 }

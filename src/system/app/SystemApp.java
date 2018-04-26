@@ -32,7 +32,6 @@ public class SystemApp extends Observable{
 		developers.add(new Developer("MTVD"));
 		developers.add(new Developer("RITG"));
 		developers.add(new Developer("ZEKT"));
-
 	}
 
 	public void addDeveloper(Developer developer) {
@@ -111,14 +110,13 @@ public class SystemApp extends Observable{
 		
 		setChanged();
 		notifyObservers(NotificationType.ADD_PROJECT);
-		
 	}
 
 	public void addProjectDev(Project project, Developer developer) throws OperationNotAllowedException{
 		// Skal vaere her iflg vores whitebox-test for denne metode
 		if(!projects.contains(project)) {
 			throw new OperationNotAllowedException("Project is not in the system");
-		} else if(!isInTheSystem(developer.getId())) { // Jeg har �ndret dit if-statement
+		} else if(!isInTheSystem(developer.getId())) { // Jeg har aendret dit if-statement
 			throw new OperationNotAllowedException("Developer is not in the system");
 		}
 		// whitebox-test tilfoejelse slut
@@ -175,9 +173,7 @@ public class SystemApp extends Observable{
 			activity.setDeadline(project.getDeadline());
 			activity.updateDuration();
 			project.addActivity(activity);
-		}
-		setChanged();
-		notifyObservers(NotificationType.ADD_ACTIVITY);
+		}	
 	}
 
 	public void removeActivity(Project project, Activity activity) throws OperationNotAllowedException {
@@ -196,9 +192,7 @@ public class SystemApp extends Observable{
 			for (Developer dev : activity.getActivityDevelopers()) {
 				dev.removeActivityFromCalendar(activity);
 			}
-		}
-		setChanged();
-		notifyObservers(NotificationType.REMOVE_ACTIVITY);
+		}	
 	}
 
 	public void addActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException{
@@ -241,9 +235,6 @@ public class SystemApp extends Observable{
 			throw new OperationNotAllowedException("Illegal time budget");
 		}
 		project.setStart(start);
-		
-		setChanged();
-		notifyObservers(NotificationType.TIME_BUDGET);
 	}
 
 	public void setProjectDeadline(Project project, Calendar deadline)throws OperationNotAllowedException {
@@ -254,9 +245,6 @@ public class SystemApp extends Observable{
 			throw new OperationNotAllowedException("Illegal time budget");
 		}
 		project.setDeadline(deadline);
-		
-		setChanged();
-		notifyObservers(NotificationType.TIME_BUDGET);
 	}
 
 	public void setActivityStart(Project project, Activity activity, Calendar start) throws OperationNotAllowedException {
@@ -324,5 +312,4 @@ public class SystemApp extends Observable{
 	public Calendar getDate() {
 		return dateServer.getDate();
 	}
-
 }
