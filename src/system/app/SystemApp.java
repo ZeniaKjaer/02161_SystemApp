@@ -181,9 +181,12 @@ public class SystemApp extends Observable{
 	}
 
 	public void removeActivity(Project project, Activity activity) throws OperationNotAllowedException {
-		if (!isProjectLeader(project)) {
+		if(!projects.contains(project)) {
+			throw new OperationNotAllowedException("Project is not in the system"); 
+		}
+		else if (!isProjectLeader(project)) {
 			throw new OperationNotAllowedException("Project leader authorization needed");
-		} 
+		}
 		else if (!project.isProjectActivity(activity)) {
 			throw new OperationNotAllowedException("Activity is not part of the project");
 		} 
