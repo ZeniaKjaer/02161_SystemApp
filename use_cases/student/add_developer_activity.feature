@@ -24,7 +24,7 @@ Scenario: Add developer who is already working on activity
   	When user adds developer to activity
   	Then user gets the error message "Developer is already working on activity"
 
-Scenario: Add developer to activity successfully
+Scenario: Add developer who is not available to activity
   	Given user is the project leader
   	And there is a developer
   	And there is a project with an activity

@@ -19,23 +19,23 @@ public class DevCalendar implements Cloneable {
 	// De to assert virker ikke 
 	///
 	public void incrementActivity(Week week) {
-		assert calendar.get(week.getYear())[week.getWeekOfYear()] >= 0
+		//assert calendar.get(week.getYear())[week.getWeekOfYear()] >= 0
 				&& calendar.get(week.getYear())[week.getWeekOfYear()] < 20 : "Precondition violated " ;
-		int pre = calendar.get(week.getYear())[week.getWeekOfYear()];
+		//int pre = calendar.get(week.getYear())[week.getWeekOfYear()];
 		
 		calendar.get(week.getYear())[week.getWeekOfYear()]++;
 		
-		assert calendar.get(week.getYear())[week.getWeekOfYear()] == pre+1 : "Postcondition violated";
+		//assert calendar.get(week.getYear())[week.getWeekOfYear()] == pre+1 : "Postcondition violated";
 	}
 
 	public void decrementActivity(Week week) {
-		assert calendar.get(week.getYear())[week.getWeekOfYear()] > 0
-				&& calendar.get(week.getYear())[week.getWeekOfYear()] <= 20 : "Precondition violated " ;
+		//assert calendar.get(week.getYear())[week.getWeekOfYear()] > 0
+		//		&& calendar.get(week.getYear())[week.getWeekOfYear()] <= 20 : "Precondition violated " ;
 		int pre = calendar.get(week.getYear())[week.getWeekOfYear()];
 		
 		calendar.get(week.getYear())[week.getWeekOfYear()]--;
 		
-		assert calendar.get(week.getYear())[week.getWeekOfYear()] == pre-1 : "Postcondition violated";
+		//assert calendar.get(week.getYear())[week.getWeekOfYear()] == pre-1 : "Postcondition violated";
 	}
 
 	public DevCalendar copy() throws CloneNotSupportedException {
