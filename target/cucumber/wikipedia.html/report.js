@@ -858,8 +858,7 @@ formatter.match({
   "location": "ProjectSteps.theDeveloperIsNowTheProjectLeader()"
 });
 formatter.result({
-  "error_message": "java.lang.AssertionError: \nExpected: is \"HERE\"\n     but: was \"\"\n\tat org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)\n\tat org.junit.Assert.assertThat(Assert.java:956)\n\tat org.junit.Assert.assertThat(Assert.java:923)\n\tat dtu.library.acceptance_tests.ProjectSteps.theDeveloperIsNowTheProjectLeader(ProjectSteps.java:81)\n\tat ✽.the developer is now the project leader(use_cases/student/create_project.feature:11)\n",
-  "status": "failed"
+  "status": "passed"
 });
 formatter.scenario({
   "name": "Developer creates a project with illegal name",
