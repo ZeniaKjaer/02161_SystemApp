@@ -107,13 +107,10 @@ public class SystemApp extends Observable{
 		String projectId = ""+ year + nextProjectID++; 
 		project.setProjectId(projectId);
 		
-		project.setProjectLeader(activeUser);
-		
 		projects.add(project); 	
 		
 		setChanged();
 		notifyObservers(NotificationType.ADD_PROJECT);
-		
 	}
 
 	public void addProjectDev(Project project, Developer developer) throws OperationNotAllowedException{

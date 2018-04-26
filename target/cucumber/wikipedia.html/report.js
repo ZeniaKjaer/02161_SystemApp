@@ -122,8 +122,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "error_message": "org.junit.ComparisonFailure: expected:\u003c[Project leader authorization needed]\u003e but was:\u003c[]\u003e\r\n\tat org.junit.Assert.assertEquals(Assert.java:115)\r\n\tat org.junit.Assert.assertEquals(Assert.java:144)\r\n\tat dtu.library.acceptance_tests.LoginLogoutSteps.userGetsTheErrorMessage(LoginLogoutSteps.java:78)\r\n\tat ✽.user gets the error message \"Project leader authorization needed\"(use_cases/student/add_activity.feature:19)\r\n",
-  "status": "failed"
+  "status": "passed"
 });
 formatter.uri("use_cases/student/add_developer_activity.feature");
 formatter.feature({
@@ -335,9 +334,11 @@ formatter.step({
   "name": "developer is not available",
   "keyword": "And "
 });
-formatter.match({});
+formatter.match({
+  "location": "ActivitySteps.developerIsNotAvailable()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 formatter.step({
   "name": "user adds developer to activity",
@@ -347,7 +348,7 @@ formatter.match({
   "location": "ActivitySteps.userAddsDeveloperToActivity()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "user gets the error message \"Developer is not available\"",
@@ -357,7 +358,8 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "skipped"
+  "error_message": "org.junit.ComparisonFailure: expected:\u003c[Developer is not available]\u003e but was:\u003c[]\u003e\r\n\tat org.junit.Assert.assertEquals(Assert.java:115)\r\n\tat org.junit.Assert.assertEquals(Assert.java:144)\r\n\tat dtu.library.acceptance_tests.LoginLogoutSteps.userGetsTheErrorMessage(LoginLogoutSteps.java:78)\r\n\tat ✽.user gets the error message \"Developer is not available\"(use_cases/student/add_developer_activity.feature:32)\r\n",
+  "status": "failed"
 });
 formatter.uri("use_cases/student/add_developer_project.feature");
 formatter.feature({
@@ -856,8 +858,7 @@ formatter.match({
   "location": "ProjectSteps.theDeveloperIsNowTheProjectLeader()"
 });
 formatter.result({
-  "error_message": "java.lang.AssertionError: \nExpected: is \"HERE\"\n     but: was \"\"\r\n\tat org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)\r\n\tat org.junit.Assert.assertThat(Assert.java:956)\r\n\tat org.junit.Assert.assertThat(Assert.java:923)\r\n\tat dtu.library.acceptance_tests.ProjectSteps.theDeveloperIsNowTheProjectLeader(ProjectSteps.java:81)\r\n\tat ✽.the developer is now the project leader(use_cases/student/create_project.feature:11)\r\n",
-  "status": "failed"
+  "status": "passed"
 });
 formatter.scenario({
   "name": "Developer creates a project with illegal name",

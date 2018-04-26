@@ -153,14 +153,14 @@ public class ActivitySteps {
 			devHelper.getDeveloper().getActivityLevel().SetCalendar(week, 0);
 		}
 	}
-	//
-	//@Given("^developer is not available$")
-	//public void developerIsNotAvailable() throws Exception {
-	//	activityDuration = activityHelper.getActivity().getDuration();
-	//	for (Week week : activityDuration) {
-	//		devHelper.getDeveloper().getActivityLevel().SetCalendar(week, 550);
-	//	}
-	//}
+	
+	@Given("^developer is not available$")
+	public void developerIsNotAvailable() throws Exception {
+		activityDuration = activityHelper.getActivity().getDuration();
+		for (Week week : activityDuration) {
+			devHelper.getDeveloper().getActivityLevel().SetCalendar(week, 550);
+		}
+	}
 
 	
 	@Then("^developer has activity marked in her calendar$")
