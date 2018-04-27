@@ -1,14 +1,8 @@
 package system.app;
 
-
-import java.io.IOException;
-import java.time.Month;
-import java.time.temporal.WeekFields;
-import java.util.*;
-
-import dtu.library.acceptance_tests.ProjectHelper;
-import javafx.util.Pair;
-import system.app.DateServer;
+	import java.util.*;
+	import javafx.util.Pair;
+	import system.app.DateServer;
 
 public class SystemApp extends Observable{
 

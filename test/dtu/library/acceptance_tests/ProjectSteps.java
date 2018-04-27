@@ -1,25 +1,16 @@
 package dtu.library.acceptance_tests;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.assertEquals;
-
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import system.app.OperationNotAllowedException;
 import system.app.Project;
 import system.app.Activity;
-import system.app.Developer;
 import system.app.SystemApp;
 
 public class ProjectSteps {

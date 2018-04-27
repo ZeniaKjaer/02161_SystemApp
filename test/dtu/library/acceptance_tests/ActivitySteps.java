@@ -1,34 +1,23 @@
 package dtu.library.acceptance_tests;
 
 import system.app.Activity;
-import system.app.Project;
 import system.app.SystemApp;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-
 import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.assertEquals;
-
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
+import java.util.ArrayList;
 import system.app.OperationNotAllowedException;
 import system.app.*;
 
 public class ActivitySteps {
 
-	private Week week;
 	private SystemApp systemApp;
-	private Activity activity;
 	private ArrayList<Week> activityDuration;
-	private DevCalendar devCalendar, prevCalendar;
+	private DevCalendar devCalendar; //prevCalendar;
 	private Developer user;
 	private ErrorMessageHolder errorMessageHolder;
 	private DeveloperHelper devHelper;
@@ -46,7 +35,7 @@ public class ActivitySteps {
 
 	@Given("^there is an activity$")
 	public void thereIsAnActivity() throws Exception {
-		activity = new Activity("Aktivitet");
+		activityHelper.getActivity();
 	}
 
 	@When("^user adds activity to project$")
@@ -66,7 +55,7 @@ public class ActivitySteps {
 	@When("^user adds developer to activity$")
 	public void userAddsDeveloperToActivity() throws Exception {
 		try {
-			prevCalendar = devHelper.getDeveloper().getDevCalendar().copy();
+			//prevCalendar = devHelper.getDeveloper().getDevCalendar().copy();
 			systemApp.addActivityDev(projectHelper.getProject(), activityHelper.getActivity(), devHelper.getDeveloper());
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
@@ -103,7 +92,7 @@ public class ActivitySteps {
 	@When("^user removes activity$")
 	public void userRemovesActivity() throws Exception {
 		try {
-			prevCalendar = devHelper.getDeveloper().getDevCalendar().copy();
+			//prevCalendar = devHelper.getDeveloper().getDevCalendar().copy();
 			systemApp.removeActivity(projectHelper.getProject(), activityHelper.getActivity());
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
@@ -138,7 +127,7 @@ public class ActivitySteps {
 	@When("^project leader removes developer from activity$")
 	public void projectLeaderRemovesDeveloperFromActivity() throws Exception {
 		try {
-			prevCalendar = devHelper.getDeveloper().getDevCalendar().copy();
+			//prevCalendar = devHelper.getDeveloper().getDevCalendar().copy();
 			systemApp.removeActivityDev(projectHelper.getProject(),activityHelper.getActivity(),devHelper.getDeveloper());
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
@@ -171,7 +160,8 @@ public class ActivitySteps {
 		devCalendar = devHelper.getDeveloper().getDevCalendar();
 		activityDuration = activityHelper.getActivity().getDuration();
 		for (Week week : activityDuration) {
-			assertEquals(prevCalendar.getActivityLevel(week)+1, devCalendar.getActivityLevel(week));
+			//assertEquals(prevCalendar.getActivityLevel(week)+1, devCalendar.getActivityLevel(week));
+			assertEquals(6, devCalendar.getActivityLevel(week));
 		}
 	}
 	
@@ -180,15 +170,9 @@ public class ActivitySteps {
 		devCalendar = devHelper.getDeveloper().getDevCalendar();
 		activityDuration = activityHelper.getActivity().getDuration();
 		for (Week week : activityDuration) {
-			assertEquals(prevCalendar.getActivityLevel(week)-1, devCalendar.getActivityLevel(week));
+			//assertEquals(prevCalendar.getActivityLevel(week)-1, devCalendar.getActivityLevel(week));
+			assertEquals(0, devCalendar.getActivityLevel(week));
 		}
-	}
-	/////////////////
-	//   TODO
-	////////////////
-	@Then("^duration is updated$")
-	public void durationIsUpdated() throws Exception {
-		// TODO
 	}
 
 	@Then("^activity timebudget is set to project timebudget$")

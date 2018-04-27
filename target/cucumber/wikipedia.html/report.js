@@ -156,6 +156,16 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
+  "name": "developer is available",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.developerIsAvailable()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
   "name": "user adds developer to activity",
   "keyword": "When "
 });
@@ -171,6 +181,16 @@ formatter.step({
 });
 formatter.match({
   "location": "ActivitySteps.developerIsWorkingOnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developer has activity marked in her calendar",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.developerHasActivityMarkedInHerCalendar()"
 });
 formatter.result({
   "status": "passed"
@@ -387,6 +407,16 @@ formatter.step({
 });
 formatter.match({
   "location": "ActivitySteps.developerIsWorkingOnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developer has activity marked in her calendar",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.developerHasActivityMarkedInHerCalendar()"
 });
 formatter.result({
   "status": "passed"
@@ -771,8 +801,7 @@ formatter.match({
   "location": "TimeSteps.userGetsAListOfAllAvailableDevelopers()"
 });
 formatter.result({
-  "error_message": "cucumber.api.PendingException: TODO: implement me\r\n\tat dtu.library.acceptance_tests.TimeSteps.userGetsAListOfAllAvailableDevelopers(TimeSteps.java:231)\r\n\tat ✽.user gets a list of all available developers(use_cases/student/available_developer.feature:17)\r\n",
-  "status": "pending"
+  "status": "passed"
 });
 formatter.uri("use_cases/student/change_project_leader.feature");
 formatter.feature({
@@ -1082,6 +1111,16 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.step({
+  "name": "activity is removed from developer calendar",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.activityIsRemovedFromDeveloperCalendar()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Project leader removes activity that is not part of the project",
   "description": "",
@@ -1239,6 +1278,16 @@ formatter.step({
 });
 formatter.match({
   "location": "ActivitySteps.developerIsNotWorkingOnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "activity is removed from developer calendar",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.activityIsRemovedFromDeveloperCalendar()"
 });
 formatter.result({
   "status": "passed"

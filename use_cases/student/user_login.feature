@@ -2,15 +2,6 @@
 Feature: User logs on
     Description: User logs into and out of the system
     Actors: Developer
-    
-#Background: SystemApp has developers
-#	Given there is a start date
-#	And SystemApp has developers with number of activities in that week
-#		| ABCD |  3 |
-#		| MTVD |  4 |
-#		| HERE |  8 |
-#		| ZEKT |  7 |
-#		| RITG | 20 |
 
 Scenario: developer logs on with initials
   	Given developer with initials "ABCD" is in the system

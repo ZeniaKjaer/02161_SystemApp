@@ -9,7 +9,7 @@ Scenario: Add developer to activity successfully
   	And developer is available 
   	When user adds developer to activity
   	Then developer is working on activity
-	#And developer has activity marked in her calendar
+	And developer has activity marked in her calendar
 
 Scenario: Add developer when not a project leader
   	Given user is not the project leader
