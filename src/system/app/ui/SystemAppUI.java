@@ -65,11 +65,16 @@ public class SystemAppUI implements Observer {
 			if (choice == null) {
 				break;
 			}
-			int number = Integer.valueOf(choice);
-			if (number == 0) {
-				break;
+			try {
+				int number = Integer.valueOf(choice);
+				if (number == 0) {
+					break;
+				}
+				processChoice(number,in, out);
+			} catch (NumberFormatException e) {
+				System.out.println(e);
 			}
-			processChoice(number,in, out);
+
 
 		} while (choice != null);
 	}
@@ -85,12 +90,12 @@ public class SystemAppUI implements Observer {
 		out.println("Activity:");
 		out.println("   7) Add activity to a project");
 		out.println("   8) Remove activity from a project");
-		out.println("   9) Add developer to an activity****");		
-		out.println("   10) Remove developer from an activity****");	
-		out.println("   11) Set a new start date for an activity*****");	
-		out.println("   12) Set a new deadline for an activity*****");	
+		out.println("   9) Add developer to an activity");		
+		out.println("   10) Remove developer from an activity");	
+		out.println("   11) Set a new start date for an activity");	
+		out.println("   12) Set a new deadline for an activity");	
 		out.println("Overview:");
-		out.println("   13) Get available developers !!mangler!!");
+		out.println("   13) Get available developers");
 		out.println("Logout:");
 		out.println("   14) Logout");
 		out.println("Select a number (1-14): ");
@@ -102,7 +107,6 @@ public class SystemAppUI implements Observer {
 			out.println("CREATE A PROJECT");
 			state.createProject(systemApp);
 			break;
-
 		case 2:
 			out.println("ADD DEVELOPER TO A PROJECT");
 			state.addDelevoperToProject(systemApp);
@@ -147,6 +151,10 @@ public class SystemAppUI implements Observer {
 			out.println("SET A NEW DEADLINE FOR AN ACTIVITY");
 			state.setNewDeadlineForActivity(systemApp);
 			break;
+		case 13:
+			out.println("GET AVAILABLE DEVELOPERS");
+			state.getAvailableDevelopers(systemApp);
+			break;
 		case 14:
 			loginLoop(in, out);
 			out.println("User is logged out");
@@ -158,7 +166,7 @@ public class SystemAppUI implements Observer {
 
 	public void update(Observable o, Object aspect) {
 		SystemApp s = (SystemApp) o;
-		
+
 		if(NotificationType.ACTIVE_USER.equals(aspect)) {
 			System.out.println("Active user: " + s.getActiveUser());
 		}

@@ -169,6 +169,9 @@ public class SystemApp extends Observable{
 		activity.setDeadline(project.getDeadline());
 		activity.updateDuration();
 		project.addActivity(activity);	
+		
+		setChanged();
+		notifyObservers(NotificationType.ADD_ACTIVITY);
 	}
 
 	public void removeActivity(Project project, Activity activity) throws OperationNotAllowedException {
@@ -184,7 +187,9 @@ public class SystemApp extends Observable{
 			for (Developer dev : activity.getActivityDevelopers()) {
 				dev.removeActivityFromCalendar(activity);
 			}
-		}	
+		}
+		setChanged();
+		notifyObservers(NotificationType.REMOVE_ACTIVITY);
 	}
 
 	public void addActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException{
@@ -201,6 +206,8 @@ public class SystemApp extends Observable{
 		else { 
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		}
+		setChanged();
+		notifyObservers(NotificationType.ADD_DEVELOPER);
 	}
 
 	public void removeActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException {
@@ -214,7 +221,9 @@ public class SystemApp extends Observable{
 		else {
 			activity.removeActivityDev(developer);
 			developer.removeActivityFromCalendar(activity);
-		}	
+		}
+		setChanged();
+		notifyObservers(NotificationType.REMOVE_DEVELOPER);
 	}
 
 	public void setProjectStart(Project project, Calendar start) throws OperationNotAllowedException {
@@ -223,6 +232,9 @@ public class SystemApp extends Observable{
 			throw new OperationNotAllowedException("Illegal time budget");
 		}
 		project.setStart(start);
+		
+		setChanged();
+		notifyObservers(NotificationType.TIME_BUDGET);
 	}
 
 	public void setProjectDeadline(Project project, Calendar deadline)throws OperationNotAllowedException {
@@ -231,6 +243,9 @@ public class SystemApp extends Observable{
 			throw new OperationNotAllowedException("Illegal time budget");
 		}
 		project.setDeadline(deadline);
+		
+		setChanged();
+		notifyObservers(NotificationType.TIME_BUDGET);
 	}
 
 	public void setActivityStart(Project project, Activity activity, Calendar start) throws OperationNotAllowedException {
@@ -251,6 +266,8 @@ public class SystemApp extends Observable{
 				dev.addActivityToCalendar(activity); 
 			}
 		}
+		setChanged();
+		notifyObservers(NotificationType.TIME_BUDGET);
 	}
 
 	public void setActivityDeadline(Project project, Activity activity, Calendar deadline) throws OperationNotAllowedException {
@@ -270,6 +287,8 @@ public class SystemApp extends Observable{
 				dev.addActivityToCalendar(activity); 
 			}
 		}
+		setChanged();
+		notifyObservers(NotificationType.TIME_BUDGET);
 	}
 
 	// Getters and setters
@@ -299,7 +318,7 @@ public class SystemApp extends Observable{
 		ArrayList<Pair<String, Integer>> availableDevelopers = new ArrayList<>();
 		for (Developer dev : developers) {
 			if (dev.isAvailable(week)) {
-				availableDevelopers.add( new Pair(dev.getId(),dev.getActivityLevel(week)));
+				availableDevelopers.add(new Pair(dev.getId(),dev.getActivityLevel(week)));
 
 				// Sorts a list of pair<String,Integer> by its value-integer.
 				Collections.sort(availableDevelopers, new Comparator<Pair<String, Integer>>() {

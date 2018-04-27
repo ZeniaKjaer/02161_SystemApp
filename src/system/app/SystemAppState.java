@@ -7,13 +7,16 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import javafx.util.Pair;
+
 public class SystemAppState {
 	BufferedReader rs = new BufferedReader(new InputStreamReader(System.in));
-	
+	SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+
 	private Developer enterDeveloper(SystemApp systemApp) throws IOException {
 		System.out.print("Enter developer ID: ");
 		String developerID = rs.readLine();
-		
+
 		for (Developer d: systemApp.getDevelopers()) {
 			if(d.getId().equalsIgnoreCase(developerID)) {
 				return d;
@@ -25,7 +28,7 @@ public class SystemAppState {
 	private Project enterProject(SystemApp systemApp) throws IOException {
 		System.out.print("Enter a project name: ");
 		String projectName = rs.readLine();
-		
+
 		for (Project p: systemApp.getProjects()) {
 			if(p.getProjectName().equalsIgnoreCase(projectName)) {
 				return p;
@@ -33,11 +36,11 @@ public class SystemAppState {
 		}
 		return new Project("","",projectName);
 	}
-	
+
 	private Activity enterActivity(Project project) throws IOException {
 		System.out.print("Enter an activity name: ");
 		String activityName = rs.readLine();
-		
+
 		for (Activity a: project.getProjectActivities()) {
 			if(a.getActivityName().equalsIgnoreCase(activityName)) {
 				return a;
@@ -45,16 +48,24 @@ public class SystemAppState {
 		}
 		return new Activity(activityName);
 	}
-	
-	private Calendar enterDate() throws NumberFormatException, IOException {
+
+	private Calendar enterDate() throws IOException {
 		System.out.print("Enter year: ");
 		int year = Integer.valueOf(rs.readLine());
 		System.out.print("Enter month: ");
-		int month = Integer.valueOf(rs.readLine()) + 1; // Month is 0-based
+		int month = Integer.valueOf(rs.readLine()) - 1; // Month is 0-based
 		System.out.print("Enter day of month: ");
 		int day = Integer.valueOf(rs.readLine());
-		
+
 		return new GregorianCalendar(year, month, day);
+	}
+
+	private Week enterWeek() throws IOException {
+		System.out.print("Enter week: ");
+		int weekNumber = Integer.valueOf(rs.readLine());
+		System.out.print("Enter year: ");
+		int yearNumber = Integer.valueOf(rs.readLine());
+		return new Week(weekNumber,yearNumber);
 	}
 
 	public void createProject(SystemApp systemApp) throws IOException {
@@ -65,7 +76,7 @@ public class SystemAppState {
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
-		
+
 	}
 
 	public void changeProjectLeader(SystemApp systemApp) throws IOException {
@@ -74,7 +85,7 @@ public class SystemAppState {
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
-		
+
 	}
 
 	public void addDelevoperToProject(SystemApp systemApp) throws IOException {
@@ -93,23 +104,23 @@ public class SystemAppState {
 		}
 	}
 
-	public void setNewStartDateForProject(SystemApp systemApp) throws IOException, NumberFormatException {
+	public void setNewStartDateForProject(SystemApp systemApp) throws IOException {
 		try {
 			systemApp.setProjectStart(enterProject(systemApp), enterDate());
-			
+
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
-		
+
 	}
 
-	public void setNewDeadlineForProject(SystemApp systemApp) throws NumberFormatException, IOException {
+	public void setNewDeadlineForProject(SystemApp systemApp) throws IOException {
 		try {
 			systemApp.setProjectDeadline(enterProject(systemApp), enterDate());
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
-		
+
 	}
 
 	public void addActivityToProject(SystemApp systemApp) throws IOException {
@@ -121,7 +132,7 @@ public class SystemAppState {
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
-		
+
 	}
 
 	public void removeActivityFromProject(SystemApp systemApp) throws IOException {
@@ -132,7 +143,7 @@ public class SystemAppState {
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
-		
+
 	}
 
 	public void addDeveloperToActivity(SystemApp systemApp) throws IOException {
@@ -144,7 +155,7 @@ public class SystemAppState {
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
-		
+
 	}
 
 	public void removeDeveloperFromActivity(SystemApp systemApp) throws IOException {
@@ -156,13 +167,13 @@ public class SystemAppState {
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
-		
+
 	}
 
-	public void setNewStartDateForActivity(SystemApp systemApp) throws IOException, NumberFormatException {
+	public void setNewStartDateForActivity(SystemApp systemApp) throws IOException {
 		Project project = enterProject(systemApp);
 		Activity activity = enterActivity(project);
-		
+
 		try {
 			systemApp.setActivityStart(project, activity, enterDate());
 		} catch (OperationNotAllowedException e) {
@@ -173,13 +184,26 @@ public class SystemAppState {
 	public void setNewDeadlineForActivity(SystemApp systemApp) throws IOException {
 		Project project = enterProject(systemApp);
 		Activity activity = enterActivity(project);
-		
+
 		try {
 			systemApp.setActivityDeadline(project, activity, enterDate());
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
-		
+	}
+
+	public void getAvailableDevelopers(SystemApp systemApp) throws IOException {
+		try {
+			Week week = enterWeek();
+			for(Pair<String,Integer> p: systemApp.getAvailableDevelopers(week) ) {
+				System.out.println(p);
+			}
+			// Kommer an på om vi vil have den printet ud vandret eller lodret
+			// System.out.println(systemApp.getAvailableDevelopers(week));
+		} catch (NullPointerException e) {
+			System.out.println("Illegal week"); // Man får null pointer hvis man taster en uge der ikke findes
+		}
+
 	}
 
 }
