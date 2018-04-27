@@ -1,12 +1,14 @@
 package dtu.library.acceptance_tests;
 
 import static org.junit.Assert.assertFalse;
+
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Random;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.hasItem;
@@ -18,18 +20,21 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import javafx.util.Pair;
 import system.app.OperationNotAllowedException;
 import system.app.Project;
 import system.app.Activity;
 import system.app.DateServer;
 import system.app.Developer;
 import system.app.SystemApp;
+import system.app.Week;
 
 public class TimeSteps {
 
 	private SystemApp systemApp;
 	private Project project;
 	private Activity activity;
+	private Week week;
 	private Calendar currentDate = new GregorianCalendar();	
 	private Calendar start, middle, deadline;
 	private ErrorMessageHolder errorMessageHolder;
@@ -194,4 +199,35 @@ public class TimeSteps {
 			}
 		}
 		
+		@Given("^SystemApp has developers with number of activities in that week$")
+		public void systemappHasDevelopersWithNumberOfActivitiesInThatWeek( List<List<String>> developers) throws Exception {
+			week = new Week(start.get(Calendar.WEEK_OF_YEAR),start.get(Calendar.YEAR));
+			for (List<String> developer : developers ) {
+		    	Developer dev = new Developer(developer.get(0));
+		    	systemApp.addDeveloper(dev);
+		    	dev.getDevCalendar().SetCalendar(week, Integer.parseInt(developer.get(1)));
+		    }
+		}
+		
+		@Given("^developers in SystemApp has different activitylevel that week$")
+		public void developersInSystemAppHasDifferentActivitylevelThatWeek() throws Exception {
+			Week week = new Week (start.get(Calendar.WEEK_OF_YEAR),start.get(Calendar.YEAR));
+			Random rn = new Random();
+			for (Developer dev : systemApp.getDevelopers()) {
+		    	int activityLevel = rn.nextInt(20)+1;
+		    	dev.getDevCalendar().SetCalendar(week, activityLevel);	
+		    }
+		}
+		
+		@When("^user ask for all available developers$")
+		public void userAskForAllAvailableDevelopers() throws Exception {
+			week = new Week(start.get(Calendar.WEEK_OF_YEAR),start.get(Calendar.YEAR));
+			System.out.println( systemApp.getAvailableDevelopers(week));
+		}
+
+		@Then("^user gets a list of all available developers$")
+		public void userGetsAListOfAllAvailableDevelopers() throws Exception {
+		    // Write code here that turns the phrase above into concrete actions
+		    throw new PendingException();
+		}
 }

@@ -9,7 +9,7 @@ Scenario: Remove developer on activity successfully
   	And there is an activity developer
   	When project leader removes developer from activity
   	Then developer is not working on activity
-  	And activity is removed from calendar
+  	#And activity is removed from developer calendar
 
 Scenario: Remove developer from activity when not a project leader
   	Given user is not the project leader

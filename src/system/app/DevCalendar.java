@@ -31,7 +31,7 @@ public class DevCalendar implements Cloneable {
 	public void decrementActivity(Week week) {
 		//assert calendar.get(week.getYear())[week.getWeekOfYear()] > 0
 		//		&& calendar.get(week.getYear())[week.getWeekOfYear()] <= 20 : "Precondition violated " ;
-		int pre = calendar.get(week.getYear())[week.getWeekOfYear()];
+		//int pre = calendar.get(week.getYear())[week.getWeekOfYear()];
 		
 		calendar.get(week.getYear())[week.getWeekOfYear()]--;
 		

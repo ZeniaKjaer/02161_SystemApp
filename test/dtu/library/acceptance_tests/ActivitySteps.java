@@ -92,6 +92,7 @@ public class ActivitySteps {
 	@Given("^there is an activity developer$")
 	public void thereIsAnActivityDeveloper() throws Exception {
 		activityHelper.getActivity().addActivityDev(devHelper.getDeveloper());
+		devHelper.getDeveloper().addActivityToCalendar(activityHelper.getActivity());
 	}
 
 	@Given("^user is not working on activity$")
@@ -153,7 +154,7 @@ public class ActivitySteps {
 	public void developerIsAvailable() throws Exception {
 		activityDuration = activityHelper.getActivity().getDuration();
 		for (Week week : activityDuration) {
-			devHelper.getDeveloper().getDevCalendar().SetCalendar(week, 0);
+			devHelper.getDeveloper().getDevCalendar().SetCalendar(week, 5);
 		}
 	}
 
@@ -161,7 +162,7 @@ public class ActivitySteps {
 	public void developerIsNotAvailable() throws Exception {
 		activityDuration = activityHelper.getActivity().getDuration();
 		for (Week week : activityDuration) {
-			devHelper.getDeveloper().getDevCalendar().SetCalendar(week, 550);
+			devHelper.getDeveloper().getDevCalendar().SetCalendar(week, 20);
 		}
 	}
 
@@ -173,16 +174,15 @@ public class ActivitySteps {
 			assertEquals(prevCalendar.getActivityLevel(week)+1, devCalendar.getActivityLevel(week));
 		}
 	}
-
-	@Then("^activity is removed from calendar$")
-	public void activityIsRemovedFromCalendar() throws Exception {
+	
+	@Then("^activity is removed from developer calendar$")
+	public void activityIsRemovedFromDeveloperCalendar() throws Exception {
 		devCalendar = devHelper.getDeveloper().getDevCalendar();
 		activityDuration = activityHelper.getActivity().getDuration();
 		for (Week week : activityDuration) {
 			assertEquals(prevCalendar.getActivityLevel(week)-1, devCalendar.getActivityLevel(week));
 		}
 	}
-
 	/////////////////
 	//   TODO
 	////////////////

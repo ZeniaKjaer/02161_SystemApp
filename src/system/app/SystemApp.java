@@ -2,12 +2,12 @@ package system.app;
 
 
 import java.io.IOException;
-import java.util.Observable;
 import java.time.Month;
 import java.time.temporal.WeekFields;
 import java.util.*;
 
 import dtu.library.acceptance_tests.ProjectHelper;
+import javafx.util.Pair;
 import system.app.DateServer;
 
 public class SystemApp extends Observable{
@@ -64,7 +64,6 @@ public class SystemApp extends Observable{
 			activeUser = id;
 			loggedIn = true;
 		}
-
 		setChanged();
 		notifyObservers(NotificationType.ACTIVE_USER);
 	}
@@ -74,11 +73,23 @@ public class SystemApp extends Observable{
 		loggedIn = false;	
 	}
 
-	public boolean isProjectLeader(Project project) {
+	public boolean isProjectLeader(Project project)  {
 		if(activeUser.equalsIgnoreCase(project.getProjectLeader())) {
 			return true;
 		}
 		return false;
+	}
+
+	public void projectLeaderCheck(Project project) throws OperationNotAllowedException {
+		if(!isProjectLeader(project)) {
+			throw new OperationNotAllowedException("Project leader authorization needed");
+		}
+	}
+
+	public void timeBudgetCheck(Calendar start, Calendar deadline) throws OperationNotAllowedException {
+		if (deadline.before(start) || start.after(deadline)) {
+			throw new OperationNotAllowedException("Illegal time budget");	
+		}
 	}
 
 	public boolean isAvailableForActivity(Developer developer, Activity activity) {
@@ -89,7 +100,7 @@ public class SystemApp extends Observable{
 		} 
 		return true;
 	} 
-	
+
 	public void addProject(Project project) throws OperationNotAllowedException{
 		for (Project p: projects) {
 			if (p.getProjectName().equalsIgnoreCase(project.getProjectName())) { 
@@ -105,9 +116,9 @@ public class SystemApp extends Observable{
 		int year = getDate().get(Calendar.YEAR);
 		String projectId = ""+ year + nextProjectID++; 
 		project.setProjectId(projectId);
-		
+
 		projects.add(project); 	
-		
+
 		setChanged();
 		notifyObservers(NotificationType.ADD_PROJECT);
 	}
@@ -120,26 +131,21 @@ public class SystemApp extends Observable{
 			throw new OperationNotAllowedException("Developer is not in the system");
 		}
 		// whitebox-test tilfoejelse slut
-		if (!isProjectLeader(project)) {
-			throw new OperationNotAllowedException("Project leader authorization needed");
-		} 
-		else if (project.isProjectDev(developer)) {
+		projectLeaderCheck(project);
+		if (project.isProjectDev(developer)) {
 			throw new OperationNotAllowedException("User is already part of project");
 		} 
 		else {
 			project.addProjectDev(developer);
 		}
-		
+
 		setChanged();
 		notifyObservers(NotificationType.ADD_DEVELOPER);
-		
 	}
 
 	public void removeProjectDev(Project project, Developer developer) throws OperationNotAllowedException {
-		if (!isProjectLeader(project)) {
-			throw new OperationNotAllowedException("Project leader authorization needed");
-		} 
-		else if (!project.isProjectDev(developer)) {
+		projectLeaderCheck(project);
+		if (!project.isProjectDev(developer)) {
 			throw new OperationNotAllowedException("Developer not found");
 		} 
 		else {
@@ -150,45 +156,37 @@ public class SystemApp extends Observable{
 	}
 
 	public void setProjectLeader(Project project, Developer developer) throws OperationNotAllowedException{
-		if (!isProjectLeader(project)) {
-			throw new OperationNotAllowedException("Project leader authorization needed");
-		} 
-		else if (!project.isProjectDev(developer)) {
+		projectLeaderCheck(project);
+		if (!project.isProjectDev(developer)) {
 			throw new OperationNotAllowedException("Developer not found");
 		}
 		else {
 			project.setProjectLeader(developer.getId());
 		}
-		
+
 		setChanged();
 		notifyObservers(NotificationType.CHANGE_PROJECT_LEADER);
 	}
 
 	public void addActivity(Project project, Activity activity) throws OperationNotAllowedException {
-		if (!isProjectLeader(project)) {
-			throw new OperationNotAllowedException("Project leader authorization needed");
-		} 
-		else {
-			activity.setStart(project.getStart());
-			activity.setDeadline(project.getDeadline());
-			activity.updateDuration();
-			project.addActivity(activity);
-		}	
+		projectLeaderCheck(project);
+
+		activity.setStart(project.getStart());
+		activity.setDeadline(project.getDeadline());
+		activity.updateDuration();
+		project.addActivity(activity);	
 	}
 
 	public void removeActivity(Project project, Activity activity) throws OperationNotAllowedException {
 		if(!projects.contains(project)) {
 			throw new OperationNotAllowedException("Project is not in the system"); 
 		}
-		else if (!isProjectLeader(project)) {
-			throw new OperationNotAllowedException("Project leader authorization needed");
-		}
-		else if (!project.isProjectActivity(activity)) {
+		projectLeaderCheck(project);
+		if (!project.isProjectActivity(activity)) {
 			throw new OperationNotAllowedException("Activity is not part of the project");
 		} 
 		else {
 			project.removeActivity(activity);
-
 			for (Developer dev : activity.getActivityDevelopers()) {
 				dev.removeActivityFromCalendar(activity);
 			}
@@ -212,10 +210,8 @@ public class SystemApp extends Observable{
 	}
 
 	public void removeActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException {
-		if (!isProjectLeader(project)) {
-			throw new OperationNotAllowedException("Project leader authorization needed");
-		} 
-		else if (!project.isProjectActivity(activity)) {
+		projectLeaderCheck(project);
+		if (!project.isProjectActivity(activity)) {
 			throw new OperationNotAllowedException("Activity not found");
 		} 
 		else if (!activity.isActivityDev(developer.getId())) { 
@@ -228,30 +224,24 @@ public class SystemApp extends Observable{
 	}
 
 	public void setProjectStart(Project project, Calendar start) throws OperationNotAllowedException {
-		if (!isProjectLeader(project)) {
-			throw new OperationNotAllowedException("Project leader authorization needed");
-		}
-		else if (start.after(project.getDeadline())) {
+		projectLeaderCheck(project);
+		if (start.after(project.getDeadline())) {
 			throw new OperationNotAllowedException("Illegal time budget");
 		}
 		project.setStart(start);
 	}
 
 	public void setProjectDeadline(Project project, Calendar deadline)throws OperationNotAllowedException {
-		if (!isProjectLeader(project)) {
-			throw new OperationNotAllowedException("Project leader authorization needed");
-		}
-		else if(deadline.before(project.getStart())) {
+		projectLeaderCheck(project);
+		if(deadline.before(project.getStart())) {
 			throw new OperationNotAllowedException("Illegal time budget");
 		}
 		project.setDeadline(deadline);
 	}
 
 	public void setActivityStart(Project project, Activity activity, Calendar start) throws OperationNotAllowedException {
-		if (!isProjectLeader(project)) {
-			throw new OperationNotAllowedException("Project leader authorization needed");
-		}
-		else if(start.after(activity.getDeadline())) {
+		projectLeaderCheck(project);
+		if(start.after(activity.getDeadline())) {
 			throw new OperationNotAllowedException("Illegal time budget");
 		} 
 		else if (start.before(project.getStart()) || start.after(project.getDeadline()) ) {
@@ -270,10 +260,8 @@ public class SystemApp extends Observable{
 	}
 
 	public void setActivityDeadline(Project project, Activity activity, Calendar deadline) throws OperationNotAllowedException {
-		if (!isProjectLeader(project)) {
-			throw new OperationNotAllowedException("Project leader authorization needed");
-		}
-		else if (deadline.before(activity.getStart())) {
+		projectLeaderCheck(project);
+		if (deadline.before(activity.getStart())) {
 			throw new OperationNotAllowedException("Illegal time budget");
 		}
 		else if ( deadline.before(project.getStart()) || deadline.after(project.getDeadline()) ) {
@@ -312,4 +300,23 @@ public class SystemApp extends Observable{
 	public Calendar getDate() {
 		return dateServer.getDate();
 	}
+
+	public ArrayList<Pair<String,Integer>> getAvailableDevelopers(Week week) {
+		ArrayList<Pair<String, Integer>> availableDevelopers = new ArrayList<>();
+		for (Developer dev : developers) {
+			if (dev.isAvailable(week)) {
+				availableDevelopers.add( new Pair(dev.getId(),dev.getActivityLevel(week)));
+
+				// Sorts a list of pair<String,Integer> by its value-integer.
+				Collections.sort(availableDevelopers, new Comparator<Pair<String, Integer>>() {
+					@Override
+					public int compare(final Pair<String, Integer> p1, final Pair<String, Integer> p2) {
+						return p1.getValue().compareTo(p2.getValue());
+					}
+				});
+			}
+		}
+		return availableDevelopers;
+	}
+
 }

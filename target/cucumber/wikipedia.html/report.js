@@ -124,6 +124,202 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.uri("use_cases/student/add_coworker_activity.feature");
+formatter.feature({
+  "name": "Add co-worker to activity",
+  "description": "    Description: A project developer adds a co-worker to an activity\n    Actors: Project developer",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "Developer on activity adds co-worker to activity",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a project with an activity",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user is working on activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.userIsWorkingOnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds developer to activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userAddsDeveloperToActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developer is working on activity",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "ActivitySteps.developerIsWorkingOnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Developer not on activity adds co-worker to activity",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is not working on activity",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ActivitySteps.userIsNotWorkingOnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds developer to activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userAddsDeveloperToActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Project leader authorization needed\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Developer on activity adds a co-worker who is already working on activity",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is working on activity",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ActivitySteps.userIsWorkingOnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developer is already working on activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.userIsAlreadyWorkingOnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds developer to activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userAddsDeveloperToActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Developer is already working on activity\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Developer on activity adds not available co-worker to activity",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a project with an activity",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user is working on activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.userIsWorkingOnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsADeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developer is not available",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.developerIsNotAvailable()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds developer to activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userAddsDeveloperToActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Developer is not available\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.uri("use_cases/student/add_developer_activity.feature");
 formatter.feature({
   "name": "Add project developer to activity",
@@ -194,17 +390,6 @@ formatter.match({
 });
 formatter.result({
   "status": "passed"
-});
-formatter.step({
-  "name": "developer has activity marked in her calendar",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.developerHasActivityMarkedInHerCalendar()"
-});
-formatter.result({
-  "error_message": "java.lang.AssertionError: expected:\u003c2\u003e but was:\u003c1\u003e\r\n\tat org.junit.Assert.fail(Assert.java:88)\r\n\tat org.junit.Assert.failNotEquals(Assert.java:834)\r\n\tat org.junit.Assert.assertEquals(Assert.java:645)\r\n\tat org.junit.Assert.assertEquals(Assert.java:631)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.developerHasActivityMarkedInHerCalendar(ActivitySteps.java:173)\r\n\tat ✽.developer has activity marked in her calendar(use_cases/student/add_developer_activity.feature:12)\r\n",
-  "status": "failed"
 });
 formatter.scenario({
   "name": "Add developer when not a project leader",
@@ -312,21 +497,21 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "there is a developer",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ProjectSteps.thereIsADeveloper()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
   "name": "there is a project with an activity",
   "keyword": "And "
 });
 formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsADeveloper()"
 });
 formatter.result({
   "status": "passed"
@@ -366,48 +551,6 @@ formatter.feature({
   "name": "Add developer to project",
   "description": "  Description: The project leader adds a developer to the project\n  Actors: Project leader",
   "keyword": "Feature"
-});
-formatter.background({
-  "name": "SystemApp has developers",
-  "description": "",
-  "keyword": "Background"
-});
-formatter.step({
-  "name": "SystemApp has developers",
-  "rows": [
-    {
-      "cells": [
-        "ABCD"
-      ]
-    },
-    {
-      "cells": [
-        "MTVD"
-      ]
-    },
-    {
-      "cells": [
-        "HERE"
-      ]
-    },
-    {
-      "cells": [
-        "ZEKT"
-      ]
-    },
-    {
-      "cells": [
-        "RITG"
-      ]
-    }
-  ],
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.systemappHasDevelopers(String\u003e)"
-});
-formatter.result({
-  "status": "passed"
 });
 formatter.scenario({
   "name": "Add developer to project successfully",
@@ -460,48 +603,6 @@ formatter.step({
 });
 formatter.match({
   "location": "ProjectSteps.developerIsPartOfTheProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.background({
-  "name": "SystemApp has developers",
-  "description": "",
-  "keyword": "Background"
-});
-formatter.step({
-  "name": "SystemApp has developers",
-  "rows": [
-    {
-      "cells": [
-        "ABCD"
-      ]
-    },
-    {
-      "cells": [
-        "MTVD"
-      ]
-    },
-    {
-      "cells": [
-        "HERE"
-      ]
-    },
-    {
-      "cells": [
-        "ZEKT"
-      ]
-    },
-    {
-      "cells": [
-        "RITG"
-      ]
-    }
-  ],
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.systemappHasDevelopers(String\u003e)"
 });
 formatter.result({
   "status": "passed"
@@ -561,48 +662,6 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
-formatter.background({
-  "name": "SystemApp has developers",
-  "description": "",
-  "keyword": "Background"
-});
-formatter.step({
-  "name": "SystemApp has developers",
-  "rows": [
-    {
-      "cells": [
-        "ABCD"
-      ]
-    },
-    {
-      "cells": [
-        "MTVD"
-      ]
-    },
-    {
-      "cells": [
-        "HERE"
-      ]
-    },
-    {
-      "cells": [
-        "ZEKT"
-      ]
-    },
-    {
-      "cells": [
-        "RITG"
-      ]
-    }
-  ],
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.systemappHasDevelopers(String\u003e)"
-});
-formatter.result({
-  "status": "passed"
-});
 formatter.scenario({
   "name": "Add developer to project twice",
   "description": "",
@@ -657,6 +716,63 @@ formatter.match({
 });
 formatter.result({
   "status": "passed"
+});
+formatter.uri("use_cases/student/available_developer.feature");
+formatter.feature({
+  "name": "Get available developers",
+  "description": "   Description: The project leader searches and gets a list of available developers\n\tActors: Project leader",
+  "keyword": "Feature"
+});
+formatter.background({
+  "name": "SystemApp has developers",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "there is a start date",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsAStartDate()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developers in SystemApp has different activitylevel that week",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.developersInSystemAppHasDifferentActivitylevelThatWeek()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Project leader gets available developers succesfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user ask for all available developers",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "TimeSteps.userAskForAllAvailableDevelopers()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets a list of all available developers",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "TimeSteps.userGetsAListOfAllAvailableDevelopers()"
+});
+formatter.result({
+  "error_message": "cucumber.api.PendingException: TODO: implement me\r\n\tat dtu.library.acceptance_tests.TimeSteps.userGetsAListOfAllAvailableDevelopers(TimeSteps.java:231)\r\n\tat ✽.user gets a list of all available developers(use_cases/student/available_developer.feature:17)\r\n",
+  "status": "pending"
 });
 formatter.uri("use_cases/student/change_project_leader.feature");
 formatter.feature({
@@ -911,48 +1027,6 @@ formatter.feature({
   "description": "    Description: The project leader removes activities from the project\n    Actors: Project leader",
   "keyword": "Feature"
 });
-formatter.background({
-  "name": "SystemApp has developers",
-  "description": "",
-  "keyword": "Background"
-});
-formatter.step({
-  "name": "SystemApp has developers",
-  "rows": [
-    {
-      "cells": [
-        "ABCD"
-      ]
-    },
-    {
-      "cells": [
-        "MTVD"
-      ]
-    },
-    {
-      "cells": [
-        "HERE"
-      ]
-    },
-    {
-      "cells": [
-        "ZEKT"
-      ]
-    },
-    {
-      "cells": [
-        "RITG"
-      ]
-    }
-  ],
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.systemappHasDevelopers(String\u003e)"
-});
-formatter.result({
-  "status": "passed"
-});
 formatter.scenario({
   "name": "Project leader removes activity successfully",
   "description": "",
@@ -979,6 +1053,16 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
+  "name": "there is an activity developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAnActivityDeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
   "name": "user removes activity",
   "keyword": "When "
 });
@@ -994,59 +1078,6 @@ formatter.step({
 });
 formatter.match({
   "location": "ActivitySteps.activityIsNoLongerPartOfProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "activity is removed from calendar",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.activityIsRemovedFromCalendar()"
-});
-formatter.result({
-  "error_message": "java.lang.AssertionError: expected:\u003c-1\u003e but was:\u003c0\u003e\r\n\tat org.junit.Assert.fail(Assert.java:88)\r\n\tat org.junit.Assert.failNotEquals(Assert.java:834)\r\n\tat org.junit.Assert.assertEquals(Assert.java:645)\r\n\tat org.junit.Assert.assertEquals(Assert.java:631)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.activityIsRemovedFromCalendar(ActivitySteps.java:182)\r\n\tat ✽.activity is removed from calendar(use_cases/student/remove_activty.feature:19)\r\n",
-  "status": "failed"
-});
-formatter.background({
-  "name": "SystemApp has developers",
-  "description": "",
-  "keyword": "Background"
-});
-formatter.step({
-  "name": "SystemApp has developers",
-  "rows": [
-    {
-      "cells": [
-        "ABCD"
-      ]
-    },
-    {
-      "cells": [
-        "MTVD"
-      ]
-    },
-    {
-      "cells": [
-        "HERE"
-      ]
-    },
-    {
-      "cells": [
-        "ZEKT"
-      ]
-    },
-    {
-      "cells": [
-        "RITG"
-      ]
-    }
-  ],
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.systemappHasDevelopers(String\u003e)"
 });
 formatter.result({
   "status": "passed"
@@ -1102,48 +1133,6 @@ formatter.step({
 });
 formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.background({
-  "name": "SystemApp has developers",
-  "description": "",
-  "keyword": "Background"
-});
-formatter.step({
-  "name": "SystemApp has developers",
-  "rows": [
-    {
-      "cells": [
-        "ABCD"
-      ]
-    },
-    {
-      "cells": [
-        "MTVD"
-      ]
-    },
-    {
-      "cells": [
-        "HERE"
-      ]
-    },
-    {
-      "cells": [
-        "ZEKT"
-      ]
-    },
-    {
-      "cells": [
-        "RITG"
-      ]
-    }
-  ],
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.systemappHasDevelopers(String\u003e)"
 });
 formatter.result({
   "status": "passed"
@@ -1253,17 +1242,6 @@ formatter.match({
 });
 formatter.result({
   "status": "passed"
-});
-formatter.step({
-  "name": "activity is removed from calendar",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.activityIsRemovedFromCalendar()"
-});
-formatter.result({
-  "error_message": "java.lang.AssertionError: expected:\u003c-2\u003e but was:\u003c-1\u003e\r\n\tat org.junit.Assert.fail(Assert.java:88)\r\n\tat org.junit.Assert.failNotEquals(Assert.java:834)\r\n\tat org.junit.Assert.assertEquals(Assert.java:645)\r\n\tat org.junit.Assert.assertEquals(Assert.java:631)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.activityIsRemovedFromCalendar(ActivitySteps.java:182)\r\n\tat ✽.activity is removed from calendar(use_cases/student/remove_developer_activity.feature:12)\r\n",
-  "status": "failed"
 });
 formatter.scenario({
   "name": "Remove developer from activity when not a project leader",
@@ -2539,48 +2517,6 @@ formatter.feature({
   "description": "    Description: User logs into and out of the system\n    Actors: Developer",
   "keyword": "Feature"
 });
-formatter.background({
-  "name": "SystemApp has developers",
-  "description": "",
-  "keyword": "Background"
-});
-formatter.step({
-  "name": "SystemApp has developers",
-  "rows": [
-    {
-      "cells": [
-        "ABCD"
-      ]
-    },
-    {
-      "cells": [
-        "MTVD"
-      ]
-    },
-    {
-      "cells": [
-        "HERE"
-      ]
-    },
-    {
-      "cells": [
-        "ZEKT"
-      ]
-    },
-    {
-      "cells": [
-        "RITG"
-      ]
-    }
-  ],
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.systemappHasDevelopers(String\u003e)"
-});
-formatter.result({
-  "status": "passed"
-});
 formatter.scenario({
   "name": "developer logs on with initials",
   "description": "",
@@ -2622,48 +2558,6 @@ formatter.step({
 });
 formatter.match({
   "location": "LoginLogoutSteps.developerWithInitialsIsLoggedIn(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.background({
-  "name": "SystemApp has developers",
-  "description": "",
-  "keyword": "Background"
-});
-formatter.step({
-  "name": "SystemApp has developers",
-  "rows": [
-    {
-      "cells": [
-        "ABCD"
-      ]
-    },
-    {
-      "cells": [
-        "MTVD"
-      ]
-    },
-    {
-      "cells": [
-        "HERE"
-      ]
-    },
-    {
-      "cells": [
-        "ZEKT"
-      ]
-    },
-    {
-      "cells": [
-        "RITG"
-      ]
-    }
-  ],
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.systemappHasDevelopers(String\u003e)"
 });
 formatter.result({
   "status": "passed"
@@ -2723,48 +2617,6 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
-formatter.background({
-  "name": "SystemApp has developers",
-  "description": "",
-  "keyword": "Background"
-});
-formatter.step({
-  "name": "SystemApp has developers",
-  "rows": [
-    {
-      "cells": [
-        "ABCD"
-      ]
-    },
-    {
-      "cells": [
-        "MTVD"
-      ]
-    },
-    {
-      "cells": [
-        "HERE"
-      ]
-    },
-    {
-      "cells": [
-        "ZEKT"
-      ]
-    },
-    {
-      "cells": [
-        "RITG"
-      ]
-    }
-  ],
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.systemappHasDevelopers(String\u003e)"
-});
-formatter.result({
-  "status": "passed"
-});
 formatter.scenario({
   "name": "developer logs out",
   "description": "",
@@ -2796,48 +2648,6 @@ formatter.step({
 });
 formatter.match({
   "location": "LoginLogoutSteps.developerIsLoggedOut()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.background({
-  "name": "SystemApp has developers",
-  "description": "",
-  "keyword": "Background"
-});
-formatter.step({
-  "name": "SystemApp has developers",
-  "rows": [
-    {
-      "cells": [
-        "ABCD"
-      ]
-    },
-    {
-      "cells": [
-        "MTVD"
-      ]
-    },
-    {
-      "cells": [
-        "HERE"
-      ]
-    },
-    {
-      "cells": [
-        "ZEKT"
-      ]
-    },
-    {
-      "cells": [
-        "RITG"
-      ]
-    }
-  ],
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.systemappHasDevelopers(String\u003e)"
 });
 formatter.result({
   "status": "passed"

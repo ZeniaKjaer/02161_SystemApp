@@ -3,13 +3,14 @@ Feature: Add developer to project
   Description: The project leader adds a developer to the project
   Actors: Project leader
   
-Background: SystemApp has developers
-	Given SystemApp has developers
-		| ABCD |
-		| MTVD |
-		| HERE |
-		| ZEKT |
-		| RITG |
+#Background: SystemApp has developers
+#	Given there is a start date
+#	And SystemApp has developers with number of activities in that week
+#		| ABCD |  3 |
+#		| MTVD |  4 |
+#		| HERE |  8 |
+#		| ZEKT |  7 |
+#		| RITG | 20 |
 
 Scenario: Add developer to project successfully
 	Given there is a project
