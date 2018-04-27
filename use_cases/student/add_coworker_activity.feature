@@ -9,7 +9,7 @@ Scenario: Developer on activity adds co-worker to activity
   	When user adds developer to activity
   	Then developer is working on activity
   	#And developer has activity marked in her calendar
-
+  	
 Scenario: Developer not on activity adds co-worker to activity
   	Given user is not working on activity
   	When user adds developer to activity
@@ -28,3 +28,4 @@ Scenario: Developer on activity adds not available co-worker to activity
   	And developer is not available
   	When user adds developer to activity
   	Then user gets the error message "Developer is not available"
+

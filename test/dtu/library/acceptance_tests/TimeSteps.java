@@ -199,15 +199,15 @@ public class TimeSteps {
 			}
 		}
 		
-		@Given("^SystemApp has developers with number of activities in that week$")
-		public void systemappHasDevelopersWithNumberOfActivitiesInThatWeek( List<List<String>> developers) throws Exception {
-			week = new Week(start.get(Calendar.WEEK_OF_YEAR),start.get(Calendar.YEAR));
-			for (List<String> developer : developers ) {
-		    	Developer dev = new Developer(developer.get(0));
-		    	systemApp.addDeveloper(dev);
-		    	dev.getDevCalendar().SetCalendar(week, Integer.parseInt(developer.get(1)));
-		    }
-		}
+//		@Given("^SystemApp has developers with number of activities in that week$")
+//		public void systemappHasDevelopersWithNumberOfActivitiesInThatWeek( List<List<String>> developers) throws Exception {
+//			week = new Week(start.get(Calendar.WEEK_OF_YEAR),start.get(Calendar.YEAR));
+//			for (List<String> developer : developers ) {
+//		    	Developer dev = new Developer(developer.get(0));
+//		    	systemApp.addDeveloper(dev);
+//		    	dev.getDevCalendar().SetCalendar(week, Integer.parseInt(developer.get(1)));
+//		    }
+//		}
 		
 		@Given("^developers in SystemApp has different activitylevel that week$")
 		public void developersInSystemAppHasDifferentActivitylevelThatWeek() throws Exception {

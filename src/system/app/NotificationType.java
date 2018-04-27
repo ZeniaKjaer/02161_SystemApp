@@ -2,7 +2,7 @@ package system.app;
 
 /**
  * This enumeration is used by the SystemApp to notify its observer
- * which aspect of his state have changed.
+ * which aspect of the system have changed.
  * @author Mai-Thi
  *
  */
