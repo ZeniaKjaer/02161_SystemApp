@@ -33,7 +33,10 @@ public class Developer {
 	
 	// developer is available that week, if she has less than 20 activities in her calendar
 	public boolean isAvailable(Week week) {	
-		if (devCalendar.getActivityLevel(week) < 20) {
+		if(!devCalendar.haveYear(week.getYear())) {
+			return false;
+		}
+		else if (devCalendar.getActivityLevel(week) < 20) {
 			return true;
 		}
 		return false;
@@ -51,12 +54,6 @@ public class Developer {
 	public String getId() {
 		return id;
 	}
-
-	public boolean haveYear(int year) {
-		return devCalendar.haveYear(year);
-	}
-
-
 }	
 
 

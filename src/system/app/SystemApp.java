@@ -322,18 +322,16 @@ public class SystemApp extends Observable{
 		}
 
 		for (Developer dev : developers) {
-			if(dev.haveYear(week.getYear())) {
-				if (dev.isAvailable(week)) { 
-					availableDevelopers.add(new Pair(dev.getId(),dev.getActivityLevel(week)));
+			if (dev.isAvailable(week)) { 
+				availableDevelopers.add(new Pair(dev.getId(),dev.getActivityLevel(week)));
 
-					// Sorts a list of pair<String,Integer> by its value-integer.
-					Collections.sort(availableDevelopers, new Comparator<Pair<String, Integer>>() {
-						@Override
-						public int compare(final Pair<String, Integer> p1, final Pair<String, Integer> p2) {
-							return p1.getValue().compareTo(p2.getValue());
-						}
-					});
-				}
+				// Sorts a list of pair<String,Integer> by its value-integer.
+				Collections.sort(availableDevelopers, new Comparator<Pair<String, Integer>>() {
+					@Override
+					public int compare(final Pair<String, Integer> p1, final Pair<String, Integer> p2) {
+						return p1.getValue().compareTo(p2.getValue());
+					}
+				});
 			}
 		}
 		return availableDevelopers;
