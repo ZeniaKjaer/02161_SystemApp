@@ -194,14 +194,14 @@ public class SystemAppState {
 
 	public void getAvailableDevelopers(SystemApp systemApp) throws IOException {
 		try {
-			Week week = enterWeek();
-			for(Pair<String,Integer> p: systemApp.getAvailableDevelopers(week) ) {
+			Week weekYear = enterWeek();
+			for(Pair<String,Integer> p: systemApp.getAvailableDevelopers(weekYear) ) {
 				System.out.println(p);
 			}
 			// Kommer an på om vi vil have den printet ud vandret eller lodret
 			// System.out.println(systemApp.getAvailableDevelopers(week));
-		} catch (NullPointerException e) {
-			System.out.println("Illegal week"); // Man får null pointer hvis man taster en uge der ikke findes
+		} catch (OperationNotAllowedException e) {
+			System.out.println(e);
 		}
 
 	}

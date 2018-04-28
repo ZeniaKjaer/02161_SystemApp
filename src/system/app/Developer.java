@@ -3,6 +3,7 @@ package system.app;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Map;
 
 public class Developer {
 
@@ -50,6 +51,11 @@ public class Developer {
 	public String getId() {
 		return id;
 	}
+
+	public boolean haveYear(int year) {
+		return devCalendar.haveYear(year);
+	}
+
 
 }	
 

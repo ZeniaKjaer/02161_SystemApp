@@ -1,8 +1,8 @@
 package system.app;
 
-	import java.util.*;
-	import javafx.util.Pair;
-	import system.app.DateServer;
+import java.util.*;
+import javafx.util.Pair;
+import system.app.DateServer;
 
 public class SystemApp extends Observable{
 
@@ -169,7 +169,7 @@ public class SystemApp extends Observable{
 		activity.setDeadline(project.getDeadline());
 		activity.updateDuration();
 		project.addActivity(activity);	
-		
+
 		setChanged();
 		notifyObservers(NotificationType.ADD_ACTIVITY);
 	}
@@ -232,7 +232,7 @@ public class SystemApp extends Observable{
 			throw new OperationNotAllowedException("Illegal time budget");
 		}
 		project.setStart(start);
-		
+
 		setChanged();
 		notifyObservers(NotificationType.TIME_BUDGET);
 	}
@@ -243,7 +243,7 @@ public class SystemApp extends Observable{
 			throw new OperationNotAllowedException("Illegal time budget");
 		}
 		project.setDeadline(deadline);
-		
+
 		setChanged();
 		notifyObservers(NotificationType.TIME_BUDGET);
 	}
@@ -314,19 +314,26 @@ public class SystemApp extends Observable{
 		return dateServer.getDate();
 	}
 
-	public ArrayList<Pair<String,Integer>> getAvailableDevelopers(Week week) {
+	public ArrayList<Pair<String,Integer>> getAvailableDevelopers(Week week) throws OperationNotAllowedException {
 		ArrayList<Pair<String, Integer>> availableDevelopers = new ArrayList<>();
-		for (Developer dev : developers) {
-			if (dev.isAvailable(week)) {
-				availableDevelopers.add(new Pair(dev.getId(),dev.getActivityLevel(week)));
 
-				// Sorts a list of pair<String,Integer> by its value-integer.
-				Collections.sort(availableDevelopers, new Comparator<Pair<String, Integer>>() {
-					@Override
-					public int compare(final Pair<String, Integer> p1, final Pair<String, Integer> p2) {
-						return p1.getValue().compareTo(p2.getValue());
-					}
-				});
+		if (week.getWeekOfYear() > 53) {
+			throw new OperationNotAllowedException("Illegal week");
+		}
+
+		for (Developer dev : developers) {
+			if(dev.haveYear(week.getYear())) {
+				if (dev.isAvailable(week)) { 
+					availableDevelopers.add(new Pair(dev.getId(),dev.getActivityLevel(week)));
+
+					// Sorts a list of pair<String,Integer> by its value-integer.
+					Collections.sort(availableDevelopers, new Comparator<Pair<String, Integer>>() {
+						@Override
+						public int compare(final Pair<String, Integer> p1, final Pair<String, Integer> p2) {
+							return p1.getValue().compareTo(p2.getValue());
+						}
+					});
+				}
 			}
 		}
 		return availableDevelopers;

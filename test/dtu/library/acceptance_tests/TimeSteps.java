@@ -161,7 +161,7 @@ public class TimeSteps {
 		}
 	}
 //////////////////////////////////////////////////////////////////////////////////////////
-// OBS MAN KAN GODT ÆNDRE PROJEKT TIDEN, SÅ DEN IKKE DÆKKER DENS AKTIVITETER, TILLADT?  //
+// OBS MAN KAN GODT ï¿½NDRE PROJEKT TIDEN, Sï¿½ DEN IKKE Dï¿½KKER DENS AKTIVITETER, TILLADT?  //
 //////////////////////////////////////////////////////////////////////////////////////////
 	@When("^user sets activity deadline before project start$")
 	public void userSetsActivityDeadlineBeforeProjectStart() throws Exception {
@@ -190,7 +190,7 @@ public class TimeSteps {
 			Random rn = new Random();
 			for (Developer dev : systemApp.getDevelopers()) {
 		    	int activityLevel = rn.nextInt(20)+1;
-		    	dev.getDevCalendar().SetCalendar(week, activityLevel);	
+		    	dev.getDevCalendar().setCalendar(week, activityLevel);	
 		    }
 		}
 		

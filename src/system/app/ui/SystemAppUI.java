@@ -74,8 +74,6 @@ public class SystemAppUI implements Observer {
 			} catch (NumberFormatException e) {
 				System.out.println(e);
 			}
-
-
 		} while (choice != null);
 	}
 	private void showMenu(PrintStream out) {

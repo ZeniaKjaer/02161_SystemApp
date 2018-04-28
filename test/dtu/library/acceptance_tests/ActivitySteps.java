@@ -143,7 +143,7 @@ public class ActivitySteps {
 	public void developerIsAvailable() throws Exception {
 		activityDuration = activityHelper.getActivity().getDuration();
 		for (Week week : activityDuration) {
-			devHelper.getDeveloper().getDevCalendar().SetCalendar(week, 5);
+			devHelper.getDeveloper().getDevCalendar().setCalendar(week, 5);
 		}
 	}
 
@@ -151,7 +151,7 @@ public class ActivitySteps {
 	public void developerIsNotAvailable() throws Exception {
 		activityDuration = activityHelper.getActivity().getDuration();
 		for (Week week : activityDuration) {
-			devHelper.getDeveloper().getDevCalendar().SetCalendar(week, 20);
+			devHelper.getDeveloper().getDevCalendar().setCalendar(week, 20);
 		}
 	}
 
