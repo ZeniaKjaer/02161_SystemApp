@@ -1,6 +1,5 @@
 package dtu.library.acceptance_tests;
 
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Rule;

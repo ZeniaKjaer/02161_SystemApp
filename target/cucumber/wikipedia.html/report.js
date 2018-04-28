@@ -738,7 +738,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "user gets the error message \"User is already part of project\"",
+  "name": "user gets the error message \"Developer is already part of project\"",
   "keyword": "Then "
 });
 formatter.match({
@@ -750,7 +750,7 @@ formatter.result({
 formatter.uri("use_cases/student/available_developer.feature");
 formatter.feature({
   "name": "Get available developers",
-  "description": "   Description: The project leader searches and gets a list of available developers\n\tActors: Project leader",
+  "description": "   Description: The project leader gets a list of available developers in a given week\n\tActors: Project leader",
   "keyword": "Feature"
 });
 formatter.background({
@@ -881,7 +881,7 @@ formatter.result({
 });
 formatter.step({
   "name": "user is not the project leader",
-  "keyword": "Given "
+  "keyword": "And "
 });
 formatter.match({
   "location": "ProjectSteps.userIsNotTheProjectLeader()"

@@ -2,6 +2,7 @@
 Feature: Set time budget for project
     Description: The project leader sets the time budget for the project
     Actors: Project leader
+    
     Background:
     Given there is a project
     And there is a start date

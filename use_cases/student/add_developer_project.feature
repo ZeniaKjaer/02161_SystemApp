@@ -22,4 +22,4 @@ Scenario: Add developer to project twice
   	And user is the project leader
   	And there is a project developer
   	When user adds developer to project
-  	Then user gets the error message "User is already part of project"
+  	Then user gets the error message "Developer is already part of project"

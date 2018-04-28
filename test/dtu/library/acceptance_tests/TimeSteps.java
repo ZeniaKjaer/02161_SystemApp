@@ -23,7 +23,6 @@ public class TimeSteps {
 	private ArrayList<Pair<String,Integer>> availableDev;
 	private Calendar start, middle, deadline;
 	private ErrorMessageHolder errorMessageHolder;
-	private DeveloperHelper devHelper;
 	private ProjectHelper projectHelper;
 	private ActivityHelper activityHelper;
 	MockDateHolder dateHolder;
@@ -33,7 +32,6 @@ public class TimeSteps {
 			MockDateHolder dateHolder) {
 		this.systemApp = systemApp;	
 		this.errorMessageHolder = errorMessageHolder;
-		this.devHelper = devHelper;
 		this.projectHelper = projectHelper;
 		this.activityHelper = activityHelper;
 		this.dateHolder = dateHolder;

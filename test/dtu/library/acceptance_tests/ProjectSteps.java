@@ -17,11 +17,9 @@ public class ProjectSteps {
 
 	private SystemApp systemApp;
 	private Project project;
-	private Activity activity;
 	private ErrorMessageHolder errorMessageHolder;
 	private DeveloperHelper devHelper;
 	private ProjectHelper projectHelper;
-	private ActivityHelper activityHelper;
 
 	public ProjectSteps(SystemApp systemApp, ErrorMessageHolder errorMessageHolder, 
 			DeveloperHelper devHelper, ProjectHelper projectHelper, ActivityHelper activityHelper) {
@@ -29,7 +27,6 @@ public class ProjectSteps {
 		this.errorMessageHolder = errorMessageHolder;
 		this.devHelper = devHelper;
 		this.projectHelper = projectHelper;
-		this.activityHelper = activityHelper;
 	}
 
 	@Given("^there is a developer$")

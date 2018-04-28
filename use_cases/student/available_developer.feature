@@ -1,6 +1,6 @@
 # @author Zenia
 Feature: Get available developers
-   Description: The project leader searches and gets a list of available developers
+   Description: The project leader gets a list of available developers in a given week
 	Actors: Project leader
 Background: SystemApp has developers
 	Given there is a start date

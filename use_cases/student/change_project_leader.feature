@@ -12,7 +12,7 @@ Scenario: Changes project leader successfully
 
 Scenario: Changes project leader when user is not the project leader
   	Given there is a project developer
-  	Given user is not the project leader
+  	And user is not the project leader
   	When user change project leader
   	Then user gets the error message "Project leader authorization needed"
 

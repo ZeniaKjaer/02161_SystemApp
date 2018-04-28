@@ -26,10 +26,8 @@ public class SystemAppUI implements Observer {
 		systemApp.addObserver(this);
 	}
 
-
 	public static void main(String[] args) throws Exception {
 		new SystemAppUI().loginLoop(System.in, System.out);
-
 	}
 
 	private void loginLoop(InputStream in, PrintStream out) throws IOException {
@@ -51,7 +49,6 @@ public class SystemAppUI implements Observer {
 			} catch (OperationNotAllowedException e) {
 				System.out.println(e);
 			}
-
 		} while (!systemApp.isInTheSystem(initials));
 		mainLoop(in,out);
 	}
@@ -76,6 +73,7 @@ public class SystemAppUI implements Observer {
 			}
 		} while (choice != null);
 	}
+	
 	private void showMenu(PrintStream out) {
 		//out.println("   0) Exit");
 		out.println("Project:");
@@ -97,8 +95,8 @@ public class SystemAppUI implements Observer {
 		out.println("Logout:");
 		out.println("   14) Logout");
 		out.println("Select a number (1-14): ");
-
 	}
+	
 	private void processChoice(int number,InputStream in, PrintStream out) throws IOException {
 		switch (number) {
 		case 1:
@@ -190,7 +188,5 @@ public class SystemAppUI implements Observer {
 			System.out.println("The activity has been removed.");
 		}
 	}
-
-
 }
 

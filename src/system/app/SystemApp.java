@@ -127,7 +127,7 @@ public class SystemApp extends Observable{
 		// whitebox-test tilfoejelse slut
 		projectLeaderCheck(project);
 		if (project.isProjectDev(developer)) {
-			throw new OperationNotAllowedException("User is already part of project");
+			throw new OperationNotAllowedException("Developer is already part of project");
 		} 
 		else {
 			project.addProjectDev(developer);
@@ -323,7 +323,7 @@ public class SystemApp extends Observable{
 
 		for (Developer dev : developers) {
 			if (dev.isAvailable(week)) { 
-				availableDevelopers.add(new Pair(dev.getId(),dev.getActivityLevel(week)));
+				availableDevelopers.add(new Pair(dev.getId(), dev.getActivityLevel(week)));
 
 				// Sorts a list of pair<String,Integer> by its value-integer.
 				Collections.sort(availableDevelopers, new Comparator<Pair<String, Integer>>() {
@@ -336,5 +336,4 @@ public class SystemApp extends Observable{
 		}
 		return availableDevelopers;
 	}
-
 }

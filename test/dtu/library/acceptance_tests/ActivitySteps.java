@@ -1,6 +1,5 @@
 package dtu.library.acceptance_tests;
 
-import system.app.Activity;
 import system.app.SystemApp;
 import static org.hamcrest.CoreMatchers.*;
 import cucumber.api.java.en.Given;

@@ -126,9 +126,8 @@ public class SystemAppState {
 	public void addActivityToProject(SystemApp systemApp) throws IOException {
 		System.out.print("Enter an activity name: ");
 		String activityName = rs.readLine();
-		Activity activity = new Activity(activityName);
 		try {
-			systemApp.addActivity(enterProject(systemApp), activity);
+			systemApp.addActivity(enterProject(systemApp), new Activity(activityName));
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
@@ -194,9 +193,13 @@ public class SystemAppState {
 
 	public void getAvailableDevelopers(SystemApp systemApp) throws IOException {
 		try {
-			Week weekYear = enterWeek();
-			for(Pair<String,Integer> p: systemApp.getAvailableDevelopers(weekYear) ) {
-				System.out.println(p);
+			Week week = enterWeek();
+			if (systemApp.getAvailableDevelopers(week).size() == 0) {
+				System.out.println("No available developers");
+			} else {
+				for(Pair<String,Integer> p: systemApp.getAvailableDevelopers(week)) {
+					System.out.println(p);
+				}
 			}
 			// Kommer an på om vi vil have den printet ud vandret eller lodret
 			// System.out.println(systemApp.getAvailableDevelopers(week));
