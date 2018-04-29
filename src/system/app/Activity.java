@@ -5,6 +5,9 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+/**
+ * @author Rikke
+ */
 public class Activity {
 	String acitivityName;
 	private Calendar start, deadline;
@@ -33,6 +36,18 @@ public class Activity {
 		activityDevelopers.remove(developer);
 	}
 
+	public void updateDuration() {
+		duration.clear();
+		Calendar tempDate = new GregorianCalendar(start.get(Calendar.YEAR), 
+				start.get(Calendar.MONTH),
+				start.get(Calendar.DAY_OF_MONTH));
+
+		while (!tempDate.after(deadline)) {
+			duration.add(new Week(tempDate.get(Calendar.WEEK_OF_YEAR),tempDate.get(Calendar.YEAR)));
+			tempDate.add(Calendar.WEEK_OF_YEAR, 1);
+		}
+
+	}
 	// Getters and Setters
 	public List<Developer> getActivityDevelopers() {
 		return activityDevelopers;
@@ -59,19 +74,6 @@ public class Activity {
 
 	public ArrayList<Week> getDuration() {
 		return duration;
-	}
-
-	public void updateDuration() {
-		duration.clear();
-		Calendar tempDate = new GregorianCalendar(start.get(Calendar.YEAR), 
-				start.get(Calendar.MONTH),
-				start.get(Calendar.DAY_OF_MONTH));
-
-		while (!tempDate.after(deadline)) {
-			duration.add(new Week(tempDate.get(Calendar.WEEK_OF_YEAR),tempDate.get(Calendar.YEAR)));
-			tempDate.add(Calendar.WEEK_OF_YEAR, 1);
-		}
-
 	}
 
 }

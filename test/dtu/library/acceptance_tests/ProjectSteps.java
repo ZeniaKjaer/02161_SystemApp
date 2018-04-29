@@ -10,26 +10,22 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import system.app.OperationNotAllowedException;
 import system.app.Project;
-import system.app.Activity;
 import system.app.SystemApp;
 
 public class ProjectSteps {
 
 	private SystemApp systemApp;
 	private Project project;
-	private Activity activity;
 	private ErrorMessageHolder errorMessageHolder;
 	private DeveloperHelper devHelper;
 	private ProjectHelper projectHelper;
-	private ActivityHelper activityHelper;
 
 	public ProjectSteps(SystemApp systemApp, ErrorMessageHolder errorMessageHolder, 
-			DeveloperHelper devHelper, ProjectHelper projectHelper, ActivityHelper activityHelper) {
+			DeveloperHelper devHelper, ProjectHelper projectHelper) {
 		this.systemApp = systemApp;	
 		this.errorMessageHolder = errorMessageHolder;
 		this.devHelper = devHelper;
 		this.projectHelper = projectHelper;
-		this.activityHelper = activityHelper;
 	}
 
 	@Given("^there is a developer$")
@@ -39,7 +35,6 @@ public class ProjectSteps {
 
 	@Given("^there is a project developer$")
 	public void thereIsAProjectDeveloper() throws Exception {
-		//systemApp.addProjectDev(projectHelper.getProject(),devHelper.getDeveloper());
 		projectHelper.getProject().addProjectDev(devHelper.getDeveloper());
 	}
 

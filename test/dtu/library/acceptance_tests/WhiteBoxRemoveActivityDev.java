@@ -1,7 +1,6 @@
 package dtu.library.acceptance_tests;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -12,7 +11,10 @@ import system.app.Developer;
 import system.app.OperationNotAllowedException;
 import system.app.Project;
 import system.app.SystemApp;
-
+/**
+ * 
+ * @author 
+ */
 public class WhiteBoxRemoveActivityDev {
 	SystemApp sysApp = new SystemApp();
 	Project proj = new Project("lead", "projId1", "proj");

@@ -126,7 +126,7 @@ formatter.result({
 });
 formatter.uri("use_cases/student/add_coworker_activity.feature");
 formatter.feature({
-  "name": "Add co-worker to activity",
+  "name": "Add co-worker to own activity",
   "description": "    Description: A project developer adds a co-worker to an activity\n    Actors: Project developer",
   "keyword": "Feature"
 });
@@ -342,7 +342,7 @@ formatter.result({
 });
 formatter.uri("use_cases/student/add_developer_activity.feature");
 formatter.feature({
-  "name": "Add project developer to activity",
+  "name": "Add developer to activity",
   "description": "    Description:  The project leader adds project developer to a project activity\n    Actors: Project leader",
   "keyword": "Feature"
 });
@@ -794,11 +794,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "user gets a list of all available developers",
+  "name": "user gets a sorted list of all available developers",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "TimeSteps.userGetsAListOfAllAvailableDevelopers()"
+  "location": "TimeSteps.userGetsASortedListOfAllAvailableDevelopers()"
 });
 formatter.result({
   "status": "passed"
@@ -2567,7 +2567,7 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.scenario({
-  "name": "developer logs on with initials",
+  "name": "Developer logs on with initials succesfully",
   "description": "",
   "keyword": "Scenario"
 });
@@ -2612,7 +2612,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "developer logs on with wrong initials",
+  "name": "Developer logs on with wrong initials",
   "description": "",
   "keyword": "Scenario"
 });
@@ -2667,42 +2667,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "developer logs out",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "developer is logged in",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.developerIsLoggedIn()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "developer logs out",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.developerLogsOut()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "developer is logged out",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.developerIsLoggedOut()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "developer logs on when someone else is aldready logged in",
+  "name": "Developer logs on when someone else is aldready logged in",
   "description": "",
   "keyword": "Scenario"
 });
@@ -2732,6 +2697,47 @@ formatter.step({
 });
 formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.uri("use_cases/student/user_logout.feature");
+formatter.feature({
+  "name": "User logs out",
+  "description": "    Description: User logs out of the system\n    Actors: Developer",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "Developer logs out succesfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developer logs out",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerLogsOut()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developer is logged out",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedOut()"
 });
 formatter.result({
   "status": "passed"

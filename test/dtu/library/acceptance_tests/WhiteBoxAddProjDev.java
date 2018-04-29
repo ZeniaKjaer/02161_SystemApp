@@ -1,8 +1,6 @@
 package dtu.library.acceptance_tests;
 
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -12,6 +10,10 @@ import system.app.OperationNotAllowedException;
 import system.app.Project;
 import system.app.SystemApp;
 
+/**
+ * 
+ * @author 
+ */
 public class WhiteBoxAddProjDev {
 	SystemApp sysApp = new SystemApp();
 	

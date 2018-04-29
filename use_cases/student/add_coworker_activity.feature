@@ -1,5 +1,5 @@
-## @author Helana
-Feature: Add co-worker to activity
+# @author Mai-Thi
+Feature: Add co-worker to own activity
     Description: A project developer adds a co-worker to an activity
     Actors: Project developer
 

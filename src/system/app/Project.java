@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+/**
+ * @author Helena
+ */
 public class Project {
 	String projectLeader;
 	String projectId;

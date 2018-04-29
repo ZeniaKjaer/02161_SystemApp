@@ -3,6 +3,9 @@ package system.app;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * @author Zenia
+ */
 public class DevCalendar implements Cloneable {
 
 	private Map<Integer, int[]> calendar;
@@ -16,29 +19,8 @@ public class DevCalendar implements Cloneable {
 			calendar.put(startYear+i, year);
 		}
 	}
-
-	public void incrementActivity(Week week) {
-		//DbC
-		assert calendar.get(week.getYear())[week.getWeekOfYear()] >= 0
-				&& calendar.get(week.getYear())[week.getWeekOfYear()] < 20 : "Precondition violated " ;
-		int pre = calendar.get(week.getYear())[week.getWeekOfYear()];
-
-		calendar.get(week.getYear())[week.getWeekOfYear()]++;
-
-		assert calendar.get(week.getYear())[week.getWeekOfYear()] == pre+1 : "Postcondition violated";
-	}
-
-	public void decrementActivity(Week week) {
-		//DbC
-		assert calendar.get(week.getYear())[week.getWeekOfYear()] > 0
-		&& calendar.get(week.getYear())[week.getWeekOfYear()] <= 20 : "Precondition violated " ;
-		int pre = calendar.get(week.getYear())[week.getWeekOfYear()];
-
-		calendar.get(week.getYear())[week.getWeekOfYear()]--;
-
-		assert calendar.get(week.getYear())[week.getWeekOfYear()] == pre-1 : "Postcondition violated";
-	}
-
+	
+	/*
 	public DevCalendar copy() throws CloneNotSupportedException {
 		DevCalendar copy;
 		try {
@@ -50,17 +32,45 @@ public class DevCalendar implements Cloneable {
 		return copy;
 	}
 
-
 	public DevCalendar copy2() throws CloneNotSupportedException {
 		DevCalendar copy = new DevCalendar(this.startYear);
-
-
 		return copy;
 	}
+	*/
 
+	public void incrementActivity(Week week) {
+		//Design by Contract
+		assert calendar.get(week.getYear())[week.getWeekOfYear()] >= 0
+				&& calendar.get(week.getYear())[week.getWeekOfYear()] < 20 : "Precondition violated " ;
+		int pre = calendar.get(week.getYear())[week.getWeekOfYear()];
+
+		calendar.get(week.getYear())[week.getWeekOfYear()]++;
+
+		assert calendar.get(week.getYear())[week.getWeekOfYear()] == pre+1 : "Postcondition violated";
+	}
+
+	public void decrementActivity(Week week) {
+		//Design by Contract
+		assert calendar.get(week.getYear())[week.getWeekOfYear()] > 0
+		&& calendar.get(week.getYear())[week.getWeekOfYear()] <= 20 : "Precondition violated" ;
+		int pre = calendar.get(week.getYear())[week.getWeekOfYear()];
+
+		calendar.get(week.getYear())[week.getWeekOfYear()]--;
+
+		assert calendar.get(week.getYear())[week.getWeekOfYear()] == pre-1 : "Postcondition violated";
+	}
 
 	public void setCalendar(Week week, int numberOfActivities) {
 		calendar.get(week.getYear())[week.getWeekOfYear()] = numberOfActivities;
+	}
+	
+	public boolean haveYear(int year) {
+		for (Map.Entry<Integer, int[]> m : calendar.entrySet()) {
+			if(m.getKey().equals(year)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public int getActivityLevel(Week week) {
@@ -71,12 +81,4 @@ public class DevCalendar implements Cloneable {
 		return startYear;
 	}
 
-	public boolean haveYear(int year) {
-		for (Map.Entry<Integer, int[]> m : calendar.entrySet()) {
-			if(m.getKey().equals(year)) {
-				return true;
-			}
-		}
-		return false;
-	}
 }

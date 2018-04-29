@@ -1,4 +1,5 @@
-Feature: Add project developer to activity
+# @author Zenia
+Feature: Add developer to activity
     Description:  The project leader adds project developer to a project activity
     Actors: Project leader
 

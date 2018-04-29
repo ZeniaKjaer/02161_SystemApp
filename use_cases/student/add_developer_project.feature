@@ -1,4 +1,4 @@
-# @author Mai-Thi
+# @author Rikke 
 Feature: Add developer to project
   Description: The project leader adds a developer to the project
   Actors: Project leader

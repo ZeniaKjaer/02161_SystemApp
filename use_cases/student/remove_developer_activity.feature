@@ -1,4 +1,4 @@
-## @author Zenia
+#@author Zenia
 Feature: Remove developer from activity
     Description: The project leader removes developer from an activity
     Actors: Project leader

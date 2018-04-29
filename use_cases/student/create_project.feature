@@ -1,5 +1,4 @@
 #@author Helena
-#
  Feature: Create a project
     Description: User creates a project in the system
     Actors: Developer

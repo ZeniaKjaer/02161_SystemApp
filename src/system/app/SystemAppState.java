@@ -9,6 +9,9 @@ import java.util.GregorianCalendar;
 
 import javafx.util.Pair;
 
+/**
+ * @author Mai-Thi
+ */
 public class SystemAppState {
 	BufferedReader rs = new BufferedReader(new InputStreamReader(System.in));
 	SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
@@ -198,7 +201,7 @@ public class SystemAppState {
 			for(Pair<String,Integer> p: systemApp.getAvailableDevelopers(weekYear) ) {
 				System.out.println(p);
 			}
-			// Kommer an på om vi vil have den printet ud vandret eller lodret
+			// Kommer an paa om vi vil have den printet ud vandret eller lodret
 			// System.out.println(systemApp.getAvailableDevelopers(week));
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);

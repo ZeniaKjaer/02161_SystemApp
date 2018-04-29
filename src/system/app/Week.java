@@ -2,6 +2,9 @@ package system.app;
 
 import javafx.util.Pair;
 
+/**
+ * @author Zenia
+ */
 public class Week {
 	 Pair<Integer, Integer> week;
 

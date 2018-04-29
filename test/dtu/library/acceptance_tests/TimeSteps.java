@@ -3,7 +3,6 @@ package dtu.library.acceptance_tests;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
@@ -23,20 +22,15 @@ public class TimeSteps {
 	private ArrayList<Pair<String,Integer>> availableDev;
 	private Calendar start, middle, deadline;
 	private ErrorMessageHolder errorMessageHolder;
-	private DeveloperHelper devHelper;
 	private ProjectHelper projectHelper;
 	private ActivityHelper activityHelper;
-	MockDateHolder dateHolder;
 
 	public TimeSteps(SystemApp systemApp, ErrorMessageHolder errorMessageHolder, 
-			DeveloperHelper devHelper, ProjectHelper projectHelper, ActivityHelper activityHelper,
-			MockDateHolder dateHolder) {
+			DeveloperHelper devHelper, ProjectHelper projectHelper, ActivityHelper activityHelper) {
 		this.systemApp = systemApp;	
 		this.errorMessageHolder = errorMessageHolder;
-		this.devHelper = devHelper;
 		this.projectHelper = projectHelper;
 		this.activityHelper = activityHelper;
-		this.dateHolder = dateHolder;
 	}
 
 	@Given("^there is a start date$")
@@ -199,12 +193,10 @@ public class TimeSteps {
 			week = new Week(start.get(Calendar.WEEK_OF_YEAR),start.get(Calendar.YEAR));
 			availableDev = systemApp.getAvailableDevelopers(week);
 		}
-
-		@Then("^user gets a list of all available developers$")
-		public void userGetsAListOfAllAvailableDevelopers() throws Exception {
-			assertFalse(availableDev.isEmpty());
-			for (int i = 0; i > availableDev.size()-2; i++) {
-				assertTrue(availableDev.get(i).getValue() <= availableDev.get(i+1).getValue());
-			}
+		
+		@Then("^user gets a sorted list of all available developers$")
+		public void userGetsASortedListOfAllAvailableDevelopers() throws Exception {
+			assertTrue(systemApp.isSorted(availableDev));
 		}
+
 }

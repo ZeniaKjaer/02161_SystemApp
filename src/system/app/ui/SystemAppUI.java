@@ -11,7 +11,9 @@ import system.app.OperationNotAllowedException;
 import system.app.SystemApp;
 import system.app.SystemAppState;
 import system.app.NotificationType;
-
+/**
+ * @author Mai-Thi
+ */
 public class SystemAppUI implements Observer {
 	private SystemApp systemApp;
 	private SystemAppState state = new SystemAppState(); // package visible attribute
