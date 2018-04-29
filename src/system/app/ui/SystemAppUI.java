@@ -9,12 +9,12 @@ import java.util.Observable;
 import java.util.Observer;
 import system.app.OperationNotAllowedException;
 import system.app.SystemApp;
-import system.app.SystemAppState;
+import system.app.SystemAppController;
 import system.app.NotificationType;
 
 public class SystemAppUI implements Observer {
 	private SystemApp systemApp;
-	private SystemAppState state = new SystemAppState(); // package visible attribute
+	private SystemAppController controller = new SystemAppController(); // package visible attribute
 
 	public SystemAppUI() {
 		systemApp = new SystemApp();
@@ -101,55 +101,55 @@ public class SystemAppUI implements Observer {
 		switch (number) {
 		case 1:
 			out.println("CREATE A PROJECT");
-			state.createProject(systemApp);
+			controller.createProject(systemApp);
 			break;
 		case 2:
 			out.println("ADD DEVELOPER TO A PROJECT");
-			state.addDelevoperToProject(systemApp);
+			controller.addDelevoperToProject(systemApp);
 			break;
 		case 3:
 			out.println("REMOVE DEVELOPER FROM A PROJECT");
-			state.removeDeveloperFromProject(systemApp);
+			controller.removeDeveloperFromProject(systemApp);
 			break;
 		case 4:
 			out.println("CHANGE PROJECT LEADER");
-			state.changeProjectLeader(systemApp);
+			controller.changeProjectLeader(systemApp);
 			break;
 		case 5:
 			out.println("SET A NEW START DATE FOR A PROJECT");
-			state.setNewStartDateForProject(systemApp);
+			controller.setNewStartDateForProject(systemApp);
 			break;
 		case 6:
 			out.println("SET A NEW DEADLINE FOR A PROJECT");
-			state.setNewDeadlineForProject(systemApp);
+			controller.setNewDeadlineForProject(systemApp);
 			break;
 		case 7:
 			out.println("ADD ACTIVITY TO A PROJECT");
-			state.addActivityToProject(systemApp);
+			controller.addActivityToProject(systemApp);
 			break;
 		case 8:
 			out.println("REMOVE ACTIVITY FROM A PROJECT");
-			state.removeActivityFromProject(systemApp);
+			controller.removeActivityFromProject(systemApp);
 			break;
 		case 9:
 			out.println("ADD DEVELOPER TO AN ACTIVITY");
-			state.addDeveloperToActivity(systemApp);
+			controller.addDeveloperToActivity(systemApp);
 			break;
 		case 10:
 			out.println("REMOVE DEVELOPER FROM AN ACTIVITY");
-			state.removeDeveloperFromActivity(systemApp);
+			controller.removeDeveloperFromActivity(systemApp);
 			break;
 		case 11:
 			out.println("SET A NEW START DATE FOR AN ACTIVITY");
-			state.setNewStartDateForActivity(systemApp);
+			controller.setNewStartDateForActivity(systemApp);
 			break;
 		case 12:
 			out.println("SET A NEW DEADLINE FOR AN ACTIVITY");
-			state.setNewDeadlineForActivity(systemApp);
+			controller.setNewDeadlineForActivity(systemApp);
 			break;
 		case 13:
 			out.println("GET AVAILABLE DEVELOPERS");
-			state.getAvailableDevelopers(systemApp);
+			controller.getAvailableDevelopers(systemApp);
 			break;
 		case 14:
 			loginLoop(in, out);

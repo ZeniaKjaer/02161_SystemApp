@@ -9,9 +9,8 @@ import java.util.GregorianCalendar;
 
 import javafx.util.Pair;
 
-public class SystemAppState {
+public class SystemAppController {
 	BufferedReader rs = new BufferedReader(new InputStreamReader(System.in));
-	SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
 
 	private Developer enterDeveloper(SystemApp systemApp) throws IOException {
 		System.out.print("Enter developer ID: ");
