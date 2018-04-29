@@ -2,6 +2,7 @@ package system.app;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Map;
 
 /**
  * @author Mai-Thi
@@ -34,7 +35,10 @@ public class Developer {
 	
 	// developer is available that week, if she has less than 20 activities in her calendar
 	public boolean isAvailable(Week week) {	
-		if (devCalendar.getActivityLevel(week) < 20) {
+		if(!devCalendar.haveYear(week.getYear())) {
+			return false;
+		}
+		else if (devCalendar.getActivityLevel(week) < 20) {
 			return true;
 		}
 		return false;
@@ -54,10 +58,13 @@ public class Developer {
 	}
 
 	public boolean haveYear(int year) {
-		return devCalendar.haveYear(year);
+		for (Map.Entry<Integer, int[]> m : devCalendar.entrySet()) {
+			if(m.getKey().equals(year)) {
+				return true;
+			}
+		}
+		return false;
 	}
-
-
 }	
 
 

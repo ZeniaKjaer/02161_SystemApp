@@ -157,7 +157,7 @@ public class SystemApp extends Observable{
 		// whitebox-test tilfoejelse slut
 		projectLeaderCheck(project);
 		if (project.isProjectDev(developer)) {
-			throw new OperationNotAllowedException("User is already part of project");
+			throw new OperationNotAllowedException("Developer is already part of project");
 		} 
 		else {
 			project.addProjectDev(developer);
@@ -423,6 +423,7 @@ public class SystemApp extends Observable{
 						}
 					});
 				}
+
 			}
 		}
 		assert isSorted(availableDevelopers) : "Postcondition violated" ;

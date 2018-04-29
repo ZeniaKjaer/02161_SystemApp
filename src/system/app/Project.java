@@ -17,7 +17,7 @@ public class Project {
 
 	public Project(String developerId, String projectID, String projectName) {
 		this.projectLeader = developerId;
-		this.projectId = projectId;
+		this.projectId = projectID;
 		this.projectName = projectName;	
 	}
 	
