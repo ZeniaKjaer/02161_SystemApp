@@ -49,25 +49,21 @@ public class TimeSteps {
 		middle = new GregorianCalendar(); 
 		middle.add(Calendar.WEEK_OF_YEAR, 1);
 	}
-	
-	@When("^user sets time budget for project$")
-	public void userSetsTimeBudgetForProject() throws Exception {
-		try {
-			systemApp.setProjectStart(projectHelper.getProject(), start);
-			systemApp.setProjectDeadline(projectHelper.getProject(), deadline);
-		} catch (OperationNotAllowedException e) {
-			errorMessageHolder.setErrorMessage(e.getMessage());
-		}
+
+	@Then("^project start is set$")
+	public void projectStartIsSet() throws Exception {
+		assertEquals(start.get(Calendar.DAY_OF_YEAR),projectHelper.getProject().getStart().get(Calendar.DAY_OF_YEAR));
+		assertEquals(start.get(Calendar.YEAR),projectHelper.getProject().getStart().get(Calendar.YEAR));
 	}
 
-	@Then("^time budget is set for project$")
-	public void timeBudgetIsSetForProject() throws Exception {
-		assertEquals(start,projectHelper.getProject().getStart());
-		assertEquals(deadline,projectHelper.getProject().getDeadline());
+	@Then("^project deadline is set$")
+	public void projectDeadlineIsSet() throws Exception {
+		assertEquals(deadline.get(Calendar.DAY_OF_YEAR),projectHelper.getProject().getDeadline().get(Calendar.DAY_OF_YEAR));
+		assertEquals(deadline.get(Calendar.YEAR),projectHelper.getProject().getDeadline().get(Calendar.YEAR));
 	}
 
-	@When("^user sets start after the deadline for project$")
-	public void userSetsStartAfterTheDeadlineForProject() throws Exception {
+	@When("^user sets project start after project deadline$")
+	public void userSetsProjectStartAfterProjectDeadline() throws Exception {
 		try {
 			systemApp.setProjectDeadline(projectHelper.getProject(), start);
 			systemApp.setProjectStart(projectHelper.getProject(), deadline);
@@ -86,13 +82,19 @@ public class TimeSteps {
 		}
 	}
 
-	@When("^user sets time budget for activity$")
-	public void userSetsTimeBudgetForActivity() throws Exception {
+	@When("^user sets activity start$")
+	public void userSetsActivityStart() throws Exception {
 		try {
-			systemApp.setProjectStart(projectHelper.getProject(), start);
-			systemApp.setProjectDeadline(projectHelper.getProject(), deadline);
-
 			systemApp.setActivityStart(projectHelper.getProject(),activityHelper.getActivity(), start);
+			week = new Week(start.get(Calendar.WEEK_OF_YEAR),start.get(Calendar.YEAR));
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
+
+	@When("^user sets activity deadline$")
+	public void userSetsActivityDeadline() throws Exception {
+		try {
 			systemApp.setActivityDeadline(projectHelper.getProject(),activityHelper.getActivity(), deadline);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
@@ -101,8 +103,10 @@ public class TimeSteps {
 
 	@Then("^time budget is set for activity$")
 	public void timeBudgetIsSetForActivity() throws Exception {
-		assertEquals(start, activityHelper.getActivity().getStart());
-		assertEquals(deadline, activityHelper.getActivity().getDeadline());
+		assertEquals(start.get(Calendar.DAY_OF_YEAR), activityHelper.getActivity().getStart().get(Calendar.DAY_OF_YEAR));
+		assertEquals(start.get(Calendar.YEAR), activityHelper.getActivity().getStart().get(Calendar.YEAR));
+		assertEquals(deadline.get(Calendar.DAY_OF_YEAR), activityHelper.getActivity().getDeadline().get(Calendar.DAY_OF_YEAR));
+		assertEquals(deadline.get(Calendar.YEAR), activityHelper.getActivity().getDeadline().get(Calendar.YEAR));
 	}
 
 	@When("^user sets start after the deadline activity$")
@@ -138,7 +142,9 @@ public class TimeSteps {
 	@When("^user sets activity start before project start$")
 	public void userSetsActivityStartBeforeProjectStart() throws Exception {
 		try {
+			projectHelper.getProject().getProjectActivities().clear();
 			systemApp.setProjectStart(projectHelper.getProject(), middle);
+			projectHelper.getProject().addActivity(activityHelper.getActivity());
 			systemApp.setActivityStart(projectHelper.getProject(), activityHelper.getActivity(), start);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
@@ -148,60 +154,107 @@ public class TimeSteps {
 	@When("^user sets activity start after project deadline$")
 	public void userSetsActivityStartAfterProjectDeadline() throws Exception {
 		try {
+			projectHelper.getProject().getProjectActivities().clear();
 			systemApp.setProjectDeadline(projectHelper.getProject(), start);
+			projectHelper.getProject().addActivity(activityHelper.getActivity());
+			activityHelper.getActivity().setDeadline(middle);
 			systemApp.setActivityStart(projectHelper.getProject(), activityHelper.getActivity(), middle);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
 	}
-//////////////////////////////////////////////////////////////////////////////////////////
-// OBS MAN KAN GODT �NDRE PROJEKT TIDEN, S� DEN IKKE D�KKER DENS AKTIVITETER, TILLADT?  //
-//////////////////////////////////////////////////////////////////////////////////////////
+
 	@When("^user sets activity deadline before project start$")
 	public void userSetsActivityDeadlineBeforeProjectStart() throws Exception {
 		try {
-			systemApp.setActivityStart(projectHelper.getProject(), activityHelper.getActivity(), start);
+			projectHelper.getProject().getProjectActivities().clear();
 			systemApp.setProjectStart(projectHelper.getProject(), middle );
+			systemApp.addActivity(projectHelper.getProject(), activityHelper.getActivity());
+			activityHelper.getActivity().setStart(start);
 			systemApp.setActivityDeadline(projectHelper.getProject(), activityHelper.getActivity(), start);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
 	}
 
-		@When("^user sets activity deadline after project deadline$")
-		public void userSetsActivityDeadlineAfterProjectDeadline() throws Exception {
-			try {
-				systemApp.setProjectDeadline(projectHelper.getProject(), middle  );
-				systemApp.setActivityDeadline(projectHelper.getProject(), activityHelper.getActivity(), deadline);
-			} catch (OperationNotAllowedException e) {
-				errorMessageHolder.setErrorMessage(e.getMessage());
-			}
+	@When("^user sets activity deadline after project deadline$")
+	public void userSetsActivityDeadlineAfterProjectDeadline() throws Exception {
+		try {
+			projectHelper.getProject().getProjectActivities().clear();
+			systemApp.setProjectDeadline(projectHelper.getProject(), middle  );
+			systemApp.addActivity(projectHelper.getProject(), activityHelper.getActivity());
+			activityHelper.getActivity().setDeadline(deadline);
+			systemApp.setActivityDeadline(projectHelper.getProject(), activityHelper.getActivity(), deadline);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
-		
-		@Given("^developers in SystemApp has different activitylevel that week$")
-		public void developersInSystemAppHasDifferentActivitylevelThatWeek() throws Exception {
-			Week week = new Week (start.get(Calendar.WEEK_OF_YEAR),start.get(Calendar.YEAR));
-			Random rn = new Random();
-			for (Developer dev : systemApp.getDevelopers()) {
-		    	int activityLevel = rn.nextInt(20)+1;
-		    	dev.getDevCalendar().setCalendar(week, activityLevel);	
-		    }
+	}
+
+	@Given("^developers in SystemApp has different activitylevel that week$")
+	public void developersInSystemAppHasDifferentActivitylevelThatWeek() throws Exception {
+		week = new Week (start.get(Calendar.WEEK_OF_YEAR),start.get(Calendar.YEAR));
+		Random rn = new Random();
+		for (Developer dev : systemApp.getDevelopers()) {
+			int activityLevel = rn.nextInt(20)+1;
+			dev.getDevCalendar().setCalendar(week, activityLevel);	
 		}
-		
-		@When("^user ask for all available developers$")
-		public void userAskForAllAvailableDevelopers() throws Exception {
-			week = new Week(start.get(Calendar.WEEK_OF_YEAR),start.get(Calendar.YEAR));
+	}
+
+	@When("^user ask for all available developers$")
+	public void userAskForAllAvailableDevelopers() throws Exception {
+		try {
 			availableDev = systemApp.getAvailableDevelopers(week);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
-		
-		@Then("^user gets a sorted list of all available developers$")
-		public void userGetsASortedListOfAllAvailableDevelopers() throws Exception {
-			assertTrue(systemApp.isSorted(availableDev));
+	}
+
+	@Then("^user gets a sorted list of all available developers$")
+	public void userGetsASortedListOfAllAvailableDevelopers() throws Exception {
+		for (int i = 0; i < availableDev.size()-1; i++) {
+			assertTrue(availableDev.get(i).getValue() <= availableDev.get(i+1).getValue());
 		}
-		
-		@When("^user sets project start$")
-		public void userSetsProjectStart() throws Exception {
-		   systemApp.setProjectStart(projectHelper.getProject(), start);
+	}
+
+	@Given("^there is an illegal week$")
+	public void thereIsAnIllegalWeek() throws Exception {
+	    week = new Week (54,2019);
+	}
+
+
+	@When("^user sets project start$")
+	public void userSetsProjectStart() throws Exception {
+		try {
+			systemApp.setProjectStart(projectHelper.getProject(), start);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
+	}
+
+	@Given("^there is a project with no activities$")
+	public void thereIsAProjectWithNoActivities() throws Exception {
+		systemApp.addProject(projectHelper.getProject());
+		projectHelper.getProject().getProjectActivities().clear();
+	}
+
+	@When("^user sets project deadline$")
+	public void userSetsProjectDeadline() throws Exception {
+		try {
+			systemApp.setProjectDeadline(projectHelper.getProject(), deadline);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
+	@When("^user sets new project deadline before project deadline$")
+	public void userSetsNewProjectDeadlineBeforeProjectDeadline() throws Exception {
+		try {
+			projectHelper.getProject().getProjectActivities().clear();
+			systemApp.setProjectDeadline(projectHelper.getProject(), deadline);
+			systemApp.addActivity(projectHelper.getProject(), activityHelper.getActivity());
+			systemApp.setProjectDeadline(projectHelper.getProject(), middle);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
 
 }
