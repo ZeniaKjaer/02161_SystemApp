@@ -450,20 +450,6 @@ public void setProjectStart(Project project, Calendar start) throws OperationNot
 	}
 
 	/**
-	 * Checks if a list of pairs<DevId, activityLevel> is sorted, in increasing activity level
-	 * @param AvailableDevelopers
-	 * @return a sorted list of all available developers the given week
-	 * @author Zenia
-	 */ 
-	public boolean isSorted(ArrayList<Pair<String, Integer>> availableDev) {
-		boolean sorted = true;
-		for (int i = 0; i > availableDev.size()-1; i++) {
-			sorted = true && availableDev.get(i).getValue() <= availableDev.get(i+1).getValue();
-		}
-		return sorted;
-	}
-
-	/**
 	 * Throws an exception if the active user isn't the project leader of the project
 	 * @param project
 	 * @throws OperationNotAllowedException

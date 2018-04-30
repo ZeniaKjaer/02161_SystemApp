@@ -6,10 +6,12 @@ import javafx.util.Pair;
  * @author Zenia
  */
 public class Week {
+	
+	
 	 Pair<Integer, Integer> week;
 
 	public Week(int weekOfYear, int year) {
-		week = new Pair<>(weekOfYear,year);
+		this.week = new Pair<>(weekOfYear,year);
 	}
 
 	public Pair<Integer, Integer> getWeek() {
