@@ -120,6 +120,7 @@ public class SystemApp extends Observable{
 	 * @author Helena
 	 */
 	public void addProject(Project project) throws OperationNotAllowedException{
+		assert project!= null && activeUser != null;
 		for (Project p: projects) {
 			if (p.getProjectName().equalsIgnoreCase(project.getProjectName())) { 
 				throw new OperationNotAllowedException("Illegal project name");
@@ -144,9 +145,19 @@ public class SystemApp extends Observable{
 			}
 		}
 		
-
 		setChanged();
 		notifyObservers(NotificationType.ADD_PROJECT);
+		
+		// Post-condition asserts
+		boolean isInProj = false;
+		for (Developer dev : developers) {
+			if (dev.getId().equals(activeUser)) {
+				isInProj = project.isProjectDev(dev);
+				break;
+			}
+		}
+		assert isInProj;
+		assert projects.contains(project);
 	}
 
 	/**
@@ -159,7 +170,7 @@ public class SystemApp extends Observable{
 	 */
 	public void removeProject(Project project) throws OperationNotAllowedException {
 		projectLeaderCheck(project);
-		//tilf�j projectCheck
+		//tilføj projectCheck
 		while (project.getProjectActivities().size() > 0) {
 			removeActivity(project,project.getProjectActivities().get(0));
 		}
@@ -179,6 +190,7 @@ public class SystemApp extends Observable{
 	 * @author Rikke
 	 */
 	public void addProjectDev(Project project, Developer developer) throws OperationNotAllowedException{
+		assert project != null && developer != null;
 		projectCheck(project);
 		if(!isInTheSystem(developer.getId())) { 
 			throw new OperationNotAllowedException("Developer is not in the system");
@@ -191,9 +203,9 @@ public class SystemApp extends Observable{
 			project.addProjectDev(developer);
 			developer.getMyProjects().add(project);
 		}
-
 		setChanged();
 		notifyObservers(NotificationType.ADD_DEVELOPER);
+		assert project.isProjectDev(developer);
 	}
 	
 	/**
@@ -266,6 +278,7 @@ public class SystemApp extends Observable{
 	 * @author Rikke
 	 */
 	public void removeActivity(Project project, Activity activity) throws OperationNotAllowedException {
+		assert project!=null && activity != null && activeUser!=null;
 		projectCheck(project);
 		projectActivityCheck(project,activity);
 		projectLeaderCheck(project);
@@ -275,9 +288,10 @@ public class SystemApp extends Observable{
 			dev.getMyActivities().remove(activity);	
 		}
 		project.removeActivity(activity);
-
+		
 		setChanged();
 		notifyObservers(NotificationType.REMOVE_ACTIVITY);
+		assert !project.isProjectActivity(activity);
 	}
 
 	/**
@@ -315,6 +329,7 @@ public class SystemApp extends Observable{
 	 * @author Zenia
 	 */
 	public void removeActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException {
+		assert project!=null && activity!=null && developer!=null && activeUser!=null;
 		projectActivityCheck(project,activity);
 		projectLeaderCheck(project);
 		if (!activity.isActivityDev(developer.getId())) { 
@@ -327,6 +342,8 @@ public class SystemApp extends Observable{
 		}
 		setChanged();
 		notifyObservers(NotificationType.REMOVE_DEVELOPER);
+
+		assert !activity.isActivityDev(developer.getId());
 	}
 
 	/**
