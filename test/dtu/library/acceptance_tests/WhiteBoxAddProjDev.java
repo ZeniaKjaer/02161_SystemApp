@@ -49,7 +49,7 @@ public class WhiteBoxAddProjDev {
 	@Test
 	public void testInputSetC() throws OperationNotAllowedException {
 		expectedException.expect(OperationNotAllowedException.class);
-        expectedException.expectMessage("User is already part of project");
+        expectedException.expectMessage("Developer is already part of project");
 		sysApp.getDevelopers().add(lead);
 		sysApp.getDevelopers().add(devl);
 		sysApp.userLogin("Lead");

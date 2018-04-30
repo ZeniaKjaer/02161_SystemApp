@@ -161,6 +161,7 @@ public class SystemApp extends Observable{
 		} 
 		else {
 			project.addProjectDev(developer);
+			developer.getMyProjects().add(project);
 		}
 
 		setChanged();
@@ -180,7 +181,8 @@ public class SystemApp extends Observable{
 		} 
 		else {
 			project.removeProjectDev(developer);
-		}
+			developer.getMyProjects().remove(project);
+			}
 		setChanged();
 		notifyObservers(NotificationType.REMOVE_DEVELOPER);
 	}
@@ -267,6 +269,7 @@ public class SystemApp extends Observable{
 		else if (isProjectLeader(project) || activity.isActivityDev(activeUser)) {
 			activity.addActivityDev(developer);
 			developer.addActivityToCalendar(activity);
+			developer.getMyActivities().add(activity);
 		} 
 		else { 
 			throw new OperationNotAllowedException("Project leader authorization needed");
@@ -294,6 +297,7 @@ public class SystemApp extends Observable{
 		else {
 			activity.removeActivityDev(developer);
 			developer.removeActivityFromCalendar(activity);
+			developer.getMyActivities().remove(activity);
 		}
 		setChanged();
 		notifyObservers(NotificationType.REMOVE_DEVELOPER);
@@ -406,12 +410,13 @@ public class SystemApp extends Observable{
 		//Design by Contract
 		assert week != null : "Precondition violated" ;
 		ArrayList<Pair<String, Integer>> availableDevelopers = new ArrayList<>();
+		
 		if (week.getWeekOfYear() > 53) {
 			throw new OperationNotAllowedException("Illegal week");
 		}
 
 		for (Developer dev : developers) {
-			if(dev.haveYear(week.getYear())) {
+			if(dev.getDevCalendar().haveYear(week.getYear())) {
 				if (dev.isAvailable(week)) { 
 					availableDevelopers.add(new Pair<String, Integer>(dev.getId(),dev.getActivityLevel(week)));
 
