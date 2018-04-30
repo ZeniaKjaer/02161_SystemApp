@@ -109,16 +109,6 @@ public class TimeSteps {
 		assertEquals(deadline.get(Calendar.YEAR), activityHelper.getActivity().getDeadline().get(Calendar.YEAR));
 	}
 
-	@When("^user sets start after the deadline activity$")
-	public void userSetsStartAfterTheDeadlineActivity() throws Exception {
-		try {
-			systemApp.setActivityDeadline(projectHelper.getProject(), activityHelper.getActivity(), start);
-			systemApp.setActivityStart(projectHelper.getProject(), activityHelper.getActivity(), deadline);
-		} catch (OperationNotAllowedException e) {
-			errorMessageHolder.setErrorMessage(e.getMessage());
-		}
-	}
-
 	@When("^user sets activity deadline before activity start$")
 	public void userSetsActivityDeadlineBeforeActivityStart() throws Exception {
 		try {
@@ -198,6 +188,7 @@ public class TimeSteps {
 			int activityLevel = rn.nextInt(20)+1;
 			dev.getDevCalendar().setCalendar(week, activityLevel);	
 		}
+		systemApp.getDevelopers().get(0).getDevCalendar().setCalendar(week, 20);
 	}
 
 	@When("^user ask for all available developers$")
