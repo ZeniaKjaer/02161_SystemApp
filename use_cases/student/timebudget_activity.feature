@@ -13,6 +13,12 @@ Scenario: Project leader sets time budget for activity successfully
   	When user sets time budget for activity
   	Then time budget is set for activity
 
+Scenario: Project leader sets time budget for activity that is not in the project
+ 	Given user is the project leader
+ 	And activity is not part of the project
+  	When user sets time budget for activity
+  	Then user gets the error message "Activity is not part of the project"
+
 Scenario: User sets time budget for activity when not project leader
 	Given user is not the project leader
 	When user sets time budget for activity

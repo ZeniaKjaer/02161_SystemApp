@@ -8,7 +8,10 @@ import org.junit.rules.ExpectedException;
 import system.app.OperationNotAllowedException;
 import system.app.Project;
 import system.app.SystemApp;
-
+/**
+ * 
+ * @author 
+ */
 public class WhiteBoxAddProject {
 	SystemApp sysApp = new SystemApp();
 		Project proj1 = new Project("abcd", "projId1", "nSys");

@@ -1,16 +1,25 @@
 package system.app;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Map;
 
+/**
+ * @author Mai-Thi
+ */
 public class Developer {
 
 	private String id;
-	DevCalendar devCalendar;
+	private DevCalendar devCalendar;
+	private ArrayList<Project> myProjects;
+	private ArrayList<Activity> myActivities;
 
 	//Constructor
 	public Developer(String id) {
 		this.id = id;
+		this.myProjects = new ArrayList<>();
+		this.myActivities = new ArrayList<>();
 
 		// Create personal calendar
 		Calendar startDay = new GregorianCalendar();
@@ -52,6 +61,15 @@ public class Developer {
 	public String getId() {
 		return id;
 	}
+
+	public ArrayList<Project> getMyProjects() {
+		return myProjects;
+	}
+
+	public ArrayList<Activity> getMyActivities() {
+		return myActivities;
+	}
+
 }	
 
 

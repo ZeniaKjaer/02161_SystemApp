@@ -9,7 +9,11 @@ import java.util.GregorianCalendar;
 
 import javafx.util.Pair;
 
+/**
+ * @author Mai-Thi
+ */
 public class SystemAppController {
+
 	BufferedReader rs = new BufferedReader(new InputStreamReader(System.in));
 
 	private Developer enterDeveloper(SystemApp systemApp) throws IOException {
@@ -123,10 +127,11 @@ public class SystemAppController {
 	}
 
 	public void addActivityToProject(SystemApp systemApp) throws IOException {
+		Project project = enterProject(systemApp);
 		System.out.print("Enter an activity name: ");
 		String activityName = rs.readLine();
 		try {
-			systemApp.addActivity(enterProject(systemApp), new Activity(activityName));
+			systemApp.addActivity(project, new Activity(activityName));
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
@@ -200,12 +205,40 @@ public class SystemAppController {
 					System.out.println(p);
 				}
 			}
-			// Kommer an på om vi vil have den printet ud vandret eller lodret
+			// Kommer an paa om vi vil have den printet ud vandret eller lodret
 			// System.out.println(systemApp.getAvailableDevelopers(week));
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
 
 	}
+
+	public void getListOfProjects(SystemApp systemApp) {
+		if (systemApp.getProjects().size() == 0) {
+			System.out.println("No projects");
+		} else {
+			for(Project p: systemApp.getProjects()) {
+				System.out.println(p.getProjectName());
+			}
+		}
+	}
+
+	public void getListOfActivities(SystemApp systemApp) throws IOException {
+		Project project = enterProject(systemApp);
+		
+		if (project.getProjectActivities().size() == 0) {
+			System.out.println("No activities");
+		} else {
+			for(Activity a: project.getProjectActivities()) {
+				System.out.println(a.getActivityName());
+			}
+		}
+	}
+
+	public void getMyProjects(SystemApp systemApp) {
+		
+	}
+
+
 
 }

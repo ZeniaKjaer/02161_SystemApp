@@ -8,4 +8,4 @@ Background: SystemApp has developers
 
 Scenario: Project leader gets available developers succesfully
   	When user ask for all available developers
-  	Then user gets a list of all available developers
+  	Then user gets a sorted list of all available developers

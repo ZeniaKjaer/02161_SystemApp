@@ -1,12 +1,14 @@
 package dtu.library.acceptance_tests;
 
 import system.app.SystemApp;
+
 import static org.hamcrest.CoreMatchers.*;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertThat;
 import java.util.ArrayList;
 import system.app.OperationNotAllowedException;
@@ -16,7 +18,7 @@ public class ActivitySteps {
 
 	private SystemApp systemApp;
 	private ArrayList<Week> activityDuration;
-	private DevCalendar devCalendar; //prevCalendar;
+	private DevCalendar devCalendar;
 	private Developer user;
 	private ErrorMessageHolder errorMessageHolder;
 	private DeveloperHelper devHelper;
@@ -54,7 +56,6 @@ public class ActivitySteps {
 	@When("^user adds developer to activity$")
 	public void userAddsDeveloperToActivity() throws Exception {
 		try {
-			//prevCalendar = devHelper.getDeveloper().getDevCalendar().copy();
 			systemApp.addActivityDev(projectHelper.getProject(), activityHelper.getActivity(), devHelper.getDeveloper());
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
@@ -64,6 +65,7 @@ public class ActivitySteps {
 	@Then("^developer is working on activity$")
 	public void developerIsWorkingOnActivity() throws Exception {
 		assertThat(activityHelper.getActivity().getActivityDevelopers(), hasItem(devHelper.getDeveloper()));
+		assertThat(devHelper.getDeveloper().getMyActivities(), hasItem(activityHelper.getActivity()));
 	}
 
 	@Given("^developer is already working on activity$")
@@ -81,6 +83,7 @@ public class ActivitySteps {
 	public void thereIsAnActivityDeveloper() throws Exception {
 		activityHelper.getActivity().addActivityDev(devHelper.getDeveloper());
 		devHelper.getDeveloper().addActivityToCalendar(activityHelper.getActivity());
+		devHelper.getDeveloper().getMyActivities().add(activityHelper.getActivity());
 	}
 
 	@Given("^user is not working on activity$")
@@ -91,7 +94,6 @@ public class ActivitySteps {
 	@When("^user removes activity$")
 	public void userRemovesActivity() throws Exception {
 		try {
-			//prevCalendar = devHelper.getDeveloper().getDevCalendar().copy();
 			systemApp.removeActivity(projectHelper.getProject(), activityHelper.getActivity());
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
@@ -126,7 +128,6 @@ public class ActivitySteps {
 	@When("^project leader removes developer from activity$")
 	public void projectLeaderRemovesDeveloperFromActivity() throws Exception {
 		try {
-			//prevCalendar = devHelper.getDeveloper().getDevCalendar().copy();
 			systemApp.removeActivityDev(projectHelper.getProject(),activityHelper.getActivity(),devHelper.getDeveloper());
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
@@ -136,6 +137,7 @@ public class ActivitySteps {
 	@Then("^developer is not working on activity$")
 	public void developerIsNotWorkingOnActivity() throws Exception {
 		assertThat(activityHelper.getActivity().getActivityDevelopers(),not(hasItem(devHelper.getDeveloper())));
+		assertThat(devHelper.getDeveloper().getMyActivities(), not(hasItem(activityHelper.getActivity())));
 	}
 
 	@Given("^developer is available$")
@@ -159,7 +161,6 @@ public class ActivitySteps {
 		devCalendar = devHelper.getDeveloper().getDevCalendar();
 		activityDuration = activityHelper.getActivity().getDuration();
 		for (Week week : activityDuration) {
-			//assertEquals(prevCalendar.getActivityLevel(week)+1, devCalendar.getActivityLevel(week));
 			assertEquals(6, devCalendar.getActivityLevel(week));
 		}
 	}
@@ -169,7 +170,6 @@ public class ActivitySteps {
 		devCalendar = devHelper.getDeveloper().getDevCalendar();
 		activityDuration = activityHelper.getActivity().getDuration();
 		for (Week week : activityDuration) {
-			//assertEquals(prevCalendar.getActivityLevel(week)-1, devCalendar.getActivityLevel(week));
 			assertEquals(0, devCalendar.getActivityLevel(week));
 		}
 	}
@@ -179,5 +179,5 @@ public class ActivitySteps {
 		assertEquals(projectHelper.getProject().getStart(),activityHelper.getActivity().getStart());
 		assertEquals(projectHelper.getProject().getDeadline(),activityHelper.getActivity().getDeadline());
 	}
-
+	
 }

@@ -11,7 +11,10 @@ import system.app.Developer;
 import system.app.OperationNotAllowedException;
 import system.app.Project;
 import system.app.SystemApp;
-
+/**
+ * 
+ * @author 
+ */
 public class WhiteBoxRemoveActivity {
 	SystemApp sysApp = new SystemApp();
 	Project proj = new Project("lead", "projId1", "proj");

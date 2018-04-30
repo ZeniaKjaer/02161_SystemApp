@@ -11,7 +11,9 @@ import system.app.OperationNotAllowedException;
 import system.app.SystemApp;
 import system.app.SystemAppController;
 import system.app.NotificationType;
-
+/**
+ * @author Mai-Thi
+ */
 public class SystemAppUI implements Observer {
 	private SystemApp systemApp;
 	private SystemAppController controller = new SystemAppController(); // package visible attribute
@@ -35,7 +37,6 @@ public class SystemAppUI implements Observer {
 		String initials = null;
 
 		do {
-			systemApp.userLogout();
 			System.out.print("Enter Initials: ");
 			initials = rs.readLine();
 			if (initials == null) {
@@ -92,9 +93,12 @@ public class SystemAppUI implements Observer {
 		out.println("   12) Set a new deadline for an activity");	
 		out.println("Overview:");
 		out.println("   13) Get available developers");
+		out.println("   14) Get list of projects");
+		out.println("   15) Get list of activities in a project");
+		out.println("   16) Get list of my projects");
 		out.println("Logout:");
-		out.println("   14) Logout");
-		out.println("Select a number (1-14): ");
+		out.println("   17) Logout");
+		out.println("Select a number (1-17): ");
 	}
 	
 	private void processChoice(int number,InputStream in, PrintStream out) throws IOException {
@@ -152,8 +156,20 @@ public class SystemAppUI implements Observer {
 			controller.getAvailableDevelopers(systemApp);
 			break;
 		case 14:
-			loginLoop(in, out);
-			out.println("User is logged out");
+			out.println("GET LIST OF PROJECTS");
+			controller.getListOfProjects(systemApp);
+			break;
+		case 15:
+			out.println("GET LIST OF ACTIVITIES IN A PROJECTS");
+			controller.getListOfActivities(systemApp);
+			break;
+		case 16:
+			out.println("GET LIST OF MY PROJECTS");
+			controller.getMyProjects(systemApp);
+			break;
+		case 17:
+			systemApp.userLogout();
+			loginLoop(in,out);
 			break;
 		default:
 			break;
@@ -163,8 +179,11 @@ public class SystemAppUI implements Observer {
 	public void update(Observable o, Object aspect) {
 		SystemApp s = (SystemApp) o;
 
-		if(NotificationType.ACTIVE_USER.equals(aspect)) {
+		if(NotificationType.LOGIN.equals(aspect)) {
 			System.out.println("Active user: " + s.getActiveUser());
+		}
+		if(NotificationType.LOGOUT.equals(aspect)) {
+			System.out.println("User has logged out");
 		}
 		if (NotificationType.ADD_PROJECT.equals(aspect)) {
 			System.out.println("The project has been added to the system.");
