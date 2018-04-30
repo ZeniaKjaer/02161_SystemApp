@@ -154,7 +154,10 @@ public class TimeSteps {
 	@When("^user sets activity start after project deadline$")
 	public void userSetsActivityStartAfterProjectDeadline() throws Exception {
 		try {
+			projectHelper.getProject().getProjectActivities().clear();
 			systemApp.setProjectDeadline(projectHelper.getProject(), start);
+			projectHelper.getProject().addActivity(activityHelper.getActivity());
+			activityHelper.getActivity().setDeadline(middle);
 			systemApp.setActivityStart(projectHelper.getProject(), activityHelper.getActivity(), middle);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
@@ -177,7 +180,10 @@ public class TimeSteps {
 	@When("^user sets activity deadline after project deadline$")
 	public void userSetsActivityDeadlineAfterProjectDeadline() throws Exception {
 		try {
+			projectHelper.getProject().getProjectActivities().clear();
 			systemApp.setProjectDeadline(projectHelper.getProject(), middle  );
+			systemApp.addActivity(projectHelper.getProject(), activityHelper.getActivity());
+			activityHelper.getActivity().setDeadline(deadline);
 			systemApp.setActivityDeadline(projectHelper.getProject(), activityHelper.getActivity(), deadline);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
@@ -235,6 +241,17 @@ public class TimeSteps {
 	public void userSetsProjectDeadline() throws Exception {
 		try {
 			systemApp.setProjectDeadline(projectHelper.getProject(), deadline);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
+	@When("^user sets new project deadline before project deadline$")
+	public void userSetsNewProjectDeadlineBeforeProjectDeadline() throws Exception {
+		try {
+			projectHelper.getProject().getProjectActivities().clear();
+			systemApp.setProjectDeadline(projectHelper.getProject(), deadline);
+			systemApp.addActivity(projectHelper.getProject(), activityHelper.getActivity());
+			systemApp.setProjectDeadline(projectHelper.getProject(), middle);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}

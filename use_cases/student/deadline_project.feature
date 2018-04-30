@@ -5,6 +5,7 @@ Feature: Set deadline for project
     
     Background:
     Given there is a start date
+    And there is a date between start and deadline
     And there is a deadline
 
 Scenario: Project leader deadline for project succesfully
@@ -24,11 +25,11 @@ Scenario: User sets project deadline when not project leader
   	When user sets project deadline
   	Then user gets the error message "Project leader authorization needed"
   	
-#Scenario: Project leader sets deadline for a project with an activity
-#    Given there is a project with an activity
-#  	And user is the project leader
-#  	When user sets project deadline
-#  	Then user gets the error message "Deadline can't be set"
+Scenario: Project leader sets deadline for a project with an activity
+    Given there is a project with an activity
+  	And user is the project leader 
+  	When user sets new project deadline before project deadline
+  	Then user gets the error message "Deadline can only be postponed"
 
 Scenario: Project leader sets project deadline before the start
     Given there is a project with no activities
