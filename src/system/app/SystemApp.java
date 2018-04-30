@@ -211,14 +211,14 @@ public class SystemApp extends Observable{
 	}
 
 	public void removeActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException {
-		projectLeaderCheck(project);
-		if (!project.isProjectActivity(activity)) {
+		projectLeaderCheck(project);                                          //1
+		if (!project.isProjectActivity(activity)) {                           //2
 			throw new OperationNotAllowedException("Activity not found");
 		} 
-		else if (!activity.isActivityDev(developer.getId())) { 
+		else if (!activity.isActivityDev(developer.getId())) {                //3
 			throw new OperationNotAllowedException("Developer not found");
 		} 
-		else {
+		else {                                                                //4
 			activity.removeActivityDev(developer);
 			developer.removeActivityFromCalendar(activity);
 		}
