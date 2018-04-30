@@ -2711,11 +2711,11 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a project",
+  "name": "there is a project with an activity",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "ProjectSteps.thereIsAProject()"
+  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
   "status": "passed"
@@ -2756,6 +2756,16 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
+  "name": "there is an activity developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAnActivityDeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
   "name": "user removes developer from project",
   "keyword": "When "
 });
@@ -2781,11 +2791,11 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a project",
+  "name": "there is a project with an activity",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "ProjectSteps.thereIsAProject()"
+  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
   "status": "passed"
@@ -2851,11 +2861,11 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a project",
+  "name": "there is a project with an activity",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "ProjectSteps.thereIsAProject()"
+  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
   "status": "passed"
@@ -2921,11 +2931,11 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a project",
+  "name": "there is a project with an activity",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "ProjectSteps.thereIsAProject()"
+  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
   "status": "passed"
