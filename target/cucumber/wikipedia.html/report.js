@@ -3197,6 +3197,77 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
+  "name": "Project leader sets deadline for a project with an activity",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a project with an activity",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user sets new project deadline before project deadline",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "TimeSteps.userSetsNewProjectDeadlineBeforeProjectDeadline()"
+});
+formatter.result({
+  "error_message": "java.lang.NullPointerException\n\tat system.app.SystemApp.timeBudgetCheck(SystemApp.java:502)\n\tat system.app.SystemApp.setProjectDeadline(SystemApp.java:363)\n\tat dtu.library.acceptance_tests.TimeSteps.userSetsNewProjectDeadlineBeforeProjectDeadline(TimeSteps.java:231)\n\tat ✽.user sets new project deadline before project deadline(use_cases/student/timebudget_project.feature:36)\n",
+  "status": "failed"
+});
+formatter.step({
+  "name": "user gets the error message \"Deadline can only be postponed\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "skipped"
+});
+formatter.background({
+  "name": "",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "there is a start date",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsAStartDate()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a deadline",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsADeadline()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
   "name": "Project leader sets project deadline before the start",
   "description": "",
   "keyword": "Scenario"

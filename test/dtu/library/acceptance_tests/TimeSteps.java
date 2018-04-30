@@ -225,5 +225,13 @@ public class TimeSteps {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
 	}
+	@When("^user sets new project deadline before project deadline$")
+	public void userSetsNewProjectDeadlineBeforeProjectDeadline() throws Exception {
+		try {
+			systemApp.setProjectDeadline(projectHelper.getProject(), middle);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
 
 }

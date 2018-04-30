@@ -30,11 +30,11 @@ Scenario: Project leader sets start for a project with an activity
   	When user sets project start
   	Then user gets the error message "Start can't be set"
   	
-#Scenario: Project leader sets deadline for a project with an activity
-#    Given there is a project with an activity
-#  	And user is the project leader
-#  	When user sets project deadline
-#  	Then user gets the error message "Deadline can't be set"
+Scenario: Project leader sets deadline for a project with an activity
+    Given there is a project with an activity
+  	And user is the project leader 
+  	When user sets new project deadline before project deadline
+  	Then user gets the error message "Deadline can only be postponed"
 
 Scenario: Project leader sets project deadline before the start
     Given there is a project with no activities

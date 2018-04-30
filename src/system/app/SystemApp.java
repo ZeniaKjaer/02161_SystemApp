@@ -314,12 +314,12 @@ public class SystemApp extends Observable{
 	 * @author Zenia
 	 */
 	public void removeActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException {
-		projectActivityCheck(project,activity);                                   //1
-		projectLeaderCheck(project);                                              //2
-		if (!activity.isActivityDev(developer.getId())) {                         //3
+		projectActivityCheck(project,activity);                                   
+		projectLeaderCheck(project);                                              
+		if (!activity.isActivityDev(developer.getId())) {                         
 			throw new OperationNotAllowedException("Developer not found");
 		} 
-		else {                                                                    //4
+		else {                                                                    
 			activity.removeActivityDev(developer);
 			developer.removeActivityFromCalendar(activity);
 			developer.getMyActivities().remove(activity);
@@ -363,6 +363,10 @@ public void setProjectStart(Project project, Calendar start) throws OperationNot
 		timeBudgetCheck(project.getStart(), deadline);
 		project.setDeadline(deadline);
 
+		if (!project.getProjectActivities().isEmpty() && deadline.before(project.getDeadline())) {
+			throw new OperationNotAllowedException("Deadline can only be postponed");
+		}
+		
 		setChanged();
 		notifyObservers(NotificationType.TIME_BUDGET);
 	}
