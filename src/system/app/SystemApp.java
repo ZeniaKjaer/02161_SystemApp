@@ -158,7 +158,7 @@ public class SystemApp extends Observable{
 	 */
 	public void removeProject(Project project) throws OperationNotAllowedException {
 		projectLeaderCheck(project);
-		//tilføj projectCheck
+		//tilfï¿½j projectCheck
 		while (project.getProjectActivities().size() > 0) {
 			removeActivity(project,project.getProjectActivities().get(0));
 		}
@@ -314,12 +314,12 @@ public class SystemApp extends Observable{
 	 * @author Zenia
 	 */
 	public void removeActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException {
-		projectActivityCheck(project,activity);
-		projectLeaderCheck(project);
-		if (!activity.isActivityDev(developer.getId())) { 
+		projectActivityCheck(project,activity);                                   //1
+		projectLeaderCheck(project);                                              //2
+		if (!activity.isActivityDev(developer.getId())) {                         //3
 			throw new OperationNotAllowedException("Developer not found");
 		} 
-		else {
+		else {                                                                    //4
 			activity.removeActivityDev(developer);
 			developer.removeActivityFromCalendar(activity);
 			developer.getMyActivities().remove(activity);

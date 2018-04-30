@@ -1,4 +1,4 @@
-package dtu.library.acceptance_tests;
+package dtu.library.WB_tests;
 
 import static org.junit.Assert.assertFalse;
 
@@ -13,7 +13,7 @@ import system.app.Project;
 import system.app.SystemApp;
 /**
  * 
- * @author 
+ * @author Helena
  */
 public class WhiteBoxRemoveActivityDev {
 	SystemApp sysApp = new SystemApp();
@@ -25,18 +25,6 @@ public class WhiteBoxRemoveActivityDev {
 	
 	@Rule
     public ExpectedException expectedException = ExpectedException.none();
-
-// Tester om developers er tilføjet til activity
-//	@Test
-//	  public void testDummy() throws OperationNotAllowedException {
-//		sysApp.addDeveloper(lead);
-//		sysApp.addDeveloper(devl);
-//		sysApp.userLogin("lead");
-//		sysApp.addProject(proj);
-//		sysApp.addActivity(proj, acti);
-//		sysApp.addActivityDev(proj, acti, devl);
-//		assertTrue(acti.getActivityDevelopers().contains(devl));
-//	}
 	
 	@Test
 	  public void testInputSetA() throws OperationNotAllowedException {
