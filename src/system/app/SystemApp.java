@@ -144,7 +144,6 @@ public class SystemApp extends Observable{
 			}
 		}
 		
-
 		setChanged();
 		notifyObservers(NotificationType.ADD_PROJECT);
 	}
@@ -423,7 +422,7 @@ public class SystemApp extends Observable{
 
 	public ArrayList<Pair<String,Integer>> getAvailableDevelopers(Week week) throws OperationNotAllowedException {
 		//Design by Contract
-		assert week != null : "Precondition violated" ;
+		//assert week != null : "Precondition violated" ;
 		ArrayList<Pair<String, Integer>> availableDevelopers = new ArrayList<>();
 
 		if (week.getWeekOfYear() > 53) {
@@ -442,7 +441,7 @@ public class SystemApp extends Observable{
 				});
 			}
 		}
-		assert isSorted(availableDevelopers) : "Postcondition violated" ;
+		//assert isSorted(availableDevelopers) : "Postcondition violated" ;
 		return availableDevelopers;
 	}
 
@@ -455,7 +454,7 @@ public class SystemApp extends Observable{
 	public boolean isSorted(ArrayList<Pair<String, Integer>> availableDev) {
 		boolean sorted = true;
 		for (int i = 0; i > availableDev.size()-1; i++) {
-			sorted = sorted && availableDev.get(i).getValue() <= availableDev.get(i+1).getValue();
+			sorted = true && availableDev.get(i).getValue() <= availableDev.get(i+1).getValue();
 		}
 		return sorted;
 	}
@@ -492,7 +491,7 @@ public class SystemApp extends Observable{
 	 * @author Helena
 	 */
 	public void timeBudgetCheck(Calendar start, Calendar deadline) throws OperationNotAllowedException {
-		if (deadline.before(start) || start.after(deadline)) {
+		if (deadline.before(start)) {
 			throw new OperationNotAllowedException("Illegal time budget");	
 		}
 	}

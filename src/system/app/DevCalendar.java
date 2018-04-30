@@ -22,25 +22,25 @@ public class DevCalendar implements Cloneable {
 
 	public void incrementActivity(Week week) {
 		//Design by Contract
-		assert calendar.get(week.getYear())[week.getWeekOfYear()] >= 0
-				&& calendar.get(week.getYear())[week.getWeekOfYear()] < 20 : "Precondition violated " ;
+		//assert calendar.get(week.getYear())[week.getWeekOfYear()] >= 0
+		//		&& calendar.get(week.getYear())[week.getWeekOfYear()] < 20 : "Precondition violated " ;
 		int pre = calendar.get(week.getYear())[week.getWeekOfYear()];
 
 		calendar.get(week.getYear())[week.getWeekOfYear()]++;
 
-		assert calendar.get(week.getYear())[week.getWeekOfYear()] == pre+1 : "Postcondition violated";
+		//assert calendar.get(week.getYear())[week.getWeekOfYear()] == pre+1 : "Postcondition violated";
 	}
 
 	public void decrementActivity(Week week) {
 		//Design by Contract
-		assert true;
+		//assert true;
 		//assert calendar.get(week.getYear())[week.getWeekOfYear()] > 0
 		//&& calendar.get(week.getYear())[week.getWeekOfYear()] <= 20 : "Precondition violated" ;
 		int pre = calendar.get(week.getYear())[week.getWeekOfYear()];
 
 		calendar.get(week.getYear())[week.getWeekOfYear()]--;
 
-		assert calendar.get(week.getYear())[week.getWeekOfYear()] == pre-1 : "Postcondition violated";
+		//assert calendar.get(week.getYear())[week.getWeekOfYear()] == pre-1 : "Postcondition violated";
 	}
 
 	public void setCalendar(Week week, int numberOfActivities) {
