@@ -1,10 +1,13 @@
 package dtu.library.WB_tests;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
+import system.app.Developer;
 import system.app.OperationNotAllowedException;
 import system.app.Project;
 import system.app.SystemApp;
@@ -17,6 +20,7 @@ public class WhiteBoxAddProject {
 		Project proj1 = new Project("abcd", "projId1", "nSys");
 		Project proj2 = new Project("Lead", "projId2", "inSys1");
 		Project proj3 = new Project("Lead", "projId3", "inSys2");
+		Developer devl = new Developer("devl");
 		
 		@Rule
 	    public ExpectedException expectedException = ExpectedException.none();
@@ -37,10 +41,13 @@ public class WhiteBoxAddProject {
 		
 		@Test
 		  public void testInputSetC() throws OperationNotAllowedException {
-			expectedException.expect(OperationNotAllowedException.class);
-	        expectedException.expectMessage("Illegal project name");
 			sysApp.addProject(proj1);
-			sysApp.addProject(proj1);
+			try {
+				sysApp.addProject(proj1);
+			} catch( OperationNotAllowedException e) {
+				e.getMessage().equals("Illegal project name");
+			}
+			
 		}
 		
 		@Test
@@ -53,5 +60,12 @@ public class WhiteBoxAddProject {
 			sysApp.addProject(proj1);
 		}
 		
+		@Test
+		  public void testInputSetE() throws OperationNotAllowedException {
+			sysApp.addDeveloper(devl);
+			sysApp.userLogin("devl");
+			sysApp.addProject(proj1);
+			assertTrue(proj1.getProjectDevelopers().contains(devl));
+		  }
 
 }
