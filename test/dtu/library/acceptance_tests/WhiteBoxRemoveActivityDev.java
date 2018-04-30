@@ -68,7 +68,7 @@ public class WhiteBoxRemoveActivityDev {
 	@Test
 	  public void testInputSetC() throws OperationNotAllowedException {
 		expectedException.expect(OperationNotAllowedException.class);
-        expectedException.expectMessage("Activity not found");
+        expectedException.expectMessage("Activity is not part of the project");
 		sysApp.addDeveloper(lead);
 		sysApp.addDeveloper(devl);
 		sysApp.userLogin("lead");
