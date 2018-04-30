@@ -361,11 +361,11 @@ public void setProjectStart(Project project, Calendar start) throws OperationNot
 		projectCheck(project);
 		projectLeaderCheck(project);
 		timeBudgetCheck(project.getStart(), deadline);
-		project.setDeadline(deadline);
 
 		if (!project.getProjectActivities().isEmpty() && deadline.before(project.getDeadline())) {
 			throw new OperationNotAllowedException("Deadline can only be postponed");
 		}
+		project.setDeadline(deadline);
 		
 		setChanged();
 		notifyObservers(NotificationType.TIME_BUDGET);
