@@ -3,12 +3,13 @@ Feature: Remove developer from project
     Description: The project leader removes a developer from the project
     Actors: Project leader
 Background: 
-    Given there is a project
+    Given there is a project with an activity
     And there is a developer
 
  Scenario: Removes developer from project successfully
   	Given user is the project leader
   	And there is a project developer
+  	And there is an activity developer
   	When user removes developer from project
   	Then developer is no longer a part of the project
 

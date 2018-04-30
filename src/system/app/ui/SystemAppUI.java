@@ -9,7 +9,6 @@ import java.util.Observable;
 import java.util.Observer;
 import system.app.OperationNotAllowedException;
 import system.app.SystemApp;
-import system.app.SystemAppController;
 import system.app.NotificationType;
 /**
  * @author Mai-Thi

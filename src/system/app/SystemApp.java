@@ -329,13 +329,19 @@ public class SystemApp extends Observable{
 	 * @author Zenia
 	 */
 	public void removeActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException {
+<<<<<<< HEAD
 		assert project!=null && activity!=null && developer!=null && activeUser!=null;
 		projectActivityCheck(project,activity);
 		projectLeaderCheck(project);
 		if (!activity.isActivityDev(developer.getId())) { 
+=======
+		projectActivityCheck(project,activity);                                   
+		projectLeaderCheck(project);                                              
+		if (!activity.isActivityDev(developer.getId())) {                         
+>>>>>>> 64dacb25a68cb2a4f5fc0c6cc5af063f92d04a03
 			throw new OperationNotAllowedException("Developer not found");
 		} 
-		else {                                                                //4
+		else {                                                                    
 			activity.removeActivityDev(developer);
 			developer.removeActivityFromCalendar(activity);
 			developer.getMyActivities().remove(activity);
@@ -345,7 +351,7 @@ public class SystemApp extends Observable{
 
 		assert !activity.isActivityDev(developer.getId());
 	}
-
+	
 	/**
 	 * Sets the project start
 	 * @param project
@@ -353,16 +359,20 @@ public class SystemApp extends Observable{
 	 * @throws OperationNotAllowedException
 	 * @author Mai-Thi
 	 */
-	public void setProjectStart(Project project, Calendar start) throws OperationNotAllowedException {
-		projectCheck(project);
-		projectLeaderCheck(project);
-		timeBudgetCheck(start, project.getDeadline());
-
-		project.setStart(start);
-
-		setChanged();
-		notifyObservers(NotificationType.TIME_BUDGET);
+public void setProjectStart(Project project, Calendar start) throws OperationNotAllowedException {
+	projectCheck(project);
+	projectLeaderCheck(project);
+	timeBudgetCheck(start, project.getDeadline());
+	
+	if (!project.getProjectActivities().isEmpty()) {
+		throw new OperationNotAllowedException("Start can't be set");
 	}
+
+	project.setStart(start);
+
+	setChanged();
+	notifyObservers(NotificationType.TIME_BUDGET);
+}
 
 	/**
 	 * Sets the project deadline
@@ -375,8 +385,12 @@ public class SystemApp extends Observable{
 		projectCheck(project);
 		projectLeaderCheck(project);
 		timeBudgetCheck(project.getStart(), deadline);
-		project.setDeadline(deadline);
 
+		if (!project.getProjectActivities().isEmpty() && deadline.before(project.getDeadline())) {
+			throw new OperationNotAllowedException("Deadline can only be postponed");
+		}
+		project.setDeadline(deadline);
+		
 		setChanged();
 		notifyObservers(NotificationType.TIME_BUDGET);
 	}
@@ -440,7 +454,7 @@ public class SystemApp extends Observable{
 
 	public ArrayList<Pair<String,Integer>> getAvailableDevelopers(Week week) throws OperationNotAllowedException {
 		//Design by Contract
-		assert week != null : "Precondition violated" ;
+		//assert week != null : "Precondition violated" ;
 		ArrayList<Pair<String, Integer>> availableDevelopers = new ArrayList<>();
 
 		if (week.getWeekOfYear() > 53) {
@@ -459,22 +473,8 @@ public class SystemApp extends Observable{
 				});
 			}
 		}
-		assert isSorted(availableDevelopers) : "Postcondition violated" ;
+		//assert isSorted(availableDevelopers) : "Postcondition violated" ;
 		return availableDevelopers;
-	}
-
-	/**
-	 * Checks if a list of pairs<DevId, activityLevel> is sorted, in increasing activity level
-	 * @param AvailableDevelopers
-	 * @return a sorted list of all available developers the given week
-	 * @author Zenia
-	 */ 
-	public boolean isSorted(ArrayList<Pair<String, Integer>> availableDev) {
-		boolean sorted = true;
-		for (int i = 0; i > availableDev.size()-1; i++) {
-			sorted = sorted && availableDev.get(i).getValue() <= availableDev.get(i+1).getValue();
-		}
-		return sorted;
 	}
 
 	/**
@@ -509,7 +509,7 @@ public class SystemApp extends Observable{
 	 * @author Helena
 	 */
 	public void timeBudgetCheck(Calendar start, Calendar deadline) throws OperationNotAllowedException {
-		if (deadline.before(start) || start.after(deadline)) {
+		if (deadline.before(start)) {
 			throw new OperationNotAllowedException("Illegal time budget");	
 		}
 	}

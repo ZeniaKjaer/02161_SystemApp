@@ -1,4 +1,4 @@
-package dtu.library.acceptance_tests;
+package dtu.library.WB_tests;
 
 import static org.junit.Assert.assertTrue;
 import org.junit.Rule;
@@ -12,7 +12,7 @@ import system.app.SystemApp;
 
 /**
  * 
- * @author 
+ * @author Rikke
  */
 public class WhiteBoxAddProjDev {
 	SystemApp sysApp = new SystemApp();
