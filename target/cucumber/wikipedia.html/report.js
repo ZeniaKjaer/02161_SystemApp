@@ -70,6 +70,51 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
+  "name": "add activity to a project that is not in the system",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "project is not in the system",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.projectIsNotInTheSystem()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is an activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds activity to project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userAddsActivityToProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Project is not in the system\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
   "name": "add activity when not project leader",
   "description": "",
   "keyword": "Scenario"
@@ -422,6 +467,61 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
+  "name": "Add developer to activity that is not part of the project",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "activity is not part of the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.activityIsNotPartOfTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsADeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds developer to activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userAddsDeveloperToActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Activity is not part of the project\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
   "name": "Add developer when not a project leader",
   "description": "",
   "keyword": "Scenario"
@@ -638,6 +738,51 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
+  "name": "Add developer to project that is not in the system",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "project is not in the system",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.projectIsNotInTheSystem()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsADeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds developer to project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userAddsDeveloperToProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Project is not in the system\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
   "name": "Add developer to project when not a project leader",
   "description": "",
   "keyword": "Scenario"
@@ -747,6 +892,51 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.scenario({
+  "name": "Add developer that is not in the system to project",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a project",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developer is not in the system",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.developerIsNotInTheSystem()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds developer to project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userAddsDeveloperToProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Developer is not in the system\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.uri("use_cases/student/available_developer.feature");
 formatter.feature({
   "name": "Get available developers",
@@ -825,6 +1015,16 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
+  "name": "there is a project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
   "name": "there is a project developer",
   "keyword": "And "
 });
@@ -865,6 +1065,41 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
+  "name": "Changes project leader for a project not in the system",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "project is not in the system",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.projectIsNotInTheSystem()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user change project leader",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userChangeProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Project is not in the system\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
   "name": "Changes project leader when user is not the project leader",
   "description": "",
   "keyword": "Scenario"
@@ -875,6 +1110,16 @@ formatter.step({
 });
 formatter.match({
   "location": "ProjectSteps.thereIsAProjectDeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
 });
 formatter.result({
   "status": "passed"
@@ -920,6 +1165,16 @@ formatter.step({
 });
 formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
 });
 formatter.result({
   "status": "passed"
@@ -1122,6 +1377,41 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
+  "name": "Removes an activity from a project that is not in the system",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "project is not in the system",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.projectIsNotInTheSystem()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user removes activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userRemovesActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Project is not in the system\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
   "name": "Project leader removes activity that is not part of the project",
   "description": "",
   "keyword": "Scenario"
@@ -1288,6 +1578,61 @@ formatter.step({
 });
 formatter.match({
   "location": "ActivitySteps.activityIsRemovedFromDeveloperCalendar()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Remove developer from activity that is not part of the project",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "activity is not part of the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.activityIsNotPartOfTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is an activity developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAnActivityDeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "project leader removes developer from activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.projectLeaderRemovesDeveloperFromActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Activity is not part of the project\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
   "status": "passed"
@@ -1514,6 +1859,76 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
+  "name": "Removes developer from project that is not in the system",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "project is not in the system",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.projectIsNotInTheSystem()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProjectDeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user removes developer from project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userRemovesDeveloperFromProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Project is not in the system\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "there is a project",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsADeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
   "name": "Removes developer from project when not the project leader",
   "description": "",
   "keyword": "Scenario"
@@ -1710,6 +2125,96 @@ formatter.step({
 });
 formatter.match({
   "location": "TimeSteps.timeBudgetIsSetForActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "there is a project with an activity",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a start date",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsAStartDate()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a deadline",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsADeadline()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a date between start and deadline",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsADateBetweenStartAndDeadline()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Project leader sets time budget for activity that is not in the project",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "activity is not part of the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.activityIsNotPartOfTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user sets time budget for activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "TimeSteps.userSetsTimeBudgetForActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Activity is not part of the project\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
   "status": "passed"
@@ -2286,18 +2791,8 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a project",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ProjectSteps.thereIsAProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
   "name": "there is a start date",
-  "keyword": "And "
+  "keyword": "Given "
 });
 formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
@@ -2321,8 +2816,18 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "user is the project leader",
+  "name": "there is a project",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "And "
 });
 formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
@@ -2356,18 +2861,8 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a project",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ProjectSteps.thereIsAProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
   "name": "there is a start date",
-  "keyword": "And "
+  "keyword": "Given "
 });
 formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
@@ -2391,8 +2886,78 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "user is not the project leader",
+  "name": "project is not in the system",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.projectIsNotInTheSystem()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user sets time budget for project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "TimeSteps.userSetsTimeBudgetForProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Project is not in the system\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "there is a start date",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsAStartDate()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a deadline",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsADeadline()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "User sets time budget for project when not project leader",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a project",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user is not the project leader",
+  "keyword": "And "
 });
 formatter.match({
   "location": "ProjectSteps.userIsNotTheProjectLeader()"
@@ -2426,18 +2991,8 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a project",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ProjectSteps.thereIsAProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
   "name": "there is a start date",
-  "keyword": "And "
+  "keyword": "Given "
 });
 formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
@@ -2461,8 +3016,18 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "user is the project leader",
+  "name": "there is a project",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "And "
 });
 formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
@@ -2496,18 +3061,8 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a project",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ProjectSteps.thereIsAProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
   "name": "there is a start date",
-  "keyword": "And "
+  "keyword": "Given "
 });
 formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
@@ -2531,8 +3086,18 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "user is the project leader",
+  "name": "there is a project",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "And "
 });
 formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"

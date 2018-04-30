@@ -12,6 +12,12 @@ Background:
   	When user removes developer from project
   	Then developer is no longer a part of the project
 
+Scenario: Removes developer from project that is not in the system
+ 	Given project is not in the system
+  	And there is a project developer
+  	When user removes developer from project
+  	Then user gets the error message "Project is not in the system"
+  	
 Scenario: Removes developer from project when not the project leader
  	Given user is not the project leader
   	And there is a project developer

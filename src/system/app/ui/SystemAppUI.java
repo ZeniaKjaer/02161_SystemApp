@@ -93,9 +93,12 @@ public class SystemAppUI implements Observer {
 		out.println("   12) Set a new deadline for an activity");	
 		out.println("Overview:");
 		out.println("   13) Get available developers");
+		out.println("   14) Get list of projects");
+		out.println("   15) Get list of activities in a project");
+		out.println("   16) Get list of my projects");
 		out.println("Logout:");
-		out.println("   14) Logout");
-		out.println("Select a number (1-14): ");
+		out.println("   17) Logout");
+		out.println("Select a number (1-17): ");
 	}
 	
 	private void processChoice(int number,InputStream in, PrintStream out) throws IOException {
@@ -153,6 +156,18 @@ public class SystemAppUI implements Observer {
 			controller.getAvailableDevelopers(systemApp);
 			break;
 		case 14:
+			out.println("GET LIST OF PROJECTS");
+			controller.getListOfProjects(systemApp);
+			break;
+		case 15:
+			out.println("GET LIST OF ACTIVITIES IN A PROJECTS");
+			controller.getListOfActivities(systemApp);
+			break;
+		case 16:
+			out.println("GET LIST OF MY PROJECTS");
+			controller.getMyProjects(systemApp);
+			break;
+		case 17:
 			systemApp.userLogout();
 			loginLoop(in,out);
 			break;

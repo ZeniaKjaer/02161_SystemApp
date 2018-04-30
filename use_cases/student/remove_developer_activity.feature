@@ -10,6 +10,13 @@ Scenario: Remove developer on activity successfully
   	When project leader removes developer from activity
   	Then developer is not working on activity
   	And activity is removed from developer calendar
+  	
+Scenario: Remove developer from activity that is not part of the project
+  	Given user is the project leader
+  	And activity is not part of the project
+  	And there is an activity developer
+  	When project leader removes developer from activity
+  	Then user gets the error message "Activity is not part of the project"
 
 Scenario: Remove developer from activity when not a project leader
   	Given user is not the project leader

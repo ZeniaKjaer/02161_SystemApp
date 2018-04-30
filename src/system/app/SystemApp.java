@@ -150,13 +150,10 @@ public class SystemApp extends Observable{
 	 * @author Rikke
 	 */
 	public void addProjectDev(Project project, Developer developer) throws OperationNotAllowedException{
-		// Skal vaere her iflg vores whitebox-test for denne metode
-		if(!projects.contains(project)) {
-			throw new OperationNotAllowedException("Project is not in the system");
-		} else if(!isInTheSystem(developer.getId())) { // Jeg har aendret dit if-statement
+		projectCheck(project);
+		if(!isInTheSystem(developer.getId())) { 
 			throw new OperationNotAllowedException("Developer is not in the system");
 		}
-		// whitebox-test tilfoejelse slut
 		projectLeaderCheck(project);
 		if (project.isProjectDev(developer)) {
 			throw new OperationNotAllowedException("Developer is already part of project");
@@ -177,14 +174,12 @@ public class SystemApp extends Observable{
 	 * @author Rikke
 	 */
 	public void removeProjectDev(Project project, Developer developer) throws OperationNotAllowedException {
+		projectCheck(project);
 		projectLeaderCheck(project);
-		if (!project.isProjectDev(developer)) {
-			throw new OperationNotAllowedException("Developer not found");
-		} 
-		else {
-			project.removeProjectDev(developer);
-			developer.getMyProjects().remove(project);
-		}
+		projectDevCheck(project, developer);
+		project.removeProjectDev(developer);
+		developer.getMyProjects().remove(project);
+
 		setChanged();
 		notifyObservers(NotificationType.REMOVE_DEVELOPER);
 	}
@@ -197,13 +192,11 @@ public class SystemApp extends Observable{
 	 * @author Helena
 	 */
 	public void setProjectLeader(Project project, Developer developer) throws OperationNotAllowedException{
+		projectCheck(project);
 		projectLeaderCheck(project);
-		if (!project.isProjectDev(developer)) {
-			throw new OperationNotAllowedException("Developer not found");
-		}
-		else {
-			project.setProjectLeader(developer.getId());
-		}
+		projectDevCheck(project,developer);
+
+		project.setProjectLeader(developer.getId());
 
 		setChanged();
 		notifyObservers(NotificationType.CHANGE_PROJECT_LEADER);
@@ -217,8 +210,8 @@ public class SystemApp extends Observable{
 	 * @author Rikke
 	 */
 	public void addActivity(Project project, Activity activity) throws OperationNotAllowedException {
+		projectCheck(project);
 		projectLeaderCheck(project);
-
 		activity.setStart(project.getStart());
 		activity.setDeadline(project.getDeadline());
 		activity.updateDuration();
@@ -236,19 +229,15 @@ public class SystemApp extends Observable{
 	 * @author Rikke
 	 */
 	public void removeActivity(Project project, Activity activity) throws OperationNotAllowedException {
-		if(!projects.contains(project)) {
-			throw new OperationNotAllowedException("Project is not in the system"); 
-		}
+		projectCheck(project);
+		projectActivityCheck(project,activity);
 		projectLeaderCheck(project);
-		if (!project.isProjectActivity(activity)) {
-			throw new OperationNotAllowedException("Activity is not part of the project");
-		} 
-		else {
-			project.removeActivity(activity);
-			for (Developer dev : activity.getActivityDevelopers()) {
-				dev.removeActivityFromCalendar(activity);
-			}
+
+		project.removeActivity(activity);
+		for (Developer dev : activity.getActivityDevelopers()) {
+			dev.removeActivityFromCalendar(activity);
 		}
+		
 		setChanged();
 		notifyObservers(NotificationType.REMOVE_ACTIVITY);
 	}
@@ -273,9 +262,8 @@ public class SystemApp extends Observable{
 			developer.addActivityToCalendar(activity);
 			developer.getMyActivities().add(activity);
 		} 
-		else { 
-			throw new OperationNotAllowedException("Project leader authorization needed");
-		}
+		projectLeaderCheck(project);
+		projectActivityCheck(project,activity);
 		setChanged();
 		notifyObservers(NotificationType.ADD_DEVELOPER);
 	}
@@ -289,11 +277,9 @@ public class SystemApp extends Observable{
 	 * @author Zenia
 	 */
 	public void removeActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException {
+		projectActivityCheck(project,activity);
 		projectLeaderCheck(project);
-		if (!project.isProjectActivity(activity)) {
-			throw new OperationNotAllowedException("Activity not found");
-		} 
-		else if (!activity.isActivityDev(developer.getId())) { 
+		if (!activity.isActivityDev(developer.getId())) { 
 			throw new OperationNotAllowedException("Developer not found");
 		} 
 		else {
@@ -313,10 +299,10 @@ public class SystemApp extends Observable{
 	 * @author Mai-Thi
 	 */
 	public void setProjectStart(Project project, Calendar start) throws OperationNotAllowedException {
+		projectCheck(project);
 		projectLeaderCheck(project);
-		if (start.after(project.getDeadline())) {
-			throw new OperationNotAllowedException("Illegal time budget");
-		}
+		timeBudgetCheck(start, project.getDeadline());
+	
 		project.setStart(start);
 
 		setChanged();
@@ -331,10 +317,9 @@ public class SystemApp extends Observable{
 	 * @author Mai-Thi
 	 */
 	public void setProjectDeadline(Project project, Calendar deadline)throws OperationNotAllowedException {
+		projectCheck(project);
 		projectLeaderCheck(project);
-		if(deadline.before(project.getStart())) {
-			throw new OperationNotAllowedException("Illegal time budget");
-		}
+		timeBudgetCheck(project.getStart(), deadline);
 		project.setDeadline(deadline);
 
 		setChanged();
@@ -350,11 +335,10 @@ public class SystemApp extends Observable{
 	 * @author Zenia
 	 */
 	public void setActivityStart(Project project, Activity activity, Calendar start) throws OperationNotAllowedException {
+		projectActivityCheck(project,activity);
 		projectLeaderCheck(project);
-		if(start.after(activity.getDeadline())) {
-			throw new OperationNotAllowedException("Illegal time budget");
-		} 
-		else if (start.before(project.getStart()) || start.after(project.getDeadline()) ) {
+		timeBudgetCheck(start, activity.getDeadline());
+		if (start.before(project.getStart()) || start.after(project.getDeadline()) ) {
 			throw new OperationNotAllowedException("Activity cant exceed project");
 		}
 		else {
@@ -380,11 +364,10 @@ public class SystemApp extends Observable{
 	 * @author Zenia
 	 */
 	public void setActivityDeadline(Project project, Activity activity, Calendar deadline) throws OperationNotAllowedException {
+		projectActivityCheck(project,activity);
 		projectLeaderCheck(project);
-		if (deadline.before(activity.getStart())) {
-			throw new OperationNotAllowedException("Illegal time budget");
-		}
-		else if ( deadline.before(project.getStart()) || deadline.after(project.getDeadline()) ) {
+		timeBudgetCheck(activity.getStart(), deadline);
+		if ( deadline.before(project.getStart()) || deadline.after(project.getDeadline()) ) {
 			throw new OperationNotAllowedException("Activity cant exceed project");
 		}else {
 			for (Developer dev : activity.getActivityDevelopers()) {
@@ -451,9 +434,18 @@ public class SystemApp extends Observable{
 		}
 	}
 
-	///////////////////////
-	///  Vi bruger ikke den her endnu
-	/////////////////////////
+	/**
+	 * Throws an exception if the project is not in the system
+	 * @param project
+	 * @throws OperationNotAllowedException
+	 * @author Mai-Thi
+	 */
+	public void projectCheck(Project project) throws OperationNotAllowedException {
+		if(!projects.contains(project)) {
+			throw new OperationNotAllowedException("Project is not in the system");
+		}
+	}
+
 	/**
 	 * Throws an exception if start comes after the deadline  
 	 * @param start
@@ -465,6 +457,32 @@ public class SystemApp extends Observable{
 		if (deadline.before(start) || start.after(deadline)) {
 			throw new OperationNotAllowedException("Illegal time budget");	
 		}
+	}
+	
+	/**
+	 * Throws an exception if developer is not working on the project
+	 * @param project
+	 * @param developer
+	 * @throws OperationNotAllowedException
+	 * @author Mai-Thi
+	 */
+	private void projectDevCheck(Project project, Developer developer) throws OperationNotAllowedException {
+		if (!project.isProjectDev(developer)) {
+			throw new OperationNotAllowedException("Developer not found");
+		} 
+	}
+
+	/**
+	 * Throws an exception if activity is not part of the project
+	 * @param project
+	 * @param activity
+	 * @throws OperationNotAllowedException
+	 * @author Zenia
+	 */
+	private void projectActivityCheck(Project project, Activity activity) throws OperationNotAllowedException {
+		if (!project.isProjectActivity(activity)) {
+			throw new OperationNotAllowedException("Activity is not part of the project");
+		} 
 	}
 
 	// Getters and setters

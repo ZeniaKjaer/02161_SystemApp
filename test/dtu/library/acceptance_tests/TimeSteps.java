@@ -198,5 +198,10 @@ public class TimeSteps {
 		public void userGetsASortedListOfAllAvailableDevelopers() throws Exception {
 			assertTrue(systemApp.isSorted(availableDev));
 		}
+		
+		@When("^user sets project start$")
+		public void userSetsProjectStart() throws Exception {
+		   systemApp.setProjectStart(projectHelper.getProject(), start);
+		}
 
 }

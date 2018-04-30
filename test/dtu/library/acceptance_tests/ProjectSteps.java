@@ -132,4 +132,14 @@ public class ProjectSteps {
 		projectHelper.getProject().getProjectDevelopers().remove(devHelper.getDeveloper());
 	}
 	
+	@Given("^project is not in the system$")
+	public void projectIsNotInTheSystem() throws Exception {
+	    systemApp.getProjects().clear();
+	}
+	
+	@Given("^developer is not in the system$")
+	public void developerIsNotInTheSystem() throws Exception {
+	    systemApp.getDevelopers().clear();
+	}
+	
 }
