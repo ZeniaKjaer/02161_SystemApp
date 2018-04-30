@@ -35,7 +35,6 @@ public class SystemAppUI implements Observer {
 		String initials = null;
 
 		do {
-			systemApp.userLogout();
 			System.out.print("Enter Initials: ");
 			initials = rs.readLine();
 			if (initials == null) {
@@ -152,8 +151,8 @@ public class SystemAppUI implements Observer {
 			controller.getAvailableDevelopers(systemApp);
 			break;
 		case 14:
-			loginLoop(in, out);
-			out.println("User is logged out");
+			systemApp.userLogout();
+			loginLoop(in,out);
 			break;
 		default:
 			break;
@@ -163,8 +162,11 @@ public class SystemAppUI implements Observer {
 	public void update(Observable o, Object aspect) {
 		SystemApp s = (SystemApp) o;
 
-		if(NotificationType.ACTIVE_USER.equals(aspect)) {
+		if(NotificationType.LOGIN.equals(aspect)) {
 			System.out.println("Active user: " + s.getActiveUser());
+		}
+		if(NotificationType.LOGOUT.equals(aspect)) {
+			System.out.println("User has logged out");
 		}
 		if (NotificationType.ADD_PROJECT.equals(aspect)) {
 			System.out.println("The project has been added to the system.");

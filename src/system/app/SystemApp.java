@@ -7,9 +7,9 @@ import system.app.DateServer;
 public class SystemApp extends Observable{
 
 	private List<Developer> developers = new ArrayList<Developer>();
+	private List<Project> projects = new ArrayList<Project>();
 	private boolean loggedIn = false;
 	private String activeUser = "";
-	private List<Project> projects = new ArrayList<Project>();
 	private int nextProjectID = 1000;
 	private DateServer dateServer = new DateServer();;
 
@@ -45,6 +45,7 @@ public class SystemApp extends Observable{
 				return true; 
 			}
 		}
+		
 		return false;
 	}
 
@@ -59,12 +60,15 @@ public class SystemApp extends Observable{
 			loggedIn = true;
 		}
 		setChanged();
-		notifyObservers(NotificationType.ACTIVE_USER);
+		notifyObservers(NotificationType.LOGIN);
 	}
 
 	public void userLogout() {
 		activeUser = "";
 		loggedIn = false;	
+		
+		setChanged();
+		notifyObservers(NotificationType.LOGOUT);
 	}
 
 	public boolean isProjectLeader(Project project)  {
@@ -107,7 +111,8 @@ public class SystemApp extends Observable{
 		deadline.add(Calendar.WEEK_OF_YEAR,  DEADLINE_ADVANCE_DATE);
 		project.setDeadline(deadline);
 
-		int year = getDate().get(Calendar.YEAR);
+		Calendar projectYear = new GregorianCalendar();
+		int year = projectYear.get(Calendar.YEAR);
 		String projectId = ""+ year + nextProjectID++; 
 		project.setProjectId(projectId);
 
@@ -320,6 +325,11 @@ public class SystemApp extends Observable{
 		if (week.getWeekOfYear() > 53) {
 			throw new OperationNotAllowedException("Illegal week");
 		}
+		
+		
+		
+		
+		
 
 		for (Developer dev : developers) {
 			if (dev.isAvailable(week)) { 
