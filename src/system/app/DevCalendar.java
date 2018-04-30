@@ -8,7 +8,7 @@ import java.util.Map;
  */
 public class DevCalendar implements Cloneable {
 
-	private Map<Integer, int[]> calendar;
+	private Map<Integer,  int[]> calendar;
 	private int startYear;
 
 	public DevCalendar(int startYear) {

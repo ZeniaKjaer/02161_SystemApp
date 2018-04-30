@@ -11,10 +11,9 @@ import java.util.Map;
 public class Developer {
 
 	private String id;
-	DevCalendar devCalendar;
-	ArrayList<Project> myProjects;
-	ArrayList<Activity> myActivities;
-	
+	private DevCalendar devCalendar;
+	private ArrayList<Project> myProjects;
+	private ArrayList<Activity> myActivities;
 
 	//Constructor
 	public Developer(String id) {

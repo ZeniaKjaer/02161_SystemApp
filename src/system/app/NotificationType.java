@@ -5,12 +5,15 @@ package system.app;
  * which aspect of the system have changed.
  * @author Mai-Thi
  */
-public enum NotificationType {
-	ACTIVE_USER, 
+
+public enum NotificationType { 
 	ADD_PROJECT, 
 	CHANGE_PROJECT_LEADER, 
 	ADD_DEVELOPER, 
 	REMOVE_DEVELOPER, 
 	TIME_BUDGET, 
 	ADD_ACTIVITY, 
-	REMOVE_ACTIVITY}
+	REMOVE_ACTIVITY, 
+	LOGIN, 
+	LOGOUT}
+

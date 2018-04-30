@@ -48,9 +48,10 @@ public class SystemApp extends Observable{
 				return true; 
 			}
 		}
+
 		return false;
 	}
-	
+
 	/**
 	 *If the entered Id represents a developer in the SystemApp 
 	 *then the user is logged in and is the active user 
@@ -69,9 +70,9 @@ public class SystemApp extends Observable{
 			loggedIn = true;
 		}
 		setChanged();
-		notifyObservers(NotificationType.ACTIVE_USER);
+		notifyObservers(NotificationType.LOGIN);
 	}
-	
+
 	/**
 	 * Logs out off the SystemApp
 	 * @author Mai-Thi
@@ -79,6 +80,9 @@ public class SystemApp extends Observable{
 	public void userLogout() {
 		activeUser = "";
 		loggedIn = false;	
+
+		setChanged();
+		notifyObservers(NotificationType.LOGOUT);
 	}
 
 	/**
@@ -130,7 +134,8 @@ public class SystemApp extends Observable{
 		deadline.add(Calendar.WEEK_OF_YEAR,  DEADLINE_ADVANCE_DATE);
 		project.setDeadline(deadline);
 
-		int year = getDate().get(Calendar.YEAR);
+		Calendar projectYear = new GregorianCalendar();
+		int year = projectYear.get(Calendar.YEAR);
 		String projectId = ""+ year + nextProjectID++; 
 		project.setProjectId(projectId);
 
@@ -182,7 +187,7 @@ public class SystemApp extends Observable{
 		else {
 			project.removeProjectDev(developer);
 			developer.getMyProjects().remove(project);
-			}
+		}
 		setChanged();
 		notifyObservers(NotificationType.REMOVE_DEVELOPER);
 	}
@@ -225,7 +230,7 @@ public class SystemApp extends Observable{
 		setChanged();
 		notifyObservers(NotificationType.ADD_ACTIVITY);
 	}
-	
+
 	/**
 	 * Removes an activity from project
 	 * @param project
@@ -398,37 +403,25 @@ public class SystemApp extends Observable{
 		notifyObservers(NotificationType.TIME_BUDGET);
 	}
 
-	/**
-	 * Creates a sorted list off all available developers in a given week, 
-	 * from with increasing activity level
-	 * @param week
-	 * @return a sorted list of all available developers the given week
-	 * @throws OperationNotAllowedException
-	 * @author Zenia
-	 */ 
 	public ArrayList<Pair<String,Integer>> getAvailableDevelopers(Week week) throws OperationNotAllowedException {
 		//Design by Contract
 		assert week != null : "Precondition violated" ;
 		ArrayList<Pair<String, Integer>> availableDevelopers = new ArrayList<>();
-		
+
 		if (week.getWeekOfYear() > 53) {
 			throw new OperationNotAllowedException("Illegal week");
 		}
-
 		for (Developer dev : developers) {
-			if(dev.getDevCalendar().haveYear(week.getYear())) {
-				if (dev.isAvailable(week)) { 
-					availableDevelopers.add(new Pair<String, Integer>(dev.getId(),dev.getActivityLevel(week)));
+			if (dev.isAvailable(week)) { 
+				availableDevelopers.add(new Pair(dev.getId(), dev.getActivityLevel(week)));
 
-					// Sorts a list of pair<String,Integer> by its value-integer.
-					Collections.sort(availableDevelopers, new Comparator<Pair<String, Integer>>() {
-						@Override
-						public int compare(final Pair<String, Integer> p1, final Pair<String, Integer> p2) {
-							return p1.getValue().compareTo(p2.getValue());
-						}
-					});
-				}
-
+				// Sorts a list of pair<String,Integer> by its value-integer.
+				Collections.sort(availableDevelopers, new Comparator<Pair<String, Integer>>() {
+					@Override
+					public int compare(final Pair<String, Integer> p1, final Pair<String, Integer> p2) {
+						return p1.getValue().compareTo(p2.getValue());
+					}
+				});
 			}
 		}
 		assert isSorted(availableDevelopers) : "Postcondition violated" ;
@@ -460,7 +453,7 @@ public class SystemApp extends Observable{
 			throw new OperationNotAllowedException("Project leader authorization needed");
 		}
 	}
-	
+
 	///////////////////////
 	///  Vi bruger ikke den her endnu
 	/////////////////////////
