@@ -142,6 +142,22 @@ public class SystemApp extends Observable{
 		notifyObservers(NotificationType.ADD_PROJECT);
 	}
 
+
+	public void removeProject(Project project) throws OperationNotAllowedException {
+		projectLeaderCheck(project);
+		//tilføj projectCheck
+		while (project.getProjectActivities().size() > 0) {
+			removeActivity(project,project.getProjectActivities().get(0));
+		}
+
+		while(project.getProjectDevelopers().size() > 0) {
+			project.getProjectDevelopers().get(0).getMyProjects().remove(project);
+			project.getProjectDevelopers().remove(0);
+			//removeProjectDev(project, project.getProjectDevelopers().get(0));
+		}
+		projects.remove(project);
+	}
+
 	/**
 	 * Add a developer to project
 	 * @param project
@@ -184,6 +200,12 @@ public class SystemApp extends Observable{
 		else {
 			project.removeProjectDev(developer);
 			developer.getMyProjects().remove(project);
+			for (Activity activity : project.getProjectActivities()) {
+				if(activity.getActivityDevelopers().contains(developer)) {
+					developer.getMyActivities().remove(activity);
+					developer.removeActivityFromCalendar(activity);
+				}
+			}
 		}
 		setChanged();
 		notifyObservers(NotificationType.REMOVE_DEVELOPER);
@@ -244,10 +266,11 @@ public class SystemApp extends Observable{
 			throw new OperationNotAllowedException("Activity is not part of the project");
 		} 
 		else {
-			project.removeActivity(activity);
 			for (Developer dev : activity.getActivityDevelopers()) {
 				dev.removeActivityFromCalendar(activity);
+				dev.getMyActivities().remove(activity);	
 			}
+			project.removeActivity(activity);
 		}
 		setChanged();
 		notifyObservers(NotificationType.REMOVE_ACTIVITY);

@@ -46,8 +46,8 @@ public class Activity {
 			duration.add(new Week(tempDate.get(Calendar.WEEK_OF_YEAR),tempDate.get(Calendar.YEAR)));
 			tempDate.add(Calendar.WEEK_OF_YEAR, 1);
 		}
-
 	}
+	
 	// Getters and Setters
 	public List<Developer> getActivityDevelopers() {
 		return activityDevelopers;

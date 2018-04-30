@@ -19,24 +19,6 @@ public class DevCalendar implements Cloneable {
 			calendar.put(startYear+i, year);
 		}
 	}
-	
-	/*
-	public DevCalendar copy() throws CloneNotSupportedException {
-		DevCalendar copy;
-		try {
-			copy = (DevCalendar) super.clone();
-		} catch (CloneNotSupportedException e) { // this should never happen
-			System.out.println("CloneNotSupportedException thrown" + e);
-			return null;
-		}
-		return copy;
-	}
-
-	public DevCalendar copy2() throws CloneNotSupportedException {
-		DevCalendar copy = new DevCalendar(this.startYear);
-		return copy;
-	}
-	*/
 
 	public void incrementActivity(Week week) {
 		//Design by Contract
@@ -51,8 +33,9 @@ public class DevCalendar implements Cloneable {
 
 	public void decrementActivity(Week week) {
 		//Design by Contract
-		assert calendar.get(week.getYear())[week.getWeekOfYear()] > 0
-		&& calendar.get(week.getYear())[week.getWeekOfYear()] <= 20 : "Precondition violated" ;
+		assert true;
+		//assert calendar.get(week.getYear())[week.getWeekOfYear()] > 0
+		//&& calendar.get(week.getYear())[week.getWeekOfYear()] <= 20 : "Precondition violated" ;
 		int pre = calendar.get(week.getYear())[week.getWeekOfYear()];
 
 		calendar.get(week.getYear())[week.getWeekOfYear()]--;

@@ -1628,6 +1628,122 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.uri("use_cases/student/remove_project.feature");
+formatter.feature({
+  "name": "Remove project",
+  "description": "\tDescription:\n\tActors: Project leader",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "Removes an activity when not the project leader",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a project",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user is not a project leader",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.userIsNotAProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user removes project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userRemovesProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Project leader authorization needed\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Project leader removes project successfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project with an activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is an activity developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAnActivityDeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user removes project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userRemovesProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "project is removed",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "ProjectSteps.projectIsRemoved()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "activity is removed from developer calendar",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.activityIsRemovedFromDeveloperCalendar()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.uri("use_cases/student/timebudget_activity.feature");
 formatter.feature({
   "name": "Set time budget for activity",

@@ -5,6 +5,8 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.*;
+
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -62,13 +64,12 @@ public class ProjectSteps {
 		assertThat(systemApp.getProjects(), hasItem(project));
 	}
 
-	@Then("^the developer is now the project leader$") // Denne er fra "Create a project"
+	@Then("^the developer is now the project leader$") 
 	public void theDeveloperIsNowTheProjectLeader() throws Exception {
 		assertThat(project.getProjectLeader(), is(equalTo(devHelper.getDeveloper().getId())));
 	} 
-	// HEEEEEEEEEEEEEEEEEEY!!! disse to ligner hinanden, men burde vi aendre den oeverste???? eller beholder vi dem som de er? -MT
 
-	@Then("^developer is the new project leader$") // Denne er fra "Change project leader"
+	@Then("^developer is the new project leader$") 
 	public void developerIsTheNewProjectLeader() throws Exception {
 		assertThat(projectHelper.getProject().getProjectLeader(), is(equalTo(devHelper.getDeveloper().getId())));
 	}
@@ -100,6 +101,7 @@ public class ProjectSteps {
 	@Then("^developer is part of the project$")
 	public void developerIsPartOfTheProject() throws Exception {
 		assertThat(projectHelper.getProject().getProjectDevelopers(),hasItem(devHelper.getDeveloper()));
+		assertThat(devHelper.getDeveloper().getMyProjects(),hasItem(projectHelper.getProject()));
 	}
 
 	@Given("^user is not the project leader$")
@@ -125,11 +127,33 @@ public class ProjectSteps {
 	@Then("^developer is no longer a part of the project$")
 	public void developerIsNoLongerAPartOfTheProject() throws Exception {
 		assertThat(projectHelper.getProject().getProjectDevelopers(),not(hasItem(devHelper.getDeveloper())));
+		assertThat(devHelper.getDeveloper().getMyProjects(), not(hasItem(projectHelper.getProject())));
 	}
 	
 	@Given("^developer is not part of the project$")
 	public void developerIsNotPartOfTheProject() throws Exception {
 		projectHelper.getProject().getProjectDevelopers().remove(devHelper.getDeveloper());
+	}
+	
+	@When("^user removes project$")
+	public void userRemovesProject() throws Exception {
+		try {
+		    systemApp.removeProject(projectHelper.getProject());
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
+
+	@Then("^project is removed$")
+	public void projectIsRemoved() throws Exception {
+	    assertThat(systemApp.getProjects(), not(hasItem(projectHelper.getProject())));
+	    assertThat(devHelper.getDeveloper().getMyProjects(), not(hasItem(projectHelper.getProject())));
+	}
+
+	@Given("^project is not in the system$")
+	public void projectIsNotInTheSystem() throws Exception {
+		systemApp.getProjects().clear();
+	    
 	}
 	
 }
