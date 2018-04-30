@@ -145,7 +145,7 @@ public class SystemApp extends Observable{
 
 	public void removeProject(Project project) throws OperationNotAllowedException {
 		projectLeaderCheck(project);
-		//tilføj projectCheck
+		//tilfï¿½j projectCheck
 		while (project.getProjectActivities().size() > 0) {
 			removeActivity(project,project.getProjectActivities().get(0));
 		}
@@ -327,6 +327,10 @@ public class SystemApp extends Observable{
 			projectCheck(project);
 			projectLeaderCheck(project);
 			timeBudgetCheck(start, project.getDeadline());
+			
+			if (!project.getProjectActivities().isEmpty()) {
+				throw new OperationNotAllowedException("Start can't be set");
+			}
 
 			project.setStart(start);
 
@@ -345,6 +349,7 @@ public class SystemApp extends Observable{
 			projectCheck(project);
 			projectLeaderCheck(project);
 			timeBudgetCheck(project.getStart(), deadline);
+			
 			project.setDeadline(deadline);
 
 			setChanged();

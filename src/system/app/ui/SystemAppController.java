@@ -1,4 +1,4 @@
-package system.app;
+package system.app.ui;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,6 +8,12 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import javafx.util.Pair;
+import system.app.Activity;
+import system.app.Developer;
+import system.app.OperationNotAllowedException;
+import system.app.Project;
+import system.app.SystemApp;
+import system.app.Week;
 
 /**
  * @author Mai-Thi
@@ -205,8 +211,6 @@ public class SystemAppController {
 					System.out.println(p);
 				}
 			}
-			// Kommer an paa om vi vil have den printet ud vandret eller lodret
-			// System.out.println(systemApp.getAvailableDevelopers(week));
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
@@ -236,6 +240,21 @@ public class SystemAppController {
 	}
 
 	public void getMyProjects(SystemApp systemApp) {
+		Developer activeUser = new Developer("");
+		
+		for (Developer d: systemApp.getDevelopers()) {
+			if(d.getId().equalsIgnoreCase(systemApp.getActiveUser())) {
+				activeUser = d;
+			}
+		}
+		
+		if (activeUser.getMyProjects().size() == 0) {
+			System.out.println("No projects");
+		} else {
+			for(Project p: activeUser.getMyProjects()) {
+				System.out.println(p.getProjectName());
+			}
+		}
 		
 	}
 
