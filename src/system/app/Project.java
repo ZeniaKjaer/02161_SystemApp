@@ -71,20 +71,12 @@ public class Project {
 		this.projectLeader = projectLeader;
 	}
 
-	public void setProjectName(String projectName) {
-		this.projectName = projectName;
-	}
-
 	public void setProjectId(String projectId) {
 		this.projectId = projectId;
 	}
 
 	public List<Activity> getProjectActivities() {
 		return projectActivities;
-	}
-
-	public String getProjectId() {
-		return projectId;
 	}
 
 	public void setStart(Calendar start)  {
