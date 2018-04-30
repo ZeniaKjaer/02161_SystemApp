@@ -127,10 +127,11 @@ public class SystemAppController {
 	}
 
 	public void addActivityToProject(SystemApp systemApp) throws IOException {
+		Project project = enterProject(systemApp);
 		System.out.print("Enter an activity name: ");
 		String activityName = rs.readLine();
 		try {
-			systemApp.addActivity(enterProject(systemApp), new Activity(activityName));
+			systemApp.addActivity(project, new Activity(activityName));
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
@@ -210,6 +211,32 @@ public class SystemAppController {
 			System.out.println(e);
 		}
 
+	}
+
+	public void getListOfProjects(SystemApp systemApp) {
+		if (systemApp.getProjects().size() == 0) {
+			System.out.println("No projects");
+		} else {
+			for(Project p: systemApp.getProjects()) {
+				System.out.println(p.getProjectName());
+			}
+		}
+	}
+
+	public void getListOfActivities(SystemApp systemApp) throws IOException {
+		Project project = enterProject(systemApp);
+		
+		if (project.getProjectActivities().size() == 0) {
+			System.out.println("No activities");
+		} else {
+			for(Activity a: project.getProjectActivities()) {
+				System.out.println(a.getActivityName());
+			}
+		}
+	}
+
+	public void getMyProjects(SystemApp systemApp) {
+		
 	}
 
 

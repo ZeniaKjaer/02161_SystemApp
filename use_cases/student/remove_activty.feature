@@ -10,6 +10,11 @@ Scenario: Project leader removes activity successfully
   When user removes activity
   Then activity is no longer part of project
   And activity is removed from developer calendar
+  
+ Scenario: Removes an activity from a project that is not in the system
+  Given project is not in the system
+  When user removes activity
+  Then user gets the error message "Project is not in the system"
 
 Scenario: Project leader removes activity that is not part of the project
   Given user is the project leader
