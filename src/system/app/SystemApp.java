@@ -2,7 +2,6 @@ package system.app;
 
 import java.util.*;
 import javafx.util.Pair;
-import system.app.DateServer;
 
 public class SystemApp extends Observable{
 
@@ -11,7 +10,6 @@ public class SystemApp extends Observable{
 	private List<Developer> developers = new ArrayList<Developer>();
 	private List<Project> projects = new ArrayList<Project>();
 	private int nextProjectID = 1000;
-	private DateServer dateServer = new DateServer();;
 	private static final int DEADLINE_ADVANCE_DATE = 3; 
 
 	/**
@@ -48,7 +46,6 @@ public class SystemApp extends Observable{
 				return true; 
 			}
 		}
-
 		return false;
 	}
 
@@ -481,14 +478,6 @@ public class SystemApp extends Observable{
 
 	public List<Project> getProjects() {
 		return projects;
-	}
-
-	public void setDateServer(DateServer dateServer) {
-		this.dateServer = dateServer;
-	}
-
-	public Calendar getDate() {
-		return dateServer.getDate();
 	}
 
 }
