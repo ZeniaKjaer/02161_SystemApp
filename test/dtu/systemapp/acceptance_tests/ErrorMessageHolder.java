@@ -1,4 +1,4 @@
-package dtu.library.acceptance_tests;
+package dtu.systemapp.acceptance_tests;
 
 public class ErrorMessageHolder {
 	private String errorMessage = "";
