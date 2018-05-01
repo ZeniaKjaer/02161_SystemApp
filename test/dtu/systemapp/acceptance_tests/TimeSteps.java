@@ -1,4 +1,4 @@
-package dtu.library.acceptance_tests;
+package dtu.systemapp.acceptance_tests;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;

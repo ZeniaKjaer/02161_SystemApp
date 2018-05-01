@@ -95,7 +95,7 @@ public class SystemApp extends Observable{
 		return false;
 	}
 	/**
-	 * Checks if a developer has less than 20 activities during the all weeks of activity
+	 * Checks if a developer has less than 20 activities during the all weeks of activity.
 	 * @param developer
 	 * @param activity
 	 * @return
@@ -473,6 +473,7 @@ public class SystemApp extends Observable{
 	 * @param week
 	 * @return available developers
 	 * @throws OperationNotAllowedException
+	 * @author Zenia
 	 */
 	public ArrayList<Pair<String,Integer>> getAvailableDevelopers(Week week) throws OperationNotAllowedException {
 		ArrayList<Pair<String, Integer>> availableDevelopers = new ArrayList<>();
