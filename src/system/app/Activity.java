@@ -52,8 +52,9 @@ public class Activity {
 	public List<Developer> getActivityDevelopers() {
 		return activityDevelopers;
 	}
-
-	public String getActivityName() { // used by UI
+	
+	// used by UI
+	public String getActivityName() { 
 	return acitivityName;
 	}
 	public void setStart(Calendar start) {

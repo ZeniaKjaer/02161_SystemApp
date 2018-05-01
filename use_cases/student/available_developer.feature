@@ -1,4 +1,4 @@
-# @author Zenia
+# Use case og test af Zenia
 Feature: Get available developers
    	Description: The project leader gets a list of available developers in a given week
 	Actors: Project leader

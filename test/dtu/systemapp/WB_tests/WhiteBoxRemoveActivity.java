@@ -1,4 +1,4 @@
-package dtu.library.WB_tests;
+package dtu.systemapp.WB_tests;
 
 import static org.junit.Assert.assertFalse;
 
@@ -13,7 +13,7 @@ import system.app.Project;
 import system.app.SystemApp;
 /**
  * 
- * @author Rikke & Helena
+ * @author Zenia
  */
 public class WhiteBoxRemoveActivity {
 	SystemApp sysApp = new SystemApp();

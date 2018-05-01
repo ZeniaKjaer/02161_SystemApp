@@ -1,4 +1,4 @@
-# @author Helena
+# Use case og test af Helena
 Feature: Change project leader
     Description: The project leader gives his status as leader to another developer
     Actors: Project leader

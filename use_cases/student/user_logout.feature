@@ -1,4 +1,4 @@
-# @author Mai-Thi
+# Use case og test af Mai-Thi
 Feature: Logout
     Description: User logs out of the system
     Actors: Developer

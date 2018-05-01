@@ -1,4 +1,4 @@
-# @author Zenia
+# Use case og test af Zenia
 Feature: Set activity start
     Description: The project leader sets activity start
     Actors: Project leader
@@ -12,7 +12,7 @@ Scenario: Project leader sets activity start successfully
  	Given user is the project leader
  	And there is an activity developer
   	When user sets activity start
-  	Then time budget is set for activity
+  	Then activity start is set
 
 Scenario: Project leader sets start for an activity that is not in the project
  	Given user is the project leader

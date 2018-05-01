@@ -1,4 +1,4 @@
-# @author Rikke 
+# Use case og test af Rikke 
 Feature: Add developer to project
   Description: The project leader adds a developer to the project
   Actors: Project leader

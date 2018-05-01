@@ -24,7 +24,7 @@ public class SystemAppUI implements Observer {
 
 	public SystemAppUI(SystemApp s) {
 		systemApp = s;
-		systemApp.addObserver(this);
+		systemApp.addObserver(this); 
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -78,26 +78,27 @@ public class SystemAppUI implements Observer {
 		//out.println("   0) Exit");
 		out.println("Project:");
 		out.println("   1) Create a project");
-		out.println("   2) Add developer to a project");
-		out.println("   3) Remove developer from a project");
-		out.println("   4) Change project leader");
-		out.println("   5) Set a new start date for a project");
-		out.println("   6) Set a new deadline for a project");
+		out.println("   2) Remove a project");
+		out.println("   3) Add developer to a project");
+		out.println("   4) Remove developer from a project");
+		out.println("   5) Change project leader");
+		out.println("   6) Set a new start date for a project");
+		out.println("   7) Set a new deadline for a project");
 		out.println("Activity:");
-		out.println("   7) Add activity to a project");
-		out.println("   8) Remove activity from a project");
-		out.println("   9) Add developer to an activity");		
-		out.println("   10) Remove developer from an activity");	
-		out.println("   11) Set a new start date for an activity");	
-		out.println("   12) Set a new deadline for an activity");	
+		out.println("   8) Add activity to a project");
+		out.println("   9) Remove activity from a project");
+		out.println("   10) Add developer to an activity");		
+		out.println("   11) Remove developer from an activity");	
+		out.println("   12) Set a new start date for an activity");	
+		out.println("   13) Set a new deadline for an activity");	
 		out.println("Overview:");
-		out.println("   13) Get available developers");
-		out.println("   14) Get list of projects");
-		out.println("   15) Get list of activities in a project");
-		out.println("   16) Get list of my projects");
+		out.println("   14) Get available developers");
+		out.println("   15) Get list of projects");
+		out.println("   16) Get list of activities in a project");
+		out.println("   17) Get list of my projects");
 		out.println("Logout:");
-		out.println("   17) Logout");
-		out.println("Select a number (1-17): ");
+		out.println("   18) Logout");
+		out.println("Select a number (1-18): ");
 	}
 	
 	private void processChoice(int number,InputStream in, PrintStream out) throws IOException {
@@ -107,66 +108,70 @@ public class SystemAppUI implements Observer {
 			controller.createProject(systemApp);
 			break;
 		case 2:
+			out.println("REMOVE A PROJECT");
+			controller.removeProject(systemApp);
+			break;
+		case 3:
 			out.println("ADD DEVELOPER TO A PROJECT");
 			controller.addDelevoperToProject(systemApp);
 			break;
-		case 3:
+		case 4:
 			out.println("REMOVE DEVELOPER FROM A PROJECT");
 			controller.removeDeveloperFromProject(systemApp);
 			break;
-		case 4:
+		case 5:
 			out.println("CHANGE PROJECT LEADER");
 			controller.changeProjectLeader(systemApp);
 			break;
-		case 5:
+		case 6:
 			out.println("SET A NEW START DATE FOR A PROJECT");
 			controller.setNewStartDateForProject(systemApp);
 			break;
-		case 6:
+		case 7:
 			out.println("SET A NEW DEADLINE FOR A PROJECT");
 			controller.setNewDeadlineForProject(systemApp);
 			break;
-		case 7:
+		case 8:
 			out.println("ADD ACTIVITY TO A PROJECT");
 			controller.addActivityToProject(systemApp);
 			break;
-		case 8:
+		case 9:
 			out.println("REMOVE ACTIVITY FROM A PROJECT");
 			controller.removeActivityFromProject(systemApp);
 			break;
-		case 9:
+		case 10:
 			out.println("ADD DEVELOPER TO AN ACTIVITY");
 			controller.addDeveloperToActivity(systemApp);
 			break;
-		case 10:
+		case 11:
 			out.println("REMOVE DEVELOPER FROM AN ACTIVITY");
 			controller.removeDeveloperFromActivity(systemApp);
 			break;
-		case 11:
+		case 12:
 			out.println("SET A NEW START DATE FOR AN ACTIVITY");
 			controller.setNewStartDateForActivity(systemApp);
 			break;
-		case 12:
+		case 13:
 			out.println("SET A NEW DEADLINE FOR AN ACTIVITY");
 			controller.setNewDeadlineForActivity(systemApp);
 			break;
-		case 13:
+		case 14:
 			out.println("GET AVAILABLE DEVELOPERS");
 			controller.getAvailableDevelopers(systemApp);
 			break;
-		case 14:
+		case 15:
 			out.println("GET LIST OF PROJECTS");
 			controller.getListOfProjects(systemApp);
 			break;
-		case 15:
+		case 16:
 			out.println("GET LIST OF ACTIVITIES IN A PROJECTS");
 			controller.getListOfActivities(systemApp);
 			break;
-		case 16:
+		case 17:
 			out.println("GET LIST OF MY PROJECTS");
 			controller.getMyProjects(systemApp);
 			break;
-		case 17:
+		case 18:
 			systemApp.userLogout();
 			loginLoop(in,out);
 			break;

@@ -1,4 +1,4 @@
-# @author Mai-Thi
+# Use case og test af Mai-Thi
 Feature: Login
     Description: User logs into and out of the system
     Actors: Developer

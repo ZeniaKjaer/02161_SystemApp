@@ -1,4 +1,4 @@
-# @author Rikke
+# Use case og test af Rikke
 Feature: Add activity to project
     Description: The project leader adds activities to the project
     Actors: Project leader

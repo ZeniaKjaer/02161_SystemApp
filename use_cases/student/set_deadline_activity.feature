@@ -1,4 +1,4 @@
-# @author Zenia
+# Use case og test af Zenia
 Feature: Set activity deadline
     Description: The project leader sets activity deadline
     Actors: Project leader
@@ -10,9 +10,9 @@ Feature: Set activity deadline
     
 Scenario: Project leader sets activity deadline successfully
  	Given user is the project leader
- 	And there is a project developer
+ 	And there is an activity developer
   	When user sets activity deadline
-  	Then time budget is set for activity
+  	Then activity deadline is set
 
 Scenario: Project leader sets deadline for activity that is not in the project
  	Given user is the project leader
