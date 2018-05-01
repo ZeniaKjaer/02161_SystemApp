@@ -145,7 +145,7 @@ public class SystemApp extends Observable{
 		
 		//adds the active user to the list of project developers
 		for (Developer dev : developers) {
-			if (dev.getId().equals(activeUser)) {
+			if (dev.getId().equalsIgnoreCase(activeUser)) {
 				project.addProjectDev(dev);
 				dev.getMyProjects().add(project);
 			}
@@ -211,7 +211,7 @@ public class SystemApp extends Observable{
 		}
 		setChanged();
 		notifyObservers(NotificationType.ADD_DEVELOPER);
-		//Post condition assert
+		
 		assert project.isProjectDev(developer): "Poscondition violated for addProjectDev";
 	}
 
@@ -305,7 +305,7 @@ public class SystemApp extends Observable{
 
 		setChanged();
 		notifyObservers(NotificationType.REMOVE_ACTIVITY);
-		// post condition assert
+		
 		assert !project.isProjectActivity(activity): "Post-condition violated for removeActivity";
 	}
 
@@ -360,7 +360,7 @@ public class SystemApp extends Observable{
 		}
 		setChanged();
 		notifyObservers(NotificationType.REMOVE_DEVELOPER);
-		//post condition assert
+		
 		assert !activity.isActivityDev(developer.getId()): "Post-condition violated for removeActvityDev";
 	}
 

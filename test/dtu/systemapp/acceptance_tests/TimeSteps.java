@@ -52,14 +52,18 @@ public class TimeSteps {
 
 	@Then("^project start is set$")
 	public void projectStartIsSet() throws Exception {
-		assertEquals(start.get(Calendar.DAY_OF_YEAR),projectHelper.getProject().getStart().get(Calendar.DAY_OF_YEAR));
-		assertEquals(start.get(Calendar.YEAR),projectHelper.getProject().getStart().get(Calendar.YEAR));
+		assertEquals(start.get(Calendar.DAY_OF_YEAR),
+				projectHelper.getProject().getStart().get(Calendar.DAY_OF_YEAR));
+		assertEquals(start.get(Calendar.YEAR),
+				projectHelper.getProject().getStart().get(Calendar.YEAR));
 	}
 
 	@Then("^project deadline is set$")
 	public void projectDeadlineIsSet() throws Exception {
-		assertEquals(deadline.get(Calendar.DAY_OF_YEAR),projectHelper.getProject().getDeadline().get(Calendar.DAY_OF_YEAR));
-		assertEquals(deadline.get(Calendar.YEAR),projectHelper.getProject().getDeadline().get(Calendar.YEAR));
+		assertEquals(deadline.get(Calendar.DAY_OF_YEAR),
+				projectHelper.getProject().getDeadline().get(Calendar.DAY_OF_YEAR));
+		assertEquals(deadline.get(Calendar.YEAR),
+				projectHelper.getProject().getDeadline().get(Calendar.YEAR));
 	}
 
 	@When("^user sets project start after project deadline$")
@@ -104,14 +108,18 @@ public class TimeSteps {
 
 	@Then("^activity deadline is set$")
 	public void activityDeadlineIsSet() throws Exception {
-		assertEquals(deadline.get(Calendar.DAY_OF_YEAR), activityHelper.getActivity().getDeadline().get(Calendar.DAY_OF_YEAR));
-		assertEquals(deadline.get(Calendar.YEAR), activityHelper.getActivity().getDeadline().get(Calendar.YEAR));
+		assertEquals(deadline.get(Calendar.DAY_OF_YEAR), 
+				activityHelper.getActivity().getDeadline().get(Calendar.DAY_OF_YEAR));
+		assertEquals(deadline.get(Calendar.YEAR), 
+				activityHelper.getActivity().getDeadline().get(Calendar.YEAR));
 	}
 
 	@Then("^activity start is set$")
 	public void activityStartIsSet() throws Exception {
-		assertEquals(start.get(Calendar.DAY_OF_YEAR), activityHelper.getActivity().getStart().get(Calendar.DAY_OF_YEAR));
-		assertEquals(start.get(Calendar.YEAR), activityHelper.getActivity().getStart().get(Calendar.YEAR));
+		assertEquals(start.get(Calendar.DAY_OF_YEAR), 
+				activityHelper.getActivity().getStart().get(Calendar.DAY_OF_YEAR));
+		assertEquals(start.get(Calendar.YEAR), 
+				activityHelper.getActivity().getStart().get(Calendar.YEAR));
 	}
 
 	@When("^user sets activity deadline before activity start$")
@@ -176,10 +184,10 @@ public class TimeSteps {
 	public void userSetsActivityDeadlineAfterProjectDeadline() throws Exception {
 		try {
 			projectHelper.getProject().getProjectActivities().clear();
-			systemApp.setProjectDeadline(projectHelper.getProject(), middle  );
+			systemApp.setProjectDeadline(projectHelper.getProject(), middle);
 			systemApp.addActivity(projectHelper.getProject(), activityHelper.getActivity());
 			activityHelper.getActivity().setDeadline(deadline);
-			systemApp.setActivityDeadline(projectHelper.getProject(), activityHelper.getActivity(), deadline);
+			systemApp.setActivityDeadline(projectHelper.getProject(),activityHelper.getActivity(),deadline);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}

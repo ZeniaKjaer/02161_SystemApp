@@ -53,10 +53,11 @@ public class Activity {
 		return activityDevelopers;
 	}
 	
-	// used by UI
+	// only used by UI
 	public String getActivityName() { 
 	return acitivityName;
 	}
+	
 	public void setStart(Calendar start) {
 		this.start = start;
 	}

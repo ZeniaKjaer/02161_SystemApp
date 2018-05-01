@@ -1,4 +1,4 @@
-# Use case og test af Rikke 
+# use case og test af Rikke
 Feature: Add developer to project
   Description: The project leader adds a developer to the project
   Actors: Project leader
@@ -35,3 +35,6 @@ Scenario: Add developer that is not in the system to project
   	And developer is not in the system
   	When user adds developer to project
   	Then user gets the error message "Developer is not in the system"
+  	
+  	
+  	

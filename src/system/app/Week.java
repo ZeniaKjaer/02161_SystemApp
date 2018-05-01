@@ -7,8 +7,7 @@ import javafx.util.Pair;
  */
 public class Week {
 	
-	
-	 Pair<Integer, Integer> week;
+	 private Pair<Integer, Integer> week;
 
 	public Week(int weekOfYear, int year) {
 		this.week = new Pair<>(weekOfYear,year);
