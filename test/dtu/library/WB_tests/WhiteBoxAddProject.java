@@ -47,7 +47,6 @@ public class WhiteBoxAddProject {
 			} catch( OperationNotAllowedException e) {
 				e.getMessage().equals("Illegal project name");
 			}
-			
 		}
 		
 		@Test
@@ -65,6 +64,7 @@ public class WhiteBoxAddProject {
 			sysApp.addDeveloper(devl);
 			sysApp.userLogin("devl");
 			sysApp.addProject(proj1);
+			assertTrue(sysApp.getProjects().contains(proj1));
 			assertTrue(proj1.getProjectDevelopers().contains(devl));
 		  }
 

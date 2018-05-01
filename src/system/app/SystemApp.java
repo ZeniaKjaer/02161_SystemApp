@@ -121,8 +121,8 @@ public class SystemApp extends Observable{
 	 */
 	public void addProject(Project project) throws OperationNotAllowedException{
 		assert project!= null && activeUser != null: "Pre-condition violated for addProject";
-		for (Project p: projects) {
-			if (p.getProjectName().equalsIgnoreCase(project.getProjectName())) { 
+		for (Project p: projects) {															//1
+			if (p.getProjectName().equalsIgnoreCase(project.getProjectName())) { 				//2
 				throw new OperationNotAllowedException("Illegal project name");
 			}
 		}
@@ -137,10 +137,10 @@ public class SystemApp extends Observable{
 		String projectId = ""+ year + nextProjectID++; 
 		project.setProjectId(projectId);
 
-		projects.add(project);
+		projects.add(project);																//3
 		
-		for (Developer dev : developers) {
-			if (dev.getId().equals(activeUser)) {
+		for (Developer dev : developers) {													//4
+			if (dev.getId().equals(activeUser)) {											//5
 				project.addProjectDev(dev);
 			}
 		}
@@ -329,12 +329,12 @@ public class SystemApp extends Observable{
 	 */
 	public void removeActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException {
 		assert project!=null && activity!=null && developer!=null && activeUser!=null: "Pre-condition violated for removeActvityDev";
-		projectActivityCheck(project,activity);                                   
-		projectLeaderCheck(project);                                              
-		if (!activity.isActivityDev(developer.getId())) {
+		projectActivityCheck(project,activity); 											//1                                  
+		projectLeaderCheck(project);                                              		//2
+		if (!activity.isActivityDev(developer.getId())) {									//3
 			throw new OperationNotAllowedException("Developer not found");
 		} 
-		else {                                                                    
+		else {                                                                  			//4  
 			activity.removeActivityDev(developer);
 			developer.removeActivityFromCalendar(activity);
 			developer.getMyActivities().remove(activity);
