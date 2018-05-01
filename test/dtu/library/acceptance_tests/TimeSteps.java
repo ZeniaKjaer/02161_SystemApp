@@ -224,6 +224,7 @@ public class TimeSteps {
 
 	@Given("^there is a project with no activities$")
 	public void thereIsAProjectWithNoActivities() throws Exception {
+		
 		systemApp.addProject(projectHelper.getProject());
 		projectHelper.getProject().getProjectActivities().clear();
 	}
