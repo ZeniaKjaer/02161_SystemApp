@@ -14,10 +14,6 @@ public class Week {
 		this.week = new Pair<>(weekOfYear,year);
 	}
 
-	public Pair<Integer, Integer> getWeek() {
-		return week;
-	}
-
 	public int getWeekOfYear() {
 		return week.getKey();
 	}
