@@ -13,7 +13,7 @@ public class SystemApp extends Observable{
 	private static final int DEADLINE_ADVANCE_DATE = 3; 
 
 	/**
-	 * Constructs a SystemApp with specific developers and projects
+	 * Constructs a SystemApp with specific developers 
 	 * @author Mai-Thi
 	 */
 	public SystemApp() {
