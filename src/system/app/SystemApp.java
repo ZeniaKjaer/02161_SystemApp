@@ -120,8 +120,7 @@ public class SystemApp extends Observable{
 	 * @author Helena
 	 */
 	public void addProject(Project project) throws OperationNotAllowedException{
-		assert true;
-		//assert project!= null && activeUser != null : "Precondition Violated addProject";
+		assert project!= null && activeUser != null: "Pre-condition violated for addProject";
 		for (Project p: projects) {
 			if (p.getProjectName().equalsIgnoreCase(project.getProjectName())) { 
 				throw new OperationNotAllowedException("Illegal project name");
@@ -150,15 +149,15 @@ public class SystemApp extends Observable{
 		notifyObservers(NotificationType.ADD_PROJECT);
 		
 		// Post-condition asserts
-//		boolean isInProj = false;
-//		for (Developer dev : developers) {
-//			if (dev.getId().equals(activeUser)) {
-//				isInProj = project.isProjectDev(dev);
-//				break;
-//			}
-//		}
-//		assert isInProj;
-//		assert projects.contains(project);
+		boolean isInProj = false;
+		for (Developer dev : developers) {
+			if (dev.getId().equals(activeUser)) {
+				assert project.isProjectDev(dev): "Post-condition 1 violated for addProject";
+				break;
+			}
+		}
+		assert projects.contains(project): "Post-condition 2 violated for addProject";
+
 	}
 
 	/**
@@ -171,7 +170,7 @@ public class SystemApp extends Observable{
 	 */
 	public void removeProject(Project project) throws OperationNotAllowedException {
 		projectLeaderCheck(project);
-		projectCheck(project);
+		//tilføj projectCheck
 		while (project.getProjectActivities().size() > 0) {
 			removeActivity(project,project.getProjectActivities().get(0));
 		}
@@ -191,7 +190,7 @@ public class SystemApp extends Observable{
 	 * @author Rikke
 	 */
 	public void addProjectDev(Project project, Developer developer) throws OperationNotAllowedException{
-		assert project != null && developer != null;
+		assert project != null && developer != null: "Precondition violated for addProjectDev";
 		projectCheck(project);
 		if(!isInTheSystem(developer.getId())) { 
 			throw new OperationNotAllowedException("Developer is not in the system");
@@ -206,12 +205,11 @@ public class SystemApp extends Observable{
 		}
 		setChanged();
 		notifyObservers(NotificationType.ADD_DEVELOPER);
-		assert project.isProjectDev(developer);
+		assert project.isProjectDev(developer): "Poscondition violated for addProjectDev";
 	}
 	
 	/**
-	 * Removes developer from project, 
-	 * and delete all project activities developer is working on from devCalendar. 
+	 * Removes Developer from project
 	 * @param project
 	 * @param developer
 	 * @throws OperationNotAllowedException
@@ -280,7 +278,7 @@ public class SystemApp extends Observable{
 	 * @author Rikke
 	 */
 	public void removeActivity(Project project, Activity activity) throws OperationNotAllowedException {
-		assert project!=null && activity != null && activeUser!=null;
+		assert project!=null && activity != null && activeUser!=null: "Pre-condition violated for removeActivity";
 		projectCheck(project);
 		projectActivityCheck(project,activity);
 		projectLeaderCheck(project);
@@ -293,7 +291,7 @@ public class SystemApp extends Observable{
 		
 		setChanged();
 		notifyObservers(NotificationType.REMOVE_ACTIVITY);
-		assert !project.isProjectActivity(activity);
+		assert !project.isProjectActivity(activity): "Post-condition violated for removeActivity";
 	}
 
 	/**
@@ -331,11 +329,10 @@ public class SystemApp extends Observable{
 	 * @author Zenia
 	 */
 	public void removeActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException {
-		assert project!=null && activity!=null && developer!=null && activeUser!=null;
-		projectActivityCheck(project,activity);
-		projectLeaderCheck(project);
-		if (!activity.isActivityDev(developer.getId())) { 
-                        
+		assert project!=null && activity!=null && developer!=null && activeUser!=null: "Pre-condition violated for removeActvityDev";
+		projectActivityCheck(project,activity);                                   
+		projectLeaderCheck(project);                                              
+		if (!activity.isActivityDev(developer.getId())) {
 			throw new OperationNotAllowedException("Developer not found");
 		} 
 		else {                                                                    
@@ -346,7 +343,7 @@ public class SystemApp extends Observable{
 		setChanged();
 		notifyObservers(NotificationType.REMOVE_DEVELOPER);
 
-		assert !activity.isActivityDev(developer.getId());
+		assert !activity.isActivityDev(developer.getId()): "Post-condition violated for removeActvityDev";
 	}
 	
 	/**
@@ -451,7 +448,7 @@ public void setProjectStart(Project project, Calendar start) throws OperationNot
 
 	public ArrayList<Pair<String,Integer>> getAvailableDevelopers(Week week) throws OperationNotAllowedException {
 		//Design by Contract
-		//assert week != null : "Precondition violated" ;
+//		assert week != null : "Precondition violated" ;
 		ArrayList<Pair<String, Integer>> availableDevelopers = new ArrayList<>();
 
 		if (week.getWeekOfYear() > 53) {
@@ -470,7 +467,7 @@ public void setProjectStart(Project project, Calendar start) throws OperationNot
 				});
 			}
 		}
-		//assert isSorted(availableDevelopers) : "Postcondition violated" ;
+//		assert isSorted(availableDevelopers) : "Postcondition violated" ;
 		return availableDevelopers;
 	}
 
