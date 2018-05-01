@@ -10,6 +10,5 @@ public class ErrorMessageHolder {
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
 	}
-	
-	//halli halløj
+
 }

@@ -29,13 +29,6 @@ public class LoginLogoutSteps {
 		this.devhelper = devhelper;
 	}
 	
-	@Given("^SystemApp has developers$")
-	public void systemappHasDevelopers(List<String> developers) throws Exception {
-		for (String devId : developers) {
-			systemApp.addDeveloper(new Developer(devId));
-		}
-	}
-	
 	@Given("^developer with initials \"([^\"]*)\" is in the system$")
 	public void developerWithInitialsIsInTheSystem(String id) throws Exception {
 		dev = new Developer(id);

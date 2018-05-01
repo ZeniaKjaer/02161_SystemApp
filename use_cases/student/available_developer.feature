@@ -13,3 +13,4 @@ Scenario: Project leader gets available developers in an illegal week
 	Given there is an illegal week
   	When user ask for all available developers
  	Then user gets the error message "Illegal week"
+ 
