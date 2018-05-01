@@ -65,6 +65,7 @@ public class TimeSteps {
 	@When("^user sets project start after project deadline$")
 	public void userSetsProjectStartAfterProjectDeadline() throws Exception {
 		try {
+			projectHelper.getProject().getProjectActivities().clear();
 			systemApp.setProjectDeadline(projectHelper.getProject(), start);
 			systemApp.setProjectStart(projectHelper.getProject(), deadline);
 		} catch (OperationNotAllowedException e) {
@@ -101,12 +102,16 @@ public class TimeSteps {
 		}
 	}
 
-	@Then("^time budget is set for activity$")
-	public void timeBudgetIsSetForActivity() throws Exception {
-		assertEquals(start.get(Calendar.DAY_OF_YEAR), activityHelper.getActivity().getStart().get(Calendar.DAY_OF_YEAR));
-		assertEquals(start.get(Calendar.YEAR), activityHelper.getActivity().getStart().get(Calendar.YEAR));
+	@Then("^activity deadline is set$")
+	public void activityDeadlineIsSet() throws Exception {
 		assertEquals(deadline.get(Calendar.DAY_OF_YEAR), activityHelper.getActivity().getDeadline().get(Calendar.DAY_OF_YEAR));
 		assertEquals(deadline.get(Calendar.YEAR), activityHelper.getActivity().getDeadline().get(Calendar.YEAR));
+	}
+
+	@Then("^activity start is set$")
+	public void activityStartIsSet() throws Exception {
+		assertEquals(start.get(Calendar.DAY_OF_YEAR), activityHelper.getActivity().getStart().get(Calendar.DAY_OF_YEAR));
+		assertEquals(start.get(Calendar.YEAR), activityHelper.getActivity().getStart().get(Calendar.YEAR));
 	}
 
 	@When("^user sets activity deadline before activity start$")

@@ -1,4 +1,4 @@
-# @author Helena
+# Use case og test af Helena
 Feature: Remove developer from project
     Description: The project leader removes a developer from the project
     Actors: Project leader

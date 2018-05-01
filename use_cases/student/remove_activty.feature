@@ -1,4 +1,4 @@
-#@author Rikke
+# Use case og test af Rikke
 Feature: Remove activity from project
     Description: The project leader removes activities from the project
     Actors: Project leader
