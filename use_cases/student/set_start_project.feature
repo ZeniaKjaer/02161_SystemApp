@@ -1,4 +1,4 @@
-# @author Mai-Thi
+# Use case og test af Mai-Thi
 Feature: Set start for project
     Description: The project leader sets the time budget for the project
     Actors: Project leader

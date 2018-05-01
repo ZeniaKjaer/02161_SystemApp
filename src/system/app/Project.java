@@ -54,7 +54,6 @@ public class Project {
 	}
 
 	//Getters and Setters
-	
 	public List<Developer> getProjectDevelopers() {
 		return projectDevelopers;
 	}

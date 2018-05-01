@@ -2090,6 +2090,106 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.scenario({
+  "name": "Project leader removes project successfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsAProjectDeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user removes project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userRemovesProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "project is removed",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "ProjectSteps.projectIsRemoved()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Project leader removes project that is not in the system",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "project is not in the system",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.projectIsNotInTheSystem()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user removes project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userRemovesProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"Project is not in the system\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
   "name": "Removes an activity when not the project leader",
   "description": "",
   "keyword": "Scenario"
@@ -2266,11 +2366,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "there is a project developer",
+  "name": "there is an activity developer",
   "keyword": "And "
 });
 formatter.match({
-  "location": "ProjectSteps.thereIsAProjectDeveloper()"
+  "location": "ActivitySteps.thereIsAnActivityDeveloper()"
 });
 formatter.result({
   "status": "passed"
@@ -2286,11 +2386,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "time budget is set for activity",
+  "name": "activity deadline is set",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "TimeSteps.timeBudgetIsSetForActivity()"
+  "location": "TimeSteps.activityDeadlineIsSet()"
 });
 formatter.result({
   "status": "passed"
@@ -3198,11 +3298,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "time budget is set for activity",
+  "name": "activity start is set",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "TimeSteps.timeBudgetIsSetForActivity()"
+  "location": "TimeSteps.activityStartIsSet()"
 });
 formatter.result({
   "status": "passed"

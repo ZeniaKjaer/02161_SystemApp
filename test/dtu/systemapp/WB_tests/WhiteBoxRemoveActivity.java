@@ -13,7 +13,7 @@ import system.app.Project;
 import system.app.SystemApp;
 /**
  * 
- * @author Rikke & Helena
+ * @author Zenia
  */
 public class WhiteBoxRemoveActivity {
 	SystemApp sysApp = new SystemApp();

@@ -13,7 +13,7 @@ public class SystemApp extends Observable{
 	private static final int DEADLINE_ADVANCE_DATE = 3; 
 
 	/**
-	 * Constructs a SystemApp with specific developers 
+	 * Constructs a SystemApp with specific developers
 	 * @author Mai-Thi
 	 */
 	public SystemApp() {
@@ -34,7 +34,7 @@ public class SystemApp extends Observable{
 	}
 
 	/**
-	 * checks if a there's a developer with given id on the list of developers in SystemApp
+	 * Checks if a there's a developer with given id on the list of developers in SystemApp
 	 * @param id
 	 * @return true if developer is in the system 
 	 * @throws OperationNotAllowedException
@@ -50,7 +50,7 @@ public class SystemApp extends Observable{
 	}
 
 	/**
-	 *If the entered Id represents a developer in the SystemApp 
+	 *If the given Id represents a developer in the SystemApp 
 	 *then the user is logged in and is the active user 
 	 * @param id
 	 * @throws OperationNotAllowedException
@@ -95,7 +95,7 @@ public class SystemApp extends Observable{
 		return false;
 	}
 	/**
-	 * Checks if a developer has less than 20 activities during the activity
+	 * Checks if a developer has less than 20 activities during the all weeks of activity.
 	 * @param developer
 	 * @param activity
 	 * @return
@@ -112,26 +112,30 @@ public class SystemApp extends Observable{
 
 	/**
 	 * Adds a project to the systemApp. 
-	 * Initialise the project by setting the project start to that day the project is added, 
-	 * and the deadline 3 weeks later. 
+	 * Initialize the project by setting the project start to that day the project is added, 
+	 * and the deadline 3 weeks later.
 	 * Gives the project a unique project id.
 	 * @param project
 	 * @throws OperationNotAllowedException
 	 * @author Helena
 	 */
 	public void addProject(Project project) throws OperationNotAllowedException{
+		//Design by contract
 		assert project!= null && activeUser != null: "Pre-condition violated for addProject";
+		
 		for (Project p: projects) {
 			if (p.getProjectName().equalsIgnoreCase(project.getProjectName())) { 
 				throw new OperationNotAllowedException("Illegal project name");
 			}
 		}
+		//Sets start and deadline
 		Calendar start = new GregorianCalendar();
 		project.setStart(start);
 		Calendar deadline = new GregorianCalendar(); 
 		deadline.add(Calendar.WEEK_OF_YEAR,  DEADLINE_ADVANCE_DATE);
 		project.setDeadline(deadline);
 
+		//Project id
 		Calendar projectYear = new GregorianCalendar();
 		int year = projectYear.get(Calendar.YEAR);
 		String projectId = ""+ year + nextProjectID++; 
@@ -139,17 +143,18 @@ public class SystemApp extends Observable{
 
 		projects.add(project);
 		
+		//adds the active user to the list of project developers
 		for (Developer dev : developers) {
 			if (dev.getId().equals(activeUser)) {
 				project.addProjectDev(dev);
+				dev.getMyProjects().add(project);
 			}
 		}
-		
+
 		setChanged();
 		notifyObservers(NotificationType.ADD_PROJECT);
-		
-		// Post-condition asserts
-		boolean isInProj = false;
+
+		// Post condition asserts
 		for (Developer dev : developers) {
 			if (dev.getId().equals(activeUser)) {
 				assert project.isProjectDev(dev): "Post-condition 1 violated for addProject";
@@ -169,7 +174,7 @@ public class SystemApp extends Observable{
 	 */
 	public void removeProject(Project project) throws OperationNotAllowedException {
 		projectLeaderCheck(project);
-		//tilføj projectCheck
+		projectCheck(project);
 		while (project.getProjectActivities().size() > 0) {
 			removeActivity(project,project.getProjectActivities().get(0));
 		}
@@ -189,7 +194,9 @@ public class SystemApp extends Observable{
 	 * @author Rikke
 	 */
 	public void addProjectDev(Project project, Developer developer) throws OperationNotAllowedException{
+		// Design by contract
 		assert project != null && developer != null: "Precondition violated for addProjectDev";
+		
 		projectCheck(project);
 		if(!isInTheSystem(developer.getId())) { 
 			throw new OperationNotAllowedException("Developer is not in the system");
@@ -204,11 +211,13 @@ public class SystemApp extends Observable{
 		}
 		setChanged();
 		notifyObservers(NotificationType.ADD_DEVELOPER);
+		//Post condition assert
 		assert project.isProjectDev(developer): "Poscondition violated for addProjectDev";
 	}
-	
+
 	/**
-	 * Removes Developer from project
+	 * Removes developer from project and all project activities she is working on
+	 * Removes project activities from developers calendar.
 	 * @param project
 	 * @param developer
 	 * @throws OperationNotAllowedException
@@ -251,7 +260,8 @@ public class SystemApp extends Observable{
 	}
 
 	/**
-	 * Adds an activty to project
+	 * Adds an activty to project.
+	 * Sets activity start and deadline to the project start and deadline.
 	 * @param project
 	 * @param activity
 	 * @throws OperationNotAllowedException
@@ -260,9 +270,11 @@ public class SystemApp extends Observable{
 	public void addActivity(Project project, Activity activity) throws OperationNotAllowedException {
 		projectCheck(project);
 		projectLeaderCheck(project);
+		
 		activity.setStart(project.getStart());
 		activity.setDeadline(project.getDeadline());
 		activity.updateDuration();
+		
 		project.addActivity(activity);	
 
 		setChanged();
@@ -270,14 +282,17 @@ public class SystemApp extends Observable{
 	}
 
 	/**
-	 * Removes an activity from project
+	 * Removes an activity from project.
+	 * Deletes activity from all activity developers calendar
 	 * @param project
 	 * @param activity
 	 * @throws OperationNotAllowedException
 	 * @author Rikke
 	 */
 	public void removeActivity(Project project, Activity activity) throws OperationNotAllowedException {
+		// Design by contract
 		assert project!=null && activity != null && activeUser!=null: "Pre-condition violated for removeActivity";
+		
 		projectCheck(project);
 		projectActivityCheck(project,activity);
 		projectLeaderCheck(project);
@@ -287,14 +302,16 @@ public class SystemApp extends Observable{
 			dev.getMyActivities().remove(activity);	
 		}
 		project.removeActivity(activity);
-		
+
 		setChanged();
 		notifyObservers(NotificationType.REMOVE_ACTIVITY);
+		// post condition assert
 		assert !project.isProjectActivity(activity): "Post-condition violated for removeActivity";
 	}
 
 	/**
-	 * Adds an available developer to activity, and add the activity to developers calendar
+	 * Adds an available developer to activity.
+	 * Adds the activity to developers calendar.
 	 * @param project
 	 * @param activity
 	 * @param developer
@@ -320,7 +337,7 @@ public class SystemApp extends Observable{
 	}
 
 	/**
-	 * Removes a developer from activty and remove activity from developers calendar
+	 * Removes a developer from activity and remove activity from developers calendar
 	 * @param project
 	 * @param activity
 	 * @param developer
@@ -328,7 +345,9 @@ public class SystemApp extends Observable{
 	 * @author Zenia
 	 */
 	public void removeActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException {
+		//Design by contract
 		assert project!=null && activity!=null && developer!=null && activeUser!=null: "Pre-condition violated for removeActvityDev";
+		
 		projectActivityCheck(project,activity);                                   
 		projectLeaderCheck(project);                                              
 		if (!activity.isActivityDev(developer.getId())) {
@@ -341,10 +360,10 @@ public class SystemApp extends Observable{
 		}
 		setChanged();
 		notifyObservers(NotificationType.REMOVE_DEVELOPER);
-
+		//post condition assert
 		assert !activity.isActivityDev(developer.getId()): "Post-condition violated for removeActvityDev";
 	}
-	
+
 	/**
 	 * Sets the project start
 	 * @param project
@@ -352,23 +371,23 @@ public class SystemApp extends Observable{
 	 * @throws OperationNotAllowedException
 	 * @author Mai-Thi
 	 */
-public void setProjectStart(Project project, Calendar start) throws OperationNotAllowedException {
-	projectCheck(project);
-	projectLeaderCheck(project);
-	timeBudgetCheck(start, project.getDeadline());
-	
-	if (!project.getProjectActivities().isEmpty()) {
-		throw new OperationNotAllowedException("Start can't be set");
+	public void setProjectStart(Project project, Calendar start) throws OperationNotAllowedException {
+		projectCheck(project);
+		projectLeaderCheck(project);
+		timeBudgetCheck(start, project.getDeadline());
+
+		if (!project.getProjectActivities().isEmpty()) {
+			throw new OperationNotAllowedException("Start can't be set");
+		}
+		project.setStart(start);
+
+		setChanged();
+		notifyObservers(NotificationType.TIME_BUDGET);
 	}
 
-	project.setStart(start);
-
-	setChanged();
-	notifyObservers(NotificationType.TIME_BUDGET);
-}
-
 	/**
-	 * Sets the project deadline
+	 * Sets the project deadline.
+	 * If activities has been added to project, then project can only be postponed.
 	 * @param project
 	 * @param deadline
 	 * @throws OperationNotAllowedException
@@ -379,17 +398,18 @@ public void setProjectStart(Project project, Calendar start) throws OperationNot
 		projectLeaderCheck(project);
 		timeBudgetCheck(project.getStart(), deadline);
 
-		if (!project.getProjectActivities().isEmpty() && deadline.before(project.getDeadline())) {
+		if (deadline.before(project.getDeadline()) && !project.getProjectActivities().isEmpty())  {
 			throw new OperationNotAllowedException("Deadline can only be postponed");
 		}
 		project.setDeadline(deadline);
-		
+
 		setChanged();
 		notifyObservers(NotificationType.TIME_BUDGET);
 	}
 
 	/**
-	 * Sets the activity start and update activity duration
+	 * Sets the activity start and update activity duration.
+	 * Update activity in activity developers calendar.
 	 * @param project
 	 * @param activity
 	 * @param start
@@ -418,7 +438,8 @@ public void setProjectStart(Project project, Calendar start) throws OperationNot
 	}
 
 	/**
-	 * Sets the activity deadline and update activity duration
+	 * Sets the activity deadline and update activity duration.
+	 * Update activity in activity developers calendar.
 	 * @param project
 	 * @param activity
 	 * @param deadline
@@ -431,7 +452,8 @@ public void setProjectStart(Project project, Calendar start) throws OperationNot
 		timeBudgetCheck(activity.getStart(), deadline);
 		if ( deadline.before(project.getStart()) || deadline.after(project.getDeadline()) ) {
 			throw new OperationNotAllowedException("Activity cant exceed project");
-		}else {
+		}
+		else {
 			for (Developer dev : activity.getActivityDevelopers()) {
 				dev.removeActivityFromCalendar(activity);
 			}
@@ -445,9 +467,15 @@ public void setProjectStart(Project project, Calendar start) throws OperationNot
 		notifyObservers(NotificationType.TIME_BUDGET);
 	}
 
+	/**
+	 * Checks all developers in systemApp and gets their activity level in the given week.
+	 * Make a sorted list in increasing order of all available developers
+	 * @param week
+	 * @return available developers
+	 * @throws OperationNotAllowedException
+	 * @author Zenia
+	 */
 	public ArrayList<Pair<String,Integer>> getAvailableDevelopers(Week week) throws OperationNotAllowedException {
-		//Design by Contract
-//		assert week != null : "Precondition violated" ;
 		ArrayList<Pair<String, Integer>> availableDevelopers = new ArrayList<>();
 
 		if (week.getWeekOfYear() > 53) {
@@ -455,7 +483,7 @@ public void setProjectStart(Project project, Calendar start) throws OperationNot
 		}
 		for (Developer dev : developers) {
 			if (dev.isAvailable(week)) { 
-				availableDevelopers.add(new Pair(dev.getId(), dev.getActivityLevel(week)));
+				availableDevelopers.add(new Pair<String, Integer>(dev.getId(), dev.getActivityLevel(week)));
 
 				// Sorts a list of pair<String,Integer> by its value-integer.
 				Collections.sort(availableDevelopers, new Comparator<Pair<String, Integer>>() {
@@ -466,7 +494,6 @@ public void setProjectStart(Project project, Calendar start) throws OperationNot
 				});
 			}
 		}
-//		assert isSorted(availableDevelopers) : "Postcondition violated" ;
 		return availableDevelopers;
 	}
 
@@ -486,7 +513,7 @@ public void setProjectStart(Project project, Calendar start) throws OperationNot
 	 * Throws an exception if the project is not in the system
 	 * @param project
 	 * @throws OperationNotAllowedException
-	 * @author Mai-Thi
+	 * @author Helena
 	 */
 	public void projectCheck(Project project) throws OperationNotAllowedException {
 		if(!projects.contains(project)) {
@@ -499,7 +526,7 @@ public void setProjectStart(Project project, Calendar start) throws OperationNot
 	 * @param start
 	 * @param deadline
 	 * @throws OperationNotAllowedException
-	 * @author Helena
+	 * @author Zenia
 	 */
 	public void timeBudgetCheck(Calendar start, Calendar deadline) throws OperationNotAllowedException {
 		if (deadline.before(start)) {

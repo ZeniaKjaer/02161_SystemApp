@@ -12,7 +12,7 @@ import system.app.SystemApp;
 
 /**
  * 
- * @author Rikke
+ * @author Mai-Thi 
  */
 public class WhiteBoxAddProjDev {
 	SystemApp sysApp = new SystemApp();

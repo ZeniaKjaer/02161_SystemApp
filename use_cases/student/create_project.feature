@@ -1,4 +1,4 @@
-#@author Helena
+# Use case og test af Helena
  Feature: Create project
     Description: User creates a project in the system
     Actors: Developer
