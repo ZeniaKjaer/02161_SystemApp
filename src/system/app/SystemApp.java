@@ -157,7 +157,6 @@ public class SystemApp extends Observable{
 			}
 		}
 		assert projects.contains(project): "Post-condition 2 violated for addProject";
-
 	}
 
 	/**
