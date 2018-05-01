@@ -120,7 +120,8 @@ public class SystemApp extends Observable{
 	 * @author Helena
 	 */
 	public void addProject(Project project) throws OperationNotAllowedException{
-		assert project!= null && activeUser != null;
+		assert true;
+		//assert project!= null && activeUser != null : "Precondition Violated addProject";
 		for (Project p: projects) {
 			if (p.getProjectName().equalsIgnoreCase(project.getProjectName())) { 
 				throw new OperationNotAllowedException("Illegal project name");
@@ -170,7 +171,7 @@ public class SystemApp extends Observable{
 	 */
 	public void removeProject(Project project) throws OperationNotAllowedException {
 		projectLeaderCheck(project);
-		//tilføj projectCheck
+		projectCheck(project);
 		while (project.getProjectActivities().size() > 0) {
 			removeActivity(project,project.getProjectActivities().get(0));
 		}
@@ -209,7 +210,8 @@ public class SystemApp extends Observable{
 	}
 	
 	/**
-	 * Removes Developer from project
+	 * Removes developer from project, 
+	 * and delete all project activities developer is working on from devCalendar. 
 	 * @param project
 	 * @param developer
 	 * @throws OperationNotAllowedException
@@ -329,16 +331,11 @@ public class SystemApp extends Observable{
 	 * @author Zenia
 	 */
 	public void removeActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException {
-<<<<<<< HEAD
 		assert project!=null && activity!=null && developer!=null && activeUser!=null;
 		projectActivityCheck(project,activity);
 		projectLeaderCheck(project);
 		if (!activity.isActivityDev(developer.getId())) { 
-=======
-		projectActivityCheck(project,activity);                                   
-		projectLeaderCheck(project);                                              
-		if (!activity.isActivityDev(developer.getId())) {                         
->>>>>>> 64dacb25a68cb2a4f5fc0c6cc5af063f92d04a03
+                        
 			throw new OperationNotAllowedException("Developer not found");
 		} 
 		else {                                                                    

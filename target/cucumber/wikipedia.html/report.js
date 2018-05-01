@@ -27,7 +27,8 @@ formatter.match({
   "location": "ProjectSteps.thereIsAProject()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ProjectSteps.thereIsAProject(ProjectSteps.java:84)\r\n\tat ✽.there is a project(use_cases/student/add_activity.feature:8)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is an activity",
@@ -37,7 +38,7 @@ formatter.match({
   "location": "ActivitySteps.thereIsAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user adds activity to project",
@@ -47,7 +48,7 @@ formatter.match({
   "location": "ActivitySteps.userAddsActivityToProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "activity is part of project",
@@ -57,7 +58,7 @@ formatter.match({
   "location": "ActivitySteps.activityIsPartOfProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "activity timebudget is set to project timebudget",
@@ -67,7 +68,7 @@ formatter.match({
   "location": "ActivitySteps.activityTimebudgetIsSetToProjectTimebudget()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "add activity to a project that is not in the system",
@@ -137,7 +138,8 @@ formatter.match({
   "location": "ProjectSteps.thereIsAProject()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ProjectSteps.thereIsAProject(ProjectSteps.java:84)\r\n\tat ✽.there is a project(use_cases/student/add_activity.feature:22)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is an activity",
@@ -147,7 +149,7 @@ formatter.match({
   "location": "ActivitySteps.thereIsAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user adds activity to project",
@@ -157,7 +159,7 @@ formatter.match({
   "location": "ActivitySteps.userAddsActivityToProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Project leader authorization needed\"",
@@ -167,7 +169,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.uri("use_cases/student/add_coworker_activity.feature");
 formatter.feature({
@@ -188,7 +190,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/add_coworker_activity.feature:7)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "user is working on activity",
@@ -198,7 +201,7 @@ formatter.match({
   "location": "ActivitySteps.userIsWorkingOnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "developer is available",
@@ -208,7 +211,7 @@ formatter.match({
   "location": "ActivitySteps.developerIsAvailable()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user adds developer to activity",
@@ -218,7 +221,7 @@ formatter.match({
   "location": "ActivitySteps.userAddsDeveloperToActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "developer is working on activity",
@@ -228,7 +231,7 @@ formatter.match({
   "location": "ActivitySteps.developerIsWorkingOnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "developer has activity marked in her calendar",
@@ -238,7 +241,7 @@ formatter.match({
   "location": "ActivitySteps.developerHasActivityMarkedInHerCalendar()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Developer not on activity adds co-worker to activity",
@@ -333,7 +336,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/add_coworker_activity.feature:26)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "user is working on activity",
@@ -343,7 +347,7 @@ formatter.match({
   "location": "ActivitySteps.userIsWorkingOnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a developer",
@@ -353,7 +357,7 @@ formatter.match({
   "location": "ProjectSteps.thereIsADeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "developer is not available",
@@ -363,7 +367,7 @@ formatter.match({
   "location": "ActivitySteps.developerIsNotAvailable()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user adds developer to activity",
@@ -373,7 +377,7 @@ formatter.match({
   "location": "ActivitySteps.userAddsDeveloperToActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Developer is not available\"",
@@ -383,7 +387,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.uri("use_cases/student/add_developer_activity.feature");
 formatter.feature({
@@ -424,7 +428,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/add_developer_activity.feature:9)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "developer is available",
@@ -434,7 +439,7 @@ formatter.match({
   "location": "ActivitySteps.developerIsAvailable()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user adds developer to activity",
@@ -444,7 +449,7 @@ formatter.match({
   "location": "ActivitySteps.userAddsDeveloperToActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "developer is working on activity",
@@ -454,7 +459,7 @@ formatter.match({
   "location": "ActivitySteps.developerIsWorkingOnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "developer has activity marked in her calendar",
@@ -464,7 +469,7 @@ formatter.match({
   "location": "ActivitySteps.developerHasActivityMarkedInHerCalendar()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Add developer to activity that is not part of the project",
@@ -634,7 +639,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/add_developer_activity.feature:36)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is a developer",
@@ -644,7 +650,7 @@ formatter.match({
   "location": "ProjectSteps.thereIsADeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "developer is not available",
@@ -654,7 +660,7 @@ formatter.match({
   "location": "ActivitySteps.developerIsNotAvailable()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user adds developer to activity",
@@ -664,7 +670,7 @@ formatter.match({
   "location": "ActivitySteps.userAddsDeveloperToActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Developer is not available\"",
@@ -674,7 +680,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.uri("use_cases/student/add_developer_project.feature");
 formatter.feature({
@@ -695,7 +701,8 @@ formatter.match({
   "location": "ProjectSteps.thereIsAProject()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ProjectSteps.thereIsAProject(ProjectSteps.java:84)\r\n\tat ✽.there is a project(use_cases/student/add_developer_project.feature:7)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "user is the project leader",
@@ -705,7 +712,7 @@ formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a developer",
@@ -715,7 +722,7 @@ formatter.match({
   "location": "ProjectSteps.thereIsADeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user adds developer to project",
@@ -725,7 +732,7 @@ formatter.match({
   "location": "ProjectSteps.userAddsDeveloperToProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "developer is part of the project",
@@ -735,7 +742,7 @@ formatter.match({
   "location": "ProjectSteps.developerIsPartOfTheProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Add developer to project that is not in the system",
@@ -795,7 +802,8 @@ formatter.match({
   "location": "ProjectSteps.thereIsAProject()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ProjectSteps.thereIsAProject(ProjectSteps.java:84)\r\n\tat ✽.there is a project(use_cases/student/add_developer_project.feature:20)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "user is not the project leader",
@@ -805,7 +813,7 @@ formatter.match({
   "location": "ProjectSteps.userIsNotTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a developer",
@@ -815,7 +823,7 @@ formatter.match({
   "location": "ProjectSteps.thereIsADeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user adds developer to project",
@@ -825,7 +833,7 @@ formatter.match({
   "location": "ProjectSteps.userAddsDeveloperToProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Project leader authorization needed\"",
@@ -835,7 +843,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Add developer to project twice",
@@ -850,7 +858,8 @@ formatter.match({
   "location": "ProjectSteps.thereIsAProject()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ProjectSteps.thereIsAProject(ProjectSteps.java:84)\r\n\tat ✽.there is a project(use_cases/student/add_developer_project.feature:27)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "user is the project leader",
@@ -860,7 +869,7 @@ formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a project developer",
@@ -870,7 +879,7 @@ formatter.match({
   "location": "ProjectSteps.thereIsAProjectDeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user adds developer to project",
@@ -880,7 +889,7 @@ formatter.match({
   "location": "ProjectSteps.userAddsDeveloperToProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Developer is already part of project\"",
@@ -890,7 +899,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Add developer that is not in the system to project",
@@ -905,7 +914,8 @@ formatter.match({
   "location": "ProjectSteps.thereIsAProject()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ProjectSteps.thereIsAProject(ProjectSteps.java:84)\r\n\tat ✽.there is a project(use_cases/student/add_developer_project.feature:34)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "developer is not in the system",
@@ -915,7 +925,7 @@ formatter.match({
   "location": "ProjectSteps.developerIsNotInTheSystem()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user adds developer to project",
@@ -925,7 +935,7 @@ formatter.match({
   "location": "ProjectSteps.userAddsDeveloperToProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Developer is not in the system\"",
@@ -935,7 +945,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.uri("use_cases/student/available_developer.feature");
 formatter.feature({
@@ -1052,7 +1062,8 @@ formatter.match({
   "location": "ProjectSteps.thereIsAProject()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ProjectSteps.thereIsAProject(ProjectSteps.java:84)\r\n\tat ✽.there is a project(use_cases/student/change_project_leader.feature:8)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is a project developer",
@@ -1062,7 +1073,7 @@ formatter.match({
   "location": "ProjectSteps.thereIsAProjectDeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user change project leader",
@@ -1072,7 +1083,7 @@ formatter.match({
   "location": "ProjectSteps.userChangeProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "developer is the new project leader",
@@ -1082,7 +1093,7 @@ formatter.match({
   "location": "ProjectSteps.developerIsTheNewProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user is not the project leader anymore",
@@ -1092,7 +1103,7 @@ formatter.match({
   "location": "ProjectSteps.userIsNotTheProjectLeaderAnymore()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Changes project leader for a project not in the system",
@@ -1152,7 +1163,8 @@ formatter.match({
   "location": "ProjectSteps.thereIsAProject()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ProjectSteps.thereIsAProject(ProjectSteps.java:84)\r\n\tat ✽.there is a project(use_cases/student/change_project_leader.feature:21)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "user is not the project leader",
@@ -1162,7 +1174,7 @@ formatter.match({
   "location": "ProjectSteps.userIsNotTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user change project leader",
@@ -1172,7 +1184,7 @@ formatter.match({
   "location": "ProjectSteps.userChangeProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Project leader authorization needed\"",
@@ -1182,7 +1194,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Changes project leader to someone who is not part of the project",
@@ -1207,7 +1219,8 @@ formatter.match({
   "location": "ProjectSteps.thereIsAProject()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ProjectSteps.thereIsAProject(ProjectSteps.java:84)\r\n\tat ✽.there is a project(use_cases/student/change_project_leader.feature:28)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "developer is not part of the project",
@@ -1217,7 +1230,7 @@ formatter.match({
   "location": "ProjectSteps.developerIsNotPartOfTheProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user change project leader",
@@ -1227,7 +1240,7 @@ formatter.match({
   "location": "ProjectSteps.userChangeProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Developer not found\"",
@@ -1237,7 +1250,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.uri("use_cases/student/create_project.feature");
 formatter.feature({
@@ -1268,7 +1281,8 @@ formatter.match({
   "location": "ProjectSteps.developerCreatesProject(String)"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ProjectSteps.developerCreatesProject(ProjectSteps.java:56)\r\n\tat ✽.developer creates project with projectname \"First Project\"(use_cases/student/create_project.feature:8)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "project with projectname \"First Project\" is created",
@@ -1278,7 +1292,7 @@ formatter.match({
   "location": "ProjectSteps.projectIsCreated(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "the developer is now the project leader",
@@ -1288,7 +1302,7 @@ formatter.match({
   "location": "ProjectSteps.theDeveloperIsNowTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Developer creates a project with illegal name",
@@ -1313,7 +1327,8 @@ formatter.match({
   "location": "ProjectSteps.projectWithNameAlreadyExist(String)"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ProjectSteps.projectWithNameAlreadyExist(ProjectSteps.java:115)\r\n\tat ✽.project with name \"First Project\" already exist(use_cases/student/create_project.feature:14)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "developer creates project with projectname \"First Project\"",
@@ -1323,7 +1338,7 @@ formatter.match({
   "location": "ProjectSteps.developerCreatesProject(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Illegal project name\"",
@@ -1333,7 +1348,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.uri("use_cases/student/deadline_activity.feature");
 formatter.feature({
@@ -1354,7 +1369,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/deadline_activity.feature:6)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is a start date",
@@ -1364,7 +1380,7 @@ formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a deadline",
@@ -1374,7 +1390,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a date between start and deadline",
@@ -1384,7 +1400,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADateBetweenStartAndDeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Project leader sets activity deadline successfully",
@@ -1399,7 +1415,7 @@ formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a project developer",
@@ -1409,7 +1425,7 @@ formatter.match({
   "location": "ProjectSteps.thereIsAProjectDeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user sets activity deadline",
@@ -1419,7 +1435,7 @@ formatter.match({
   "location": "TimeSteps.userSetsActivityDeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "time budget is set for activity",
@@ -1429,7 +1445,7 @@ formatter.match({
   "location": "TimeSteps.timeBudgetIsSetForActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.background({
   "name": "",
@@ -1444,7 +1460,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/deadline_activity.feature:6)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is a start date",
@@ -1454,7 +1471,7 @@ formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a deadline",
@@ -1464,7 +1481,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a date between start and deadline",
@@ -1474,7 +1491,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADateBetweenStartAndDeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Project leader sets deadline for activity that is not in the project",
@@ -1489,7 +1506,7 @@ formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "activity is not part of the project",
@@ -1499,7 +1516,7 @@ formatter.match({
   "location": "ActivitySteps.activityIsNotPartOfTheProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user sets activity deadline",
@@ -1509,7 +1526,7 @@ formatter.match({
   "location": "TimeSteps.userSetsActivityDeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Activity is not part of the project\"",
@@ -1519,7 +1536,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.background({
   "name": "",
@@ -1534,7 +1551,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/deadline_activity.feature:6)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is a start date",
@@ -1544,7 +1562,7 @@ formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a deadline",
@@ -1554,7 +1572,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a date between start and deadline",
@@ -1564,7 +1582,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADateBetweenStartAndDeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "User sets activity deadline when not project leader",
@@ -1579,7 +1597,7 @@ formatter.match({
   "location": "ProjectSteps.userIsNotTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user sets activity deadline",
@@ -1589,7 +1607,7 @@ formatter.match({
   "location": "TimeSteps.userSetsActivityDeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Project leader authorization needed\"",
@@ -1599,7 +1617,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.background({
   "name": "",
@@ -1614,7 +1632,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/deadline_activity.feature:6)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is a start date",
@@ -1624,7 +1643,7 @@ formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a deadline",
@@ -1634,7 +1653,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a date between start and deadline",
@@ -1644,7 +1663,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADateBetweenStartAndDeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Project leader sets activity deadline before activity start",
@@ -1659,7 +1678,7 @@ formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is an activity developer",
@@ -1669,7 +1688,7 @@ formatter.match({
   "location": "ActivitySteps.thereIsAnActivityDeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user sets activity deadline before activity start",
@@ -1679,7 +1698,7 @@ formatter.match({
   "location": "TimeSteps.userSetsActivityDeadlineBeforeActivityStart()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Illegal time budget\"",
@@ -1689,7 +1708,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.background({
   "name": "",
@@ -1704,7 +1723,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/deadline_activity.feature:6)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is a start date",
@@ -1714,7 +1734,7 @@ formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a deadline",
@@ -1724,7 +1744,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a date between start and deadline",
@@ -1734,7 +1754,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADateBetweenStartAndDeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Project leader sets activity deadline before project start",
@@ -1749,7 +1769,7 @@ formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user sets activity deadline before project start",
@@ -1759,7 +1779,7 @@ formatter.match({
   "location": "TimeSteps.userSetsActivityDeadlineBeforeProjectStart()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Activity cant exceed project\"",
@@ -1769,7 +1789,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.background({
   "name": "",
@@ -1784,7 +1804,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/deadline_activity.feature:6)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is a start date",
@@ -1794,7 +1815,7 @@ formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a deadline",
@@ -1804,7 +1825,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a date between start and deadline",
@@ -1814,7 +1835,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADateBetweenStartAndDeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Project leader sets activity deadline after project deadline",
@@ -1829,7 +1850,7 @@ formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user sets activity deadline after project deadline",
@@ -1839,7 +1860,7 @@ formatter.match({
   "location": "TimeSteps.userSetsActivityDeadlineAfterProjectDeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Activity cant exceed project\"",
@@ -1849,7 +1870,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.uri("use_cases/student/deadline_project.feature");
 formatter.feature({
@@ -1905,7 +1926,8 @@ formatter.match({
   "location": "TimeSteps.thereIsAProjectWithNoActivities()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.TimeSteps.thereIsAProjectWithNoActivities(TimeSteps.java:228)\r\n\tat ✽.there is a project with no activities(use_cases/student/deadline_project.feature:12)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "user is the project leader",
@@ -1915,7 +1937,7 @@ formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user sets project deadline",
@@ -1925,7 +1947,7 @@ formatter.match({
   "location": "TimeSteps.userSetsProjectDeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "project deadline is set",
@@ -1935,7 +1957,7 @@ formatter.match({
   "location": "TimeSteps.projectDeadlineIsSet()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.background({
   "name": "",
@@ -2055,7 +2077,8 @@ formatter.match({
   "location": "TimeSteps.thereIsAProjectWithNoActivities()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.TimeSteps.thereIsAProjectWithNoActivities(TimeSteps.java:228)\r\n\tat ✽.there is a project with no activities(use_cases/student/deadline_project.feature:23)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "user is not the project leader",
@@ -2065,7 +2088,7 @@ formatter.match({
   "location": "ProjectSteps.userIsNotTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user sets project deadline",
@@ -2075,7 +2098,7 @@ formatter.match({
   "location": "TimeSteps.userSetsProjectDeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Project leader authorization needed\"",
@@ -2085,7 +2108,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.background({
   "name": "",
@@ -2135,7 +2158,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/deadline_project.feature:29)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "user is the project leader",
@@ -2145,7 +2169,7 @@ formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user sets new project deadline before project deadline",
@@ -2155,7 +2179,7 @@ formatter.match({
   "location": "TimeSteps.userSetsNewProjectDeadlineBeforeProjectDeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Deadline can only be postponed\"",
@@ -2165,7 +2189,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.background({
   "name": "",
@@ -2215,7 +2239,8 @@ formatter.match({
   "location": "TimeSteps.thereIsAProjectWithNoActivities()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.TimeSteps.thereIsAProjectWithNoActivities(TimeSteps.java:228)\r\n\tat ✽.there is a project with no activities(use_cases/student/deadline_project.feature:35)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "user is the project leader",
@@ -2225,7 +2250,7 @@ formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user sets deadline before the start for project",
@@ -2235,7 +2260,7 @@ formatter.match({
   "location": "TimeSteps.userSetsDeadlineBeforeTheStartForProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Illegal time budget\"",
@@ -2245,7 +2270,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.uri("use_cases/student/remove_activty.feature");
 formatter.feature({
@@ -2276,7 +2301,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/remove_activty.feature:8)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is an activity developer",
@@ -2286,7 +2312,7 @@ formatter.match({
   "location": "ActivitySteps.thereIsAnActivityDeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user removes activity",
@@ -2296,7 +2322,7 @@ formatter.match({
   "location": "ActivitySteps.userRemovesActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "activity is no longer part of project",
@@ -2306,7 +2332,7 @@ formatter.match({
   "location": "ActivitySteps.activityIsNoLongerPartOfProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "activity is removed from developer calendar",
@@ -2316,7 +2342,7 @@ formatter.match({
   "location": "ActivitySteps.activityIsRemovedFromDeveloperCalendar()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Removes an activity from a project that is not in the system",
@@ -2376,7 +2402,8 @@ formatter.match({
   "location": "ProjectSteps.thereIsAProject()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ProjectSteps.thereIsAProject(ProjectSteps.java:84)\r\n\tat ✽.there is a project(use_cases/student/remove_activty.feature:21)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "activity is not part of the project",
@@ -2386,7 +2413,7 @@ formatter.match({
   "location": "ActivitySteps.activityIsNotPartOfTheProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user removes activity",
@@ -2396,7 +2423,7 @@ formatter.match({
   "location": "ActivitySteps.userRemovesActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Activity is not part of the project\"",
@@ -2406,7 +2433,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Removes an activity when not the project leader",
@@ -2421,7 +2448,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/remove_activty.feature:27)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "user is not a project leader",
@@ -2431,7 +2459,7 @@ formatter.match({
   "location": "ActivitySteps.userIsNotAProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user removes activity",
@@ -2441,7 +2469,7 @@ formatter.match({
   "location": "ActivitySteps.userRemovesActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Project leader authorization needed\"",
@@ -2451,7 +2479,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.uri("use_cases/student/remove_developer_activity.feature");
 formatter.feature({
@@ -2482,7 +2510,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/remove_developer_activity.feature:8)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is an activity developer",
@@ -2492,7 +2521,7 @@ formatter.match({
   "location": "ActivitySteps.thereIsAnActivityDeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "project leader removes developer from activity",
@@ -2502,7 +2531,7 @@ formatter.match({
   "location": "ActivitySteps.projectLeaderRemovesDeveloperFromActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "developer is not working on activity",
@@ -2512,7 +2541,7 @@ formatter.match({
   "location": "ActivitySteps.developerIsNotWorkingOnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "activity is removed from developer calendar",
@@ -2522,7 +2551,7 @@ formatter.match({
   "location": "ActivitySteps.activityIsRemovedFromDeveloperCalendar()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Remove developer from activity that is not part of the project",
@@ -2602,7 +2631,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/remove_developer_activity.feature:23)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is an activity developer",
@@ -2612,7 +2642,7 @@ formatter.match({
   "location": "ActivitySteps.thereIsAnActivityDeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "project leader removes developer from activity",
@@ -2622,7 +2652,7 @@ formatter.match({
   "location": "ActivitySteps.projectLeaderRemovesDeveloperFromActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Project leader authorization needed\"",
@@ -2632,7 +2662,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Remove developer from activity when developer is not working on activity",
@@ -2657,7 +2687,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/remove_developer_activity.feature:30)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is a developer",
@@ -2667,7 +2698,7 @@ formatter.match({
   "location": "ProjectSteps.thereIsADeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "developer is not working on activity",
@@ -2677,7 +2708,7 @@ formatter.match({
   "location": "ActivitySteps.developerIsNotWorkingOnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "project leader removes developer from activity",
@@ -2687,7 +2718,7 @@ formatter.match({
   "location": "ActivitySteps.projectLeaderRemovesDeveloperFromActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Developer not found\"",
@@ -2697,7 +2728,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.uri("use_cases/student/remove_developer_project.feature");
 formatter.feature({
@@ -2718,7 +2749,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/remove_developer_project.feature:6)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is a developer",
@@ -2728,7 +2760,7 @@ formatter.match({
   "location": "ProjectSteps.thereIsADeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Removes developer from project successfully",
@@ -2743,7 +2775,7 @@ formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a project developer",
@@ -2753,7 +2785,7 @@ formatter.match({
   "location": "ProjectSteps.thereIsAProjectDeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is an activity developer",
@@ -2763,7 +2795,7 @@ formatter.match({
   "location": "ActivitySteps.thereIsAnActivityDeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user removes developer from project",
@@ -2773,7 +2805,7 @@ formatter.match({
   "location": "ProjectSteps.userRemovesDeveloperFromProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "developer is no longer a part of the project",
@@ -2783,7 +2815,7 @@ formatter.match({
   "location": "ProjectSteps.developerIsNoLongerAPartOfTheProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.background({
   "name": "",
@@ -2798,7 +2830,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/remove_developer_project.feature:6)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is a developer",
@@ -2808,7 +2841,7 @@ formatter.match({
   "location": "ProjectSteps.thereIsADeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Removes developer from project that is not in the system",
@@ -2823,7 +2856,7 @@ formatter.match({
   "location": "ProjectSteps.projectIsNotInTheSystem()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a project developer",
@@ -2833,7 +2866,7 @@ formatter.match({
   "location": "ProjectSteps.thereIsAProjectDeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user removes developer from project",
@@ -2843,7 +2876,7 @@ formatter.match({
   "location": "ProjectSteps.userRemovesDeveloperFromProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Project is not in the system\"",
@@ -2853,7 +2886,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.background({
   "name": "",
@@ -2868,7 +2901,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/remove_developer_project.feature:6)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is a developer",
@@ -2878,7 +2912,7 @@ formatter.match({
   "location": "ProjectSteps.thereIsADeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Removes developer from project when not the project leader",
@@ -2893,7 +2927,7 @@ formatter.match({
   "location": "ProjectSteps.userIsNotTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a project developer",
@@ -2903,7 +2937,7 @@ formatter.match({
   "location": "ProjectSteps.thereIsAProjectDeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user removes developer from project",
@@ -2913,7 +2947,7 @@ formatter.match({
   "location": "ProjectSteps.userRemovesDeveloperFromProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Project leader authorization needed\"",
@@ -2923,7 +2957,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.background({
   "name": "",
@@ -2938,7 +2972,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/remove_developer_project.feature:6)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is a developer",
@@ -2948,7 +2983,7 @@ formatter.match({
   "location": "ProjectSteps.thereIsADeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Project leader removes developer who is not a part of the project",
@@ -2963,7 +2998,7 @@ formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "developer is not part of the project",
@@ -2973,7 +3008,7 @@ formatter.match({
   "location": "ProjectSteps.developerIsNotPartOfTheProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user removes developer from project",
@@ -2983,7 +3018,7 @@ formatter.match({
   "location": "ProjectSteps.userRemovesDeveloperFromProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Developer not found\"",
@@ -2993,7 +3028,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.uri("use_cases/student/remove_project.feature");
 formatter.feature({
@@ -3014,7 +3049,8 @@ formatter.match({
   "location": "ProjectSteps.thereIsAProject()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ProjectSteps.thereIsAProject(ProjectSteps.java:84)\r\n\tat ✽.there is a project(use_cases/student/remove_project.feature:20)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "user is not a project leader",
@@ -3024,7 +3060,7 @@ formatter.match({
   "location": "ActivitySteps.userIsNotAProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user removes project",
@@ -3034,7 +3070,7 @@ formatter.match({
   "location": "ProjectSteps.userRemovesProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Project leader authorization needed\"",
@@ -3044,7 +3080,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Project leader removes project successfully",
@@ -3069,7 +3105,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/remove_project.feature:27)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is an activity developer",
@@ -3079,7 +3116,7 @@ formatter.match({
   "location": "ActivitySteps.thereIsAnActivityDeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user removes project",
@@ -3089,7 +3126,7 @@ formatter.match({
   "location": "ProjectSteps.userRemovesProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "project is removed",
@@ -3099,7 +3136,7 @@ formatter.match({
   "location": "ProjectSteps.projectIsRemoved()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "activity is removed from developer calendar",
@@ -3109,7 +3146,7 @@ formatter.match({
   "location": "ActivitySteps.activityIsRemovedFromDeveloperCalendar()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.uri("use_cases/student/start_activity.feature");
 formatter.feature({
@@ -3130,7 +3167,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/start_activity.feature:6)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is a start date",
@@ -3140,7 +3178,7 @@ formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a deadline",
@@ -3150,7 +3188,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a date between start and deadline",
@@ -3160,7 +3198,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADateBetweenStartAndDeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Project leader sets activity start successfully",
@@ -3175,7 +3213,7 @@ formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is an activity developer",
@@ -3185,7 +3223,7 @@ formatter.match({
   "location": "ActivitySteps.thereIsAnActivityDeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user sets activity start",
@@ -3195,7 +3233,7 @@ formatter.match({
   "location": "TimeSteps.userSetsActivityStart()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "time budget is set for activity",
@@ -3205,7 +3243,7 @@ formatter.match({
   "location": "TimeSteps.timeBudgetIsSetForActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.background({
   "name": "",
@@ -3220,7 +3258,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/start_activity.feature:6)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is a start date",
@@ -3230,7 +3269,7 @@ formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a deadline",
@@ -3240,7 +3279,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a date between start and deadline",
@@ -3250,7 +3289,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADateBetweenStartAndDeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Project leader sets start for an activity that is not in the project",
@@ -3265,7 +3304,7 @@ formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "activity is not part of the project",
@@ -3275,7 +3314,7 @@ formatter.match({
   "location": "ActivitySteps.activityIsNotPartOfTheProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user sets activity start",
@@ -3285,7 +3324,7 @@ formatter.match({
   "location": "TimeSteps.userSetsActivityStart()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Activity is not part of the project\"",
@@ -3295,7 +3334,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.background({
   "name": "",
@@ -3310,7 +3349,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/start_activity.feature:6)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is a start date",
@@ -3320,7 +3360,7 @@ formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a deadline",
@@ -3330,7 +3370,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a date between start and deadline",
@@ -3340,7 +3380,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADateBetweenStartAndDeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "User sets activity start when not project leader",
@@ -3355,7 +3395,7 @@ formatter.match({
   "location": "ProjectSteps.userIsNotTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user sets activity start",
@@ -3365,7 +3405,7 @@ formatter.match({
   "location": "TimeSteps.userSetsActivityStart()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Project leader authorization needed\"",
@@ -3375,7 +3415,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.background({
   "name": "",
@@ -3390,7 +3430,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/start_activity.feature:6)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is a start date",
@@ -3400,7 +3441,7 @@ formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a deadline",
@@ -3410,7 +3451,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a date between start and deadline",
@@ -3420,7 +3461,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADateBetweenStartAndDeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Project leader sets activity start after activity deadline",
@@ -3435,7 +3476,7 @@ formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user sets activity start after activity deadline",
@@ -3445,7 +3486,7 @@ formatter.match({
   "location": "TimeSteps.userSetsActivityStartAfterActivityDeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Illegal time budget\"",
@@ -3455,7 +3496,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.background({
   "name": "",
@@ -3470,7 +3511,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/start_activity.feature:6)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is a start date",
@@ -3480,7 +3522,7 @@ formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a deadline",
@@ -3490,7 +3532,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a date between start and deadline",
@@ -3500,7 +3542,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADateBetweenStartAndDeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Project leader sets activity start before project start",
@@ -3515,7 +3557,7 @@ formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user sets activity start before project start",
@@ -3525,7 +3567,7 @@ formatter.match({
   "location": "TimeSteps.userSetsActivityStartBeforeProjectStart()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Activity cant exceed project\"",
@@ -3535,7 +3577,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.background({
   "name": "",
@@ -3550,7 +3592,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/start_activity.feature:6)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "there is a start date",
@@ -3560,7 +3603,7 @@ formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a deadline",
@@ -3570,7 +3613,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "there is a date between start and deadline",
@@ -3580,7 +3623,7 @@ formatter.match({
   "location": "TimeSteps.thereIsADateBetweenStartAndDeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Project leader sets activity start after project deadline",
@@ -3595,7 +3638,7 @@ formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user sets activity start after project deadline",
@@ -3605,7 +3648,7 @@ formatter.match({
   "location": "TimeSteps.userSetsActivityStartAfterProjectDeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Activity cant exceed project\"",
@@ -3615,7 +3658,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.uri("use_cases/student/start_project.feature");
 formatter.feature({
@@ -3661,7 +3704,8 @@ formatter.match({
   "location": "TimeSteps.thereIsAProjectWithNoActivities()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.TimeSteps.thereIsAProjectWithNoActivities(TimeSteps.java:228)\r\n\tat ✽.there is a project with no activities(use_cases/student/start_project.feature:11)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "user is the project leader",
@@ -3671,7 +3715,7 @@ formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user sets project start",
@@ -3681,7 +3725,7 @@ formatter.match({
   "location": "TimeSteps.userSetsProjectStart()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "project start is set",
@@ -3691,7 +3735,7 @@ formatter.match({
   "location": "TimeSteps.projectStartIsSet()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.background({
   "name": "",
@@ -3791,7 +3835,8 @@ formatter.match({
   "location": "TimeSteps.thereIsAProjectWithNoActivities()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.TimeSteps.thereIsAProjectWithNoActivities(TimeSteps.java:228)\r\n\tat ✽.there is a project with no activities(use_cases/student/start_project.feature:22)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "user is not the project leader",
@@ -3801,7 +3846,7 @@ formatter.match({
   "location": "ProjectSteps.userIsNotTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user sets project start",
@@ -3811,7 +3856,7 @@ formatter.match({
   "location": "TimeSteps.userSetsProjectStart()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Project leader authorization needed\"",
@@ -3821,7 +3866,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.background({
   "name": "",
@@ -3861,7 +3906,8 @@ formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.ActivitySteps.thereIsAProjectWithAnActivity(ActivitySteps.java:115)\r\n\tat ✽.there is a project with an activity(use_cases/student/start_project.feature:28)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "user is the project leader",
@@ -3871,7 +3917,7 @@ formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user sets project start",
@@ -3881,7 +3927,7 @@ formatter.match({
   "location": "TimeSteps.userSetsProjectStart()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Start can\u0027t be set\"",
@@ -3891,7 +3937,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.background({
   "name": "",
@@ -3931,7 +3977,8 @@ formatter.match({
   "location": "TimeSteps.thereIsAProjectWithNoActivities()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError\r\n\tat system.app.SystemApp.addProject(SystemApp.java:160)\r\n\tat dtu.library.acceptance_tests.TimeSteps.thereIsAProjectWithNoActivities(TimeSteps.java:228)\r\n\tat ✽.there is a project with no activities(use_cases/student/start_project.feature:34)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "user is the project leader",
@@ -3941,7 +3988,7 @@ formatter.match({
   "location": "ProjectSteps.userIsTheProjectLeader()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user sets project start after project deadline",
@@ -3951,7 +3998,7 @@ formatter.match({
   "location": "TimeSteps.userSetsProjectStartAfterProjectDeadline()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "user gets the error message \"Illegal time budget\"",
@@ -3961,7 +4008,7 @@ formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.uri("use_cases/student/user_login.feature");
 formatter.feature({
