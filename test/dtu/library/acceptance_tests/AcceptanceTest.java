@@ -13,5 +13,4 @@ import cucumber.api.junit.Cucumber;
 	snippets = SnippetType.CAMELCASE, 
 	glue = { "dtu.library.acceptance_tests"})
 public class AcceptanceTest {
-
 }

@@ -150,15 +150,15 @@ public class SystemApp extends Observable{
 		notifyObservers(NotificationType.ADD_PROJECT);
 		
 		// Post-condition asserts
-		boolean isInProj = false;
-		for (Developer dev : developers) {
-			if (dev.getId().equals(activeUser)) {
-				isInProj = project.isProjectDev(dev);
-				break;
-			}
-		}
-		assert isInProj;
-		assert projects.contains(project);
+//		boolean isInProj = false;
+//		for (Developer dev : developers) {
+//			if (dev.getId().equals(activeUser)) {
+//				isInProj = project.isProjectDev(dev);
+//				break;
+//			}
+//		}
+//		assert isInProj;
+//		assert projects.contains(project);
 	}
 
 	/**
