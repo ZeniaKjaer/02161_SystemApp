@@ -1,4 +1,4 @@
-package dtu.library.WB_tests;
+package dtu.systemapp.WB_tests;
 
 import static org.junit.Assert.assertFalse;
 
@@ -13,9 +13,9 @@ import system.app.Project;
 import system.app.SystemApp;
 /**
  * 
- * @author Rikke & Helena
+ * @author Helena
  */
-public class WhiteBoxRemoveActivity {
+public class WhiteBoxRemoveActivityDev {
 	SystemApp sysApp = new SystemApp();
 	Project proj = new Project("lead", "projId1", "proj");
 	Developer lead = new Developer("lead");
@@ -29,11 +29,13 @@ public class WhiteBoxRemoveActivity {
 	@Test
 	  public void testInputSetA() throws OperationNotAllowedException {
 		sysApp.addDeveloper(lead);
+		sysApp.addDeveloper(devl);
 		sysApp.userLogin("lead");
 		sysApp.addProject(proj);
 		sysApp.addActivity(proj, acti);
-		sysApp.removeActivity(proj, acti);
-		assertFalse(proj.getProjectActivities().contains(acti));
+		sysApp.addActivityDev(proj, acti, devl);
+		sysApp.removeActivityDev(proj, acti, devl);
+		assertFalse(acti.getActivityDevelopers().contains(devl));
 	  }
 	
 	@Test
@@ -45,9 +47,10 @@ public class WhiteBoxRemoveActivity {
 		sysApp.userLogin("lead");
 		sysApp.addProject(proj);
 		sysApp.addActivity(proj, acti);
+		sysApp.addActivityDev(proj, acti, devl);
 		sysApp.userLogout();
 		sysApp.userLogin("devl");
-		sysApp.removeActivity(proj, acti);
+		sysApp.removeActivityDev(proj, acti, devl);
 	  }
 	
 	@Test
@@ -55,18 +58,20 @@ public class WhiteBoxRemoveActivity {
 		expectedException.expect(OperationNotAllowedException.class);
         expectedException.expectMessage("Activity is not part of the project");
 		sysApp.addDeveloper(lead);
+		sysApp.addDeveloper(devl);
 		sysApp.userLogin("lead");
 		sysApp.addProject(proj);
-		sysApp.removeActivity(proj, acti);	
+		sysApp.removeActivityDev(proj, acti, devl);
 	}
 	
 	@Test
 	  public void testInputSetD() throws OperationNotAllowedException {
 		expectedException.expect(OperationNotAllowedException.class);
-        expectedException.expectMessage("Project is not in the system");
+        expectedException.expectMessage("Developer not found");
 		sysApp.addDeveloper(lead);
 		sysApp.userLogin("lead");
-		sysApp.removeActivity(proj, acti);
+		sysApp.addProject(proj);
+		sysApp.addActivity(proj, acti);
+		sysApp.removeActivityDev(proj, acti, devl);
 	}
-	
 }

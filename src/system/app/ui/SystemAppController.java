@@ -258,6 +258,15 @@ public class SystemAppController {
 		
 	}
 
+	public void removeProject(SystemApp systemApp) throws IOException {
+		try {
+			systemApp.removeProject(enterProject(systemApp));
+		} catch (OperationNotAllowedException e) {
+			System.out.println(e);
+		}
+		
+	}
+
 
 
 }
