@@ -130,7 +130,7 @@ public class SystemApp extends Observable{
 	 */
 	public void addProject(Project project) throws OperationNotAllowedException{
 		//Design by contract
-		assert project!= null && activeUser != null: "Pre-condition violated for addProject";
+		assert project!= null && !activeUser.equals(""): "Pre-condition violated for addProject";
 		for (Project p: projects) {															//1
 			if (p.getProjectName().equalsIgnoreCase(project.getProjectName())) { 				//2
 
@@ -199,7 +199,7 @@ public class SystemApp extends Observable{
 	 */
 	public void addProjectDev(Project project, Developer developer) throws OperationNotAllowedException{
 		// Design by contract
-		assert project != null && developer != null: "Precondition violated for addProjectDev";
+		assert project != null && developer != null && !activeUser.equals(""): "Precondition violated for addProjectDev" ;
 		
 		projectCheck(project);
 		if(!isInTheSystem(developer.getId())) { 
@@ -299,7 +299,7 @@ public class SystemApp extends Observable{
 	 */
 	public void removeActivity(Project project, Activity activity) throws OperationNotAllowedException {
 		// Design by contract
-		assert project != null && activity != null && activeUser != null: "Pre-condition violated for removeActivity";
+		assert project != null && activity != null && !activeUser.equals(""): "Pre-condition violated for removeActivity";
 		
 		projectCheck(project);
 		projectActivityCheck(project,activity);
@@ -354,7 +354,7 @@ public class SystemApp extends Observable{
 	 */
 	public void removeActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException {
 		//Design by contract
-		assert project!=null && activity!=null && developer!=null && activeUser!=null: "Pre-condition violated for removeActvityDev";
+		assert project!=null && activity!=null && developer!=null && !activeUser.equals(""): "Pre-condition violated for removeActvityDev";
 		projectActivityCheck(project,activity); 											//1                                  
 		projectLeaderCheck(project);                                              		//2
 		if (!activity.isActivityDev(developer.getId())) {									//3
