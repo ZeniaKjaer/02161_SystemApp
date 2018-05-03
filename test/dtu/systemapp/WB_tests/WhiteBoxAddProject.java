@@ -46,11 +46,7 @@ public class WhiteBoxAddProject {
 				sysApp.addProject(proj1);
 			} catch( OperationNotAllowedException e) {
 				e.getMessage().equals("Illegal project name");
-<<<<<<< HEAD
 			}		
-=======
-			}
->>>>>>> 72be00db8dc29c591dd601f69e654eb0c7338a85
 		}
 		
 		@Test

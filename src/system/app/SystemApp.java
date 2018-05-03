@@ -292,7 +292,7 @@ public class SystemApp extends Observable{
 	 */
 	public void removeActivity(Project project, Activity activity) throws OperationNotAllowedException {
 		// Design by contract
-		assert project!=null && activity != null && activeUser!=null: "Pre-condition violated for removeActivity";
+		assert project != null && activity != null && activeUser != null: "Pre-condition violated for removeActivity";
 		
 		projectCheck(project);
 		projectActivityCheck(project,activity);
