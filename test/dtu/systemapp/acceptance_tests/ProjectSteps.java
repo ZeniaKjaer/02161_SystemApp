@@ -51,8 +51,9 @@ public class ProjectSteps {
 
 	@When("^developer creates project with projectname \"([^\"]*)\"$")
 	public void developerCreatesProject(String projectName) throws Exception {
-		project = new Project(devHelper.getDeveloper().getId(),"",projectName);
+		//project = new Project(devHelper.getDeveloper().getId(),"",projectName);
 		try {
+			project = systemApp.createProject(projectName);
 			systemApp.addProject(project);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());

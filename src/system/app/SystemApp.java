@@ -109,6 +109,15 @@ public class SystemApp extends Observable{
 		} 
 		return true;
 	} 
+	
+	public Project createProject(String projectName) {
+		//Project id
+		Calendar projectYear = new GregorianCalendar();
+		int year = projectYear.get(Calendar.YEAR);
+		String projectId = ""+ year + nextProjectID++; 
+		
+		return new Project(activeUser,projectId,projectName);
+	}
 
 	/**
 	 * Adds a project to the systemApp. 
@@ -134,12 +143,6 @@ public class SystemApp extends Observable{
 		Calendar deadline = new GregorianCalendar(); 
 		deadline.add(Calendar.WEEK_OF_YEAR,  DEADLINE_ADVANCE_DATE);
 		project.setDeadline(deadline);
-
-		//Project id
-		Calendar projectYear = new GregorianCalendar();
-		int year = projectYear.get(Calendar.YEAR);
-		String projectId = ""+ year + nextProjectID++; 
-		project.setProjectId(projectId);
 
 		projects.add(project);																//3
 		
@@ -260,6 +263,10 @@ public class SystemApp extends Observable{
 		notifyObservers(NotificationType.CHANGE_PROJECT_LEADER);
 	}
 
+	public Activity createActivity(String activityName) {
+		return new Activity(activityName);
+	}
+	
 	/**
 	 * Adds an activty to project.
 	 * Sets activity start and deadline to the project start and deadline.

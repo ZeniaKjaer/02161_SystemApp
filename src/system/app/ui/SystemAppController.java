@@ -81,7 +81,7 @@ public class SystemAppController {
 		System.out.print("Enter a project name: ");
 		String projectName = rs.readLine();
 		try {
-			systemApp.addProject(new Project(systemApp.getActiveUser(), null, projectName));
+			systemApp.addProject(systemApp.createProject(projectName));
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
@@ -137,7 +137,7 @@ public class SystemAppController {
 		System.out.print("Enter an activity name: ");
 		String activityName = rs.readLine();
 		try {
-			systemApp.addActivity(project, new Activity(activityName));
+			systemApp.addActivity(project,systemApp.createActivity(activityName));
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}

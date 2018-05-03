@@ -11,6 +11,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertThat;
 import java.util.ArrayList;
+import java.util.Calendar;
+
 import system.app.OperationNotAllowedException;
 import system.app.*;
 
@@ -20,6 +22,7 @@ public class ActivitySteps {
 	private ArrayList<Week> activityDuration;
 	private DevCalendar devCalendar;
 	private Developer user;
+	private Activity activity;
 	private ErrorMessageHolder errorMessageHolder;
 	private DeveloperHelper devHelper;
 	private ProjectHelper projectHelper;
@@ -33,16 +36,15 @@ public class ActivitySteps {
 		this.projectHelper = projectHelper;
 		this.activityHelper = activityHelper;
 	}
-
-	@Given("^there is an activity$")
-	public void thereIsAnActivity() throws Exception {
-		activityHelper.getActivity();
+	@Given("^there is an activity with the name \"([^\"]*)\"$")
+	public void thereIsAnActivityWithTheName(String activityName) throws Exception {
+	    activity = systemApp.createActivity(activityName);
 	}
 
 	@When("^user adds activity to project$")
 	public void userAddsActivityToProject() throws Exception {
 		try {
-			systemApp.addActivity(projectHelper.getProject(), activityHelper.getActivity());
+			systemApp.addActivity(projectHelper.getProject(), activity);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		} 
@@ -50,7 +52,7 @@ public class ActivitySteps {
 
 	@Then("^activity is part of project$")
 	public void activityIsPartOfProject() throws Exception {
-		assertThat(projectHelper.getProject().getProjectActivities(), hasItem(activityHelper.getActivity()));
+		assertThat(projectHelper.getProject().getProjectActivities(), hasItem(activity));
 	}
 
 	@When("^user adds developer to activity$")
@@ -176,8 +178,15 @@ public class ActivitySteps {
 
 	@Then("^activity timebudget is set to project timebudget$")
 	public void activityTimebudgetIsSetToProjectTimebudget() throws Exception {
-		assertEquals(projectHelper.getProject().getStart(),activityHelper.getActivity().getStart());
-		assertEquals(projectHelper.getProject().getDeadline(),activityHelper.getActivity().getDeadline());
+		assertEquals(projectHelper.getProject().getStart().get(Calendar.DAY_OF_YEAR),
+				activity.getStart().get(Calendar.DAY_OF_YEAR));
+		assertEquals(projectHelper.getProject().getStart().get(Calendar.YEAR),
+				activity.getStart().get(Calendar.YEAR));
+		
+		assertEquals(projectHelper.getProject().getDeadline().get(Calendar.DAY_OF_YEAR),
+				activity.getDeadline().get(Calendar.DAY_OF_YEAR));
+		assertEquals(projectHelper.getProject().getDeadline().get(Calendar.YEAR),
+				activity.getDeadline().get(Calendar.YEAR));
 	}
 	
 }

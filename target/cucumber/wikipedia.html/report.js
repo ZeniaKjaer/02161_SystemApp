@@ -30,11 +30,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "there is an activity",
+  "name": "there is an activity with the name \"First activity\"",
   "keyword": "And "
 });
 formatter.match({
-  "location": "ActivitySteps.thereIsAnActivity()"
+  "location": "ActivitySteps.thereIsAnActivityWithTheName(String)"
 });
 formatter.result({
   "status": "passed"
@@ -85,16 +85,6 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "there is an activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAnActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
   "name": "user adds activity to project",
   "keyword": "When "
 });
@@ -135,16 +125,6 @@ formatter.step({
 });
 formatter.match({
   "location": "ProjectSteps.thereIsAProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is an activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ActivitySteps.thereIsAnActivity()"
 });
 formatter.result({
   "status": "passed"
@@ -1251,11 +1231,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "there is a developer",
+  "name": "developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "ProjectSteps.thereIsADeveloper()"
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -1296,11 +1276,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "there is a developer",
+  "name": "developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "ProjectSteps.thereIsADeveloper()"
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
