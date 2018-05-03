@@ -2798,7 +2798,7 @@ formatter.result({
 formatter.uri("use_cases/student/set_deadline_project.feature");
 formatter.feature({
   "name": "Set deadline for project",
-  "description": "    Description: The project leader sets the time budget for the project\n    Actors: Project leader",
+  "description": "    Description: The project leader sets project deadline. \n    The start can only be postponed, or set back if the projact has no activities \n    Actors: Project leader",
   "keyword": "Feature"
 });
 formatter.background({
@@ -3700,7 +3700,7 @@ formatter.result({
 formatter.uri("use_cases/student/set_start_project.feature");
 formatter.feature({
   "name": "Set start for project",
-  "description": "    Description: The project leader sets the time budget for the project\n    Actors: Project leader",
+  "description": "    Description: The project leader sets project start. \n    The start can only be changed if the projact has no activities \n    Actors: Project leader",
   "keyword": "Feature"
 });
 formatter.background({

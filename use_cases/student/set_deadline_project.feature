@@ -1,6 +1,7 @@
 # Use case og test af Mai-Thi
 Feature: Set deadline for project
-    Description: The project leader sets the time budget for the project
+    Description: The project leader sets project deadline. 
+    The start can only be postponed, or set back if the projact has no activities 
     Actors: Project leader
     
     Background:

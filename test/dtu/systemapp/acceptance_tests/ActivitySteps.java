@@ -83,6 +83,7 @@ public class ActivitySteps {
 
 	@Given("^there is an activity developer$")
 	public void thereIsAnActivityDeveloper() throws Exception {
+		//systemApp.addActivityDev(projectHelper.getProject(), activityHelper.getActivity(), devHelper.getDeveloper());
 		activityHelper.getActivity().addActivityDev(devHelper.getDeveloper());
 		devHelper.getDeveloper().addActivityToCalendar(activityHelper.getActivity());
 		devHelper.getDeveloper().getMyActivities().add(activityHelper.getActivity());
