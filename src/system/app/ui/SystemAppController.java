@@ -137,7 +137,7 @@ public class SystemAppController {
 		System.out.print("Enter an activity name: ");
 		String activityName = rs.readLine();
 		try {
-			systemApp.addActivity(project,systemApp.createActivity(activityName));
+			systemApp.addActivity(project, systemApp.createActivity(activityName));
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
