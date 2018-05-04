@@ -3,13 +3,16 @@ Feature: Add co-worker to own activity
     Description: A project developer adds a co-worker to an activity
     Actors: Project developer
 
+Background: A developer has to be logged in to interact with the SystemApp
+	Given developer is logged in
+
 Scenario: Developer on activity adds co-worker to activity
   	Given there is a project with an activity
   	And user is working on activity
   	And developer is available
-  	When user adds developer to activity
-  	Then developer is working on activity
-  	And developer has activity marked in her calendar
+  	When user adds second developer to activity
+  	Then second developer is working on activity
+  	And second developer has activity marked in her calendar
   	
 Scenario: Developer not on activity adds co-worker to activity
   	Given user is not working on activity

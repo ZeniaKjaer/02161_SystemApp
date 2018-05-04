@@ -3,6 +3,9 @@ Feature: Get available developers
    	Description: The project leader gets a list of available developers in a given week
 	Actors: Project leader
 
+Background: A developer has to be logged in to interact with the SystemApp
+	Given developer is logged in
+
 Scenario: Project leader gets available developers succesfully
 	Given there is a start date
 	And developers in SystemApp has different activitylevel that week

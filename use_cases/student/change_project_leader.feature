@@ -3,12 +3,15 @@ Feature: Change project leader
     Description: The project leader gives his status as leader to another developer
     Actors: Project leader
 
+Background: A developer has to be logged in to interact with the SystemApp
+	Given developer is logged in
+
 Scenario: Changes project leader successfully
   	Given user is the project leader
   	And there is a project
-  	And there is a project developer
-  	When user change project leader
-  	Then developer is the new project leader
+  	And there is a second project developer
+  	When user make second developer project leader
+  	Then second developer is the new project leader
   	And user is not the project leader anymore
   	
 Scenario: Changes project leader for a project not in the system

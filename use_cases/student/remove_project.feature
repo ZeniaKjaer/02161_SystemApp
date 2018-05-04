@@ -2,6 +2,8 @@
 Feature: Remove project
 	Description:
 	Actors: Project leader
+Background: A developer has to be logged in to interact with the SystemApp
+	Given developer is logged in
 
 Scenario: Project leader removes project successfully
   Given user is the project leader

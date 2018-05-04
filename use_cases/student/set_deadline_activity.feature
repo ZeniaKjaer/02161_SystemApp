@@ -3,7 +3,8 @@ Feature: Set activity deadline
     Description: The project leader sets activity deadline
     Actors: Project leader
     Background:
-    Given there is a project with an activity 
+    Given developer is logged in
+    And there is a project with an activity 
     And there is a start date
     And there is a deadline
     And there is a date between start and deadline

@@ -4,7 +4,8 @@ Feature: Set deadline for project
     Actors: Project leader
     
     Background:
-    Given there is a start date
+    Given developer is logged in
+    And there is a start date
     And there is a date between start and deadline
     And there is a deadline
 

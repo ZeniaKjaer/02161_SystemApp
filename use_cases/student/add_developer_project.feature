@@ -3,6 +3,9 @@ Feature: Add developer to project
   Description: The project leader adds a developer to the project
   Actors: Project leader
 
+Background: A developer has to be logged in to interact with the SystemApp
+	Given developer is logged in
+
 Scenario: Add developer to project successfully
 	Given there is a project
   	And user is the project leader

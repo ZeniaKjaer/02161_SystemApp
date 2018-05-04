@@ -3,6 +3,7 @@ Feature: Set activity start
     Description: The project leader sets activity start
     Actors: Project leader
     Background:
+    Given developer is logged in
     Given there is a project with an activity 
     And there is a start date
     And there is a deadline

@@ -70,10 +70,6 @@ public class Project {
 		this.projectLeader = projectLeader;
 	}
 
-	public void setProjectId(String projectId) {
-		this.projectId = projectId;
-	}
-
 	public List<Activity> getProjectActivities() {
 		return projectActivities;
 	}

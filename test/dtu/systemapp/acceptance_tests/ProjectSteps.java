@@ -1,6 +1,7 @@
 package dtu.systemapp.acceptance_tests;
 
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
@@ -10,6 +11,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import system.app.Developer;
 import system.app.OperationNotAllowedException;
 import system.app.Project;
 import system.app.SystemApp;
@@ -22,6 +24,8 @@ public class ProjectSteps {
 	private DeveloperHelper devHelper;
 	private ProjectHelper projectHelper;
 
+	private Developer secondDev = new Developer("scnd");
+	
 	public ProjectSteps(SystemApp systemApp, ErrorMessageHolder errorMessageHolder, 
 			DeveloperHelper devHelper, ProjectHelper projectHelper) {
 		this.systemApp = systemApp;	
@@ -48,10 +52,29 @@ public class ProjectSteps {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		} 
 	}
+	
+	@Given("^there is a second project developer$")
+	public void thereIsASecondProjectDeveloperr() throws Exception {
+		projectHelper.getProject().addProjectDev(secondDev);
+	}
+
+	@When("^user make second developer project leader$")
+	public void userMakeSecondDeveloperProjectLeader() throws Exception {
+		try {
+			systemApp.setProjectLeader(projectHelper.getProject(), secondDev);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		} 
+	}
+	
+	@Then("^second developer is the new project leader$")
+	public void secondDeveloperIsTheNewProjectLeader() throws Exception {
+		assertThat(projectHelper.getProject().getProjectLeader(), is(equalTo("scnd")));
+	}
 
 	@When("^developer creates project with projectname \"([^\"]*)\"$")
 	public void developerCreatesProject(String projectName) throws Exception {
-		//project = new Project(devHelper.getDeveloper().getId(),"",projectName);
+		project = new Project(devHelper.getDeveloper().getId(),"",projectName);
 		try {
 			project = systemApp.createProject(projectName);
 			systemApp.addProject(project);
@@ -69,11 +92,6 @@ public class ProjectSteps {
 	public void theDeveloperIsNowTheProjectLeader() throws Exception {
 		assertThat(project.getProjectLeader(), is(equalTo(devHelper.getDeveloper().getId())));
 	} 
-
-	@Then("^developer is the new project leader$") 
-	public void developerIsTheNewProjectLeader() throws Exception {
-		assertThat(projectHelper.getProject().getProjectLeader(), is(equalTo(devHelper.getDeveloper().getId())));
-	}
 
 	@Then("^user is not the project leader anymore$")
 	public void userIsNotTheProjectLeaderAnymore() throws Exception {

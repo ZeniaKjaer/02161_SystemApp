@@ -3,6 +3,9 @@ Feature: Add developer to activity
     Description:  The project leader adds project developer to a project activity
     Actors: Project leader
 
+Background: A developer has to be logged in to interact with the SystemApp
+	Given developer is logged in
+
 Scenario: Add developer to activity successfully
   	Given user is the project leader
   	And there is a developer

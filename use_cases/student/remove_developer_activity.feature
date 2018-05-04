@@ -3,6 +3,10 @@ Feature: Remove developer from activity
     Description: The project leader removes developer from an activity
     Actors: Project leader
 
+Background: A developer has to be logged in to interact with the SystemApp
+	Given developer is logged in
+
+
 Scenario: Remove developer on activity successfully
   	Given user is the project leader
   	And there is a project with an activity

@@ -4,6 +4,21 @@ formatter.feature({
   "description": "    Description: The project leader adds activities to the project\n    Actors: Project leader",
   "keyword": "Feature"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "project leader adds activity to project successfully",
   "description": "",
@@ -69,6 +84,21 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "add activity to a project that is not in the system",
   "description": "",
@@ -100,6 +130,21 @@ formatter.step({
 });
 formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -155,6 +200,21 @@ formatter.feature({
   "description": "    Description: A project developer adds a co-worker to an activity\n    Actors: Project developer",
   "keyword": "Feature"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Developer on activity adds co-worker to activity",
   "description": "",
@@ -191,31 +251,46 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "user adds developer to activity",
+  "name": "user adds second developer to activity",
   "keyword": "When "
 });
 formatter.match({
-  "location": "ActivitySteps.userAddsDeveloperToActivity()"
+  "location": "ActivitySteps.userAddsSecondDeveloperToActivity()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "developer is working on activity",
+  "name": "second developer is working on activity",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "ActivitySteps.developerIsWorkingOnActivity()"
+  "location": "ActivitySteps.secondDeveloperIsWorkingOnActivity()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "developer has activity marked in her calendar",
+  "name": "second developer has activity marked in her calendar",
   "keyword": "And "
 });
 formatter.match({
-  "location": "ActivitySteps.developerHasActivityMarkedInHerCalendar()"
+  "location": "ActivitySteps.secondDeveloperHasActivityMarkedInHerCalendar()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -251,6 +326,21 @@ formatter.step({
 });
 formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -296,6 +386,21 @@ formatter.step({
 });
 formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -370,6 +475,21 @@ formatter.feature({
   "name": "Add developer to activity",
   "description": "    Description:  The project leader adds project developer to a project activity\n    Actors: Project leader",
   "keyword": "Feature"
+});
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
 });
 formatter.scenario({
   "name": "Add developer to activity successfully",
@@ -446,6 +566,21 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Add developer to activity that is not part of the project",
   "description": "",
@@ -501,6 +636,21 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Add developer when not a project leader",
   "description": "",
@@ -546,6 +696,21 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Add developer who is already working on activity",
   "description": "",
@@ -587,6 +752,21 @@ formatter.step({
 });
 formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -662,6 +842,21 @@ formatter.feature({
   "description": "  Description: The project leader adds a developer to the project\n  Actors: Project leader",
   "keyword": "Feature"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Add developer to project successfully",
   "description": "",
@@ -717,6 +912,21 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Add developer to project that is not in the system",
   "description": "",
@@ -758,6 +968,21 @@ formatter.step({
 });
 formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -817,6 +1042,21 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Add developer to project twice",
   "description": "",
@@ -872,6 +1112,21 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Add developer that is not in the system to project",
   "description": "",
@@ -923,6 +1178,21 @@ formatter.feature({
   "description": "   \tDescription: The project leader gets a list of available developers in a given week\n\tActors: Project leader",
   "keyword": "Feature"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Project leader gets available developers succesfully",
   "description": "",
@@ -968,6 +1238,21 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Project leader gets available developers in an illegal week",
   "description": "",
@@ -1009,6 +1294,21 @@ formatter.feature({
   "description": "    Description: The project leader gives his status as leader to another developer\n    Actors: Project leader",
   "keyword": "Feature"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Changes project leader successfully",
   "description": "",
@@ -1035,31 +1335,31 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "there is a project developer",
+  "name": "there is a second project developer",
   "keyword": "And "
 });
 formatter.match({
-  "location": "ProjectSteps.thereIsAProjectDeveloper()"
+  "location": "ProjectSteps.thereIsASecondProjectDeveloperr()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "user change project leader",
+  "name": "user make second developer project leader",
   "keyword": "When "
 });
 formatter.match({
-  "location": "ProjectSteps.userChangeProjectLeader()"
+  "location": "ProjectSteps.userMakeSecondDeveloperProjectLeader()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "developer is the new project leader",
+  "name": "second developer is the new project leader",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "ProjectSteps.developerIsTheNewProjectLeader()"
+  "location": "ProjectSteps.secondDeveloperIsTheNewProjectLeader()"
 });
 formatter.result({
   "status": "passed"
@@ -1070,6 +1370,21 @@ formatter.step({
 });
 formatter.match({
   "location": "ProjectSteps.userIsNotTheProjectLeaderAnymore()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -1105,6 +1420,21 @@ formatter.step({
 });
 formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -1160,6 +1490,21 @@ formatter.step({
 });
 formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -1222,7 +1567,7 @@ formatter.result({
 formatter.uri("use_cases/student/create_project.feature");
 formatter.feature({
   "name": "Create project",
-  "description": "    Description: User creates a project in the system\n    Actors: Developer",
+  "description": "    Description: User creates a project in the system\n    Actors: Developer ",
   "keyword": "Feature"
 });
 formatter.scenario({
@@ -1321,6 +1666,21 @@ formatter.feature({
   "description": "    Description: The project leader removes activities from the project\n    Actors: Project leader",
   "keyword": "Feature"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Project leader removes activity successfully",
   "description": "",
@@ -1386,6 +1746,21 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Removes an activity from a project that is not in the system",
   "description": "",
@@ -1417,6 +1792,21 @@ formatter.step({
 });
 formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -1476,6 +1866,21 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Removes an activity when not the project leader",
   "description": "",
@@ -1526,6 +1931,21 @@ formatter.feature({
   "name": "Remove developer from activity",
   "description": "    Description: The project leader removes developer from an activity\n    Actors: Project leader",
   "keyword": "Feature"
+});
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
 });
 formatter.scenario({
   "name": "Remove developer on activity successfully",
@@ -1592,6 +2012,21 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Remove developer from activity that is not part of the project",
   "description": "",
@@ -1647,6 +2082,21 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Remove developer from activity when not a project leader",
   "description": "",
@@ -1698,6 +2148,21 @@ formatter.step({
 });
 formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -1779,8 +2244,18 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a project with an activity",
+  "name": "developer is logged in",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project with an activity",
+  "keyword": "And "
 });
 formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
@@ -1859,8 +2334,18 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a project with an activity",
+  "name": "developer is logged in",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project with an activity",
+  "keyword": "And "
 });
 formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
@@ -1929,8 +2414,18 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a project with an activity",
+  "name": "developer is logged in",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project with an activity",
+  "keyword": "And "
 });
 formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
@@ -1999,8 +2494,18 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a project with an activity",
+  "name": "developer is logged in",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project with an activity",
+  "keyword": "And "
 });
 formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
@@ -2069,6 +2574,21 @@ formatter.feature({
   "description": "\tDescription:\n\tActors: Project leader",
   "keyword": "Feature"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Project leader removes project successfully",
   "description": "",
@@ -2124,6 +2644,21 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Project leader removes project that is not in the system",
   "description": "",
@@ -2169,6 +2704,21 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Removes an activity when not the project leader",
   "description": "",
@@ -2210,6 +2760,21 @@ formatter.step({
 });
 formatter.match({
   "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -2291,8 +2856,18 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a project with an activity",
+  "name": "developer is logged in",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project with an activity",
+  "keyword": "And "
 });
 formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
@@ -2381,8 +2956,18 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a project with an activity",
+  "name": "developer is logged in",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project with an activity",
+  "keyword": "And "
 });
 formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
@@ -2471,8 +3056,18 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a project with an activity",
+  "name": "developer is logged in",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project with an activity",
+  "keyword": "And "
 });
 formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
@@ -2551,8 +3146,18 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a project with an activity",
+  "name": "developer is logged in",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project with an activity",
+  "keyword": "And "
 });
 formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
@@ -2641,8 +3246,18 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a project with an activity",
+  "name": "developer is logged in",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project with an activity",
+  "keyword": "And "
 });
 formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
@@ -2721,8 +3336,18 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a project with an activity",
+  "name": "developer is logged in",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project with an activity",
+  "keyword": "And "
 });
 formatter.match({
   "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
@@ -2807,8 +3432,18 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a start date",
+  "name": "developer is logged in",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a start date",
+  "keyword": "And "
 });
 formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
@@ -2887,8 +3522,18 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a start date",
+  "name": "developer is logged in",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a start date",
+  "keyword": "And "
 });
 formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
@@ -2957,8 +3602,18 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a start date",
+  "name": "developer is logged in",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a start date",
+  "keyword": "And "
 });
 formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
@@ -3037,8 +3692,18 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a start date",
+  "name": "developer is logged in",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a start date",
+  "keyword": "And "
 });
 formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
@@ -3117,8 +3782,18 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a start date",
+  "name": "developer is logged in",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a start date",
+  "keyword": "And "
 });
 formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
@@ -3201,6 +3876,16 @@ formatter.background({
   "name": "",
   "description": "",
   "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
 });
 formatter.step({
   "name": "there is a project with an activity",
@@ -3293,6 +3978,16 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
   "name": "there is a project with an activity",
   "keyword": "Given "
 });
@@ -3383,6 +4078,16 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
   "name": "there is a project with an activity",
   "keyword": "Given "
 });
@@ -3461,6 +4166,16 @@ formatter.background({
   "name": "",
   "description": "",
   "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
 });
 formatter.step({
   "name": "there is a project with an activity",
@@ -3543,6 +4258,16 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
   "name": "there is a project with an activity",
   "keyword": "Given "
 });
@@ -3621,6 +4346,16 @@ formatter.background({
   "name": "",
   "description": "",
   "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
 });
 formatter.step({
   "name": "there is a project with an activity",
@@ -3709,8 +4444,18 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a start date",
+  "name": "developer is logged in",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a start date",
+  "keyword": "And "
 });
 formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
@@ -3779,8 +4524,18 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a start date",
+  "name": "developer is logged in",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a start date",
+  "keyword": "And "
 });
 formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
@@ -3839,8 +4594,18 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a start date",
+  "name": "developer is logged in",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a start date",
+  "keyword": "And "
 });
 formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
@@ -3909,8 +4674,18 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a start date",
+  "name": "developer is logged in",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a start date",
+  "keyword": "And "
 });
 formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"
@@ -3979,8 +4754,18 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "there is a start date",
+  "name": "developer is logged in",
   "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a start date",
+  "keyword": "And "
 });
 formatter.match({
   "location": "TimeSteps.thereIsAStartDate()"

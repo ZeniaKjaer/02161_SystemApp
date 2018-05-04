@@ -18,29 +18,38 @@ import system.app.SystemApp;
 public class WhiteBoxAddProject {
 	SystemApp sysApp = new SystemApp();
 		Project proj1 = new Project("abcd", "projId1", "nSys");
-		Project proj2 = new Project("Lead", "projId2", "inSys1");
-		Project proj3 = new Project("Lead", "projId3", "inSys2");
+		Project proj2 = new Project("lead", "projId2", "inSys1");
+		Project proj3 = new Project("lead", "projId3", "inSys2");
 		Developer devl = new Developer("devl");
+		Developer lead = new Developer("lead");
 		
 		@Rule
 	    public ExpectedException expectedException = ExpectedException.none();
 		
 		@Test
 		  public void testInputSetA() throws OperationNotAllowedException {
+			sysApp.addDeveloper(devl);
+	        sysApp.userLogin("devl");
 			sysApp.addProject(proj1);
 			assertTrue(sysApp.getProjects().contains(proj1));
+			assertTrue(proj1.getProjectDevelopers().contains(devl));
 		  }
 		
 		@Test
 		  public void testInputSetB() throws OperationNotAllowedException {
+			sysApp.addDeveloper(devl);
+	        sysApp.userLogin("devl");
 			sysApp.addProject(proj2);
 			sysApp.addProject(proj3);
 			sysApp.addProject(proj1);
 			assertTrue(sysApp.getProjects().contains(proj1));
+			assertTrue(proj1.getProjectDevelopers().contains(devl));
 		  }
 		
 		@Test
 		  public void testInputSetC() throws OperationNotAllowedException {
+			sysApp.addDeveloper(lead);
+	        sysApp.userLogin("lead");
 			sysApp.addProject(proj1);
 			try {
 				sysApp.addProject(proj1);
@@ -53,19 +62,12 @@ public class WhiteBoxAddProject {
 		  public void testInputSetD() throws OperationNotAllowedException {
 			expectedException.expect(OperationNotAllowedException.class);
 	        expectedException.expectMessage("Illegal project name");
+	        sysApp.addDeveloper(lead);
+	        sysApp.userLogin("lead");
 			sysApp.addProject(proj2);
 			sysApp.addProject(proj1);
 			sysApp.addProject(proj3);
 			sysApp.addProject(proj1);
 		}
-		
-		@Test
-		  public void testInputSetE() throws OperationNotAllowedException {
-			sysApp.addDeveloper(devl);
-			sysApp.userLogin("devl");
-			sysApp.addProject(proj1);
-			assertTrue(sysApp.getProjects().contains(proj1));
-			assertTrue(proj1.getProjectDevelopers().contains(devl));
-		  }
 
 }

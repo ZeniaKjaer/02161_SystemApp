@@ -3,6 +3,9 @@ Feature: Remove activity from project
     Description: The project leader removes activities from the project
     Actors: Project leader
 
+Background: A developer has to be logged in to interact with the SystemApp
+	Given developer is logged in
+
 Scenario: Project leader removes activity successfully
   Given user is the project leader
   And there is a project with an activity

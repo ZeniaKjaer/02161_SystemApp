@@ -27,6 +27,7 @@ public class ActivitySteps {
 	private DeveloperHelper devHelper;
 	private ProjectHelper projectHelper;
 	private ActivityHelper activityHelper;
+	private Developer devl = new Developer("devl");
 
 	public ActivitySteps(SystemApp systemApp, ErrorMessageHolder errorMessageHolder,
 			DeveloperHelper devHelper, ProjectHelper projectHelper, ActivityHelper activityHelper) {
@@ -63,7 +64,32 @@ public class ActivitySteps {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		} 
 	}
-
+	
+	@When("^user adds second developer to activity$")
+	public void userAddsSecondDeveloperToActivity() throws Exception {
+		systemApp.addDeveloper(devl);
+		try {
+			systemApp.addActivityDev(projectHelper.getProject(), activityHelper.getActivity(), devl);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		} 
+	}
+	
+	@Then("^second developer is working on activity$")
+	public void secondDeveloperIsWorkingOnActivity() throws Exception {
+		assertThat(activityHelper.getActivity().getActivityDevelopers(), hasItem(devl));
+		assertThat(devl.getMyActivities(), hasItem(activityHelper.getActivity()));
+	}
+	
+	@Then("^second developer has activity marked in her calendar$")
+	public void secondDeveloperHasActivityMarkedInHerCalendar() throws Exception {
+		devCalendar = devl.getDevCalendar();
+		activityDuration = activityHelper.getActivity().getDuration();
+		for (Week week : activityDuration) {
+			assertEquals(1, devCalendar.getActivityLevel(week));
+		}
+	}
+	
 	@Then("^developer is working on activity$")
 	public void developerIsWorkingOnActivity() throws Exception {
 		assertThat(activityHelper.getActivity().getActivityDevelopers(), hasItem(devHelper.getDeveloper()));
@@ -124,6 +150,7 @@ public class ActivitySteps {
 
 	@Given("^user is not a project leader$")
 	public void userIsNotAProjectLeader() throws Exception {
+		systemApp.userLogout();
 		systemApp.userLogin("ABCD");
 	}
 
