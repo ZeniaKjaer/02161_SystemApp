@@ -254,8 +254,7 @@ public class SystemAppController {
 			for(Project p: activeUser.getMyProjects()) {
 				System.out.println(p.getProjectName());
 			}
-		}
-		
+		}	
 	}
 
 	public void removeProject(SystemApp systemApp) throws IOException {
@@ -264,7 +263,6 @@ public class SystemAppController {
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
-		
 	}
 
 

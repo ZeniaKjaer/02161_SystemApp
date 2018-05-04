@@ -340,6 +340,7 @@ public class SystemApp extends Observable{
 		} 
 		projectLeaderCheck(project);
 		projectActivityCheck(project,activity);
+		
 		setChanged();
 		notifyObservers(NotificationType.ADD_DEVELOPER);
 	}
@@ -436,6 +437,7 @@ public class SystemApp extends Observable{
 			}
 			activity.setStart(start);
 			activity.updateDuration();
+			
 			for (Developer dev : activity.getActivityDevelopers()) {
 				dev.addActivityToCalendar(activity); 
 			}

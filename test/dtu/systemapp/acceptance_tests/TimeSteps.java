@@ -41,7 +41,7 @@ public class TimeSteps {
 	@Given("^there is a deadline$")
 	public void thereIsADeadline() throws Exception {
 		deadline = new GregorianCalendar(); 
-		deadline.add(Calendar.WEEK_OF_YEAR, 3);
+		deadline.add(Calendar.WEEK_OF_YEAR, 2);
 	}
 
 	@Given("^there is a date between start and deadline$")
@@ -91,7 +91,6 @@ public class TimeSteps {
 	public void userSetsActivityStart() throws Exception {
 		try {
 			systemApp.setActivityStart(projectHelper.getProject(),activityHelper.getActivity(), start);
-			week = new Week(start.get(Calendar.WEEK_OF_YEAR),start.get(Calendar.YEAR));
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
@@ -100,7 +99,7 @@ public class TimeSteps {
 	@When("^user sets activity deadline$")
 	public void userSetsActivityDeadline() throws Exception {
 		try {
-			systemApp.setActivityDeadline(projectHelper.getProject(),activityHelper.getActivity(), deadline);
+			systemApp.setActivityDeadline(projectHelper.getProject(), activityHelper.getActivity(), deadline);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
