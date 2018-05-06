@@ -11,7 +11,7 @@ public class SystemApp extends Observable{
 	private List<Project> projects = new ArrayList<Project>();
 	private int nextProjectID = 1000;
 	private static final int DEADLINE_ADVANCE_DATE = 3; 
-
+ 
 	/**
 	 * Constructs a SystemApp with specific developers
 	 * @author Mai-Thi
@@ -138,8 +138,8 @@ public class SystemApp extends Observable{
 	public void addProject(Project project) throws OperationNotAllowedException{
 		//Design by contract
 		assert project!= null && !activeUser.equals(""): "Pre-condition violated for addProject";
-		for (Project p: projects) {															//1
-			if (p.getProjectName().equalsIgnoreCase(project.getProjectName())) { 				//2
+		for (Project p: projects) {														
+			if (p.getProjectName().equalsIgnoreCase(project.getProjectName())) { 				
 
 				throw new OperationNotAllowedException("Illegal project name");
 			}
@@ -151,7 +151,7 @@ public class SystemApp extends Observable{
 		deadline.add(Calendar.WEEK_OF_YEAR,  DEADLINE_ADVANCE_DATE);
 		project.setDeadline(deadline);
 
-		projects.add(project);																//3
+		projects.add(project);																
 		
 
 		//adds the active user to the list of project developers
@@ -337,7 +337,7 @@ public class SystemApp extends Observable{
 	 * @param activity
 	 * @param developer
 	 * @throws OperationNotAllowedException
-	 * @author Zenia
+	 * @author Zenia 
 	 */
 	public void addActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException{
 		if (!isAvailableForActivity(developer, activity)) {

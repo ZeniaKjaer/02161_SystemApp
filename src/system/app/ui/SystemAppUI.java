@@ -7,24 +7,21 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.Observable;
 import java.util.Observer;
+
+import system.app.NotificationType;
 import system.app.OperationNotAllowedException;
 import system.app.SystemApp;
-import system.app.NotificationType;
 /**
  * @author Mai-Thi
  */
 public class SystemAppUI implements Observer {
 	private SystemApp systemApp;
-	private SystemAppController controller = new SystemAppController(); // package visible attribute
+	private SystemAppController controller;
 
 	public SystemAppUI() {
 		systemApp = new SystemApp();
 		systemApp.addObserver(this);
-	}
-
-	public SystemAppUI(SystemApp s) {
-		systemApp = s;
-		systemApp.addObserver(this); 
+		controller = new SystemAppController();
 	}
 
 	public static void main(String[] args) throws Exception {

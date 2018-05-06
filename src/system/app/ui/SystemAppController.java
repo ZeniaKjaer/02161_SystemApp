@@ -23,7 +23,7 @@ public class SystemAppController {
 
 	public void createProject(SystemApp systemApp) throws IOException {
 		System.out.print("Enter a project name: ");
-		String projectName = rs.readLine();
+		String projectName = rs.readLine(); 
 		try {
 			systemApp.addProject(systemApp.createProject(projectName));
 		} catch (OperationNotAllowedException e) {
@@ -81,7 +81,7 @@ public class SystemAppController {
 		System.out.print("Enter an activity name: ");
 		String activityName = rs.readLine();
 		try {
-			systemApp.addActivity(project,systemApp.createActivity(activityName));
+			systemApp.addActivity(project, systemApp.createActivity(activityName));
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
@@ -173,7 +173,7 @@ public class SystemAppController {
 
 	public void getListOfActivities(SystemApp systemApp) throws IOException {
 		Project project = enterProject(systemApp);
-		
+
 		if (project.getProjectActivities().size() == 0) {
 			System.out.println("No activities");
 		} else {
@@ -185,13 +185,13 @@ public class SystemAppController {
 
 	public void getMyProjects(SystemApp systemApp) {
 		Developer activeUser = new Developer("");
-		
+
 		for (Developer d: systemApp.getDevelopers()) {
 			if(d.getId().equalsIgnoreCase(systemApp.getActiveUser())) {
 				activeUser = d;
 			}
 		}
-		
+
 		if (activeUser.getMyProjects().size() == 0) {
 			System.out.println("No projects");
 		} else {
@@ -199,26 +199,25 @@ public class SystemAppController {
 				System.out.println(p.getProjectName());
 			}
 		}
-		
 	}
-	
-	public void getMyActivities(SystemApp systemApp) throws IOException {
-		Developer activeUser = new Developer(""); 
-		
+
+	public void getMyActivities(SystemApp systemApp) {
+		Developer activeUser = new Developer("");
+
 		for (Developer d: systemApp.getDevelopers()) {
 			if(d.getId().equalsIgnoreCase(systemApp.getActiveUser())) {
 				activeUser = d;
 			}
 		}
+
 		if (activeUser.getMyActivities().size() == 0) {
-			System.out.println("No activities");
+			System.out.println("No projects");
 		} else {
 			for(Activity a: activeUser.getMyActivities()) {
 				System.out.println(a.getActivityName());
 			}
 		}
-		
-		
+
 	}
 
 	public void removeProject(SystemApp systemApp) throws IOException {
@@ -227,7 +226,7 @@ public class SystemAppController {
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
-		
+
 	}
 
 	private Calendar enterDate() throws IOException {
@@ -280,7 +279,7 @@ public class SystemAppController {
 			if(a.getActivityName().equalsIgnoreCase(activityName)) {
 				return a;
 			}
-		} 
+		}
 		return new Activity(activityName);
 	}
 

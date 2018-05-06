@@ -53,7 +53,7 @@ public class Activity {
 		return activityDevelopers;
 	}
 	
-	// only used by UI
+	// only used by the user interface
 	public String getActivityName() { 
 	return acitivityName;
 	}
