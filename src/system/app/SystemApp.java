@@ -539,7 +539,7 @@ public class SystemApp extends Observable{
 	 * @throws OperationNotAllowedException
 	 * @author Mai-Thi
 	 */
-	private void loginCheck() throws OperationNotAllowedException {
+	public void loginCheck() throws OperationNotAllowedException {
 		if(activeUser.equalsIgnoreCase("")) {
 			throw new OperationNotAllowedException("User is not logged in");
 		}
@@ -589,7 +589,7 @@ public class SystemApp extends Observable{
 	 * @throws OperationNotAllowedException
 	 * @author Mai-Thi
 	 */
-	private void projectDevCheck(Project project, Developer developer) throws OperationNotAllowedException {
+	public void projectDevCheck(Project project, Developer developer) throws OperationNotAllowedException {
 		if (!project.isProjectDev(developer)) {
 			throw new OperationNotAllowedException("Developer not found");
 		} 
@@ -602,7 +602,7 @@ public class SystemApp extends Observable{
 	 * @throws OperationNotAllowedException
 	 * @author Zenia
 	 */
-	private void projectActivityCheck(Project project, Activity activity) throws OperationNotAllowedException {
+	public void projectActivityCheck(Project project, Activity activity) throws OperationNotAllowedException {
 		if (!project.isProjectActivity(activity)) {
 			throw new OperationNotAllowedException("Activity is not part of the project");
 		} 

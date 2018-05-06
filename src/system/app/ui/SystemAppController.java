@@ -159,9 +159,10 @@ public class SystemAppController {
 			System.out.println(e);
 		}
 
-	}
+	} 
 
 	public void getListOfProjects(SystemApp systemApp) {
+		loginCheck(systemApp);
 		if (systemApp.getProjects().size() == 0) {
 			System.out.println("No projects");
 		} else {
@@ -172,6 +173,7 @@ public class SystemAppController {
 	}
 
 	public void getListOfActivities(SystemApp systemApp) throws IOException {
+		loginCheck(systemApp);
 		Project project = enterProject(systemApp);
 
 		if (project.getProjectActivities().size() == 0) {
@@ -184,6 +186,7 @@ public class SystemAppController {
 	}
 
 	public void getMyProjects(SystemApp systemApp) {
+		loginCheck(systemApp);
 		Developer activeUser = new Developer("");
 
 		for (Developer d: systemApp.getDevelopers()) {
@@ -202,6 +205,7 @@ public class SystemAppController {
 	}
 
 	public void getMyActivities(SystemApp systemApp) {
+		loginCheck(systemApp);
 		Developer activeUser = new Developer("");
 
 		for (Developer d: systemApp.getDevelopers()) {
@@ -245,6 +249,15 @@ public class SystemAppController {
 		System.out.print("Enter year: ");
 		int yearNumber = Integer.valueOf(rs.readLine());
 		return new Week(weekNumber,yearNumber);
+	}
+	
+	private void loginCheck(SystemApp systemApp) {
+		try {
+			systemApp.loginCheck();
+		} catch (OperationNotAllowedException e) {
+			System.out.println(e);
+		}
+		
 	}
 
 	private Developer enterDeveloper(SystemApp systemApp) throws IOException {

@@ -14,7 +14,7 @@ import system.app.SystemApp;
 /**
  * @author Mai-Thi
  */
-public class SystemAppUI implements Observer {
+public class SystemAppUI implements Observer { 
 	private SystemApp systemApp;
 	private SystemAppController controller;
 
@@ -28,27 +28,27 @@ public class SystemAppUI implements Observer {
 		new SystemAppUI().mainLoop(System.in, System.out);
 	}
 
-	private void loginLoop(InputStream in, PrintStream out) throws IOException {
-		BufferedReader rs = new BufferedReader(new InputStreamReader(in));
-		String initials = null;
-
-		do {
-			System.out.print("Enter Initials: "); 
-			initials = rs.readLine();
-			if (initials == null) {
-				break;
-			}
-			if (initials.equals(0)) {
-				break;
-			}
-			try {
-				systemApp.userLogin(initials);
-			} catch (OperationNotAllowedException e) {
-				System.out.println(e);
-			}
-		} while (!systemApp.isInTheSystem(initials));
-		mainLoop(in,out);
-	}
+//	private void loginLoop(InputStream in, PrintStream out) throws IOException {
+//		BufferedReader rs = new BufferedReader(new InputStreamReader(in));
+//		String initials = null;
+//
+//		do {
+//			System.out.print("Enter Initials: "); 
+//			initials = rs.readLine();
+//			if (initials == null) {
+//				break;
+//			}
+//			if (initials.equals(0)) {
+//				break;
+//			}
+//			try {
+//				systemApp.userLogin(initials);
+//			} catch (OperationNotAllowedException e) {
+//				System.out.println(e);
+//			}
+//		} while (!systemApp.isInTheSystem(initials));
+//		mainLoop(in,out);
+//	}
 
 	public void mainLoop(InputStream in, PrintStream out) throws IOException {
 		BufferedReader rs = new BufferedReader(new InputStreamReader(in));
