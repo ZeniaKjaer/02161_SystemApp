@@ -36,7 +36,7 @@ public class SystemAppUI implements Observer {
 		String initials = null;
 
 		do {
-			System.out.print("Enter Initials: ");
+			System.out.print("Enter Initials: "); 
 			initials = rs.readLine();
 			if (initials == null) {
 				break;

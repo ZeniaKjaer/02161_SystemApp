@@ -22,8 +22,7 @@ public class ProjectSteps {
 	private Project project;
 	private ErrorMessageHolder errorMessageHolder;
 	private DeveloperHelper devHelper;
-	private ProjectHelper projectHelper;
-
+	private ProjectHelper projectHelper; 
 	private Developer secondDev = new Developer("scnd");
 	
 	public ProjectSteps(SystemApp systemApp, ErrorMessageHolder errorMessageHolder, 
@@ -47,7 +46,7 @@ public class ProjectSteps {
 	@When("^user change project leader$")
 	public void userChangeProjectLeader() throws Exception {
 		try {
-			systemApp.setProjectLeader(projectHelper.getProject(), devHelper.getDeveloper());
+			systemApp.setProjectLeader(projectHelper.getProject(), secondDev);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		} 
@@ -57,15 +56,6 @@ public class ProjectSteps {
 	public void thereIsASecondProjectDeveloperr() throws Exception {
 		projectHelper.getProject().addProjectDev(secondDev);
 	}
-
-	@When("^user make second developer project leader$")
-	public void userMakeSecondDeveloperProjectLeader() throws Exception {
-		try {
-			systemApp.setProjectLeader(projectHelper.getProject(), secondDev);
-		} catch (OperationNotAllowedException e) {
-			errorMessageHolder.setErrorMessage(e.getMessage());
-		} 
-	}
 	
 	@Then("^second developer is the new project leader$")
 	public void secondDeveloperIsTheNewProjectLeader() throws Exception {
@@ -74,7 +64,6 @@ public class ProjectSteps {
 
 	@When("^developer creates project with projectname \"([^\"]*)\"$")
 	public void developerCreatesProject(String projectName) throws Exception {
-		project = new Project(devHelper.getDeveloper().getId(),"",projectName);
 		try {
 			project = systemApp.createProject(projectName);
 			systemApp.addProject(project);

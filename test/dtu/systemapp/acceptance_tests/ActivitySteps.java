@@ -8,7 +8,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertThat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -39,7 +38,7 @@ public class ActivitySteps {
 	}
 	@Given("^there is an activity with the name \"([^\"]*)\"$")
 	public void thereIsAnActivityWithTheName(String activityName) throws Exception {
-	    activity = systemApp.createActivity(activityName);
+	    activity = systemApp.createActivity(activityName); 
 	}
 
 	@When("^user adds activity to project$")

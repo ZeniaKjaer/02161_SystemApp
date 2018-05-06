@@ -10,7 +10,7 @@ Scenario: Changes project leader successfully
   	Given user is the project leader
   	And there is a project
   	And there is a second project developer
-  	When user make second developer project leader
+  	When user change project leader
   	Then second developer is the new project leader
   	And user is not the project leader anymore
   	

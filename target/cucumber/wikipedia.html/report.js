@@ -1345,11 +1345,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "user make second developer project leader",
+  "name": "user change project leader",
   "keyword": "When "
 });
 formatter.match({
-  "location": "ProjectSteps.userMakeSecondDeveloperProjectLeader()"
+  "location": "ProjectSteps.userChangeProjectLeader()"
 });
 formatter.result({
   "status": "passed"

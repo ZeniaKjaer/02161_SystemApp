@@ -4,7 +4,7 @@ import java.util.*;
 import javafx.util.Pair;
 
 public class SystemApp extends Observable{
-
+ 
 	private boolean loggedIn = false;
 	private String activeUser = "";
 	private List<Developer> developers = new ArrayList<Developer>();
@@ -109,6 +109,13 @@ public class SystemApp extends Observable{
 		} 
 		return true;
 	} 
+	
+	/**
+	 * Contructs a project through the SystemApp
+	 * @param String
+	 * @return Project
+	 * @author Mai-Thi
+	 */
 	
 	public Project createProject(String projectName) {
 		//Project id
@@ -263,6 +270,12 @@ public class SystemApp extends Observable{
 		notifyObservers(NotificationType.CHANGE_PROJECT_LEADER);
 	}
 
+	/**
+	 * Contructs an activity through the SystemApp
+	 * @param String
+	 * @return Activity
+	 * @author Zenia
+	 */
 	public Activity createActivity(String activityName) {
 		return new Activity(activityName);
 	}
@@ -287,7 +300,7 @@ public class SystemApp extends Observable{
 
 		setChanged();
 		notifyObservers(NotificationType.ADD_ACTIVITY);
-	}
+	} 
 
 	/**
 	 * Removes an activity from project.
@@ -356,12 +369,12 @@ public class SystemApp extends Observable{
 	public void removeActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException {
 		//Design by contract
 		assert project!=null && activity!=null && developer!=null && !activeUser.equals(""): "Pre-condition violated for removeActvityDev";
-		projectActivityCheck(project,activity); 											//1                                  
-		projectLeaderCheck(project);                                              		//2
-		if (!activity.isActivityDev(developer.getId())) {									//3
+		projectActivityCheck(project,activity); 										                              
+		projectLeaderCheck(project);                                             
+		if (!activity.isActivityDev(developer.getId())) {									
 			throw new OperationNotAllowedException("Developer not found");
 		} 
-		else {                                                                  			//4  
+		else {                                                                  			 
 			activity.removeActivityDev(developer);
 			developer.removeActivityFromCalendar(activity);
 			developer.getMyActivities().remove(activity);

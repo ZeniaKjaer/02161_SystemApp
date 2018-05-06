@@ -3,7 +3,6 @@ package system.app.ui;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -21,61 +20,6 @@ import system.app.Week;
 public class SystemAppController {
 
 	BufferedReader rs = new BufferedReader(new InputStreamReader(System.in));
-
-	private Developer enterDeveloper(SystemApp systemApp) throws IOException {
-		System.out.print("Enter developer ID: ");
-		String developerID = rs.readLine();
-
-		for (Developer d: systemApp.getDevelopers()) {
-			if(d.getId().equalsIgnoreCase(developerID)) {
-				return d;
-			}
-		}
-		return new Developer(developerID);
-	}
-
-	private Project enterProject(SystemApp systemApp) throws IOException {
-		System.out.print("Enter a project name: ");
-		String projectName = rs.readLine();
-
-		for (Project p: systemApp.getProjects()) {
-			if(p.getProjectName().equalsIgnoreCase(projectName)) {
-				return p;
-			}
-		}
-		return new Project("","",projectName);
-	}
-
-	private Activity enterActivity(Project project) throws IOException {
-		System.out.print("Enter an activity name: ");
-		String activityName = rs.readLine();
-
-		for (Activity a: project.getProjectActivities()) {
-			if(a.getActivityName().equalsIgnoreCase(activityName)) {
-				return a;
-			}
-		}
-		return new Activity(activityName);
-	}
-
-	private Calendar enterDate() throws IOException {
-		System.out.print("Enter year: ");
-		int year = Integer.valueOf(rs.readLine());
-		System.out.print("Enter month: ");
-		int month = Integer.valueOf(rs.readLine()) - 1; // Month is 0-based
-		System.out.print("Enter day of month: ");
-		int day = Integer.valueOf(rs.readLine());
-
-		return new GregorianCalendar(year, month, day);
-	}
-
-	private Week enterWeek() throws IOException {
-		System.out.print("Enter week: ");
-		int weekNumber = Integer.valueOf(rs.readLine());
-		System.out.print("Enter year: ");
-		int yearNumber = Integer.valueOf(rs.readLine());
-		return new Week(weekNumber,yearNumber);
-	}
 
 	public void createProject(SystemApp systemApp) throws IOException {
 		System.out.print("Enter a project name: ");
@@ -137,7 +81,7 @@ public class SystemAppController {
 		System.out.print("Enter an activity name: ");
 		String activityName = rs.readLine();
 		try {
-			systemApp.addActivity(project, systemApp.createActivity(activityName));
+			systemApp.addActivity(project,systemApp.createActivity(activityName));
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
@@ -254,7 +198,27 @@ public class SystemAppController {
 			for(Project p: activeUser.getMyProjects()) {
 				System.out.println(p.getProjectName());
 			}
-		}	
+		}
+		
+	}
+	
+	public void getMyActivities(SystemApp systemApp) throws IOException {
+		Developer activeUser = new Developer("");
+		
+		for (Developer d: systemApp.getDevelopers()) {
+			if(d.getId().equalsIgnoreCase(systemApp.getActiveUser())) {
+				activeUser = d;
+			}
+		}
+		if (activeUser.getMyActivities().size() == 0) {
+			System.out.println("No activities");
+		} else {
+			for(Activity a: activeUser.getMyActivities()) {
+				System.out.println(a.getActivityName());
+			}
+		}
+		
+		
 	}
 
 	public void removeProject(SystemApp systemApp) throws IOException {
@@ -263,8 +227,62 @@ public class SystemAppController {
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		}
+		
 	}
 
+	private Calendar enterDate() throws IOException {
+		System.out.print("Enter year: ");
+		int year = Integer.valueOf(rs.readLine());
+		System.out.print("Enter month: ");
+		int month = Integer.valueOf(rs.readLine()) - 1; // Month is 0-based
+		System.out.print("Enter day of month: ");
+		int day = Integer.valueOf(rs.readLine());
+		return new GregorianCalendar(year, month, day);
+	}
+
+	private Week enterWeek() throws IOException {
+		System.out.print("Enter week: ");
+		int weekNumber = Integer.valueOf(rs.readLine());
+		System.out.print("Enter year: ");
+		int yearNumber = Integer.valueOf(rs.readLine());
+		return new Week(weekNumber,yearNumber);
+	}
+
+	private Developer enterDeveloper(SystemApp systemApp) throws IOException {
+		System.out.print("Enter developer ID: ");
+		String developerID = rs.readLine();
+
+		for (Developer d: systemApp.getDevelopers()) {
+			if(d.getId().equalsIgnoreCase(developerID)) {
+				return d;
+			}
+		}
+		return new Developer(developerID);
+	}
+
+	private Project enterProject(SystemApp systemApp) throws IOException {
+		System.out.print("Enter a project name: ");
+		String projectName = rs.readLine();
+
+		for (Project p: systemApp.getProjects()) {
+			if(p.getProjectName().equalsIgnoreCase(projectName)) {
+				return p;
+			}
+		}
+		return new Project("","",projectName);
+	}
+
+	private Activity enterActivity(Project project) throws IOException {
+		System.out.print("Enter an activity name: ");
+		String activityName = rs.readLine();
+
+		for (Activity a: project.getProjectActivities()) {
+			if(a.getActivityName().equalsIgnoreCase(activityName)) {
+				return a;
+			}
+		} 
+		return new Activity(activityName);
+	}
 
 
 }
