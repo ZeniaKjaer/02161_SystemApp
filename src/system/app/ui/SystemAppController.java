@@ -203,7 +203,7 @@ public class SystemAppController {
 	}
 	
 	public void getMyActivities(SystemApp systemApp) throws IOException {
-		Developer activeUser = new Developer("");
+		Developer activeUser = new Developer(""); 
 		
 		for (Developer d: systemApp.getDevelopers()) {
 			if(d.getId().equalsIgnoreCase(systemApp.getActiveUser())) {

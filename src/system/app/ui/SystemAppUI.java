@@ -96,9 +96,10 @@ public class SystemAppUI implements Observer {
 		out.println("   15) Get list of projects");
 		out.println("   16) Get list of activities in a project");
 		out.println("   17) Get list of my projects");
+		out.println("   18) Get list of my activities");
 		out.println("Logout:");
-		out.println("   18) Logout");
-		out.println("Select a number (1-18): ");
+		out.println("   19) Logout");
+		out.println("Select a number (1-19): ");
 	}
 	
 	private void processChoice(int number,InputStream in, PrintStream out) throws IOException {
@@ -140,7 +141,7 @@ public class SystemAppUI implements Observer {
 			controller.removeActivityFromProject(systemApp);
 			break;
 		case 10:
-			out.println("ADD DEVELOPER TO AN ACTIVITY");
+			out.println("ADD DEVELOPER TO AN ACTIVITY"); 
 			controller.addDeveloperToActivity(systemApp);
 			break;
 		case 11:
@@ -172,6 +173,10 @@ public class SystemAppUI implements Observer {
 			controller.getMyProjects(systemApp);
 			break;
 		case 18:
+			out.println("GET LIST OF MY ACTIVITIES");
+			controller.getMyActivities(systemApp);
+			break;
+		case 19:
 			systemApp.userLogout();
 			loginLoop(in,out);
 			break;
