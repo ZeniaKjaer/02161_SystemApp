@@ -67,7 +67,7 @@ public class ProjectSteps {
 		try {
 			project = systemApp.createProject(projectName);
 			systemApp.addProject(project);
-		} catch (OperationNotAllowedException e) {
+		} catch (OperationNotAllowedException e) { 
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		} 
 	}

@@ -32,3 +32,8 @@ Scenario: Changes project leader to someone who is not part of the project
   	And developer is not part of the project
   	When user change project leader
  	Then user gets the error message "Developer not found"
+ 	
+Scenario: Developer changes project leader when not logged in
+  Given developer is not logged in
+  When user change project leader
+  Then user gets the error message "User is not logged in"

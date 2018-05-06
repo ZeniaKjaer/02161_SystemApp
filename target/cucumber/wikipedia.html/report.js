@@ -194,6 +194,56 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "add activity for project when not logged in",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "developer is not logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsNotLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds activity to project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userAddsActivityToProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"User is not logged in\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.uri("use_cases/student/add_coworker_activity.feature");
 formatter.feature({
   "name": "Add co-worker to own activity",
@@ -462,6 +512,56 @@ formatter.result({
 });
 formatter.step({
   "name": "user gets the error message \"Developer is not available\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Developer adds developer to an activity when not logged in",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "developer is not logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsNotLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds developer to activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userAddsDeveloperToActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"User is not logged in\"",
   "keyword": "Then "
 });
 formatter.match({
@@ -836,6 +936,56 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Developer adds developer to an activity when not logged in",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "developer is not logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsNotLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds developer to activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userAddsDeveloperToActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"User is not logged in\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.uri("use_cases/student/add_developer_project.feature");
 formatter.feature({
   "name": "Add developer to project",
@@ -1172,10 +1322,60 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Developer adds developer to a project when not logged in",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "developer is not logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsNotLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user adds developer to project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userAddsDeveloperToProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"User is not logged in\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.uri("use_cases/student/available_developer.feature");
 formatter.feature({
   "name": "Get available developers",
-  "description": "   \tDescription: The project leader gets a list of available developers in a given week\n\tActors: Project leader",
+  "description": "   \tDescription: The project leader gets a list of available developers in a given week\n\tActors: Developer",
   "keyword": "Feature"
 });
 formatter.background({
@@ -1194,7 +1394,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Project leader gets available developers succesfully",
+  "name": "User gets available developers succesfully",
   "description": "",
   "keyword": "Scenario"
 });
@@ -1254,7 +1454,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Project leader gets available developers in an illegal week",
+  "name": "User gets available developers in an illegal week",
   "description": "",
   "keyword": "Scenario"
 });
@@ -1280,6 +1480,76 @@ formatter.result({
 });
 formatter.step({
   "name": "user gets the error message \"Illegal week\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "User gets available developers when not logged in",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a start date",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsAStartDate()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developer is not logged in",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsNotLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developers in SystemApp has different activitylevel that week",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.developersInSystemAppHasDifferentActivitylevelThatWeek()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user ask for all available developers",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "TimeSteps.userAskForAllAvailableDevelopers()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"User is not logged in\"",
   "keyword": "Then "
 });
 formatter.match({
@@ -1564,6 +1834,56 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Developer changes project leader when not logged in",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "developer is not logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsNotLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user change project leader",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userChangeProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"User is not logged in\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.uri("use_cases/student/create_project.feature");
 formatter.feature({
   "name": "Create project",
@@ -1652,6 +1972,41 @@ formatter.result({
 });
 formatter.step({
   "name": "user gets the error message \"Illegal project name\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Developer creates a project when not logged in",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "developer is not logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsNotLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developer creates project with projectname \"First Project\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.developerCreatesProject(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"User is not logged in\"",
   "keyword": "Then "
 });
 formatter.match({
@@ -1918,6 +2273,56 @@ formatter.result({
 });
 formatter.step({
   "name": "user gets the error message \"Project leader authorization needed\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Removes activity for project when not logged in",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "developer is not logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsNotLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user removes activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.userRemovesActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"User is not logged in\"",
   "keyword": "Then "
 });
 formatter.match({
@@ -2224,6 +2629,56 @@ formatter.result({
 });
 formatter.step({
   "name": "user gets the error message \"Developer not found\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Remove developer from activity when not logged in",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "developer is not logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsNotLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "project leader removes developer from activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ActivitySteps.projectLeaderRemovesDeveloperFromActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"User is not logged in\"",
   "keyword": "Then "
 });
 formatter.match({
@@ -2568,6 +3023,76 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project with an activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.thereIsADeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Developer removes developer from a project when not logged in",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "developer is not logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsNotLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user removes developer from project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userRemovesDeveloperFromProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"User is not logged in\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.uri("use_cases/student/remove_project.feature");
 formatter.feature({
   "name": "Remove project",
@@ -2840,6 +3365,56 @@ formatter.step({
 });
 formatter.match({
   "location": "ActivitySteps.activityIsRemovedFromDeveloperCalendar()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Developer removes a project when not logged in",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "developer is not logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsNotLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user removes project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectSteps.userRemovesProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"User is not logged in\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
 });
 formatter.result({
   "status": "passed"
@@ -3420,6 +3995,96 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project with an activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a start date",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsAStartDate()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a deadline",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsADeadline()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a date between start and deadline",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsADateBetweenStartAndDeadline()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "User sets activity deadline when not logged in",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "developer is not logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsNotLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user sets activity deadline",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "TimeSteps.userSetsActivityDeadline()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"User is not logged in\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.uri("use_cases/student/set_deadline_project.feature");
 formatter.feature({
   "name": "Set deadline for project",
@@ -3858,6 +4523,86 @@ formatter.result({
 });
 formatter.step({
   "name": "user gets the error message \"Illegal time budget\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a start date",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsAStartDate()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a date between start and deadline",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsADateBetweenStartAndDeadline()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a deadline",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsADeadline()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Developer sets deadline for project when not logged in",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "developer is not logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsNotLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user sets project deadline",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "TimeSteps.userSetsProjectDeadline()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"User is not logged in\"",
   "keyword": "Then "
 });
 formatter.match({
@@ -4432,6 +5177,96 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a project with an activity",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a start date",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsAStartDate()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a deadline",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsADeadline()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a date between start and deadline",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsADateBetweenStartAndDeadline()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "User sets activity start when not logged in",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "developer is not logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsNotLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user sets activity start",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "TimeSteps.userSetsActivityStart()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"User is not logged in\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.uri("use_cases/student/set_start_project.feature");
 formatter.feature({
   "name": "Set start for project",
@@ -4820,6 +5655,76 @@ formatter.result({
 });
 formatter.step({
   "name": "user gets the error message \"Illegal time budget\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.userGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a start date",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsAStartDate()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a deadline",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsADeadline()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Developer sets start for project when not logged in",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "developer is not logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsNotLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user sets project start",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "TimeSteps.userSetsProjectStart()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets the error message \"User is not logged in\"",
   "keyword": "Then "
 });
 formatter.match({

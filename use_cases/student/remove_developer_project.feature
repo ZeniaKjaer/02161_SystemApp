@@ -31,3 +31,8 @@ Scenario: Project leader removes developer who is not a part of the project
   	And developer is not part of the project
   	When user removes developer from project
   	Then user gets the error message "Developer not found"
+  	
+Scenario: Developer removes developer from a project when not logged in
+	Given developer is not logged in
+	When user removes developer from project
+	Then user gets the error message "User is not logged in"

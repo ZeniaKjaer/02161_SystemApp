@@ -37,3 +37,8 @@ Scenario: Project leader sets project start after project deadline
   	And user is the project leader
   	When user sets project start after project deadline
   	Then user gets the error message "Illegal time budget"
+  	
+Scenario: Developer sets start for project when not logged in
+  Given developer is not logged in
+  When user sets project start 
+  Then user gets the error message "User is not logged in"

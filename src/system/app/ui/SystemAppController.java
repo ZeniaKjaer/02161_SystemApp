@@ -283,5 +283,16 @@ public class SystemAppController {
 		return new Activity(activityName);
 	}
 
+	public void login(SystemApp systemApp) throws IOException {
+		System.out.print("Enter Initials: "); 
+		String initials = rs.readLine();
+		try {
+			systemApp.userLogin(initials);
+		} catch (OperationNotAllowedException e) {
+			System.out.println(e);
+		}
+		
+	}
+
 
 }

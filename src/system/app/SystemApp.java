@@ -135,7 +135,8 @@ public class SystemApp extends Observable{
 	 * @throws OperationNotAllowedException
 	 * @author Helena
 	 */
-	public void addProject(Project project) throws OperationNotAllowedException{
+	public void addProject(Project project) throws OperationNotAllowedException{	
+		loginCheck();
 		//Design by contract
 		assert project!= null && !activeUser.equals(""): "Pre-condition violated for addProject";
 		for (Project p: projects) {														
@@ -184,6 +185,7 @@ public class SystemApp extends Observable{
 	 * @author Zenia
 	 */
 	public void removeProject(Project project) throws OperationNotAllowedException {
+		loginCheck();
 		projectLeaderCheck(project);
 		projectCheck(project);
 		while (project.getProjectActivities().size() > 0) {
@@ -205,10 +207,11 @@ public class SystemApp extends Observable{
 	 * @author Rikke
 	 */
 	public void addProjectDev(Project project, Developer developer) throws OperationNotAllowedException{
+		loginCheck();
+		projectCheck(project);
 		// Design by contract
 		assert project != null && developer != null && !activeUser.equals(""): "Precondition violated for addProjectDev" ;
 		
-		projectCheck(project);
 		if(!isInTheSystem(developer.getId())) { 
 			throw new OperationNotAllowedException("Developer is not in the system");
 		}
@@ -235,6 +238,7 @@ public class SystemApp extends Observable{
 	 * @author Rikke
 	 */
 	public void removeProjectDev(Project project, Developer developer) throws OperationNotAllowedException {
+		loginCheck();
 		projectCheck(project);
 		projectLeaderCheck(project);
 		projectDevCheck(project, developer);
@@ -260,6 +264,7 @@ public class SystemApp extends Observable{
 	 * @author Helena
 	 */
 	public void setProjectLeader(Project project, Developer developer) throws OperationNotAllowedException{
+		loginCheck();
 		projectCheck(project);
 		projectLeaderCheck(project);
 		projectDevCheck(project,developer);
@@ -289,6 +294,7 @@ public class SystemApp extends Observable{
 	 * @author Rikke
 	 */
 	public void addActivity(Project project, Activity activity) throws OperationNotAllowedException {
+		loginCheck();
 		projectCheck(project);
 		projectLeaderCheck(project);
 		
@@ -311,12 +317,13 @@ public class SystemApp extends Observable{
 	 * @author Rikke
 	 */
 	public void removeActivity(Project project, Activity activity) throws OperationNotAllowedException {
-		// Design by contract
-		assert project != null && activity != null && !activeUser.equals(""): "Pre-condition violated for removeActivity";
-		
+		loginCheck();
 		projectCheck(project);
 		projectActivityCheck(project,activity);
 		projectLeaderCheck(project);
+		
+		// Design by contract
+		assert project != null && activity != null && !activeUser.equals(""): "Pre-condition violated for removeActivity";
 
 		for (Developer dev : activity.getActivityDevelopers()) {
 			dev.removeActivityFromCalendar(activity);
@@ -340,6 +347,7 @@ public class SystemApp extends Observable{
 	 * @author Zenia 
 	 */
 	public void addActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException{
+		loginCheck();
 		if (!isAvailableForActivity(developer, activity)) {
 			throw new OperationNotAllowedException("Developer is not available");
 		} 
@@ -367,10 +375,12 @@ public class SystemApp extends Observable{
 	 * @author Zenia
 	 */
 	public void removeActivityDev(Project project, Activity activity, Developer developer) throws OperationNotAllowedException {
+		loginCheck();
+		projectActivityCheck(project,activity); 										                              
+		projectLeaderCheck(project);   
 		//Design by contract
 		assert project!=null && activity!=null && developer!=null && !activeUser.equals(""): "Pre-condition violated for removeActvityDev";
-		projectActivityCheck(project,activity); 										                              
-		projectLeaderCheck(project);                                             
+                                          
 		if (!activity.isActivityDev(developer.getId())) {									
 			throw new OperationNotAllowedException("Developer not found");
 		} 
@@ -393,6 +403,7 @@ public class SystemApp extends Observable{
 	 * @author Mai-Thi
 	 */
 	public void setProjectStart(Project project, Calendar start) throws OperationNotAllowedException {
+		loginCheck();
 		projectCheck(project);
 		projectLeaderCheck(project);
 		timeBudgetCheck(start, project.getDeadline());
@@ -415,6 +426,7 @@ public class SystemApp extends Observable{
 	 * @author Mai-Thi
 	 */
 	public void setProjectDeadline(Project project, Calendar deadline)throws OperationNotAllowedException {
+		loginCheck();
 		projectCheck(project);
 		projectLeaderCheck(project);
 		timeBudgetCheck(project.getStart(), deadline);
@@ -438,6 +450,7 @@ public class SystemApp extends Observable{
 	 * @author Zenia
 	 */
 	public void setActivityStart(Project project, Activity activity, Calendar start) throws OperationNotAllowedException {
+		loginCheck();
 		projectActivityCheck(project,activity);
 		projectLeaderCheck(project);
 		timeBudgetCheck(start, activity.getDeadline());
@@ -469,6 +482,7 @@ public class SystemApp extends Observable{
 	 * @author Zenia
 	 */
 	public void setActivityDeadline(Project project, Activity activity, Calendar deadline) throws OperationNotAllowedException {
+		loginCheck();
 		projectActivityCheck(project,activity);
 		projectLeaderCheck(project);
 		timeBudgetCheck(activity.getStart(), deadline);
@@ -498,6 +512,7 @@ public class SystemApp extends Observable{
 	 * @author Zenia
 	 */
 	public ArrayList<Pair<String,Integer>> getAvailableDevelopers(Week week) throws OperationNotAllowedException {
+		loginCheck();
 		ArrayList<Pair<String, Integer>> availableDevelopers = new ArrayList<>();
 
 		if (week.getWeekOfYear() > 53) {
@@ -517,6 +532,17 @@ public class SystemApp extends Observable{
 			}
 		}
 		return availableDevelopers;
+	}
+	
+	/**
+	 * Throws an exception if there is no active user
+	 * @throws OperationNotAllowedException
+	 * @author Mai-Thi
+	 */
+	private void loginCheck() throws OperationNotAllowedException {
+		if(activeUser.equalsIgnoreCase("")) {
+			throw new OperationNotAllowedException("User is not logged in");
+		}
 	}
 
 	/**

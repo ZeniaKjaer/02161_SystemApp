@@ -25,7 +25,7 @@ public class SystemAppUI implements Observer {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new SystemAppUI().loginLoop(System.in, System.out);
+		new SystemAppUI().mainLoop(System.in, System.out);
 	}
 
 	private void loginLoop(InputStream in, PrintStream out) throws IOException {
@@ -61,7 +61,7 @@ public class SystemAppUI implements Observer {
 			}
 			try {
 				int number = Integer.valueOf(choice);
-				if (number == 0) {
+				if (number == 20) {
 					break;
 				}
 				processChoice(number,in, out);
@@ -72,7 +72,7 @@ public class SystemAppUI implements Observer {
 	}
 	
 	private void showMenu(PrintStream out) {
-		//out.println("   0) Exit");
+		out.println("   0) Log in");
 		out.println("Project:");
 		out.println("   1) Create a project");
 		out.println("   2) Remove a project");
@@ -96,11 +96,16 @@ public class SystemAppUI implements Observer {
 		out.println("   18) Get list of my activities");
 		out.println("Logout:");
 		out.println("   19) Logout");
-		out.println("Select a number (1-19): ");
+		out.println("   20) Exit");
+		out.println("Select a number (0-20): ");
 	}
 	
 	private void processChoice(int number,InputStream in, PrintStream out) throws IOException {
 		switch (number) {
+		case 0:
+			out.println("CREATE A PROJECT");
+			controller.login(systemApp);
+			break;
 		case 1:
 			out.println("CREATE A PROJECT");
 			controller.createProject(systemApp);
@@ -175,7 +180,6 @@ public class SystemAppUI implements Observer {
 			break;
 		case 19:
 			systemApp.userLogout();
-			loginLoop(in,out);
 			break;
 		default:
 			break;
@@ -186,16 +190,16 @@ public class SystemAppUI implements Observer {
 		SystemApp s = (SystemApp) o;
 
 		if(NotificationType.LOGIN.equals(aspect)) {
-			System.out.println("Active user: " + s.getActiveUser());
+			System.out.println(s.getActiveUser() + " has logged in.");
 		}
 		if(NotificationType.LOGOUT.equals(aspect)) {
-			System.out.println("User has logged out");
+			System.out.println("User has logged out.");
 		}
 		if (NotificationType.ADD_PROJECT.equals(aspect)) {
 			System.out.println("The project has been added to the system.");
 		}
 		if (NotificationType.CHANGE_PROJECT_LEADER.equals(aspect)) {
-			System.out.println("The project leader has been changed");
+			System.out.println("The project leader has been changed.");
 		}
 		if (NotificationType.ADD_DEVELOPER.equals(aspect)) {
 			System.out.println("The developer has been added.");

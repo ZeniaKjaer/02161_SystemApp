@@ -24,10 +24,15 @@ Scenario: Removes an activity when not the project leader
   When user removes project
   Then user gets the error message "Project leader authorization needed"
   
-  Scenario: Project leader removes project successfully
+Scenario: Project leader removes project successfully
   Given user is the project leader
   And there is a project with an activity
   And there is an activity developer
   When user removes project
   Then project is removed
   And activity is removed from developer calendar
+
+Scenario: Developer removes a project when not logged in
+  Given developer is not logged in
+  When user removes project
+  Then user gets the error message "User is not logged in"

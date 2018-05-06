@@ -39,5 +39,8 @@ Scenario: Add developer that is not in the system to project
   	When user adds developer to project
   	Then user gets the error message "Developer is not in the system"
   	
-  	
+Scenario: Developer adds developer to a project when not logged in
+	Given developer is not logged in
+	When user adds developer to project
+	Then user gets the error message "User is not logged in"
   	

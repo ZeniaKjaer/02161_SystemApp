@@ -14,3 +14,8 @@ Scenario: Developer creates a project with illegal name
   And project with name "First Project" already exist
   When developer creates project with projectname "First Project"
   Then user gets the error message "Illegal project name"
+  
+ Scenario: Developer creates a project when not logged in
+  Given developer is not logged in
+  When developer creates project with projectname "First Project"
+  Then user gets the error message "User is not logged in"

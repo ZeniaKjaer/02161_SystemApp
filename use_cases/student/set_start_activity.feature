@@ -40,3 +40,8 @@ Scenario: Project leader sets activity start after project deadline
   	Given user is the project leader
   	When user sets activity start after project deadline
   	Then user gets the error message "Activity cant exceed project"
+  	
+Scenario: User sets activity start when not logged in
+	Given developer is not logged in
+	When user sets activity start
+	Then user gets the error message "User is not logged in"

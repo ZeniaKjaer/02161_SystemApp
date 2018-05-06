@@ -32,4 +32,9 @@ Scenario: Developer on activity adds not available co-worker to activity
   	And developer is not available
   	When user adds developer to activity
   	Then user gets the error message "Developer is not available"
-
+  	
+Scenario: Developer adds developer to an activity when not logged in
+	Given developer is not logged in
+	When user adds developer to activity
+	Then user gets the error message "User is not logged in"
+  	

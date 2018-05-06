@@ -6,7 +6,6 @@ Feature: Remove developer from activity
 Background: A developer has to be logged in to interact with the SystemApp
 	Given developer is logged in
 
-
 Scenario: Remove developer on activity successfully
   	Given user is the project leader
   	And there is a project with an activity
@@ -36,3 +35,8 @@ Scenario: Remove developer from activity when developer is not working on activi
   	And developer is not working on activity
   	When project leader removes developer from activity
   	Then user gets the error message "Developer not found"
+
+Scenario: Remove developer from activity when not logged in
+	Given developer is not logged in
+	When project leader removes developer from activity
+	Then user gets the error message "User is not logged in"
