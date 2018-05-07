@@ -361,6 +361,7 @@ public class SystemApp extends Observable{
 			developer.addActivityToCalendar(activity);
 			developer.getMyActivities().add(activity);
 		} 
+		projectCheck(project);
 		projectLeaderCheck(project);
 		projectActivityCheck(project,activity);
 		
@@ -380,6 +381,7 @@ public class SystemApp extends Observable{
 		//Design by contract
 		assert project!=null && activity!=null && developer!=null: "Pre-condition violated for removeActvityDev";
 		loginCheck();															// 1
+		projectCheck(project);
 		projectActivityCheck(project,activity); 									// 2					                              
 		projectLeaderCheck(project);   											// 3
                                           

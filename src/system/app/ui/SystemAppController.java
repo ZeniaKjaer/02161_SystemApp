@@ -3,6 +3,7 @@ package system.app.ui;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -20,6 +21,7 @@ import system.app.Week;
 public class SystemAppController {
 
 	BufferedReader rs = new BufferedReader(new InputStreamReader(System.in));
+	SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
 
 	public void createProject(SystemApp systemApp) throws IOException {
 		System.out.print("Enter a project name: ");
@@ -162,63 +164,90 @@ public class SystemAppController {
 	} 
 
 	public void getListOfProjects(SystemApp systemApp) {
-		loginCheck(systemApp);
-		if (systemApp.getProjects().size() == 0) {
+		if(systemApp.getActiveUser().equalsIgnoreCase("")) {
+			System.out.println("User is not logged in");
+		}
+		else if (systemApp.getProjects().size() == 0) {
 			System.out.println("No projects");
 		} else {
 			for(Project p: systemApp.getProjects()) {
 				System.out.println(p.getProjectName());
+				System.out.println("Project leader: " + p.getProjectLeader());
+				System.out.println("Start: " + format1.format(p.getStart().getTime()));
+				System.out.println("Deadline: " + format1.format(p.getDeadline().getTime()));
+				System.out.println("List of developers:");
+				for(Developer d: p.getProjectDevelopers()) {
+					System.out.print(d.getId() + " ");
+				}
+				System.out.println("");
 			}
 		}
 	}
 
 	public void getListOfActivities(SystemApp systemApp) throws IOException {
-		loginCheck(systemApp);
 		Project project = enterProject(systemApp);
-
-		if (project.getProjectActivities().size() == 0) {
+		if(systemApp.getActiveUser().equalsIgnoreCase("")) {
+			System.out.println("User is not logged in");
+		}
+		else if (!systemApp.getProjects().contains(project)) {
+			System.out.println("Project not found");
+		} else if (project.getProjectActivities().size() == 0) {
 			System.out.println("No activities");
 		} else {
 			for(Activity a: project.getProjectActivities()) {
 				System.out.println(a.getActivityName());
+				System.out.println("Start: " + format1.format(a.getStart().getTime()));
+				System.out.println("Deadline: " + format1.format(a.getDeadline().getTime()));
+				System.out.println("List of developers:");
+				for(Developer d: a.getActivityDevelopers()) {
+					System.out.print(d.getId() + " ");
+				}
+				System.out.println("");
 			}
 		}
 	}
 
 	public void getMyProjects(SystemApp systemApp) {
-		loginCheck(systemApp);
-		Developer activeUser = new Developer("");
-
-		for (Developer d: systemApp.getDevelopers()) {
-			if(d.getId().equalsIgnoreCase(systemApp.getActiveUser())) {
-				activeUser = d;
-			}
-		}
-
-		if (activeUser.getMyProjects().size() == 0) {
-			System.out.println("No projects");
+		if(systemApp.getActiveUser().equalsIgnoreCase("")) {
+			System.out.println("User is not logged in");
 		} else {
-			for(Project p: activeUser.getMyProjects()) {
-				System.out.println(p.getProjectName());
+			Developer activeUser = new Developer("");
+
+			for (Developer d: systemApp.getDevelopers()) {
+				if(d.getId().equalsIgnoreCase(systemApp.getActiveUser())) {
+					activeUser = d;
+				}
+			}
+
+			if (activeUser.getMyProjects().size() == 0) {
+				System.out.println("No projects");
+			} else {
+				for(Project p: activeUser.getMyProjects()) {
+					System.out.println(p.getProjectName());
+				}
 			}
 		}
 	}
 
 	public void getMyActivities(SystemApp systemApp) {
-		loginCheck(systemApp);
-		Developer activeUser = new Developer("");
-
-		for (Developer d: systemApp.getDevelopers()) {
-			if(d.getId().equalsIgnoreCase(systemApp.getActiveUser())) {
-				activeUser = d;
-			}
+		if(systemApp.getActiveUser().equalsIgnoreCase("")) {
+			System.out.println("User is not logged in");
 		}
+		else {
+			Developer activeUser = new Developer("");
 
-		if (activeUser.getMyActivities().size() == 0) {
-			System.out.println("No activities");
-		} else {
-			for(Activity a: activeUser.getMyActivities()) {
-				System.out.println(a.getActivityName());
+			for (Developer d: systemApp.getDevelopers()) {
+				if(d.getId().equalsIgnoreCase(systemApp.getActiveUser())) {
+					activeUser = d;
+				}
+			}
+
+			if (activeUser.getMyActivities().size() == 0) {
+				System.out.println("No activities");
+			} else {
+				for(Activity a: activeUser.getMyActivities()) {
+					System.out.println(a.getActivityName());
+				}
 			}
 		}
 
@@ -250,15 +279,7 @@ public class SystemAppController {
 		int yearNumber = Integer.valueOf(rs.readLine());
 		return new Week(weekNumber,yearNumber);
 	}
-	
-	private void loginCheck(SystemApp systemApp) {
-		try {
-			systemApp.loginCheck();
-		} catch (OperationNotAllowedException e) {
-			System.out.println(e);
-		}
-		
-	}
+
 
 	private Developer enterDeveloper(SystemApp systemApp) throws IOException {
 		System.out.print("Enter developer ID: ");
@@ -304,7 +325,7 @@ public class SystemAppController {
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
 		} 
-		
+
 	}
 
 
