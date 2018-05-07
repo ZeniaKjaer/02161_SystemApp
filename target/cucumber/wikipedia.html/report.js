@@ -55,11 +55,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "user adds activity to project",
+  "name": "user adds activity with the name \"First activity\" to project",
   "keyword": "When "
 });
 formatter.match({
-  "location": "ActivitySteps.userAddsActivityToProject()"
+  "location": "ActivitySteps.userAddsActivityWithTheNameToProject(String)"
 });
 formatter.result({
   "status": "passed"
@@ -125,21 +125,21 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "there is an activity with the name \"First activity\"",
+  "name": "activity with name \"Second activity\" already exist",
   "keyword": "And "
 });
 formatter.match({
-  "location": "ActivitySteps.thereIsAnActivityWithTheName(String)"
+  "location": "ActivitySteps.activityWithNameAlreadyExist(String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "user adds activity to project",
+  "name": "user adds activity with the name \"Second activity\" to project",
   "keyword": "When "
 });
 formatter.match({
-  "location": "ActivitySteps.userAddsActivityToProject()"
+  "location": "ActivitySteps.userAddsActivityWithTheNameToProject(String)"
 });
 formatter.result({
   "status": "passed"
@@ -2081,7 +2081,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "project with name \"First Project\" already exist",
+  "name": "project with name \"Second Project\" already exist",
   "keyword": "And "
 });
 formatter.match({
@@ -2091,7 +2091,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "developer creates project with projectname \"First Project\"",
+  "name": "developer creates project with projectname \"Second Project\"",
   "keyword": "When "
 });
 formatter.match({

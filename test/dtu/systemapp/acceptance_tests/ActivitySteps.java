@@ -1,7 +1,5 @@
 package dtu.systemapp.acceptance_tests;
 
-import system.app.SystemApp;
-
 import static org.hamcrest.CoreMatchers.*;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -12,7 +10,6 @@ import static org.junit.Assert.assertThat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import system.app.OperationNotAllowedException;
 import system.app.*;
 
 public class ActivitySteps {
@@ -36,18 +33,36 @@ public class ActivitySteps {
 		this.projectHelper = projectHelper;
 		this.activityHelper = activityHelper;
 	}
+	
 	@Given("^there is an activity with the name \"([^\"]*)\"$")
 	public void thereIsAnActivityWithTheName(String activityName) throws Exception {
 	    activity = systemApp.createActivity(activityName); 
 	}
-
+	
 	@When("^user adds activity to project$")
 	public void userAddsActivityToProject() throws Exception {
+		try { 
+			systemApp.addActivity(projectHelper.getProject(), activityHelper.getActivity());
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
+	
+	@When("^user adds activity with the name \"([^\"]*)\" to project$")
+	public void userAddsActivityWithTheNameToProject(String activityName) throws Exception {
 		try {
+			activity = systemApp.createActivity(activityName); 
 			systemApp.addActivity(projectHelper.getProject(), activity);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
-		}  
+		}
+	}
+	
+	@Given("^activity with name \"([^\"]*)\" already exist$")
+	public void activityWithNameAlreadyExist(String activityName) throws Exception {
+		//projectHelper.getProject().getProjectActivities().clear();
+		Activity activity2 = systemApp.createActivity(activityName);
+		systemApp.addActivity(projectHelper.getProject(), activity2);
 	}
 
 	@Then("^activity is part of project$")

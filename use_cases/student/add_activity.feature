@@ -10,15 +10,15 @@ Scenario: project leader adds activity to project successfully
   	Given user is the project leader
 	And there is a project
   	And there is an activity with the name "First activity"
-  	When user adds activity to project
+  	When user adds activity with the name "First activity" to project
   	Then activity is part of project
 	And activity timebudget is set to project timebudget
 	
 Scenario: project leader adds activity to project with illegal name
 	Given user is the project leader
 	And there is a project
-  	And there is an activity with the name "First activity"
-  	When user adds activity to project
+  	And activity with name "Second activity" already exist
+  	When user adds activity with the name "Second activity" to project
 	Then user gets the error message "Illegal activity name"
 	
 Scenario: add activity to a project that is not in the system

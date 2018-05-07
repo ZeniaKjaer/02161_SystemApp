@@ -11,8 +11,8 @@ Scenario: Developer creates a project succesfully
 
 Scenario: Developer creates a project with illegal name
   Given developer is logged in
-  And project with name "First Project" already exist
-  When developer creates project with projectname "First Project"
+  And project with name "Second Project" already exist
+  When developer creates project with projectname "Second Project"
   Then user gets the error message "Illegal project name"
   
  Scenario: Developer creates a project when not logged in
