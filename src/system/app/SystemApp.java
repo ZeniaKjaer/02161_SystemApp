@@ -53,7 +53,7 @@ public class SystemApp extends Observable{
 	 *If the given Id represents a developer in the SystemApp 
 	 *then the user is logged in and is the active user 
 	 * @param id
-	 * @throws OperationNotAllowedException
+	 * @throws OperationNotAllowedException 
 	 * @author Mai-Thi
 	 */
 	public void userLogin(String id) throws OperationNotAllowedException  {
@@ -294,6 +294,12 @@ public class SystemApp extends Observable{
 		loginCheck();
 		projectCheck(project);
 		projectLeaderCheck(project);
+		
+		for (Activity a: project.getProjectActivities()) {												
+			if (a.getActivityName().equalsIgnoreCase(activity.getActivityName())) { 	
+				throw new OperationNotAllowedException("Illegal activity name");
+			}
+		}
 		
 		activity.setStart(project.getStart());
 		activity.setDeadline(project.getDeadline());

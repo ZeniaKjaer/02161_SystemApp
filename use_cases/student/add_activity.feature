@@ -14,6 +14,13 @@ Scenario: project leader adds activity to project successfully
   	Then activity is part of project
 	And activity timebudget is set to project timebudget
 	
+Scenario: project leader adds activity to project with illegal name
+	Given user is the project leader
+	And there is a project
+  	And there is an activity with the name "First activity"
+  	When user adds activity to project
+	Then user gets the error message "Illegal activity name"
+	
 Scenario: add activity to a project that is not in the system
   	Given project is not in the system
   	When user adds activity to project

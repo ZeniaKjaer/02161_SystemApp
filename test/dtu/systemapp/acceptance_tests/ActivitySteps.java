@@ -47,7 +47,7 @@ public class ActivitySteps {
 			systemApp.addActivity(projectHelper.getProject(), activity);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
-		} 
+		}  
 	}
 
 	@Then("^activity is part of project$")
