@@ -620,7 +620,7 @@ public class SystemApp extends Observable{
 		return developers;
 	}
 
-	public List<Project> getProjects() {
+	public List<Project> getProjects() { 
 		return projects;
 	}
 

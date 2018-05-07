@@ -213,7 +213,7 @@ public class ActivitySteps {
 		assertEquals(projectHelper.getProject().getDeadline().get(Calendar.DAY_OF_YEAR),
 				activity.getDeadline().get(Calendar.DAY_OF_YEAR));
 		assertEquals(projectHelper.getProject().getDeadline().get(Calendar.YEAR),
-				activity.getDeadline().get(Calendar.YEAR));
+				activity.getDeadline().get(Calendar.YEAR)); 
 	}
 	
 }

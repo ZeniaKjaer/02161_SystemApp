@@ -38,7 +38,7 @@ public class Developer {
 	}
 	
 	// developer is available that week, if she has less than 20 activities in her calendar
-	public boolean isAvailable(Week week) {	
+	public boolean isAvailable(Week week) {	 
 		if (devCalendar.getActivityLevel(week) < 20) {
 			return true;
 		}

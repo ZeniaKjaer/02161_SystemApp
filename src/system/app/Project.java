@@ -12,7 +12,7 @@ public class Project {
 	String projectId;
 	String projectName;
 	private Calendar start, deadline;
-	private List<Developer> projectDevelopers = new ArrayList<Developer>();
+	private List<Developer> projectDevelopers = new ArrayList<Developer>(); 
 	private List<Activity> projectActivities = new ArrayList<Activity>();
 
 	public Project(String developerId, String projectID, String projectName) {

@@ -17,6 +17,12 @@ Scenario: User gets available developers in an illegal week
   	When user ask for all available developers
  	Then user gets the error message "Illegal week"
  	
+Scenario: User gets available developers succesfully
+	Given there is a start date
+	And developers in SystemApp has different activitylevel that week
+  	When user ask for all available developers in week 2 year 3010
+ 	Then user gets a sorted list of all available developers
+ 	
 Scenario: User gets available developers when not logged in
 	Given there is a start date
 	And developer is not logged in
