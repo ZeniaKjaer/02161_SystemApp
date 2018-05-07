@@ -8,6 +8,7 @@ package system.app;
 
 public enum NotificationType { 
 	ADD_PROJECT, 
+	REMOVE_PROJECT,
 	CHANGE_PROJECT_LEADER, 
 	ADD_DEVELOPER, 
 	REMOVE_DEVELOPER, 

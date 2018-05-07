@@ -22,12 +22,12 @@ public class SystemAppUI implements Observer {
 		systemApp = new SystemApp();
 		systemApp.addObserver(this);
 		controller = new SystemAppController();
-	}
+	} 
 
 	public static void main(String[] args) throws Exception {
 		new SystemAppUI().mainLoop(System.in, System.out);
 	}
-
+ 
 //	private void loginLoop(InputStream in, PrintStream out) throws IOException {
 //		BufferedReader rs = new BufferedReader(new InputStreamReader(in));
 //		String initials = null;
@@ -197,6 +197,9 @@ public class SystemAppUI implements Observer {
 		}
 		if (NotificationType.ADD_PROJECT.equals(aspect)) {
 			System.out.println("The project has been added to the system.");
+		}
+		if (NotificationType.REMOVE_PROJECT.equals(aspect)) {
+			System.out.println("The project has been removed from the system.");
 		}
 		if (NotificationType.CHANGE_PROJECT_LEADER.equals(aspect)) {
 			System.out.println("The project leader has been changed.");

@@ -19,7 +19,7 @@ public class LoginLogoutSteps {
 	
 	private SystemApp systemApp;
 	private Developer dev;
-	private ErrorMessageHolder errorMessageHolder;
+	private ErrorMessageHolder errorMessageHolder; 
 	private DeveloperHelper devhelper;
 	
 	public LoginLogoutSteps(SystemApp systemApp, ErrorMessageHolder errorMessageHolder, 

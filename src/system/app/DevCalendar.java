@@ -19,7 +19,7 @@ public class DevCalendar {
 	}
 
 	public void incrementActivity(Week week) {
-		calendar.get(week.getYear())[week.getWeekOfYear()]++;
+		calendar.get(week.getYear())[week.getWeekOfYear()]++; 
 	}
 
 	public void decrementActivity(Week week) {
