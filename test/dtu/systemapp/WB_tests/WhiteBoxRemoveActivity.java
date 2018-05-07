@@ -17,7 +17,7 @@ import system.app.SystemApp;
  */
 public class WhiteBoxRemoveActivity {
 	SystemApp sysApp = new SystemApp();
-	Project proj = new Project("lead", "projId1", "proj");
+	Project proj = new Project("lead", "proj");
 	Developer lead = new Developer("lead");
 	Developer devl = new Developer("devl");
 	Activity acti = new Activity("acti");

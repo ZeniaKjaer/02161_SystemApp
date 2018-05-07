@@ -17,9 +17,9 @@ import system.app.SystemApp;
  */
 public class WhiteBoxAddProject {
 	SystemApp sysApp = new SystemApp();
-		Project proj1 = new Project("abcd", "projId1", "nSys");
-		Project proj2 = new Project("lead", "projId2", "inSys1");
-		Project proj3 = new Project("lead", "projId3", "inSys2");
+		Project proj1 = new Project("abcd", "nSys");
+		Project proj2 = new Project("lead", "inSys1");
+		Project proj3 = new Project("lead", "inSys2");
 		Developer devl = new Developer("devl");
 		Developer lead = new Developer("lead");
 		

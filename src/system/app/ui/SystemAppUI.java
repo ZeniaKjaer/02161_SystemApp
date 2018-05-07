@@ -28,28 +28,6 @@ public class SystemAppUI implements Observer {
 		new SystemAppUI().mainLoop(System.in, System.out);
 	}
 
-//	private void loginLoop(InputStream in, PrintStream out) throws IOException {
-//		BufferedReader rs = new BufferedReader(new InputStreamReader(in));
-//		String initials = null;
-//
-//		do {
-//			System.out.print("Enter Initials: "); 
-//			initials = rs.readLine();
-//			if (initials == null) {
-//				break;
-//			}
-//			if (initials.equals(0)) {
-//				break;
-//			}
-//			try {
-//				systemApp.userLogin(initials);
-//			} catch (OperationNotAllowedException e) {
-//				System.out.println(e);
-//			}
-//		} while (!systemApp.isInTheSystem(initials));
-//		mainLoop(in,out);
-//	}
-
 	public void mainLoop(InputStream in, PrintStream out) throws IOException {
 		BufferedReader rs = new BufferedReader(new InputStreamReader(in));
 		String choice = null;

@@ -20,8 +20,8 @@ public class WhiteBoxAddProjDev {
 	Developer devl = new Developer("Devl");
 	Developer lead = new Developer("Lead");
 	
-	Project leadProj = new Project("Lead", "projId1", "inSys");
-	Project notLeadProj = new Project("Devl", "projId2", "nSys");
+	Project leadProj = new Project("Lead", "inSys");
+	Project notLeadProj = new Project("Devl", "nSys");
 	
 	@Rule
     public ExpectedException expectedException = ExpectedException.none();

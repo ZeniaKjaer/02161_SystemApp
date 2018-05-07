@@ -119,7 +119,7 @@ public class ProjectSteps {
 
 	@Given("^project with name \"([^\"]*)\" already exist$")
 	public void projectWithNameAlreadyExist(String projectName) throws Exception {
-		Project project2 = new Project(devHelper.getDeveloper().getId(),"",projectName);
+		Project project2 = new Project(devHelper.getDeveloper().getId(),projectName);
 		systemApp.addProject(project2);
 	}
 	

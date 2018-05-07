@@ -281,7 +281,7 @@ public class SystemAppController {
 				return p;
 			}
 		}
-		return new Project("","",projectName);
+		return new Project("",projectName);
 	}
 
 	private Activity enterActivity(Project project) throws IOException {

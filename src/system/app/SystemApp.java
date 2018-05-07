@@ -118,12 +118,7 @@ public class SystemApp extends Observable{
 	 */
 	
 	public Project createProject(String projectName) {
-		//Project id
-		Calendar projectYear = new GregorianCalendar();
-		int year = projectYear.get(Calendar.YEAR);
-		String projectId = ""+ year + nextProjectID++; 
-		
-		return new Project(activeUser,projectId,projectName);
+		return new Project(activeUser,projectName);
 	}
 
 	/**

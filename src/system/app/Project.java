@@ -9,15 +9,13 @@ import java.util.List;
  */
 public class Project {
 	String projectLeader;
-	String projectId;
 	String projectName;
 	private Calendar start, deadline;
 	private List<Developer> projectDevelopers = new ArrayList<Developer>();
 	private List<Activity> projectActivities = new ArrayList<Activity>();
 
-	public Project(String developerId, String projectID, String projectName) {
+	public Project(String developerId, String projectName) {
 		this.projectLeader = developerId;
-		this.projectId = projectID;
 		this.projectName = projectName;	
 	}
 	
