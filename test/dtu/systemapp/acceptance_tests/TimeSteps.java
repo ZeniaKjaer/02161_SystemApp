@@ -58,14 +58,6 @@ public class TimeSteps {
 				projectHelper.getProject().getStart().get(Calendar.YEAR));
 	}
 
-	@Then("^project deadline is set$")
-	public void projectDeadlineIsSet() throws Exception {
-		assertEquals(deadline.get(Calendar.DAY_OF_YEAR),
-				projectHelper.getProject().getDeadline().get(Calendar.DAY_OF_YEAR));
-		assertEquals(deadline.get(Calendar.YEAR),
-				projectHelper.getProject().getDeadline().get(Calendar.YEAR));
-	}
-
 	@When("^user sets project start after project deadline$")
 	public void userSetsProjectStartAfterProjectDeadline() throws Exception {
 		try {

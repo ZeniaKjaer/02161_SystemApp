@@ -36,3 +36,6 @@ Scenario: Removes activity for project when not logged in
 	Given developer is not logged in
 	When user removes activity
 	Then user gets the error message "User is not logged in"
+	
+	
+	

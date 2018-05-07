@@ -1,7 +1,6 @@
 package dtu.systemapp.acceptance_tests;
 
 import static org.junit.Assert.assertThat;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
@@ -13,7 +12,7 @@ import cucumber.api.java.en.When;
 import system.app.OperationNotAllowedException;
 import system.app.Developer;
 import system.app.SystemApp;
-import java.util.List;
+//import java.util.List;
 
 public class LoginLogoutSteps {
 	
