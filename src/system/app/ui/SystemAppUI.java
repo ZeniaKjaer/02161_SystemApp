@@ -80,7 +80,7 @@ public class SystemAppUI implements Observer {
 	private void processChoice(int number,InputStream in, PrintStream out) throws IOException {
 		switch (number) {
 		case 0:
-			out.println("CREATE A PROJECT");
+			out.println("LOGIN");
 			controller.login(systemApp);
 			break;
 		case 1:
