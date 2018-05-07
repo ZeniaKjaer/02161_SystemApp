@@ -12,7 +12,6 @@ import cucumber.api.java.en.When;
 import system.app.OperationNotAllowedException;
 import system.app.Developer;
 import system.app.SystemApp;
-//import java.util.List;
 
 public class LoginLogoutSteps {
 	
