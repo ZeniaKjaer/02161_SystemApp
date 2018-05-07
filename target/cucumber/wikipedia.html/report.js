@@ -1504,6 +1504,66 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
+  "name": "User gets available developers succesfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a start date",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsAStartDate()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "developers in SystemApp has different activitylevel that week",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.developersInSystemAppHasDifferentActivitylevelThatWeek()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user ask for all available developers in week 2 year 3010",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "TimeSteps.userAskForAllAvailableDevelopersInWeekYear(int,int)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user gets a sorted list of all available developers",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "TimeSteps.userGetsASortedListOfAllAvailableDevelopers()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "A developer has to be logged in to interact with the SystemApp",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
   "name": "User gets available developers when not logged in",
   "description": "",
   "keyword": "Scenario"

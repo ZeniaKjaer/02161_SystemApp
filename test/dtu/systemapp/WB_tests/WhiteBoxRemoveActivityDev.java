@@ -74,4 +74,11 @@ public class WhiteBoxRemoveActivityDev {
 		sysApp.addActivity(proj, acti);
 		sysApp.removeActivityDev(proj, acti, devl);
 	}
+	
+	@Test
+	  public void testInputSetE() throws OperationNotAllowedException {
+		expectedException.expect(OperationNotAllowedException.class);
+		expectedException.expectMessage("User is not logged in");
+		sysApp.removeActivityDev(proj, acti, devl);
+	}
 }

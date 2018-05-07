@@ -21,25 +21,25 @@ public class WhiteBoxRemoveActivity {
 	Developer lead = new Developer("lead");
 	Developer devl = new Developer("devl");
 	Activity acti = new Activity("acti");
-	
-	
+
+
 	@Rule
-    public ExpectedException expectedException = ExpectedException.none();
-	
+	public ExpectedException expectedException = ExpectedException.none();
+
 	@Test
-	  public void testInputSetA() throws OperationNotAllowedException {
+	public void testInputSetA() throws OperationNotAllowedException {
 		sysApp.addDeveloper(lead);
 		sysApp.userLogin("lead");
 		sysApp.addProject(proj);
 		sysApp.addActivity(proj, acti);
 		sysApp.removeActivity(proj, acti);
 		assertFalse(proj.getProjectActivities().contains(acti));
-	  }
-	
+	}
+
 	@Test
-	  public void testInputSetB() throws OperationNotAllowedException {
+	public void testInputSetB() throws OperationNotAllowedException {
 		expectedException.expect(OperationNotAllowedException.class);
-        expectedException.expectMessage("Project leader authorization needed");
+		expectedException.expectMessage("Project leader authorization needed");
 		sysApp.addDeveloper(lead);
 		sysApp.addDeveloper(devl);
 		sysApp.userLogin("lead");
@@ -48,25 +48,31 @@ public class WhiteBoxRemoveActivity {
 		sysApp.userLogout();
 		sysApp.userLogin("devl");
 		sysApp.removeActivity(proj, acti);
-	  }
-	
+	}
+
 	@Test
-	  public void testInputSetC() throws OperationNotAllowedException {
+	public void testInputSetC() throws OperationNotAllowedException {
 		expectedException.expect(OperationNotAllowedException.class);
-        expectedException.expectMessage("Activity is not part of the project");
+		expectedException.expectMessage("Activity is not part of the project");
 		sysApp.addDeveloper(lead);
 		sysApp.userLogin("lead");
 		sysApp.addProject(proj);
 		sysApp.removeActivity(proj, acti);	
 	}
-	
+
 	@Test
-	  public void testInputSetD() throws OperationNotAllowedException {
+	public void testInputSetD() throws OperationNotAllowedException {
 		expectedException.expect(OperationNotAllowedException.class);
-        expectedException.expectMessage("Project is not in the system");
+		expectedException.expectMessage("Project is not in the system");
 		sysApp.addDeveloper(lead);
 		sysApp.userLogin("lead");
 		sysApp.removeActivity(proj, acti);
 	}
-	
+
+	@Test
+	public void testInputSetE() throws OperationNotAllowedException {
+		expectedException.expect(OperationNotAllowedException.class);
+		expectedException.expectMessage("User is not logged in");
+		sysApp.removeActivity(proj, acti);
+	}
 }

@@ -69,5 +69,10 @@ public class WhiteBoxAddProject {
 			sysApp.addProject(proj3);
 			sysApp.addProject(proj1);
 		}
-
+		
+		public void testInputSetE() throws OperationNotAllowedException {
+			expectedException.expect(OperationNotAllowedException.class);
+	        expectedException.expectMessage("User is not logged in");
+	        sysApp.addProject(proj1);
+		}
 }

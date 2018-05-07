@@ -229,6 +229,16 @@ public class TimeSteps {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
 	}
+	
+	@When("^user ask for all available developers in week (\\d+) year (\\d+)$")
+	public void userAskForAllAvailableDevelopersInWeekYear(int weekOfYear, int year) throws Exception {
+		try {
+			week = new Week(weekOfYear, year);
+			availableDev = systemApp.getAvailableDevelopers(week);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
 
 	@Then("^user gets a sorted list of all available developers$")
 	public void userGetsASortedListOfAllAvailableDevelopers() throws Exception {

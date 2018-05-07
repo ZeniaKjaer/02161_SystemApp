@@ -16,7 +16,7 @@ public class DevCalendar {
 			int[] year = new int[54];			
 			calendar.put(startYear+i, year);
 		}
-	}
+	} 
 
 	public void incrementActivity(Week week) {
 		calendar.get(week.getYear())[week.getWeekOfYear()]++; 
@@ -31,6 +31,9 @@ public class DevCalendar {
 	}
 
 	public int getActivityLevel(Week week) {
+		if (!calendar.containsKey(week.getYear())) {
+			return 20;
+		} 
 		return calendar.get(week.getYear())[week.getWeekOfYear()];
 	}
 
