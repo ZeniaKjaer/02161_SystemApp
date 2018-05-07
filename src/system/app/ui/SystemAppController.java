@@ -215,7 +215,7 @@ public class SystemAppController {
 		}
 
 		if (activeUser.getMyActivities().size() == 0) {
-			System.out.println("No projects");
+			System.out.println("No activities");
 		} else {
 			for(Activity a: activeUser.getMyActivities()) {
 				System.out.println(a.getActivityName());
@@ -303,7 +303,7 @@ public class SystemAppController {
 			systemApp.userLogin(initials);
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e);
-		}
+		} 
 		
 	}
 
