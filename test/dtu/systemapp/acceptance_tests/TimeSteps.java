@@ -20,7 +20,7 @@ public class TimeSteps {
 	private SystemApp systemApp;
 	private Week week;
 	private ArrayList<Pair<String,Integer>> availableDev;
-	private Calendar start, middle, deadline;
+	private Calendar start, middle, deadline, postPonedDeadline;
 	private ErrorMessageHolder errorMessageHolder;
 	private ProjectHelper projectHelper;
 	private ActivityHelper activityHelper;
@@ -77,8 +77,8 @@ public class TimeSteps {
 		}
 	}
 
-	@When("^user sets deadline before the start for project$")
-	public void userSetsDeadlineBeforeTheStartForProject() throws Exception {
+	@When("^user sets project deadline before project start$")
+	public void userSetsProjectDeadlineBeforeProjectStart() throws Exception {
 		try {
 			systemApp.setProjectStart(projectHelper.getProject(), deadline);
 			systemApp.setProjectDeadline(projectHelper.getProject(), start);
@@ -104,7 +104,25 @@ public class TimeSteps {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
 	}
+	
+	@When("^user postpones project deadline$")
+	public void userPostponesProjectDeadline() throws Exception {
+		postPonedDeadline = new GregorianCalendar(); 
+		postPonedDeadline.add(Calendar.WEEK_OF_YEAR, 4);
+		try {
+			systemApp.setProjectDeadline(projectHelper.getProject(), postPonedDeadline);
+		} catch (OperationNotAllowedException e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}
 
+	@Then("^project deadline is postponed$")
+	public void projectDeadlineIsPostponed() throws Exception {
+		assertEquals(postPonedDeadline.get(Calendar.DAY_OF_YEAR),
+				projectHelper.getProject().getDeadline().get(Calendar.DAY_OF_YEAR));
+		assertEquals(postPonedDeadline.get(Calendar.YEAR),
+				projectHelper.getProject().getDeadline().get(Calendar.YEAR));
+	}
 	@Then("^activity deadline is set$")
 	public void activityDeadlineIsSet() throws Exception {
 		assertEquals(deadline.get(Calendar.DAY_OF_YEAR), 
@@ -249,16 +267,22 @@ public class TimeSteps {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
 	}
+	
 	@When("^user sets new project deadline before project deadline$")
 	public void userSetsNewProjectDeadlineBeforeProjectDeadline() throws Exception {
 		try {
-			projectHelper.getProject().getProjectActivities().clear();
-			systemApp.setProjectDeadline(projectHelper.getProject(), deadline);
-			systemApp.addActivity(projectHelper.getProject(), activityHelper.getActivity());
 			systemApp.setProjectDeadline(projectHelper.getProject(), middle);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
+	}
+	
+	@Then("^project deadline is set back$")
+	public void projectDeadlineIsSetBack() throws Exception {
+		assertEquals(middle.get(Calendar.DAY_OF_YEAR), 
+				projectHelper.getProject().getDeadline().get(Calendar.DAY_OF_YEAR));
+		assertEquals(middle.get(Calendar.YEAR),
+				projectHelper.getProject().getDeadline().get(Calendar.YEAR));
 	}
 
 }

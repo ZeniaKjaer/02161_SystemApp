@@ -8,7 +8,7 @@ public class SystemApp extends Observable{
 	private boolean loggedIn = false;
 	private String activeUser = "";
 	private List<Developer> developers = new ArrayList<Developer>();
-	private List<Project> projects = new ArrayList<Project>();
+	private List<Project> projects = new ArrayList<Project>(); 
 	private int nextProjectID = 1000;
 	private static final int DEADLINE_ADVANCE_DATE = 3; 
  
@@ -181,8 +181,8 @@ public class SystemApp extends Observable{
 	 */
 	public void removeProject(Project project) throws OperationNotAllowedException {
 		loginCheck();
-		projectLeaderCheck(project);
 		projectCheck(project);
+		projectLeaderCheck(project);
 		while (project.getProjectActivities().size() > 0) {
 			removeActivity(project,project.getProjectActivities().get(0));
 		}
@@ -192,6 +192,9 @@ public class SystemApp extends Observable{
 			project.getProjectDevelopers().remove(0);
 		}
 		projects.remove(project);
+		
+		setChanged();
+		notifyObservers(NotificationType.REMOVE_PROJECT);
 	}
 
 	/**
@@ -427,7 +430,7 @@ public class SystemApp extends Observable{
 		timeBudgetCheck(project.getStart(), deadline);
 
 		if (deadline.before(project.getDeadline()) && !project.getProjectActivities().isEmpty())  {
-			throw new OperationNotAllowedException("Deadline can only be postponed");
+				throw new OperationNotAllowedException("Deadline can only be postponed");
 		}
 		project.setDeadline(deadline);
 

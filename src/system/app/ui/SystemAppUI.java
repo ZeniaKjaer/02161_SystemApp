@@ -9,7 +9,6 @@ import java.util.Observable;
 import java.util.Observer;
 
 import system.app.NotificationType;
-import system.app.OperationNotAllowedException;
 import system.app.SystemApp;
 /**
  * @author Mai-Thi
@@ -22,7 +21,7 @@ public class SystemAppUI implements Observer {
 		systemApp = new SystemApp();
 		systemApp.addObserver(this);
 		controller = new SystemAppController();
-	}
+	} 
 
 	public static void main(String[] args) throws Exception {
 		new SystemAppUI().mainLoop(System.in, System.out);
@@ -175,6 +174,9 @@ public class SystemAppUI implements Observer {
 		}
 		if (NotificationType.ADD_PROJECT.equals(aspect)) {
 			System.out.println("The project has been added to the system.");
+		}
+		if (NotificationType.REMOVE_PROJECT.equals(aspect)) {
+			System.out.println("The project has been removed from the system.");
 		}
 		if (NotificationType.CHANGE_PROJECT_LEADER.equals(aspect)) {
 			System.out.println("The project leader has been changed.");

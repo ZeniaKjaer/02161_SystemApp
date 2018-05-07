@@ -1,5 +1,5 @@
 # Use case og test af Mai-Thi
-Feature: Set deadline for project
+Feature: Set project deadline 
     Description: The project leader sets project deadline. 
     The start can only be postponed, or set back if the projact has no activities 
     Actors: Project leader
@@ -10,11 +10,17 @@ Feature: Set deadline for project
     And there is a date between start and deadline
     And there is a deadline
 
-Scenario: Project leader deadline for project succesfully
+Scenario: Project leader set project deadline succesfully
     Given there is a project with no activities
   	And user is the project leader
-  	When user sets project deadline
-  	Then project deadline is set
+  	When user sets new project deadline before project deadline
+  	Then project deadline is set back
+  	
+Scenario: Project leader postpones project deadline succesfully
+    Given there is a project with an activity
+  	And user is the project leader
+  	When user postpones project deadline
+  	Then project deadline is postponed
   	
 Scenario: User sets project deadline when not project leader
   	Given project is not in the system
@@ -36,10 +42,10 @@ Scenario: Project leader sets deadline for a project with an activity
 Scenario: Project leader sets project deadline before the start
     Given there is a project with no activities
   	And user is the project leader
-  	When user sets deadline before the start for project
+  	When user sets project deadline before project start
   	Then user gets the error message "Illegal time budget"
   	
-Scenario: Developer sets deadline for project when not logged in
+Scenario: Developer sets project deadline when not logged in
 	Given developer is not logged in
 	When user sets project deadline
 	Then user gets the error message "User is not logged in"

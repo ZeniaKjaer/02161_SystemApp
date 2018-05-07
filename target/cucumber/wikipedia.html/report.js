@@ -4087,7 +4087,7 @@ formatter.result({
 });
 formatter.uri("use_cases/student/set_deadline_project.feature");
 formatter.feature({
-  "name": "Set deadline for project",
+  "name": "Set project deadline",
   "description": "    Description: The project leader sets project deadline. \n    The start can only be postponed, or set back if the projact has no activities \n    Actors: Project leader",
   "keyword": "Feature"
 });
@@ -4137,7 +4137,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Project leader deadline for project succesfully",
+  "name": "Project leader set project deadline succesfully",
   "description": "",
   "keyword": "Scenario"
 });
@@ -4162,21 +4162,111 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "user sets project deadline",
+  "name": "user sets new project deadline before project deadline",
   "keyword": "When "
 });
 formatter.match({
-  "location": "TimeSteps.userSetsProjectDeadline()"
+  "location": "TimeSteps.userSetsNewProjectDeadlineBeforeProjectDeadline()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "project deadline is set",
+  "name": "project deadline is set back",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "TimeSteps.projectDeadlineIsSet()"
+  "location": "TimeSteps.projectDeadlineIsSetBack()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.developerIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a start date",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsAStartDate()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a date between start and deadline",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsADateBetweenStartAndDeadline()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a deadline",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.thereIsADeadline()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Project leader postpones project deadline succesfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "there is a project with an activity",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ActivitySteps.thereIsAProjectWithAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user is the project leader",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectSteps.userIsTheProjectLeader()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "user postpones project deadline",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "TimeSteps.userPostponesProjectDeadline()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "project deadline is postponed",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "TimeSteps.projectDeadlineIsPostponed()"
 });
 formatter.result({
   "status": "passed"
@@ -4512,11 +4602,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "user sets deadline before the start for project",
+  "name": "user sets project deadline before project start",
   "keyword": "When "
 });
 formatter.match({
-  "location": "TimeSteps.userSetsDeadlineBeforeTheStartForProject()"
+  "location": "TimeSteps.userSetsProjectDeadlineBeforeProjectStart()"
 });
 formatter.result({
   "status": "passed"
@@ -4577,7 +4667,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Developer sets deadline for project when not logged in",
+  "name": "Developer sets project deadline when not logged in",
   "description": "",
   "keyword": "Scenario"
 });
